@@ -1,0 +1,55 @@
+# setting=I order=default script=scripts/p6_loadinv.jl env=env_p6 julia=/home/hellmann/Repos/julia-trait-bound/julia-1.13/julia  depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-p6:/home/hellmann/.julia: strict=off diag=0
+# julia-1.13 6d480d0753 TraitWorld 3bebf13 dirty=0
+# clones BracketingNonlinearSolve-p6:7433e0b DiffEqCallbacks.jl:14b58b5 DiffEqCallbacks-p6:0b6042d GraphMakie.jl:327f80b Graphs.jl:dffc7a64 Graphs-p4:54632125 Makie.jl:47479e0a NetworkDynamics.jl:ec6afc0 NetworkDynamics-p3wrap:e5425fd NetworkDynamics-p4:19c2045 NetworkLayout.jl:32e72bf NonlinearSolveBase-p6:293712e NonlinearSolveFirstOrder-p6:30c42a6 NonlinearSolve-p6:697c987 NonlinearSolveQuasiNewton-p6:afc14ed NonlinearSolveSpectralMethods-p6:6ef8fa9 Observables.jl:4e78ca2 OrdinaryDiffEq.jl:53e7d1d33 OrdinaryDiffEq-p6:1dcb9dd04 OrdinaryDiffEq-p6-ros:effcc0f08 RecursiveArrayTools.jl:185fa2c RecursiveArrayTools-p6:f29eae0 SciMLBase.jl:365283c6 SciMLBase-p6:b50f4684 SciMLJacobianOperators-p6:3840f8a SimpleNonlinearSolve-p6:f95ae0e Static.jl:c34adbb SymbolicIndexingInterface.jl:13d7d07 SymbolicIndexingInterface-p6:dcc3b12 
+# date 2026-10-21T20:20:23+02:00 load-before 1.68
+J TraitWorld s=0.12 compile=0.0 recompile=0.0
+J TraitWorld invalidated n=8/66799 owners: nothing=8 | modules: Base=8
+J TraitWorld invalidated-facts n=0 modules: 
+J TraitWorld causes: Dates=11 unattributed=1
+J TraitWorld rejected n=0 owners:  | modules: 
+J TraitWorld rejected-by: 
+J TraitWorld rejected-facts n=0 modules: 
+STRICT off
+J Graphs,NetworkDynamics s=2.86 compile=0.35 recompile=0.15
+J Graphs,NetworkDynamics invalidated n=1480/81218 owners: nothing=1480 | modules: Base=843 Compiler=562 TraitWorld=65 LinearAlgebra=9 FileWatching=1
+J Graphs,NetworkDynamics invalidated-facts n=0 modules: 
+J Graphs,NetworkDynamics causes: ChainRulesCore=1080 CommonWorldInvalidations=916 StaticArrays=429 DelimitedFiles=304 FillArrays=144 CEnum=134 LHLFactorizationPolyesterExt=104 Graphs=90 Static=68 LLVM=67 NonlinearSolveBaseSparseMatrixColoringsExt=57 SparseColumnPivotedQRAMDExt=50 StrideArraysCore=45 LaTeXStrings=40 StaticArrayInterface=35 ForwardDiff=31
+J Graphs,NetworkDynamics rejected n=5288 owners: nothing=5100 :facts=188 | modules: Base=2873 PrettyTables=409 Pkg=362 Compiler=243 TraitWorld=207 LinearSolve=173 ConstructionBase=151 ConcreteStructs=140 LinearAlgebra=104 ManualMemory=93 PureKLU=69 FileWatching=40 ForwardDiff=39 LibGit2=35 SparseArrays=32 MacroTools=31
+J Graphs,NetworkDynamics rejected-by: ChainRulesCore=771 CommonWorldInvalidations=736 ForwardDiff=580 StaticArrays=529 DataStructures=487 SparseConnectivityTracer=461 Graphs=458 Static=394 SparseArrays=351 LLVM=300 FillArrays=192 CEnum=131 StrideArraysCore=81 ManualMemory=80 Tables=80 BFloat16s=65
+J Graphs,NetworkDynamics rejected-facts n=188 modules: ConstructionBase=149 FunctionWrappers=16 SciMLBase=9 NonlinearSolveBase=8 Base=4 DiffEqBase=2
+J OrdinaryDiffEqTsit5 s=0.07 compile=0.0 recompile=0.0
+J OrdinaryDiffEqTsit5 invalidated n=0/245862 owners:  | modules: 
+J OrdinaryDiffEqTsit5 invalidated-facts n=0 modules: 
+J OrdinaryDiffEqTsit5 causes: 
+J OrdinaryDiffEqTsit5 rejected n=49 owners: nothing=28 :facts=21 | modules: Base=24 ConstructionBase=10 FunctionWrappers=6 TraitWorld=6 SciMLBase=3
+J OrdinaryDiffEqTsit5 rejected-by: SciMLBaseForwardDiffExt=6 StaticArrays=5 ChainRulesCore=4 FillArrays=3 Crayons=2 Graphs=1
+J OrdinaryDiffEqTsit5 rejected-facts n=21 modules: ConstructionBase=10 FunctionWrappers=6 SciMLBase=3 Base=2
+J OrdinaryDiffEqRosenbrock s=0.23 compile=0.0 recompile=0.0
+J OrdinaryDiffEqRosenbrock invalidated n=0/252936 owners:  | modules: 
+J OrdinaryDiffEqRosenbrock invalidated-facts n=0 modules: 
+J OrdinaryDiffEqRosenbrock causes: 
+J OrdinaryDiffEqRosenbrock rejected n=353 owners: nothing=322 :facts=31 | modules: Base=141 Compiler=101 TraitWorld=51 FunctionWrappers=16 ConstructionBase=13 MuladdMacro=12 Accessors=7 SparseArrays=5 ForwardDiff=2 FastBroadcast=2 Reexport=1 DocStringExtensions=1 ConcreteStructs=1
+J OrdinaryDiffEqRosenbrock rejected-by: FillArrays=57 StaticArrays=45 Static=22 ChainRulesCore=8 CommonWorldInvalidations=8 Crayons=4 StrideArraysCore=4 SparseConnectivityTracer=2 Graphs=2
+J OrdinaryDiffEqRosenbrock rejected-facts n=31 modules: FunctionWrappers=16 ConstructionBase=13 Base=2
+J DiffEqCallbacks s=0.0 compile=0.0 recompile=0.0
+J DiffEqCallbacks invalidated n=0/271051 owners:  | modules: 
+J DiffEqCallbacks invalidated-facts n=0 modules: 
+J DiffEqCallbacks causes: 
+J DiffEqCallbacks rejected n=0 owners:  | modules: 
+J DiffEqCallbacks rejected-by: 
+J DiffEqCallbacks rejected-facts n=0 modules: 
+J SymbolicIndexingInterface s=0.0 compile=0.0 recompile=0.0
+J SymbolicIndexingInterface invalidated n=0/271051 owners:  | modules: 
+J SymbolicIndexingInterface invalidated-facts n=0 modules: 
+J SymbolicIndexingInterface causes: 
+J SymbolicIndexingInterface rejected n=0 owners:  | modules: 
+J SymbolicIndexingInterface rejected-by: 
+J SymbolicIndexingInterface rejected-facts n=0 modules: 
+J CairoMakie,GraphMakie,Observables s=2.43 compile=0.01 recompile=0.0
+J CairoMakie,GraphMakie,Observables invalidated n=2339/271051 owners: nothing=2324 :facts_plain_return_type=15 | modules: Base=1012 Compiler=678 LLVM=255 Pkg=118 Artifacts=39 TraitWorld=32 PureKLU=26 Distributed=26 PrecompileTools=23 ArgTools=19 UnsafeAtomics=13 RuntimeGeneratedFunctions=11 PrettyTables=10 ExprTools=9
+J CairoMakie,GraphMakie,Observables invalidated-facts n=15 modules: Base=9 NetworkDynamics=6
+J CairoMakie,GraphMakie,Observables causes: FilePathsBase=1968 REPL=836 DelaunayTriangulation=774 GeometryBasics=663 Unitful=137 CairoMakie=107 Observables=81 FixedPointNumbers=71 FastInterpolations=57 Makie=42 Interpolations=19 TranscodingStreams=11 IntervalArithmeticForwardDiffExt=9 Colors=6 StatsBase=6 StructUtilsStaticArraysCoreExt=5
+J CairoMakie,GraphMakie,Observables rejected n=6916 owners: nothing=6916 | modules: Makie=2422 Base=1624 ComputePipeline=1080 GeometryBasics=270 Compiler=244 MosaicViews=181 Observables=165 REPL=148 JSON=137 FileIO=90 CairoMakie=90 StaticArraysCore=86 Parsers=78 ImageCore=58 Automa=46 PlotUtils=43
+J CairoMakie,GraphMakie,Observables rejected-by: CommonWorldInvalidations=288 Static=201 FilePathsBase=81 StrideArraysCore=62 ChainRulesCore=51 GeometryBasics=45 FillArrays=37 StaticArrays=37 CEnum=31 SparseConnectivityTracer=29 DataStructures=27 SparseArrays=23 FreeType=16 ColorVectorSpace=16 CloseOpenIntervals=12 StaticArrayInterface=12
+J CairoMakie,GraphMakie,Observables rejected-facts n=0 modules: 
+# rc=0 load-after 1.57

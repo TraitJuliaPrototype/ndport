@@ -398,3 +398,96 @@ Commits (tag `p6-s6`): `OrdinaryDiffEq-p6` 1dcb9dd04 (OrdinaryDiffEqCore with
   (The runner's test modules were renamed `T_<file>` after `callbacks.jl` defined a global named like its module;
   both runs repeated with the fix.)
 - **The merge's precondition on P6's side holds:** S6 passed with its checks.
+
+## S7 (milestone): OrdinaryDiffEqRosenbrock wrapped
+
+Commit: `OrdinaryDiffEq-p6-ros` effcc0f08 (branch `p6-inside-out-ros`, tag `p6-s7-ros`).
+
+- **P** (`logs/p6/precompile-s7.log`): 1 rebuilt (the plan's 1 + 0), 46 s.
+- **C**: 18 wrapped (with ND and TraitWorld); pirates in wrapped packages 0; none left on P6's packages.
+- **R**: 0 exact differences. **S**: `STRICT on`; only P6-2.
+- **T (judged here):** c 3.6, d 16.2, e 0.7 ms against I0's 3.6 / 15.0 / 0.6: **pass** (d +8 %).
+- **H**: trait code 40,254, plain code 5. Nothing new in Rosenbrock.
+- **F**: first a–e **28.9 s** (I0 36.4, N 37.8, U 21.5). It falls by S7, as the plan asked; it does not reach U
+  (the plan expected that: NetworkDynamics' own workload is P4's lever).
+- **L**: Graphs+ND 8.19, solvers 0.43, plotting 6.27 s.
+- **The attribution** (`logs/p6-s7-diag/I-1.log`): c 7,549 new (`:facts` 5,257, `:facts_plain_return_type` 2,094);
+  **d 5,481 new** (S4 14,625; U 6,262): `:facts` 4,878, plain 294; OrdinaryDiffEqCore 340 (U 561, S4 1,805): the
+  solver's code now comes from the images. e 4,590 (`:facts_plain_return_type` 2,903).
+- **B** (order B, strict off, `logs/p6-s7-orderB/I-1.log`): digests equal. The plotting load takes 2,657: plain 2,422,
+  `:facts_plain_return_type` 235, **`:facts` 0**. No SciML module among the losses any more (S4: DiffEqBase 92,
+  OrdinaryDiffEqCore 50; N: NonlinearSolveBase 175, SciMLBase 27). **The next pass recompiles nothing** (step d
+  compile 0, 17.3 ms; N 0.04 s; U 4.7 s). Every lost CodeInstance of a facts owner is `:facts_plain_return_type`:
+  plain inference's answers behind `return_type` (facts §7.1), which change exactly when plain Julia's do.
+- **J** (strict off, `logs/p6-s7-J/I-1.log`): Tsit5's load 0.07 s (S4 1.20), Rosenbrock's 0.23 s (S4 3.07); images'
+  rejected CodeInstances 49 and 353 (S4 864, 1,885). Of the facts owner: ND's load 188 (ConstructionBase 149,
+  FunctionWrappers 16, SciMLBase 9, NonlinearSolveBase 8, Base 4, DiffEqBase 2), Tsit5 21, Rosenbrock 31; no valid
+  facts CodeInstance invalidated by a load before the plotting one, which invalidates 15 `:facts_plain_return_type`.
+  Joint owners' loads discard no measurable share of the wrapped packages' trait code.
+- **X** (the pirate `sin(::Dual)` of `p3_pirate.jl`; `logs/p6-s7-pirate-strict1/`, `-strict0/`):
+  - strict on: refused (`PirateError`), 0 lost, digests equal; the refusal names `NetworkDynamics.AntiSymmetric`, as
+    in N. `scripts/p6_pirate_roots.jl` (`logs/p6-s7-pirate-roots/`): the only direct trait-code callers of
+    `sin` on duals are NetworkDynamics' line function (5 callers, all `AntiSymmetric`); SciML's code holds no direct
+    fact there. So the plan's "the refusal's caller also names SciML code" does not hold, and cannot: strict mode names
+    the first fact, and every fact at `sin(::Dual)` is NetworkDynamics'. SciML's trait code is protected
+    transitively: with strict off, the pirate takes 84 CodeInstances, `:facts` 81 (NetworkDynamics 56, SciMLBase 9,
+    FunctionWrappers 9, ForwardDiff 5, Main 5; N: 84, `:facts` 75).
+  - strict off: accepted, 84 lost, digests equal.
+- **Q** (`logs/p6/ndtest-p6-s7.log`, `env_ndtest_p6`, strict on): NetworkDynamics' test subset `nd_tests.jl`:
+  massmatrix 6, doctor 26, diffusion 112 + 24 broken, inhomogeneous 45 + 12 broken: **identical to upstream**
+  (`logs/p4/ndtest-upstream.log`), the allocation assertions included.
+
+## E-155 in brief (S0–S7)
+
+| Step | Build (pkgs, s) | First a–e (s) | Again c / d / e (ms) | H: dyn. calls trait / plain (top 40) | Loads ND / solvers (s) | Digests |
+|---|---|---|---|---|---|---|
+| S0 (I0) | 74, 137 | 36.4 | 3.6 / 15.0 / 0.6 | 34,601 / 647 | 6.11 / 0.33 | 0 diff |
+| S1 SII, RAT | 59, 147 | 36.8 | 3.5 / 15.1 / 0.7 | 34,605 / 644 | 6.15 / 0.36 | 0 diff |
+| S2 SciMLBase | 48, 196 | 52.4 | 3.7 / **29.2** / 0.7 | 24,595 / **100,501** | 8.64 / **4.32** | 0 diff |
+| S3 NLSBase, Bracketing, SJO | 35, 176 | 49.3 | 3.8 / 28.6 / 0.8 | 24,994 / 98,419 | 8.19 / 4.28 | 0 diff |
+| S4 NonlinearSolve family | 9, 101 | 49.1 | 3.7 / 29.7 / 0.7 | 24,994 / 98,419 | 8.12 / 4.23 | 0 diff |
+| S5 DiffEqBase | 15, 68 | 29.5 | 3.6 / 16.0 / 0.7 | 40,254 / 5 | 8.35 / 0.46 | 0 diff |
+| S6 ODECore, Tsit5, DiffEqCallbacks | 10, 62 | 28.9 | 3.8 / 16.0 / 0.7 | 40,254 / 5 | 8.27 / 0.47 | 0 diff |
+| S7 Rosenbrock | 1, 46 | 28.9 | 3.6 / 16.2 / 0.7 | 40,254 / 5 | 8.19 / 0.43 | 0 diff |
+
+Builds total 397 packages, 932 s of precompilation (the plan's estimate 15–25 min). One run each, strict on, P1's
+load order, load average 0.9–1.7. Measures upstream's code with the declarations of the plan's §2.4, compiled by
+facts as trait modules (no trait code: neither interop nor idiomatic).
+
+- **The ND load with strict on** rises 6.1 → ~8.2 s from S2 on; with strict off it is 2.9 s (J). Strict mode's
+  image check grows with the trait code it protects (S2: 61,739 methods checked, 929 walked, 1.25 s in its own
+  counters; the rest not attributed). Candidate for P5's measurement round, not a stop.
+- **`:facts_plain_return_type`** answers are computed in the session in quantity (S4/S7: 2,094 in step c, ~2,900 in
+  step e), and the plotting load discards 235 of them in order B (N 15). Candidate **P6-4** (below).
+
+## Candidate pushback, continued (IDs for the coordinator)
+
+**P6-4 (candidate). Packages' own inference tests fail under the facts mode by design** (S2 Q).
+- *The code:* SciMLBase's `test/interpolation_tests.jl:157–158` (`Base.return_types(…) <: AbstractDiffEqArray`) and
+  `test/solution_interface.jl:355–396` (`@inferred bvde_like(…)`).
+- *The idiomatic form:* a package pins inference precision with `@inferred` and `return_types`.
+- *The reference:* facts §7.2 (reflection shows facts inference for a facts method), §4.2 (a run-time site's result is
+  `Any`, no result type from the one matching method); P6-1 for the second.
+- *What it costs:* 5 assertions of 1,555 in S2's subset; no result differs.
+- *Blocks:* no.
+
+**P6-5 (candidate). Run-time `return_type` answers are a large share of the session's new code** (S4, S7 attribution).
+- *The code:* facts code of NonlinearSolve's path (step c) and of the access (step e) calling `return_type`
+  (`collect`, `map`, broadcasting) where rule 1 and 2 of facts §7.1 do not fold.
+- *The idiomatic form:* `map`/`collect`/broadcast over values whose element type comes from inference.
+- *The reference:* facts §7.1 rule 3 (computed at run time by plain inference, under an owner of its own).
+- *What it costs:* 2,094 + 2,903 CodeInstances of `:facts_plain_return_type` in the first simulation; part of step c's
+  13.5 s (S3 8.1 s, before NonlinearSolve was wrapped). Not measured apart.
+- *Blocks:* no.
+
+## Lessons for the guideline's B5, continued
+
+- Inside-out, the cost of a wrapped core under plain callers (P6-1) lasted only until the package whose trait code
+  calls the plain callers was wrapped (DiffEqBase at S5), not until each plain caller was: plain packages reached
+  from trait code are compiled by facts (facts §6.2). Wrap the entry point of a call chain early.
+- Profile the steady state by owner (the profiler's `:facts` and default columns) at each step; the plain column
+  shows the plain callers that lost types.
+- A milestone's order B and J are the cheapest way to see invalidation cost; the image rejections at load (J) explain
+  load-time rises with no compilation in them.
+- Strict mode's refusal names the first fact only; to see whose code a pirate would change, list the trait roots of
+  its callee's backedges (`scripts/p6_pirate_roots.jl`) or run it strict off and count losses by module.

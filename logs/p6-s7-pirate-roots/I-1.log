@@ -1,0 +1,23 @@
+# setting=I order=default script=scripts/p6_pirate_roots.jl env=env_p6 julia=/home/hellmann/Repos/julia-trait-bound/julia-1.13/julia  depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-p6:/home/hellmann/.julia: strict=on diag=0
+# julia-1.13 6d480d0753 TraitWorld 3bebf13 dirty=0
+# clones BracketingNonlinearSolve-p6:7433e0b DiffEqCallbacks.jl:14b58b5 DiffEqCallbacks-p6:0b6042d GraphMakie.jl:327f80b Graphs.jl:dffc7a64 Graphs-p4:54632125 Makie.jl:47479e0a NetworkDynamics.jl:ec6afc0 NetworkDynamics-p3wrap:e5425fd NetworkDynamics-p4:19c2045 NetworkLayout.jl:32e72bf NonlinearSolveBase-p6:293712e NonlinearSolveFirstOrder-p6:30c42a6 NonlinearSolve-p6:697c987 NonlinearSolveQuasiNewton-p6:afc14ed NonlinearSolveSpectralMethods-p6:6ef8fa9 Observables.jl:4e78ca2 OrdinaryDiffEq.jl:53e7d1d33 OrdinaryDiffEq-p6:1dcb9dd04 OrdinaryDiffEq-p6-ros:effcc0f08 RecursiveArrayTools.jl:185fa2c RecursiveArrayTools-p6:f29eae0 SciMLBase.jl:365283c6 SciMLBase-p6:b50f4684 SciMLJacobianOperators-p6:3840f8a SimpleNonlinearSolve-p6:f95ae0e Static.jl:c34adbb SymbolicIndexingInterface.jl:13d7d07 SymbolicIndexingInterface-p6:dcc3b12 
+# date 2026-10-21T20:24:11+02:00 load-before 1.58
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}, Val{1}}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.wrapfun_iip(::ParameterDespeciali…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(DiffEqBase.hasdualpromote), Any, Number}, which wins at Tuple{typeof(DiffEqBase.hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension NonlinearSolveBaseSparseMatrixColoringsExt defines Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, which wins at Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, a fact of trait code (CodeInstance for MethodInstance for NonlinearSolveBase.select_fastest_coloring_…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+XR NetworkDynamics 5
+XR roots: NetworkDynamics.AntiSymmetric=5
+# rc=0 load-after 1.32

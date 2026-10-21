@@ -1,0 +1,76 @@
+# env_ndtest_p6 nd=pkgs/NetworkDynamics-p3wrap e5425fd strict=1 TraitWorld 3bebf13 date 2026-10-21T20:26:56+02:00 load 1.01
+┌ Warning: could not download https://pkg.julialang.org/registries
+│   exception = RequestError: HTTP/1.1 403 Forbidden (CONNECT tunnel failed, response 403) while requesting https://pkg.julialang.org/registries
+└ @ Pkg.Registry ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/Registry/Registry.jl:121
+    Updating `~/Repos/julia-trait-bound/ndport/env_ndtest_p6/Project.toml`
+  [127b3ac7] + OrdinaryDiffEqNonlinearSolve v2.9.9
+    Updating `~/Repos/julia-trait-bound/ndport/env_ndtest_p6/Manifest.toml`
+  [127b3ac7] + OrdinaryDiffEqNonlinearSolve v2.9.9
+Precompiling packages...
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}, Val{1}}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.wrapfun_iip(::ParameterDespeciali…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(DiffEqBase.hasdualpromote), Any, Number}, which wins at Tuple{typeof(DiffEqBase.hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension NonlinearSolveBaseSparseMatrixColoringsExt defines Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, which wins at Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, a fact of trait code (CodeInstance for MethodInstance for NonlinearSolveBase.select_fastest_coloring_…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+   5.3 s  ✓ OrdinaryDiffEqNonlinearSolve
+  1 dependency successfully precompiled in 6 seconds. 510 already precompiled.
+
+  1 dependency had output during precompilation:
+┌ OrdinaryDiffEqNonlinearSolve
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}, Val{1}}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.wrapfun_iip(::ParameterDespeciali…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(DiffEqBase.hasdualpromote), Any, Number}, which wins at Tuple{typeof(DiffEqBase.hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension NonlinearSolveBaseSparseMatrixColoringsExt defines Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, which wins at Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, a fact of trait code (CodeInstance for MethodInstance for NonlinearSolveBase.select_fastest_coloring_…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+# precompile s=6.4
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}, Val{1}}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.wrapfun_iip(::ParameterDespeciali…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(DiffEqBase.hasdualpromote), Any, Number}, which wins at Tuple{typeof(DiffEqBase.hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension NonlinearSolveBaseSparseMatrixColoringsExt defines Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, which wins at Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, a fact of trait code (CodeInstance for MethodInstance for NonlinearSolveBase.select_fastest_coloring_…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+# nd_tests threads=2 nd=/home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap
+# massmatrix_test.jl s=11.2
+# doctor_test.jl s=0.9
+--- Diffusion dynamics --- 
+Building Static Network Dynamics...
+Building Static Network Dynamics with artifical ODE Edges...
+Maximum difference between analytic solution and...
+	 * and solution with explicit Laplacian: 6.012215211792515e-8
+	 * and solution with static ND: 6.012215197914728e-8
+	 * and solution with promoted static edges ND: 2.8856597190929367e-7
+# diffusion_test.jl s=43.1
+--- Network dynamics with a static vertex ---
+These dynamics should flow to π, at t=500. they are there up to 4.766431693781215e-10
+# inhomogeneous_test.jl s=18.9
+TEST massmatrix_test.jl pass=6 fail=0 error=0 broken=0
+TEST doctor_test.jl pass=26 fail=0 error=0 broken=0
+TEST diffusion_test.jl pass=112 fail=0 error=0 broken=24
+TEST inhomogeneous_test.jl pass=45 fail=0 error=0 broken=12
