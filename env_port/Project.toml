@@ -1,0 +1,33 @@
+[deps]
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+DiffEqBase = "2b5f629d-d688-5b77-993f-72d75c75574e"
+DiffEqCallbacks = "459566f4-90b8-5000-8ac3-15dfb0a30def"
+GraphMakie = "1ecd5474-83a3-4783-bb4f-06765db800d2"
+Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
+Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
+NetworkDynamics = "22e9dc34-2a0d-11e9-0de0-8588d035468b"
+NetworkLayout = "46757867-2c16-5918-afeb-47bfcb05e46a"
+Observables = "510215fc-4207-5dde-b226-833fc4488ee2"
+OrdinaryDiffEqCore = "bbf590c4-e513-4bbe-9b18-05decba2e5d8"
+OrdinaryDiffEqRosenbrock = "43230ef6-c299-4910-a778-202eb28ce4ce"
+OrdinaryDiffEqTsit5 = "b1df2697-797e-41e3-8120-5422d3b24e4a"
+RecursiveArrayTools = "731186ca-8d62-57ce-b412-fbd966d074cd"
+SciMLBase = "0bca4576-84f4-4d90-8ffe-ffa030f20462"
+SymbolicIndexingInterface = "2efcf032-c050-4f8e-a9bb-153293bab1f5"
+TraitWorld = "7a3c1e52-9b4d-4f6e-8a21-5d0c3b9e7f14"
+
+[sources]
+DiffEqBase = {path = "../pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase"}
+DiffEqCallbacks = {path = "../pkgs/DiffEqCallbacks.jl"}
+GraphMakie = {path = "../pkgs/GraphMakie.jl"}
+Graphs = {path = "../pkgs/Graphs.jl"}
+Makie = {path = "../pkgs/Makie.jl/Makie"}
+NetworkDynamics = {path = "../pkgs/NetworkDynamics.jl"}
+NetworkLayout = {path = "../pkgs/NetworkLayout.jl"}
+Observables = {path = "../pkgs/Observables.jl"}
+OrdinaryDiffEqCore = {path = "../pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore"}
+OrdinaryDiffEqTsit5 = {path = "../pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqTsit5"}
+RecursiveArrayTools = {path = "../pkgs/RecursiveArrayTools.jl"}
+SciMLBase = {path = "../pkgs/SciMLBase.jl"}
+SymbolicIndexingInterface = {path = "../pkgs/SymbolicIndexingInterface.jl"}
+TraitWorld = {path = "../../TraitWorld"}
