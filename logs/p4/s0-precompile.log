@@ -1,0 +1,28 @@
+┌ Warning: could not download https://pkg.julialang.org/registries
+│   exception = RequestError: HTTP/1.1 403 Forbidden (CONNECT tunnel failed, response 403) while requesting https://pkg.julialang.org/registries
+└ @ Pkg.Registry ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/Registry/Registry.jl:121
+     Project No packages added to or removed from `~/Repos/julia-trait-bound/ndport/env_p4/Project.toml`
+    Manifest No packages added to or removed from `~/Repos/julia-trait-bound/ndport/env_p4/Manifest.toml`
+Precompiling packages...
+   7.1 s  ✓ Static
+   0.4 s  ✓ BitTwiddlingConvenienceFunctions
+   0.5 s  ✓ FastBroadcast → FastBroadcastStaticExt
+   0.9 s  ✓ CPUSummary
+   0.5 s  ✓ PolyesterWeave
+   1.6 s  ✓ StaticArrayInterface
+   0.5 s  ✓ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+   0.5 s  ✓ CloseOpenIntervals
+   0.6 s  ✓ LayoutPointers
+   0.6 s  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+   0.6 s  ✓ StrideArraysCore
+   0.5 s  ✓ Polyester
+   0.5 s  ✓ FastBroadcast → FastBroadcastPolyesterExt
+   1.1 s  ✓ OrdinaryDiffEqCore → OrdinaryDiffEqCorePolyesterExt
+   0.8 s  ✓ RecursiveArrayTools → RecursiveArrayToolsFastBroadcastPolyesterExt
+   3.5 s  ✓ LHLFactorization → LHLFactorizationPolyesterExt
+  18.8 s  ✓ NetworkDynamics
+  17 dependencies successfully precompiled in 33 seconds. 487 already precompiled.
+
+real	1m39.585s
+user	1m21.996s
+sys	0m4.717s

@@ -1,0 +1,35 @@
+# rhs_check threads=2 julia=1.13.2 nd=/home/hellmann/.julia/packages/NetworkDynamics/ReD1r
+R S-swing SequentialExecution{true} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing SequentialExecution{false} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing ThreadedExecution{true} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing ThreadedExecution{false} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing PolyesterExecution{true} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing PolyesterExecution{false} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing KAExecution{true} du=682eb66c20c959c o=error:MethodError agg=error:MethodError ext=error:MethodError
+R S-swing KAExecution{false} du=682eb66c20c959c o=error:MethodError agg=error:MethodError ext=error:MethodError
+J S-swing jac=1cab05d3aca3ef40
+R S-swing2 SequentialExecution{true} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 SequentialExecution{false} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 ThreadedExecution{true} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 ThreadedExecution{false} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 PolyesterExecution{true} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 PolyesterExecution{false} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 KAExecution{true} du=5861db2abdb48433 o=error:MethodError agg=error:MethodError ext=error:MethodError
+R S-swing2 KAExecution{false} du=5861db2abdb48433 o=error:MethodError agg=error:MethodError ext=error:MethodError
+J S-swing2 jac=1cab05d3aca3ef40
+R ff SequentialExecution{true} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+R ff SequentialExecution{false} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+R ff ThreadedExecution{true} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+R ff ThreadedExecution{false} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+R ff PolyesterExecution{true} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+R ff PolyesterExecution{false} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+E ff KAExecution{true} UndefVarError: `inbufs` not defined in `NetworkDynamics`
+Suggestion: check for spelling errors or missing imports.
+E ff KAExecution{false} UndefVarError: `inbufs` not defined in `NetworkDynamics`
+Suggestion: check for spelling errors or missing imports.
+J ff jac=7eeadc01e9f9c712
+sametype=false
+A S-swing SequentialExecution{true} allocs=0 ns=502
+A S-swing ThreadedExecution{true} allocs=2848 ns=9174
+A S-swing2 SequentialExecution{true} allocs=0 ns=543
+A S-swing2 ThreadedExecution{true} allocs=2848 ns=9127

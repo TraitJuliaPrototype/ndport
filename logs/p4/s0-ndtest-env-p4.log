@@ -1,0 +1,14 @@
+   Resolving package versions...
+┌ Warning: could not download https://pkg.julialang.org/registries
+│   exception = RequestError: HTTP/1.1 403 Forbidden (CONNECT tunnel failed, response 403) while requesting https://pkg.julialang.org/registries
+└ @ Pkg.Registry ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/Registry/Registry.jl:121
+    Updating `~/Repos/julia-trait-bound/ndport/env_ndtest_p4/Project.toml`
+  [127b3ac7] + OrdinaryDiffEqNonlinearSolve v2.9.9
+  [b77e0a4c] + InteractiveUtils v1.11.0
+  [37e2e46d] + LinearAlgebra v1.13.0
+  [9a3f8284] + Random v1.11.0
+  [2f01184e] + SparseArrays v1.13.0
+  [8dfed614] + Test v1.11.0
+    Updating `~/Repos/julia-trait-bound/ndport/env_ndtest_p4/Manifest.toml`
+  [127b3ac7] + OrdinaryDiffEqNonlinearSolve v2.9.9
+  [8dfed614] + Test v1.11.0

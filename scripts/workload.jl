@@ -24,7 +24,15 @@ WITH_TW && @load "TraitWorld" (@eval using TraitWorld)
 load_plotting() = (@load "CairoMakie,GraphMakie,Observables" (@eval using CairoMakie, GraphMakie, Observables);
                    @load "plot steps" Base.include(NDW, joinpath(@__DIR__, "workload_plot.jl"));
                    @eval CairoMakie.activate!(type = "png"))
-@load "steps" include(joinpath(@__DIR__, "workload_steps.jl"))
+const AS_TRAIT_MODULE = get(ENV, "NDW_W", "0") == "1"      # setting W: the workload's own module is a trait module
+if AS_TRAIT_MODULE
+    @load "steps" Core.eval(Main, let ex = Meta.parseall(read(joinpath(@__DIR__, "workload_steps.jl"), String))
+        i = findfirst(a -> a isa Expr && a.head === :module, ex.args)
+        Expr(:macrocall, GlobalRef(TraitWorld, Symbol("@trait_module")), LineNumberNode(1, :workload_steps), ex.args[i])
+    end)
+else
+    @load "steps" include(joinpath(@__DIR__, "workload_steps.jl"))
+end
 mkpath(NDW.OUT)
 ORDER == "simfirst" || load_plotting()
 
@@ -41,13 +49,16 @@ function timed(name, f)
 end
 
 const DIAG = get(ENV, "NDW_DIAG", "0") == "1"
-DIAG && include(joinpath(@__DIR__, "diag.jl"))
+(DIAG || ORDER == "simfirst") && include(joinpath(@__DIR__, "diag.jl"))
 const step_timer = DIAG ? Base.invokelatest(NDWDiag.wrap, timed, NDW.PASS) : timed
 const PASSES = split(get(ENV, "NDW_PASSES", "first,again,params,changed"), ",")
 Base.cumulative_compile_timing(true)
 if ORDER == "simfirst"
     st = NDW.run_sim(step_timer, "first", :swing)
-    load_plotting()
+    v0, _ = Base.invokelatest(NDWDiag.snapshot)            # what the plotting load may discard (outside the timed windows)
+    t = @elapsed load_plotting()
+    r = Base.invokelatest(NDWDiag.lost, v0)
+    println("G plotting-load ", round(t; digits = 2), " s lost=", r.n, "/", r.of, " owners: ", r.owners, " | modules: ", r.modules)
     Base.invokelatest(NDW.run_plot, step_timer, st)
 else
     "first" in PASSES && NDW.run_pass(step_timer, "first", :swing)

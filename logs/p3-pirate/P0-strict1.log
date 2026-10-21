@@ -1,0 +1,20 @@
+# setting=P0 order=default script=scripts/p3_pirate.jl env=env_port julia=/home/hellmann/Repos/julia-trait-bound/julia-1.13/julia  depot=default strict=on diag=0
+# julia-1.13 6d480d0753 TraitWorld e9f4bfe dirty=0
+# clones DiffEqCallbacks.jl:14b58b5 GraphMakie.jl:327f80b Graphs.jl:dffc7a64 Makie.jl:47479e0a NetworkDynamics.jl:ec6afc0 NetworkDynamics-p3wrap:e5425fd NetworkDynamics-p4:e5425fd NetworkLayout.jl:32e72bf Observables.jl:4e78ca2 OrdinaryDiffEq.jl:53e7d1d33 RecursiveArrayTools.jl:185fa2c SciMLBase.jl:365283c6 Static.jl:c34adbb SymbolicIndexingInterface.jl:13d7d07 
+# date 2026-10-21T17:36:46+02:00 load-before 1.50
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+D first d retcode=Success rretcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1,1.809068084,2.224116492,2.499471687,2.756386226,2.817606897,2.825230753,3.112909394,3.140182305,3.260305788,3.355679986,3.441859374,3.486329467,3.64942549,3.792884724,4.04797065 trtrips=1,1.809068112,2.224116516,2.499471716,2.75638625,2.817606931,2.825230768,3.112909402,3.140182323,3.260305832,3.355679979,3.441859413,3.486329472,3.649425493,3.792884724,4.047970645 ω2=-1.947637855e-15,2.514520715e-15,-0.04751035189,-0.1787344011,-0.09691742147,-0.7577319673,-2.034377446 ω2r=-1.101099686e-15,1.143679639e-15,-0.04751034122,-0.1787343862,-0.09691740223,-0.7577319602,-2.034377438 sol=b1e9898349ea5849 rsol=f9513783093062a9 nsteps=179 rnsteps=157
+D after d retcode=Success rretcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1,1.809068084,2.224116492,2.499471687,2.756386226,2.817606897,2.825230753,3.112909394,3.140182305,3.260305788,3.355679986,3.441859374,3.486329467,3.64942549,3.792884724,4.04797065 trtrips=1,1.809068112,2.224116516,2.499471716,2.75638625,2.817606931,2.825230768,3.112909402,3.140182323,3.260305832,3.355679979,3.441859413,3.486329472,3.649425493,3.792884724,4.047970645 ω2=-1.947637855e-15,2.514520715e-15,-0.04751035189,-0.1787344011,-0.09691742147,-0.7577319673,-2.034377446 ω2r=-1.101099686e-15,1.143679639e-15,-0.04751034122,-0.1787343862,-0.09691740223,-0.7577319602,-2.034377438 sol=b1e9898349ea5849 rsol=f9513783093062a9 nsteps=179 rnsteps=157
+R strict=on defined=accepted lost=81/277477 owners: nothing=81 | modules: NetworkDynamics=56 SciMLBase=9 FunctionWrappers=6 Main=5 ForwardDiff=5 digest_d_equal=true
+# rc=0 load-after 1.38

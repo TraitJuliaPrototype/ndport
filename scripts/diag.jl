@@ -23,6 +23,13 @@ root(ci) = (m = mi_of(ci).def; m isa Method ? nameof(Base.moduleroot(m.module)) 
 tally(f, xs) = (d = Dict{Any,Int}(); for x in xs; k = f(x); d[k] = get(d, k, 0) + 1; end; sort!(collect(d); by = x -> -last(x)))
 fmt(ps; n = 14) = join(["$(k)=$(v)" for (k, v) in ps[1:min(end, n)]], " ")
 snapshot()
+"The CodeInstances of `v0` no longer valid, by owner and by the root module of their method."
+function lost(v0)
+    gone = [ci for ci in v0 if ci.max_world != typemax(UInt)]
+    (; n = length(gone), of = length(v0),
+       owners = fmt(tally(ci -> ci.owner === nothing ? "nothing" : repr(ci.owner), gone)),
+       modules = fmt(tally(root, gone)))
+end
 "Wrap `timed`: the step's new CodeInstances, printed as `C <pass> <step> ...`."
 function wrap(timed, pass)
     (name, f) -> begin

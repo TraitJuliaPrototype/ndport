@@ -1,0 +1,85 @@
+# setting=P0 order=default script=scripts/p3_census.jl env=env_port julia=/home/hellmann/Repos/julia-trait-bound/julia-1.13/julia  depot=default strict=off diag=0
+# julia-1.13 6d480d0753 TraitWorld e9f4bfe dirty=0
+# clones DiffEqCallbacks.jl:14b58b5 GraphMakie.jl:327f80b Graphs.jl:dffc7a64 Makie.jl:47479e0a NetworkDynamics.jl:ec6afc0 NetworkDynamics-p3wrap:e5425fd NetworkDynamics-p4:e5425fd NetworkLayout.jl:32e72bf Observables.jl:4e78ca2 OrdinaryDiffEq.jl:53e7d1d33 RecursiveArrayTools.jl:185fa2c SciMLBase.jl:365283c6 Static.jl:c34adbb SymbolicIndexingInterface.jl:13d7d07 
+# date 2026-10-21T17:24:59+02:00 load-before 0.59
+P NetworkDynamics methods=2277 pirates=0 generated=4
+P SciMLBase methods=3282 pirates=0 generated=11
+P DiffEqBase methods=370 pirates=28 generated=3
+P OrdinaryDiffEqCore methods=1007 pirates=3 generated=27
+P OrdinaryDiffEqTsit5 methods=74 pirates=0 generated=0
+P OrdinaryDiffEqRosenbrock methods=509 pirates=0 generated=0
+P DiffEqCallbacks methods=338 pirates=0 generated=0
+P SymbolicIndexingInterface methods=560 pirates=0 generated=2
+P RecursiveArrayTools methods=494 pirates=0 generated=4
+P NonlinearSolve methods=145 pirates=10 generated=0
+P NonlinearSolveBase methods=1138 pirates=12 generated=6
+P Graphs methods=1923 pirates=0 generated=1
+P NetworkLayout methods=159 pirates=0 generated=0
+P GraphMakie methods=229 pirates=2 generated=0
+P Makie methods=7414 pirates=8 generated=3
+P Observables methods=131 pirates=0 generated=0
+P Static methods=504 pirates=0 generated=25
+PIRATE DiffEqBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(SciMLBase.__init), SciMLBase.AbstractDEProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:1336
+PIRATE DiffEqBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(SciMLBase.__solve), SciMLBase.AbstractDEProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:1320
+PIRATE DiffEqBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(init), PDEProblem, SciMLBase.AbstractDEAlgorithm, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:739
+PIRATE DiffEqBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(init), SciMLBase.AbstractDEProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:150
+PIRATE DiffEqBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(init), SciMLBase.AbstractJumpProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:164
+PIRATE DiffEqBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(solve), PDEProblem, SciMLBase.AbstractDEAlgorithm, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:732
+PIRATE DiffEqBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(solve), SciMLBase.AbstractDEProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:653
+PIRATE DiffEqBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(solve), SciMLBase.AbstractJumpProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:720
+PIRATE DiffEqBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(solve), SciMLBase.AbstractNoiseProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:716
+PIRATE DiffEqBase Tuple{typeof(SciMLBase.__init), SciMLBase.AbstractDEProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:1336
+PIRATE DiffEqBase Tuple{typeof(SciMLBase.__solve), SciMLBase.AbstractDEProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:1320
+PIRATE DiffEqBase Tuple{typeof(SciMLBase.isfunctionwrapper), FunctionWrappers.FunctionWrapper} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/DiffEqBase.jl:116
+PIRATE DiffEqBase Tuple{typeof(SciMLBase.promote_tspan), Vararg{Any, 5}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:858
+PIRATE DiffEqBase Tuple{typeof(SciMLBase.report_integrator_failure), SciMLBase.DEIntegrator, Val{reason}} where reason /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/check_error.jl:33
+PIRATE DiffEqBase Tuple{typeof(SciMLBase.unwrap_fw), FunctionWrappers.FunctionWrapper} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/norecompile.jl:26
+PIRATE DiffEqBase Tuple{typeof(SciMLBase.wrapfun_iip), Any, Any, Val} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/norecompile.jl:38
+PIRATE DiffEqBase Tuple{typeof(SciMLBase.wrapfun_iip), Any, Any} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/norecompile.jl:31
+PIRATE DiffEqBase Tuple{typeof(SciMLBase.wrapfun_oop), Any, Any} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/norecompile.jl:48
+PIRATE DiffEqBase Tuple{typeof(init), PDEProblem, SciMLBase.AbstractDEAlgorithm, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:739
+PIRATE DiffEqBase Tuple{typeof(init), SciMLBase.AbstractDEProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:150
+PIRATE DiffEqBase Tuple{typeof(init), SciMLBase.AbstractJumpProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:164
+PIRATE DiffEqBase Tuple{typeof(isempty), CallbackSet} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:81
+PIRATE DiffEqBase Tuple{typeof(isempty), SciMLBase.AbstractContinuousCallback} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:84
+PIRATE DiffEqBase Tuple{typeof(isempty), SciMLBase.AbstractDiscreteCallback} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:85
+PIRATE DiffEqBase Tuple{typeof(solve), PDEProblem, SciMLBase.AbstractDEAlgorithm, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:732
+PIRATE DiffEqBase Tuple{typeof(solve), SciMLBase.AbstractDEProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:653
+PIRATE DiffEqBase Tuple{typeof(solve), SciMLBase.AbstractJumpProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:720
+PIRATE DiffEqBase Tuple{typeof(solve), SciMLBase.AbstractNoiseProblem, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/solve.jl:716
+PIRATE OrdinaryDiffEqCore Tuple{typeof(EnzymeCore.EnzymeRules.inactive_noinl), typeof(SciMLBase.check_error!), Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/enzyme_rules.jl:25
+PIRATE OrdinaryDiffEqCore Tuple{typeof(SciMLBase.interp_summary), Type{cacheType}, Bool} where cacheType /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/interp_func.jl:73
+PIRATE OrdinaryDiffEqCore Tuple{typeof(SciMLBase.isadaptive), Any} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/alg_utils.jl:312
+PIRATE NonlinearSolve Tuple{typeof(Core.kwcall), NamedTuple, typeof(SciMLBase.__init), NonlinearProblem, Nothing, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolve/VlJu1/src/default.jl:25
+PIRATE NonlinearSolve Tuple{typeof(Core.kwcall), NamedTuple, typeof(SciMLBase.__init), SciMLBase.AbstractNonlinearProblem, Nothing, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolve/VlJu1/src/default.jl:59
+PIRATE NonlinearSolve Tuple{typeof(Core.kwcall), NamedTuple, typeof(SciMLBase.__solve), NonlinearProblem, Nothing, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolve/VlJu1/src/default.jl:40
+PIRATE NonlinearSolve Tuple{typeof(Core.kwcall), NamedTuple, typeof(SciMLBase.__solve), SciMLBase.AbstractNonlinearProblem, Nothing, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolve/VlJu1/src/default.jl:65
+PIRATE NonlinearSolve Tuple{typeof(NonlinearSolveBase.initialization_alg), HomotopyProblem, Any} /home/hellmann/.julia/packages/NonlinearSolve/VlJu1/src/default.jl:88
+PIRATE NonlinearSolve Tuple{typeof(NonlinearSolveBase.initialization_alg), SciMLBase.AbstractNonlinearProblem, Any} /home/hellmann/.julia/packages/NonlinearSolve/VlJu1/src/default.jl:71
+PIRATE NonlinearSolve Tuple{typeof(SciMLBase.__init), NonlinearProblem, Nothing, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolve/VlJu1/src/default.jl:25
+PIRATE NonlinearSolve Tuple{typeof(SciMLBase.__init), SciMLBase.AbstractNonlinearProblem, Nothing, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolve/VlJu1/src/default.jl:59
+PIRATE NonlinearSolve Tuple{typeof(SciMLBase.__solve), NonlinearProblem, Nothing, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolve/VlJu1/src/default.jl:40
+PIRATE NonlinearSolve Tuple{typeof(SciMLBase.__solve), SciMLBase.AbstractNonlinearProblem, Nothing, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolve/VlJu1/src/default.jl:65
+PIRATE NonlinearSolveBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(SciMLBase.__init), SciMLBase.AbstractNonlinearProblem, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/solve.jl:647
+PIRATE NonlinearSolveBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(SciMLBase.__solve), SciMLBase.AbstractNonlinearProblem, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/solve.jl:634
+PIRATE NonlinearSolveBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(init), SciMLBase.AbstractNonlinearProblem, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/solve.jl:231
+PIRATE NonlinearSolveBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(solve), HomotopyProblem, Nothing, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/homotopy_sweep.jl:898
+PIRATE NonlinearSolveBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(solve), HomotopyProblem} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/homotopy_sweep.jl:904
+PIRATE NonlinearSolveBase Tuple{typeof(Core.kwcall), NamedTuple, typeof(solve), SciMLBase.AbstractNonlinearProblem, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/solve.jl:76
+PIRATE NonlinearSolveBase Tuple{typeof(SciMLBase.__init), SciMLBase.AbstractNonlinearProblem, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/solve.jl:647
+PIRATE NonlinearSolveBase Tuple{typeof(SciMLBase.__solve), SciMLBase.AbstractNonlinearProblem, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/solve.jl:634
+PIRATE NonlinearSolveBase Tuple{typeof(init), SciMLBase.AbstractNonlinearProblem, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/solve.jl:231
+PIRATE NonlinearSolveBase Tuple{typeof(solve), HomotopyProblem, Nothing, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/homotopy_sweep.jl:898
+PIRATE NonlinearSolveBase Tuple{typeof(solve), HomotopyProblem} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/homotopy_sweep.jl:904
+PIRATE NonlinearSolveBase Tuple{typeof(solve), SciMLBase.AbstractNonlinearProblem, Vararg{Any}} /home/hellmann/.julia/packages/NonlinearSolveBase/ldW9x/src/solve.jl:76
+PIRATE GraphMakie Tuple{typeof(Makie.symbol_to_plot), Val{:EdgePlot}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/recipes.jl:542
+PIRATE GraphMakie Tuple{typeof(Makie.symbol_to_plot), Val{:GraphPlot}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/recipes.jl:192
+PIRATE Makie Tuple{typeof(ComputePipeline.add_input!), Any, ComputePipeline.ComputeGraph, Symbol, ShaderAbstractions.UpdatableArray} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/compute-plots.jl:16
+PIRATE Makie Tuple{typeof(ComputePipeline.add_input!), ComputePipeline.ComputeGraph, Symbol, ShaderAbstractions.UpdatableArray} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/compute-plots.jl:5
+PIRATE Makie Tuple{typeof(ComputePipeline.map_latest!), Any, Observable, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/interaction/observables.jl:89
+PIRATE Makie Tuple{typeof(Core.kwcall), NamedTuple, typeof(ComputePipeline.map_latest!), Any, Observable, Vararg{Any}} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/interaction/observables.jl:89
+PIRATE Makie Tuple{typeof(GeometryBasics.collect_with_eltype), Type{T}, ShaderAbstractions.Buffer{T}} where T /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/conversions.jl:2435
+PIRATE Makie Tuple{typeof(deepcopy), Observable} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/attributes.jl:51
+PIRATE Makie Tuple{typeof(notify), ComputePipeline.Computed} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/compute-plots.jl:901
+PIRATE Makie Tuple{typeof(to_value), ComputePipeline.Computed} /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/compute-plots.jl:900
+# rc=0 load-after 0.63
