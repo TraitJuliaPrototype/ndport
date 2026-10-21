@@ -1,5 +1,6 @@
 # P6 check Q (E-155, the plan §3.1): the wrapped packages' own quick tests, the files whose dependencies are in the
 # stack's manifest (no SafeTestsets, SciMLTesting, AllocCheck, Zygote, JET, Measurements or the shorthand sublibrary).
+# OrdinaryDiffEqTsit5 has no tests but its QA group (JET, Aqua, AllocCheck), so S6's group is DiffEqBase's.
 # Each file runs in a module of its own (as SafeTestsets does), from the loaded package's own `test/` directory, so the
 # same script runs the P6 trees (env_p6test, depot-p6) and the registry's releases (env_p6test_u: the baseline).
 #     julia --project=env_p6test   scripts/p6_tests.jl s2|s6
@@ -16,8 +17,8 @@ const FILES = GROUP == "s2" ? [
     :SciMLBase => ["interpolation_tests.jl", "solution_interface.jl", "integrator_tests.jl", "callback_constructors.jl",
         "convert_tests.jl", "function_wrappers.jl", "problem_building_test.jl"],
 ] : GROUP == "s6" ? [
-    :DiffEqBase => ["callbacks.jl"],
-    :OrdinaryDiffEqTsit5 => ["runtests.jl"],
+    :DiffEqBase => ["callbacks.jl", "internal_euler_test.jl", "problem_creation_tests.jl", "norm.jl",
+        "ode_default_unstable_check.jl", "remake_tests.jl", "diffeqfunction_tests.jl", "utils.jl", "despecialized_p_test.jl"],
 ] : error("group s2 or s6")
 for (p, _) in FILES; @eval using $p; end
 pkgdir_of(p) = pkgdir(getfield(Main, p))
@@ -37,7 +38,7 @@ end
 top = @testset Collector "p6 $GROUP" begin
     for (p, fs) in FILES, f in fs
         dir = joinpath(pkgdir_of(p), "test")
-        m = Module(Symbol(replace(basename(f), ".jl" => "")))
+        m = Module(Symbol("T_", replace(basename(f), ".jl" => "")))   # not the bare file name: a file may define a global of that name
         Core.eval(m, :(using Test))
         Core.eval(m, :(include(x) = Base.include($m, joinpath($(dirname(joinpath(dir, f))), x))))
         t0 = time()

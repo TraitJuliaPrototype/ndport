@@ -1,0 +1,38 @@
+# env_p6test group=s6 strict=1 TraitWorld 3bebf13 date 2026-10-21T20:12:55+02:00 load 1.17
+# precompile s=1.1
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}, Val{1}}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.wrapfun_iip(::ParameterDespeciali…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(DiffEqBase.hasdualpromote), Any, Number}, which wins at Tuple{typeof(DiffEqBase.hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: Using arrays or dicts to store parameters of different types can hurt performance.
+│ Consider using tuples instead.
+└ @ SciMLBase ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/src/performance_warnings.jl:33
+# p6_tests s6 DiffEqBase=/home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/DiffEqBase
+# DiffEqBase/callbacks.jl s=1.0
+# DiffEqBase/internal_euler_test.jl s=1.1
+# DiffEqBase/problem_creation_tests.jl s=1.7
+# DiffEqBase/norm.jl s=2.6
+# DiffEqBase/ode_default_unstable_check.jl s=1.6
+# DiffEqBase/remake_tests.jl s=1.9
+# DiffEqBase/diffeqfunction_tests.jl s=1.3
+# DiffEqBase/utils.jl s=1.0
+# DiffEqBase/despecialized_p_test.jl s=3.2
+TEST DiffEqBase/callbacks.jl pass=35 fail=0 error=0 broken=0
+TEST DiffEqBase/internal_euler_test.jl pass=0 fail=0 error=0 broken=0
+TEST DiffEqBase/problem_creation_tests.jl pass=8 fail=0 error=0 broken=7
+TEST DiffEqBase/norm.jl pass=3 fail=0 error=0 broken=0
+TEST DiffEqBase/ode_default_unstable_check.jl pass=19 fail=0 error=0 broken=0
+TEST DiffEqBase/remake_tests.jl pass=31 fail=0 error=0 broken=4
+TEST DiffEqBase/diffeqfunction_tests.jl pass=12 fail=0 error=0 broken=0
+TEST DiffEqBase/utils.jl pass=21 fail=0 error=0 broken=0
+TEST DiffEqBase/despecialized_p_test.jl pass=67 fail=0 error=0 broken=0

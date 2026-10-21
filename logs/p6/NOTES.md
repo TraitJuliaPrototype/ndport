@@ -367,3 +367,34 @@ Commit: `OrdinaryDiffEq-p6` 45bf77e85 (tag `p6-s5`).
 - **F**: **first a–e 29.5 s** (I0 36.4, N 37.8, U 21.5): c 13.5, **d 11.4** (S4 31.2), e 3.5 s. Session 90.3 s.
 - **L**: Graphs+ND 8.35, **solvers 0.46 s** (S4 4.23): the solvers' images are valid again, consistent with J's
   attribution to P6-1.
+
+## S6: OrdinaryDiffEqCore (with its joint owner), OrdinaryDiffEqTsit5, DiffEqCallbacks wrapped
+
+Commits (tag `p6-s6`): `OrdinaryDiffEq-p6` 1dcb9dd04 (OrdinaryDiffEqCore with
+`@joint_owners OrdinaryDiffEqDifferentiation`, OrdinaryDiffEqTsit5), `DiffEqCallbacks-p6` 0b6042d.
+
+- **P** (`logs/p6/precompile-s6.log`): 10 rebuilt (the plan's 7 + 3), 62 s. No `OwnershipError`; no new warning.
+- **C**: 17 wrapped; pirates in wrapped packages 0; **no pirate left on any P6 package** (Differentiation's 10 are
+  held by OrdinaryDiffEqCore's line; the filtered list is empty). Joint lines: SciMLBase (8 names), OrdinaryDiffEqCore
+  (1).
+- **R**: 0 exact differences. **S**: `STRICT on`; only P6-2. No refusal from Differentiation's other 25 pirates.
+- **T (judged here):** c 3.8, d 16.0, e 0.7 ms against I0's 3.6 / 15.0 / 0.6: **pass.**
+- **H**: trait code 40,254, plain code 5 (as S5). No new site in OrdinaryDiffEqCore, Tsit5 or DiffEqCallbacks
+  beyond S5's explained callback loops (OrdinaryDiffEqCore's `handle_callbacks!` was already compiled by facts at S5).
+- **The fold check** (risk 2, `scripts/p6_fold.jl`, in the C+H session): Tsit5's `perform_step!` for the
+  workload's `Tsit5Cache` is a facts method; its typed code (facts inference, as reflection shows) has 947 calls and
+  **no construction of `Tsit5ConstantCacheActual`**; likewise `_ode_addsteps!` (681 calls, 0). The `@fold` tableau
+  folds under the facts owner. P6-8 (plan) not met.
+- **The callbacks' path** (risk 3): the workload's integrator holds `continuous_callbacks::Vector{Any}` and
+  `discrete_callbacks::Vector{Any}`: NetworkDynamics' callbacks reach the type-erased vector path (S5's explained
+  sites). T within margin, so no visible cost of `_condition_return_type`.
+- **F**: **first a–e 28.9 s** (I0 36.4, N 37.8, U 21.5): c 13.5, d 11.0, e 3.3 s. The plan's "may rise at step 6"
+  (P6-6 of the plan) did not happen: S5 already moved the solver's driver into facts code, and S6 adds its images.
+- **L**: Graphs+ND 8.27, solvers 0.47, plotting 6.31 s.
+- **Q** (`logs/p6/tests-u-s6.log`, `logs/p6/tests-p6-s6.log`): DiffEqBase's callbacks (35), internal_euler,
+  problem_creation (8 + 7 broken), norm (3), ode_default_unstable_check (19), remake (31 + 4 broken),
+  diffeqfunction (12), utils (21), despecialized_p (67): **identical at upstream and at S6.** OrdinaryDiffEqTsit5 has
+  no tests outside its QA group (JET, Aqua, AllocCheck, not in the stack's manifest), so none ran for it.
+  (The runner's test modules were renamed `T_<file>` after `callbacks.jl` defined a global named like its module;
+  both runs repeated with the fix.)
+- **The merge's precondition on P6's side holds:** S6 passed with its checks.
