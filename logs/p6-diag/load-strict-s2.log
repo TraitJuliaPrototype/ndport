@@ -1,0 +1,2 @@
+strict=false ND=3.74 solvers=4.13 stats(methods,pirates,s_owning,s_walking)=[0.0, 0.0, 0.0, 0.0]
+strict=true ND=8.69 solvers=4.28 stats(methods,pirates,s_owning,s_walking)=[61739.0, 929.0, 0.6774536649999943, 0.5694334919999996]

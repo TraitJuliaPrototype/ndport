@@ -1,0 +1,22 @@
+# setting=I order=default script=scripts/p6_strict_probe.jl env=env_p6 julia=/home/hellmann/Repos/julia-trait-bound/julia-1.13/julia  depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-p6:/home/hellmann/.julia: strict=on diag=0
+# julia-1.13 6d480d0753 TraitWorld 3bebf13 dirty=0
+# clones BracketingNonlinearSolve-p6:560e001 DiffEqCallbacks.jl:14b58b5 DiffEqCallbacks-p6:14b58b5 GraphMakie.jl:327f80b Graphs.jl:dffc7a64 Graphs-p4:54632125 Makie.jl:47479e0a NetworkDynamics.jl:ec6afc0 NetworkDynamics-p3wrap:e5425fd NetworkDynamics-p4:6044c0c NetworkLayout.jl:32e72bf NonlinearSolveBase-p6:343a7d8 NonlinearSolveFirstOrder-p6:5dd75e2 NonlinearSolve-p6:465df85 NonlinearSolveQuasiNewton-p6:4780f55 NonlinearSolveSpectralMethods-p6:1bbd07e Observables.jl:4e78ca2 OrdinaryDiffEq.jl:53e7d1d33 OrdinaryDiffEq-p6:53e7d1d33 OrdinaryDiffEq-p6-ros:14f664a10 RecursiveArrayTools.jl:185fa2c RecursiveArrayTools-p6:f29eae0 SciMLBase.jl:365283c6 SciMLBase-p6:b50f4684 SciMLJacobianOperators-p6:72adf53 SimpleNonlinearSolve-p6:32da67e Static.jl:c34adbb SymbolicIndexingInterface.jl:13d7d07 SymbolicIndexingInterface-p6:dcc3b12 
+# date 2026-10-21T19:14:07+02:00 load-before 1.77
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+STRICT on
+SP edges: 53466 callees; held by SciMLBase alone: 7900
+SP fact Tuple{typeof(<), Int64} (method Base operators.jl:1304)
+SP error: PirateError: strict mode refuses `<(Int64)`, defined by Main.
+  It would change what trait-world code computes in `SciMLBase.#isinplace#14`, at the call `Tuple{typeof(<), Int64}`.
+  Main owns neither the function nor a type in that signature (a pirate).
+  Turn strict mode off (`TraitWorld.strict!(false)`) to follow the method as plain Julia does, or define it where a type it is for is owned.
+SP defined=TraitWorld.PirateError root=SciMLBase.#isinplace#14
+SP pass=true
+# rc=0 load-after 2.00

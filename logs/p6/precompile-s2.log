@@ -1,0 +1,144 @@
+# P6 precompile s2 date 2026-10-21T18:59:15+02:00 load 1.11
+# julia-1.13 6d480d0753 TraitWorld 3bebf13 dirty=0
+# trees BracketingNonlinearSolve-p6:560e001 DiffEqCallbacks-p6:14b58b5 NonlinearSolveBase-p6:343a7d8 NonlinearSolveFirstOrder-p6:5dd75e2 NonlinearSolve-p6:465df85 NonlinearSolveQuasiNewton-p6:4780f55 NonlinearSolveSpectralMethods-p6:1bbd07e OrdinaryDiffEq-p6:53e7d1d33 RecursiveArrayTools-p6:f29eae0 SciMLBase-p6:b50f4684 SciMLJacobianOperators-p6:72adf53 SimpleNonlinearSolve-p6:32da67e SymbolicIndexingInterface-p6:dcc3b12 OrdinaryDiffEq-p6-ros:14f664a10 
+┌ Warning: could not download https://pkg.julialang.org/registries
+│   exception = RequestError: HTTP/1.1 403 Forbidden (CONNECT tunnel failed, response 403) while requesting https://pkg.julialang.org/registries
+└ @ Pkg.Registry ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/Registry/Registry.jl:121
+     Project No packages added to or removed from `~/Repos/julia-trait-bound/ndport/env_p6/Project.toml`
+    Manifest No packages added to or removed from `~/Repos/julia-trait-bound/ndport/env_p6/Manifest.toml`
+Precompiling packages...
+   9.8 s  ✓ SciMLBase
+   1.9 s  ✓ SciMLBase → SciMLBaseStaticArraysExt
+   2.6 s  ✓ SciMLBase → SciMLBaseChainRulesCoreExt
+   2.7 s  ✓ SciMLBase → SciMLBaseForwardDiffExt
+   1.4 s  ✓ SciMLBase → SciMLBaseDifferentiationInterfaceExt
+   1.9 s  ✓ SciMLBase → SciMLBaseDistributionsExt
+   2.3 s  ✓ SciMLJacobianOperators
+   4.6 s  ✓ LineSearch
+  10.3 s  ✓ SciMLBase → SciMLBaseMakieExt
+   6.8 s  ✓ NonlinearSolveBase
+   1.7 s  ✓ NonlinearSolveBase → NonlinearSolveBaseSparseArraysExt
+   1.9 s  ✓ NonlinearSolveBase → NonlinearSolveBaseSparseMatrixColoringsExt
+   2.8 s  ✓ NonlinearSolveBase → NonlinearSolveBaseChainRulesCoreExt
+   1.7 s  ✓ NonlinearSolveBase → NonlinearSolveBaseLineSearchExt
+   2.4 s  ✓ BracketingNonlinearSolve
+  16.9 s  ✓ LinearSolve
+   6.3 s  ✓ NonlinearSolveBase → NonlinearSolveBaseForwardDiffExt
+   3.2 s  ✓ BracketingNonlinearSolve → BracketingNonlinearSolveForwardDiffExt
+   4.0 s  ✓ DiffEqBase
+   3.3 s  ✓ LinearSolve → LinearSolveEnzymeExt
+   9.4 s  ✓ NonlinearSolveSpectralMethods
+   4.8 s  ✓ LinearSolve → LinearSolveChainRulesCoreExt
+   3.7 s  ✓ LinearSolve → LinearSolveArnoldiMethodExt
+   4.5 s  ✓ LinearSolve → LinearSolveKernelAbstractionsExt
+   3.1 s  ✓ NonlinearSolveBase → NonlinearSolveBaseLinearSolveExt
+   2.0 s  ✓ BracketingNonlinearSolve → BracketingNonlinearSolveChainRulesCoreExt
+   4.3 s  ✓ LinearSolve → LinearSolveForwardDiffExt
+   2.0 s  ✓ DiffEqBase → DiffEqBaseSparseArraysExt
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+   3.2 s  ✓ DiffEqBase → DiffEqBaseUnitfulExt
+   3.1 s  ✓ DiffEqBase → DiffEqBaseChainRulesCoreExt
+   5.3 s  ✓ DiffEqBase → DiffEqBaseForwardDiffExt
+   3.7 s  ✓ DiffEqCallbacks
+   3.8 s  ✓ OrdinaryDiffEqCore
+  10.7 s  ✓ SimpleNonlinearSolve
+   3.4 s  ✓ NonlinearSolveSpectralMethods → NonlinearSolveSpectralMethodsForwardDiffExt
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+   2.1 s  ✓ OrdinaryDiffEqCore → OrdinaryDiffEqCoreSparseArraysExt
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+   2.2 s  ✓ OrdinaryDiffEqCore → OrdinaryDiffEqCorePolyesterExt
+   6.0 s  ✓ SteadyStateDiffEq
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+   3.8 s  ✓ SimpleNonlinearSolve → SimpleNonlinearSolveChainRulesCoreExt
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+  17.7 s  ✓ NonlinearSolveQuasiNewton
+   6.3 s  ✓ OrdinaryDiffEqDifferentiation
+   4.4 s  ✓ NonlinearSolveQuasiNewton → NonlinearSolveQuasiNewtonForwardDiffExt
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+   5.0 s  ✓ OrdinaryDiffEqDifferentiation → OrdinaryDiffEqDifferentiationSparseArraysExt
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+  42.9 s  ✓ NonlinearSolveFirstOrder
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+  46.7 s  ✓ OrdinaryDiffEqTsit5
+  61.6 s  ✓ NonlinearSolve
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+  29.3 s  ✓ NetworkDynamics
+ 125.8 s  ✓ OrdinaryDiffEqRosenbrock
+  48 dependencies successfully precompiled in 196 seconds. 456 already precompiled.
+
+  9 dependencies had output during precompilation:
+┌ OrdinaryDiffEqDifferentiation → OrdinaryDiffEqDifferentiationSparseArraysExt
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ SimpleNonlinearSolve → SimpleNonlinearSolveChainRulesCoreExt
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ NonlinearSolve
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ OrdinaryDiffEqDifferentiation
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ NetworkDynamics
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ SteadyStateDiffEq
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ NonlinearSolveFirstOrder
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ SimpleNonlinearSolve
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ OrdinaryDiffEqRosenbrock
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(SciMLBase.anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(SciMLBase.anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.promote_u0(::Vector{Float64}, ::@…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+precompile s=196.2
+strict TraitWorld.STRICT[]=true
+using s=13.1
+# rc=0 wall=221s
