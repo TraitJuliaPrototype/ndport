@@ -274,3 +274,66 @@ functions name SciMLBase's types).
 - **F**: first a–e 49.3 s (S2 52.4; I0 36.4): **c 8.1 s** (S2 17.1, I0 21.0: the fixed point's path now in
   images compiled by facts), d 31.2 s, e 3.3 s.
 - **L**: Graphs+ND 8.19 s, solvers 4.28 s, plotting 6.59 s.
+
+## S4 (milestone): the NonlinearSolve family wrapped
+
+Commits (tag `p6-s4`): `NonlinearSolve-p6` 697c987, `NonlinearSolveFirstOrder-p6` 30c42a6,
+`NonlinearSolveQuasiNewton-p6` afc14ed, `NonlinearSolveSpectralMethods-p6` 6ef8fa9, `SimpleNonlinearSolve-p6` f95ae0e.
+
+- **P** (`logs/p6/precompile-s4.log`): 9 rebuilt (the plan's 6 + 3), 101 s. No error; P6-3's warnings as before.
+- **C**: 13 packages wrapped (with ND and TraitWorld); pirates in wrapped packages 0.
+- **R**: 0 exact differences. **S**: `STRICT on`; only P6-2.
+- **T** (recorded): c 3.7, d **29.7** (P6-1), e 0.7 ms.
+- **H**: trait code 24,994, plain code 98,419 (as S3: the newly wrapped modules add no site).
+- **F**: first a–e 49.1 s: **c 13.5 s** (S3 8.1, S2 17.1, I0 21.0), d 31.2, e 3.3 s. Wrapping NonlinearSolve itself
+  raised step c by 5 s against S3; the attribution below shows why in part (`:facts_plain_return_type`).
+- **L**: Graphs+ND 8.12, solvers 4.23, plotting 6.57 s.
+
+**The attribution** (`NDW_DIAG=1`, strict on, `logs/p6-s4-diag/I-1.log`; against U, `logs/p1-diag/U-1.log`):
+- c: 7,598 new CodeInstances (U 5,276): `:facts` 5,306, **`:facts_plain_return_type` 2,094**, plain 198. By module
+  Base 5,596, NetworkDynamics 575, SciMLBase 260, NonlinearSolveBase 247.
+- d: 14,625 new (U 6,262): plain 9,615, `:facts` 4,829, `:facts_plain_return_type` 181. OrdinaryDiffEqCore 1,805
+  (U 561), DiffEqBase 314 (U 201): the plain solver's code compiled again in the session, rather than taken from
+  the images (J below).
+- e: 4,575 new: **`:facts_plain_return_type` 2,925**, `:facts` 1,390, plain 260.
+- So the session spends a share of c and e computing plain inference's answers behind `return_type` at run time
+  (facts §7.1 rule 3), for facts code of NonlinearSolve's path and of the access. Candidate entry for P6-1's family
+  or its own (**P6-5 candidate**, below); not a stop (no regression of the steady state, no result differs).
+
+**J** (`scripts/p6_loadinv.jl`, strict off, `logs/p6-s4-J/I-1.log`; the same loads under U, `logs/p6-s4-J/U-1.log`):
+
+| Load | S4 s | U s | Images' CodeInstances rejected at S4 (U) | of the facts owner at S4, by module |
+|---|---|---|---|---|
+| Graphs, NetworkDynamics (loads SciMLBase, NonlinearSolve, DiffEqBase, the joint owners) | 2.84 | 2.67 | 5,295 (8,556) | 183: ConstructionBase 147, FunctionWrappers 16, SciMLBase 9, NonlinearSolveBase 8, Base 3 |
+| OrdinaryDiffEqTsit5 | **1.20** | 0.05 | **864** (80): OrdinaryDiffEqCore 454, Base 179, DiffEqBase 114 | 19: ConstructionBase 8, FunctionWrappers 6, SciMLBase 3 |
+| OrdinaryDiffEqRosenbrock | **3.07** | 0.08 | **1,885** (82): OrdinaryDiffEqCore 895, Base 373, DiffEqBase 199, Differentiation 55 | 30: FunctionWrappers 17, ConstructionBase 10 |
+| DiffEqCallbacks, SII | 0 | — | 0 | 0 |
+| the plotting packages | 2.55 | — | 6,916, all plain | 0 (invalidated: 15 `:facts_plain_return_type`) |
+
+- **Joint owners' loads discard little trait code:** 183 + 19 + 30 CodeInstances of the facts owner, mostly neutral
+  packages' code compiled by facts (ConstructionBase, FunctionWrappers); SciMLBase 12, NonlinearSolveBase 8. No
+  valid facts CodeInstance invalidated by a load (`invalidated-facts n=0` for every load before the plotting one).
+  The plan's P6-2 (a declaration widening the exception in another package's code) does not show at a measurable
+  size. (The plan's "P6-2" is now the coordinator's OffsetArrays entry; this one stays unnumbered.)
+- **The solvers' load increase (0.33 → ~4.2 s) is attributed:** the Tsit5 and Rosenbrock images' **plain**
+  CodeInstances of OrdinaryDiffEqCore and DiffEqBase are rejected at load (864 and 1,885 against U's 80 and 82),
+  with no compilation in the load (compile 0): the time is validation. The rejecting methods are of packages that
+  add methods to generic functions (CommonWorldInvalidations 244/472, ChainRulesCore, Static, StaticArrays,
+  FillArrays, SparseConnectivityTracer) and P6-3's extensions (DiffEqBaseForwardDiffExt 60, SciMLBaseForwardDiffExt
+  47 at Tsit5). The likely mechanism: P6-1. The plain solver code, compiled in those images, calls SciMLBase's facts
+  `getproperty` and gets wide types, so its edges are at abstract signatures that any new method of a generic
+  function breaks. Under U (and at I0) the same code is concretely typed. This also explains why step d's first call
+  recompiles the plain solver (attribution, d). Expected to recede when DiffEqBase, OrdinaryDiffEqCore and the
+  solvers are trait code (S5–S7).
+
+**B** (order B, strict off, `logs/p6-s4-orderB/I-1.log`): digests 0 exact differences.
+- The plotting load takes 3,033 of 345,857 CodeInstances: plain 2,798, `:facts_plain_return_type` 235, **`:facts` 0**
+  (G2 holds for trait code). By module Base 1,337, Compiler 678, LLVM 255, Pkg 118, **DiffEqBase 92**, NetworkDynamics 53
+  (`:facts_plain_return_type` or plain), **OrdinaryDiffEqCore 50**. N lost NonlinearSolveBase 175 and SciMLBase 27
+  plain CodeInstances (E-153): those are now facts code, and none is lost.
+- `:facts_plain_return_type` 235 (N 15): plain inference's answers behind `return_type` (facts §7.1), which change
+  when plain Julia's do: explained by that route.
+- **"After" fails the plan's bound:** the next pass's step d recompiles **5.37 s** (N 0.04 s; U 4.7 s). What is
+  recompiled is plain code (DiffEqBase, OrdinaryDiffEqCore), as in U: the same cause as the load increase (P6-1's
+  wide plain solver code is invalidated by Makie's methods). Recorded under P6-1; judged at S7 with T, per the
+  coordinator's decision.

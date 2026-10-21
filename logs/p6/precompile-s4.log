@@ -1,0 +1,63 @@
+# P6 precompile s4 date 2026-10-21T19:36:01+02:00 load 1.02
+# julia-1.13 6d480d0753 TraitWorld 3bebf13 dirty=0
+# trees BracketingNonlinearSolve-p6:7433e0b DiffEqCallbacks-p6:14b58b5 NonlinearSolveBase-p6:293712e NonlinearSolveFirstOrder-p6:30c42a6 NonlinearSolve-p6:697c987 NonlinearSolveQuasiNewton-p6:afc14ed NonlinearSolveSpectralMethods-p6:6ef8fa9 OrdinaryDiffEq-p6:53e7d1d33 RecursiveArrayTools-p6:f29eae0 SciMLBase-p6:b50f4684 SciMLJacobianOperators-p6:3840f8a SimpleNonlinearSolve-p6:f95ae0e SymbolicIndexingInterface-p6:dcc3b12 OrdinaryDiffEq-p6-ros:14f664a10 
+┌ Warning: could not download https://pkg.julialang.org/registries
+│   exception = RequestError: HTTP/1.1 403 Forbidden (CONNECT tunnel failed, response 403) while requesting https://pkg.julialang.org/registries
+└ @ Pkg.Registry ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/Registry/Registry.jl:121
+     Project No packages added to or removed from `~/Repos/julia-trait-bound/ndport/env_p6/Project.toml`
+    Manifest No packages added to or removed from `~/Repos/julia-trait-bound/ndport/env_p6/Manifest.toml`
+Precompiling packages...
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+   6.0 s  ✓ NonlinearSolveSpectralMethods
+   2.8 s  ✓ NonlinearSolveSpectralMethods → NonlinearSolveSpectralMethodsForwardDiffExt
+  13.1 s  ✓ SimpleNonlinearSolve
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+   4.4 s  ✓ SimpleNonlinearSolve → SimpleNonlinearSolveChainRulesCoreExt
+  19.4 s  ✓ NonlinearSolveQuasiNewton
+   3.8 s  ✓ NonlinearSolveQuasiNewton → NonlinearSolveQuasiNewtonForwardDiffExt
+  41.8 s  ✓ NonlinearSolveFirstOrder
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+  36.5 s  ✓ NonlinearSolve
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension NonlinearSolveBaseSparseMatrixColoringsExt defines Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, which wins at Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, a fact of trait code (CodeInstance for MethodInstance for NonlinearSolveBase.select_fastest_coloring_…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+  22.2 s  ✓ NetworkDynamics
+  9 dependencies successfully precompiled in 101 seconds. 495 already precompiled.
+
+  5 dependencies had output during precompilation:
+┌ SimpleNonlinearSolve → SimpleNonlinearSolveChainRulesCoreExt
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ NonlinearSolve
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ NetworkDynamics
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+│  ┌ Warning: The package extension NonlinearSolveBaseSparseMatrixColoringsExt defines Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, which wins at Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, a fact of trait code (CodeInstance for MethodInstance for NonlinearSolveBase.select_fastest_coloring_…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ NonlinearSolveFirstOrder
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ SimpleNonlinearSolve
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+└  
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+┌ Warning: The package extension NonlinearSolveBaseSparseMatrixColoringsExt defines Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, which wins at Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, a fact of trait code (CodeInstance for MethodInstance for NonlinearSolveBase.select_fastest_coloring_…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:148
+precompile s=101.4
+strict TraitWorld.STRICT[]=true
+using s=12.0
+# rc=0 wall=212s
