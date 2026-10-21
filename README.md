@@ -4,7 +4,7 @@ NetworkDynamics.jl, the SciML packages under it, GraphMakie with Makie, and Obse
 
 ## Layout
 
-- `pkgs/`: the clones, each its own git repository (ignored here). Each is on branch `trait-port`, started at the resolved release and tagged `upstream`; `git -C pkgs/<repo> diff upstream` is the port. `scripts/clone.sh` makes them and writes `pkgs/VERSIONS.tsv` (name, version, repository, subdirectory, commit, tree-hash check).
+- `pkgs/`: the clones, each its own git repository (ignored here). Each is on branch `trait-port`, started at the resolved release and tagged `upstream`; `git -C pkgs/<repo> diff upstream` is the port. `scripts/clone.sh` makes them and writes `VERSIONS.tsv` (name, version, repository, subdirectory, commit, tree-hash check).
 - `env_upstream/`: the registry's packages, unchanged (the baseline).
 - `env_port/`: the clones through `[sources]`, with TraitWorld.
 - `scripts/`: the workload and the harness.

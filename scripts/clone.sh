@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Clone the packages to port at the versions env_upstream resolved, each its own git repository
 # under pkgs/, on a branch `trait-port` from the release; the release is tagged `upstream`.
-# Usage: scripts/clone.sh   (needs github.com). Writes pkgs/VERSIONS.tsv.
+# Usage: scripts/clone.sh   (needs github.com). Writes VERSIONS.tsv.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 M=env_upstream/Manifest.toml
@@ -20,7 +20,7 @@ while read -r name repo sub tagpat; do
   got=$(git -C "$dir" rev-parse "$c:${sub#./}" 2>/dev/null || git -C "$dir" rev-parse "$c^{tree}")
   [ "$sub" = . ] && got=$(git -C "$dir" rev-parse "$c^{tree}")
   ok=$([ "$got" = "$t" ] && echo match || echo MISMATCH)
-  printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$name" "$v" "$repo" "$sub" "$c" "$ok" | tee -a pkgs/VERSIONS.tsv
+  printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$name" "$v" "$repo" "$sub" "$c" "$ok" | tee -a VERSIONS.tsv
 done <<'LIST'
 NetworkDynamics JuliaDynamics/NetworkDynamics.jl . vVER
 SciMLBase SciML/SciMLBase.jl . vVER

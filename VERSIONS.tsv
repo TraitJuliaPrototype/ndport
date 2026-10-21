@@ -1,0 +1,14 @@
+NetworkDynamics	1.3.0	JuliaDynamics/NetworkDynamics.jl	.	ec6afc0973ae2e5e370994be60f9860b9c5764ab	match
+SciMLBase	3.58.0	SciML/SciMLBase.jl	.	365283c66ec24db40c3fae1f2694693070dd7a46	match
+DiffEqBase	7.21.4	SciML/OrdinaryDiffEq.jl	lib/DiffEqBase	53e7d1d33377331ef8e9ddf2cb18a4873dd0fbc6	match
+OrdinaryDiffEqCore	4.19.0	SciML/OrdinaryDiffEq.jl	lib/OrdinaryDiffEqCore	53e7d1d33377331ef8e9ddf2cb18a4873dd0fbc6	match
+OrdinaryDiffEqTsit5	2.1.5	SciML/OrdinaryDiffEq.jl	lib/OrdinaryDiffEqTsit5	14f664a10818f7f41dd346b5a3207f27da888627	match
+OrdinaryDiffEqRosenbrock	2.7.5	SciML/OrdinaryDiffEq.jl	lib/OrdinaryDiffEqRosenbrock	14f664a10818f7f41dd346b5a3207f27da888627	match
+DiffEqCallbacks	4.19.5	SciML/DiffEqCallbacks.jl	.	14b58b54e7c135c3863fc8c0e15cb1f2e392684d	match
+SymbolicIndexingInterface	0.3.55	SciML/SymbolicIndexingInterface.jl	.	13d7d07078b4863fe656da3b8b9b5fead9f804a4	match
+RecursiveArrayTools	4.5.5	SciML/RecursiveArrayTools.jl	.	185fa2c5de04cca2ba7d1b6d4446148295f20447	match
+GraphMakie	0.6.6	MakieOrg/GraphMakie.jl	.	327f80b0870b863e426625720221ac0c89afce1b	match
+Makie	0.24.16	MakieOrg/Makie.jl	Makie	47479e0a9eabcb0c54f7cdeafb6af021deeaeb8e	match
+NetworkLayout	0.4.11	JuliaGraphs/NetworkLayout.jl	.	32e72bf8e4b1fa79fdcc237d89d02acf7961f967	match
+Graphs	1.15.0	JuliaGraphs/Graphs.jl	.	dffc7a640133850569647851b4533a56fc7d40c8	match
+Observables	0.5.5	JuliaGizmos/Observables.jl	.	4e78ca2f7c251cde6ceb900baec1e38a424cd9db	match
