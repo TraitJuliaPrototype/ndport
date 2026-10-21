@@ -1,0 +1,65 @@
+# nd 6044c0c graphs 54632125 TraitWorld 3bebf13 date 2026-10-21T19:20:11+02:00
+┌ Warning: Not all state idx 1:1 are set, only Int64[]!
+└ @ NetworkDynamics ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4/src/doctor.jl:143
+┌ Warning: Not all state idx 1:1 are set, only Int64[]!
+└ @ NetworkDynamics ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4/src/doctor.jl:143
+G3probe c1 g::AbstractGraph, one arg: Int64
+G3probe c2 g::AbstractGraph, untyped a, b: Int64
+G3probe c3 … with a closure over g: 2
+G3probe c2u untyped caller: Int64
+G3probe c4 bound a::Vector{<:VertexModel}: Int64
+G3probe c4u untyped caller: Int64
+G3probe c4v caller a::Vector{VertexModel}: Int64
+G3probe c4w caller a::Union{…}: Int64
+G3probe c5 do-block (s, d) SimpleEdge{V}: false
+G3probe c5b do-block SimpleEdge{Int}: false
+G3probe c5c closure t -> SimpleEdge{V}: false
+G3probe c5d closure e -> SimpleEdge{V}(1, 2): true
+G3probe c5e closure over W = V: true
+G3probe c6 throw with interpolation: nothing
+G3probe c7 loop with degree, src: nothing
+G3probe cm1: nothing
+G3probe cm2: nothing
+G3probe cm3: nothing
+G3probe cm4: nothing
+G3probe cm5: nothing
+G3probe cm6: nothing
+G3probe cm7: nothing
+G3probe cn1: FAILS ArgumentError: ArgumentError: y
+G3probe cn2: nothing
+G3probe cn3: FAILS FieldError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `b
+G3probe cn4: nothing
+G3probe cn5: nothing
+G3probe cn6: nothing
+G3probe cn7: nothing
+G3probe cn8: FAILS FieldError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `b
+G3probe cn9: FAILS FieldError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `b
+G3probe cn10: FAILS FieldError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `b
+G3probe cn11: nothing
+G3probe findall(is_loopback, ::Vector{EdgeModel}) inferred: Any[Vector]
+G3probe EdgeModel isa UnionAll: false; isconcretetype(EdgeModel): true
+G3probe cv1: nothing
+G3probe cv2: FAILS FieldError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `b
+G3probe cv3: nothing
+G3probe cv4: nothing
+G3probe cv5: FAILS ArgumentError: ArgumentError: z EdgeModel :e_pff
+G3probe cv2a: FAILS FieldError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `b
+G3probe cv2b: FAILS FieldError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `b
+G3probe cv2c: FAILS FieldError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `b
+G3probe cv2d: FAILS FieldError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `b
+G3probe the copy FAILS: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+G3probe check_feedforward_leaves on ffnet FAILS: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+
+Stacktrace:
+  [1] getproperty(x::Type, f::Symbol)
+    @ Base ./Base_compiler.jl:51
+  [2] callff(g::SimpleDiGraph{Int64}, vm::Vector{VertexModel}, em::Vector{EdgeModel})
+    @ Main ~/Repos/julia-trait-bound/ndport/scripts/graph_g3_probe.jl:205
+  [3] top-level scope
+    @ ~/Repos/julia-trait-bound/ndport/scripts/graph_g3_probe.jl:222
+  [4] include(mod::Module, _path::String)
+    @ Base ./Base.jl:310
+  [5] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:344
+  [6] _start()
+    @ Base ./client.jl:577

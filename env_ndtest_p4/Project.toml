@@ -27,7 +27,7 @@ TraitWorld = "7a3c1e52-9b4d-4f6e-8a21-5d0c3b9e7f14"
 DiffEqBase = {path = "../pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase"}
 DiffEqCallbacks = {path = "../pkgs/DiffEqCallbacks.jl"}
 GraphMakie = {path = "../pkgs/GraphMakie.jl"}
-Graphs = {path = "../pkgs/Graphs.jl"}
+Graphs = {path = "../pkgs/Graphs-p4"}
 Makie = {path = "../pkgs/Makie.jl/Makie"}
 NetworkDynamics = {path = "../pkgs/NetworkDynamics-p4"}
 NetworkLayout = {path = "../pkgs/NetworkLayout.jl"}

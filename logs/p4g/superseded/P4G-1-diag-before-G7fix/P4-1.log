@@ -1,0 +1,147 @@
+# setting=P4 order=default script=scripts/workload.jl env=env_p4 julia=/home/hellmann/Repos/julia-trait-bound/julia-1.13/julia  depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-p4:/home/hellmann/.julia: strict=off diag=1
+# julia-1.13 6d480d0753 TraitWorld 3bebf13 dirty=0
+# clones BracketingNonlinearSolve-p6:7433e0b DiffEqCallbacks.jl:14b58b5 DiffEqCallbacks-p6:14b58b5 GraphMakie.jl:327f80b Graphs.jl:dffc7a64 Graphs-p4:54632125 Makie.jl:47479e0a NetworkDynamics.jl:ec6afc0 NetworkDynamics-p3wrap:e5425fd NetworkDynamics-p4:19c2045 NetworkLayout.jl:32e72bf NonlinearSolveBase-p6:293712e NonlinearSolveFirstOrder-p6:30c42a6 NonlinearSolve-p6:697c987 NonlinearSolveQuasiNewton-p6:afc14ed NonlinearSolveSpectralMethods-p6:6ef8fa9 Observables.jl:4e78ca2 OrdinaryDiffEq.jl:53e7d1d33 OrdinaryDiffEq-p6:53e7d1d33 OrdinaryDiffEq-p6-ros:14f664a10 RecursiveArrayTools.jl:185fa2c RecursiveArrayTools-p6:f29eae0 SciMLBase.jl:365283c6 SciMLBase-p6:b50f4684 SciMLJacobianOperators-p6:3840f8a SimpleNonlinearSolve-p6:f95ae0e Static.jl:c34adbb SymbolicIndexingInterface.jl:13d7d07 SymbolicIndexingInterface-p6:dcc3b12 
+# date 2026-10-21T19:39:34+02:00 load-before 2.85
+L TraitWorld 0.11
+L Graphs,NetworkDynamics 3.09
+L solvers 0.14
+L steps 0.05
+L CairoMakie,GraphMakie,Observables 2.76
+L plot steps 0.01
+T first a 490.9 compile 486.3 recompile 21.8 gc 61.3
+C first a new=322 again=0 owners: :facts=273 nothing=49 | modules: Base=274 NetworkDynamics=25 Core=19 Main=4
+D first a vdim=2 vpdim=3 edim=0 epdim=2
+T first b 5998.6 compile 5991.6 recompile 10.1 gc 257.7
+C first b new=562 again=0 owners: :facts=345 nothing=198 :facts_plain_return_type=19 | modules: Base=284 NetworkDynamics=62 Graphs=61 Compiler=60 TraitWorld=48 Random=20 Core=20 Static=4 Main=3
+D first b nv=20 ne=40 connected=true edges=6499ccea4d513864 dim=40 pdim=140
+T first c 16630.5 compile 16564.6 recompile 286.2 gc 727.2
+C first c new=14076 again=1 owners: :facts=12803 :facts_plain_return_type=1104 nothing=169 | modules: Base=9862 LinearAlgebra=881 Core=627 NetworkDynamics=524 SciMLBase=457 LinearSolve=444 NonlinearSolveBase=403 ForwardDiff=173 TraitWorld=118 NonlinearSolveQuasiNewton=79 SymbolicIndexingInterface=74 NonlinearSolveFirstOrder=58 ConstructionBase=46 Krylov=33
+D first c u=b20802e716eceacb p=7c8f234a0a2c253a δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874 fix=true λmax=-2.308852461e-14
+T first d 12166.9 compile 12049.5 recompile 559.7 gc 315.3
+C first d new=6787 again=31 owners: nothing=3811 :facts=2881 :facts_plain_return_type=95 | modules: Base=4353 OrdinaryDiffEqCore=585 SciMLBase=499 NetworkDynamics=300 Core=276 DiffEqBase=198 ConstructionBase=71 FunctionWrappers=62 SciMLLogging=53 OrdinaryDiffEqDifferentiation=49 TraitWorld=48 SymbolicIndexingInterface=42 FunctionWrappersWrappers=39 FilePathsBase=35
+D first d retcode=Success rretcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1,1.809068084,2.224116492,2.499471687,2.756386226,2.817606897,2.825230753,3.112909394,3.140182305,3.260305788,3.355679986,3.441859374,3.486329467,3.64942549,3.792884724,4.04797065 trtrips=1,1.809068112,2.224116516,2.499471716,2.75638625,2.817606931,2.825230768,3.112909402,3.140182323,3.260305832,3.355679979,3.441859413,3.486329472,3.649425493,3.792884724,4.047970645 ω2=-1.947637855e-15,2.514520715e-15,-0.04751035189,-0.1787344011,-0.09691742147,-0.7577319673,-2.034377446 ω2r=-1.101099686e-15,1.143679639e-15,-0.04751034122,-0.1787343862,-0.09691740223,-0.7577319602,-2.034377438 sol=b1e9898349ea5849 rsol=f9513783093062a9 nsteps=179 rnsteps=157
+T first e 3176.3 compile 3173.3 recompile 73.5 gc 59.1
+C first e new=2683 again=1 owners: :facts=1481 nothing=1202 | modules: Base=1875 SymbolicIndexingInterface=235 FastBroadcast=188 NetworkDynamics=161 Core=102 SciMLBase=39 RecursiveArrayTools=23 OrdinaryDiffEqCore=23 FindFirstFunctions=21 OrdinaryDiffEqTsit5=7 Main=4 LinearAlgebra=3 ArrayInterface=2
+D first e ωsum=1.068288979e-15,-1.570346188e-15,-1.451258818e-15,-1.353084311e-15,-5.551115123e-16,-4.440892099e-16,8.881784197e-16 P2=-0.1280424121,-0.1280424121,-0.4598860489,-0.3909288835,0.6156849161,-0.03886958238,-0.2563265503 P3=0,0.6156849161,0.2161449076,0,-0.04493877656,-0.3568719863 K3=0,6,6,0,6,6 Pend=0,-0.2563265503,-0,-0,-0.341324321,-0
+T first f 14675.1 compile 14567.2 recompile 4194.3 gc 749.3
+C first f new=11188 again=519 owners: nothing=11080 :facts=108 | modules: Base=6583 ComputePipeline=1959 Makie=1010 Core=643 GraphMakie=209 StaticArrays=163 Observables=133 CairoMakie=54 NetworkDynamics=53 GeometryBasics=41 SymbolicIndexingInterface=34 FilePathsBase=34 FileIO=33 ColorTypes=29
+D first f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=2.866861926,-2.034377446,2.810704225,-2.348777454,2.428858939 pixels=1200x900 pngbytes=147918
+T first g 2483.6 compile 2339.2 recompile 76.8 gc 152.4
+C first g new=1810 again=10 owners: nothing=1808 :facts=2 | modules: Base=1239 ComputePipeline=181 Core=110 Makie=82 DiffEqBase=58 SciMLBase=49 Observables=35 GraphMakie=10 StaticArrays=8 CairoMakie=7 NonlinearSolveBase=6 ConstructionBase=6 Main=5 ColorTypes=4
+D first g t=6 ωend=2.866861946,-2.034377453,2.810704233,-2.348777445,2.428858945 line=11 sel3=2.810704231 listeners=10 frames=4
+T again a 1.6 compile 0.0 recompile 0.0 gc 0.0
+C again a new=0 again=0 owners:  | modules: 
+D again a vdim=2 vpdim=3 edim=0 epdim=2
+T again b 0.6 compile 0.0 recompile 0.0 gc 0.0
+C again b new=0 again=0 owners:  | modules: 
+D again b nv=20 ne=40 connected=true edges=6499ccea4d513864 dim=40 pdim=140
+T again c 4.7 compile 0.0 recompile 0.0 gc 0.0
+C again c new=0 again=0 owners:  | modules: 
+D again c u=b20802e716eceacb p=7c8f234a0a2c253a δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874 fix=true λmax=-2.308852461e-14
+T again d 32.5 compile 0.0 recompile 0.0 gc 0.0
+C again d new=0 again=0 owners:  | modules: 
+D again d retcode=Success rretcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1,1.809068084,2.224116492,2.499471687,2.756386226,2.817606897,2.825230753,3.112909394,3.140182305,3.260305788,3.355679986,3.441859374,3.486329467,3.64942549,3.792884724,4.04797065 trtrips=1,1.809068112,2.224116516,2.499471716,2.75638625,2.817606931,2.825230768,3.112909402,3.140182323,3.260305832,3.355679979,3.441859413,3.486329472,3.649425493,3.792884724,4.047970645 ω2=-1.947637855e-15,2.514520715e-15,-0.04751035189,-0.1787344011,-0.09691742147,-0.7577319673,-2.034377446 ω2r=-1.101099686e-15,1.143679639e-15,-0.04751034122,-0.1787343862,-0.09691740223,-0.7577319602,-2.034377438 sol=b1e9898349ea5849 rsol=f9513783093062a9 nsteps=179 rnsteps=157
+T again e 0.9 compile 0.0 recompile 0.0 gc 0.0
+C again e new=0 again=0 owners:  | modules: 
+D again e ωsum=1.068288979e-15,-1.570346188e-15,-1.451258818e-15,-1.353084311e-15,-5.551115123e-16,-4.440892099e-16,8.881784197e-16 P2=-0.1280424121,-0.1280424121,-0.4598860489,-0.3909288835,0.6156849161,-0.03886958238,-0.2563265503 P3=0,0.6156849161,0.2161449076,0,-0.04493877656,-0.3568719863 K3=0,6,6,0,6,6 Pend=0,-0.2563265503,-0,-0,-0.341324321,-0
+T again f 318.9 compile 0.0 recompile 0.0 gc 283.1
+C again f new=0 again=0 owners:  | modules: 
+D again f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=2.866861926,-2.034377446,2.810704225,-2.348777454,2.428858939 pixels=1200x900 pngbytes=147918
+T again g 139.1 compile 0.0 recompile 0.0 gc 0.0
+C again g new=0 again=0 owners:  | modules: 
+D again g t=6 ωend=2.866861946,-2.034377453,2.810704233,-2.348777445,2.428858945 line=11 sel3=2.810704231 listeners=10 frames=4
+T params d 385.1 compile 378.2 recompile 0.0 gc 0.0
+C params d new=383 again=10 owners: :facts_plain_return_type=224 :facts=89 nothing=70 | modules: Base=277 NetworkDynamics=83 Core=13 SymbolicIndexingInterface=4 StaticArrays=4 Main=1 MappedArrays=1
+D params d retcode=Success ω2=-1.80223189e-15,2.195080736e-15,-0.04634797308,-0.1651252615,-0.07508903725,-1.017917522,-2.050000744
+T params e 6.0 compile 5.1 recompile 0.0 gc 0.0
+C params e new=1 again=0 owners: nothing=1 | modules: Main=1
+D params e ωsum=1.208665463e-16,6.976681491e-17,-4.320003556e-16,-2.359223927e-16,4.440892099e-16,4.440892099e-16,4.440892099e-16 P2=-0.1280424121,-0.1280424121,-0.4551065301,-0.4016464528,0.6239886875,-0.1714363442,-0.2271283289 P3=0,0.6239886875,0.3200752051,0,-0.03046343673,-0.3363519472 K3=0,6,6,0,6,6 Pend=0,-0.2271283289,-0,0,-0,-0
+T params f 40.3 compile 5.1 recompile 0.0 gc 0.0
+C params f new=1 again=0 owners: nothing=1 | modules: Main=1
+D params f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=2.393835112,-2.050000744,2.417681854,-1.658798851,2.146657946 pixels=1200x900 pngbytes=148572
+T params g 171.2 compile 5.1 recompile 0.0 gc 33.7
+C params g new=1 again=0 owners: nothing=1 | modules: Main=1
+D params g t=6 ωend=3.513056939,-3.49402894,3.475000941,-3.49402894,3.49402894 line=11 sel3=3.475000858 listeners=10 frames=4
+T changed a 55.9 compile 54.0 recompile 0.0 gc 0.0
+C changed a new=22 again=0 owners: :facts=22 | modules: Base=16 NetworkDynamics=3 Core=2 Main=1
+D changed a vdim=2 vpdim=4 edim=0 epdim=2
+T changed b 82.2 compile 80.1 recompile 0.0 gc 0.0
+C changed b new=90 again=0 owners: :facts=90 | modules: Base=38 TraitWorld=24 NetworkDynamics=23 Core=3 Static=2
+D changed b nv=20 ne=40 connected=true edges=6499ccea4d513864 dim=40 pdim=160
+T changed c 259.5 compile 233.7 recompile 0.0 gc 0.0
+C changed c new=90 again=0 owners: :facts=88 nothing=2 | modules: TraitWorld=45 NetworkDynamics=37 Main=4 ForwardDiff=2 Base=2
+D changed c u=b20802e716eceacb p=fb4ee25a870d6187 δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874 fix=true λmax=-2.308852461e-14
+T changed d 172.6 compile 124.8 recompile 0.0 gc 0.0
+C changed d new=34 again=0 owners: :facts=34 | modules: NetworkDynamics=18 TraitWorld=13 Main=2 ForwardDiff=1
+D changed d retcode=Success rretcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,6,12,37,11 rtrips=8,1,4,40,38,39,10,14,9,7,13,6,12,37,11 ttrips=1,1.809988351,2.226830234,2.502433186,2.760357232,2.823895346,2.831696918,3.114568618,3.151342203,3.309111254,3.352229395,3.458950044,3.648503489,3.802549264,4.024678303 trtrips=1,1.809988386,2.226830268,2.502433225,2.760357267,2.823895393,2.831696941,3.11456864,3.151342225,3.309111318,3.352229409,3.458950071,3.648503505,3.802549282,4.02467831 ω2=-1.947637855e-15,2.514520715e-15,-0.04745288174,-0.1777326322,-0.09365361308,-0.6991022031,-1.150719911 ω2r=-1.101099686e-15,1.143679639e-15,-0.04745287104,-0.177732614,-0.09365357751,-0.699102193,-1.150719909 sol=9877b0bd0c40a8c6 rsol=fd04d60e913971ec nsteps=175 rnsteps=154
+T changed e 0.9 compile 0.0 recompile 0.0 gc 0.0
+C changed e new=0 again=0 owners:  | modules: 
+D changed e ωsum=1.068288979e-15,-1.570346188e-15,-2.544798565e-06,-0.0001052397478,-0.01334048321,-1.014488332,-1.368564958 P2=-0.1280424121,-0.1280424121,-0.4593457967,-0.3914848699,0.6121062079,0.0477898004,0.06462736114 P3=0,0.6121062079,0.232214062,0,-0.04251490102,-0.3536818554 K3=0,6,6,0,6,6 Pend=-0,0.06462736114,0.006299508371,0,-0.1273872145,-0
+T changed f 35.7 compile 0.0 recompile 0.0 gc 0.0
+C changed f new=0 again=0 owners:  | modules: 
+D changed f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=1.194372932,-1.150719911,1.199953953,-1.227636603,1.199289872 pixels=1200x900 pngbytes=147697
+T changed g 160.8 compile 0.0 recompile 0.0 gc 32.8
+C changed g new=0 again=0 owners:  | modules: 
+D changed g t=6 ωend=1.19437293,-1.150719911,1.199953955,-1.227636604,1.199289873 line=11 sel3=1.199953914 listeners=10 frames=4
+T graphtype a 1.5 compile 0.0 recompile 0.0 gc 0.0
+C graphtype a new=0 again=0 owners:  | modules: 
+D graphtype a vdim=2 vpdim=3 edim=0 epdim=2
+T graphtype b 693.0 compile 684.9 recompile 0.1 gc 0.0
+C graphtype b new=163 again=0 owners: :facts=98 nothing=65 | modules: Graphs=51 Base=46 TraitWorld=36 NetworkDynamics=30
+D graphtype b nv=20 ne=40 connected=true edges=6499ccea4d513864 dim=40 pdim=140
+T graphtype c 3193.7 compile 3172.8 recompile 2.3 gc 0.0
+C graphtype c new=1622 again=0 owners: :facts=1594 nothing=28 | modules: Base=659 SciMLBase=262 NonlinearSolveBase=230 NetworkDynamics=171 ForwardDiff=61 Core=52 SymbolicIndexingInterface=37 ConstructionBase=27 NonlinearSolveQuasiNewton=24 TraitWorld=18 FunctionWrappers=14 NonlinearSolveFirstOrder=13 Accessors=11 PreallocationToolsForwardDiffExt=8
+D graphtype c u=b20802e716eceacb p=7c8f234a0a2c253a δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874 fix=true λmax=-2.308852461e-14
+T graphtype d 8209.7 compile 8150.2 recompile 0.0 gc 162.1
+C graphtype d new=2810 again=0 owners: nothing=2430 :facts=371 :facts_plain_return_type=9 | modules: Base=1113 OrdinaryDiffEqCore=563 SciMLBase=468 DiffEqBase=171 Core=68 ConstructionBase=67 NetworkDynamics=65 FunctionWrappers=58 SciMLLogging=48 OrdinaryDiffEqDifferentiation=47 SymbolicIndexingInterface=25 FunctionWrappersWrappers=20 Accessors=18 BracketingNonlinearSolve=16
+D graphtype d retcode=Success rretcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1,1.809068084,2.224116492,2.499471687,2.756386226,2.817606897,2.825230753,3.112909394,3.140182305,3.260305788,3.355679986,3.441859374,3.486329467,3.64942549,3.792884724,4.04797065 trtrips=1,1.809068112,2.224116516,2.499471716,2.75638625,2.817606931,2.825230768,3.112909402,3.140182323,3.260305832,3.355679979,3.441859413,3.486329472,3.649425493,3.792884724,4.047970645 ω2=-1.947637855e-15,2.514520715e-15,-0.04751035189,-0.1787344011,-0.09691742147,-0.7577319673,-2.034377446 ω2r=-1.101099686e-15,1.143679639e-15,-0.04751034122,-0.1787343862,-0.09691740223,-0.7577319602,-2.034377438 sol=b1e9898349ea5849 rsol=f9513783093062a9 nsteps=179 rnsteps=157
+T graphtype e 2393.7 compile 2391.4 recompile 8.9 gc 0.0
+C graphtype e new=957 again=0 owners: nothing=502 :facts=455 | modules: Base=591 SymbolicIndexingInterface=157 NetworkDynamics=137 SciMLBase=37 Core=11 OrdinaryDiffEqCore=10 RecursiveArrayTools=10 OrdinaryDiffEqTsit5=2 Main=2
+D graphtype e ωsum=1.068288979e-15,-1.570346188e-15,-1.451258818e-15,-1.353084311e-15,-5.551115123e-16,-4.440892099e-16,8.881784197e-16 P2=-0.1280424121,-0.1280424121,-0.4598860489,-0.3909288835,0.6156849161,-0.03886958238,-0.2563265503 P3=0,0.6156849161,0.2161449076,0,-0.04493877656,-0.3568719863 K3=0,6,6,0,6,6 Pend=0,-0.2563265503,-0,-0,-0.341324321,-0
+T graphtype f 2042.8 compile 1994.0 recompile 0.0 gc 0.0
+C graphtype f new=944 again=0 owners: nothing=847 :facts=97 | modules: Base=434 Makie=177 ComputePipeline=136 NetworkDynamics=52 Core=47 GraphMakie=39 SymbolicIndexingInterface=34 Graphs=9 Observables=8 CairoMakie=4 Main=2 NetworkLayoutGraphsExt=1 NetworkLayout=1
+D graphtype f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=2.866861926,-2.034377446,2.810704225,-2.348777454,2.428858939 pixels=1200x900 pngbytes=147918
+T graphtype g 438.5 compile 298.1 recompile 0.0 gc 0.0
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+C graphtype g new=59 again=0 owners: nothing=57 :facts=2 | modules: Base=24 ComputePipeline=9 DiffEqBase=6 GraphMakie=5 Makie=4 Core=4 OrdinaryDiffEqCore=2 NetworkDynamics=2 Main=2 SciMLBase=1
+D graphtype g t=6 ωend=2.866861946,-2.034377453,2.810704233,-2.348777445,2.428858945 line=11 sel3=2.810704231 listeners=10 frames=4
+W total 102.2
+# rc=0 load-after 1.32

@@ -1,0 +1,49 @@
+# G0 P4 (second run: Compiled through a function barrier; the dynamic probes): env_p4 depot-p4 (Graphs at upstream, ND c9339fd, TraitWorld 3bebf13) date 2026-10-21T18:46:56+02:00 load 1.19
+# G0 (b) the member table; TraitWorld /home/hellmann/Repos/julia-trait-bound/TraitWorld Graphs 1.15.0 at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Graphs.jl
+b SimpleGraph{Int64} REFUSED: NotImplementedError
+b SimpleGraph{Int64}   message: method edges not implemented.
+b SimpleGraph{Int64}   frames: _NI@interface.jl:18 < edges@interface.jl:206
+b SimpleDiGraph{Int64} REFUSED: NotImplementedError
+b SimpleDiGraph{Int64}   message: method edges not implemented.
+b SimpleDiGraph{Int64}   frames: _NI@interface.jl:18 < edges@interface.jl:206
+b SimpleGraph{Int32} REFUSED: NotImplementedError
+b SimpleGraph{Int32}   message: method edges not implemented.
+b SimpleGraph{Int32}   frames: _NI@interface.jl:18 < edges@interface.jl:206
+b GenericGraph REFUSED: NotImplementedError
+b GenericGraph   message: method edges not implemented.
+b GenericGraph   frames: _NI@interface.jl:18 < edges@interface.jl:206
+b GenericDiGraph REFUSED: NotImplementedError
+b GenericDiGraph   message: method edges not implemented.
+b GenericDiGraph   frames: _NI@interface.jl:18 < edges@interface.jl:206
+b ReverseView REFUSED: NotImplementedError
+b ReverseView   message: method edges not implemented.
+b ReverseView   frames: _NI@interface.jl:18 < edges@interface.jl:206
+b UndirectedView REFUSED: NotImplementedError
+b UndirectedView   message: method edges not implemented.
+b UndirectedView   frames: _NI@interface.jl:18 < edges@interface.jl:206
+b WrongNv REFUSED: ImplementError
+b WrongNv   message: ImplementError: WrongNv is a member of a family implementation of Main.GDecl.GraphInterface, but does not conform: |   `nv` at Tuple{WrongNv} returns `Int64`, declared `Int32`
+b WrongNv   frames: _check_member@implement.jl:859 < _conf_family_slow@implement.jl:810 < _conf_family@implement.jl:805 < macro expansion@entry.jl:-1
+b WrongNv second call: names WrongNv; operations named: ["nv"]; Int64 true; Int32 true
+# G0 (c) traits §5.2: with_dynamic(g) at a bound
+c Int64 GraphInterface: compiled (40, 3, 40)::Tuple{Int64, Int64, Int64}
+c Int64 GraphInterface FAILS: TypeError: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+c Int64 GraphInterface{V} where V: compiled (21, 2, 40)::Tuple{Int64, Int64, Int64}
+c Int64 GraphInterface{V} where V FAILS: TypeError: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+c Int64 GraphInterface{Int}: compiled (21, 2, 40)::Tuple{Int64, Int64, Int64}
+c Int64 GraphInterface{Int} FAILS: TypeError: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+c Int64 GraphInterface{V}, no edge_list: compiled (21, 41, 3, 5)::NTuple{4, Int64}
+c Int64 GraphInterface{V}, no edge_list: dynamic (21, 41, 3, 5)::NTuple{4, Int64} compiled (21, 41, 3, 5) same=true; fully_typed: false sites=3 in the probe's own body=3 declared dynamic=0
+c     site /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/entry.jl:217 _enter_erased in pc4
+c     site /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/trait_module.jl:976 _like_return in pc4
+c     site /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/trait_module.jl:976 checked_call in pc4
+c Int32 GraphInterface: compiled (40, 3, 40)::Tuple{Int32, Int32, Int64}
+c Int32 GraphInterface FAILS: TypeError: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+c Int32 GraphInterface{V} where V: compiled (21, 2, 40)::Tuple{Int32, Int32, Int64}
+c Int32 GraphInterface{V} where V FAILS: TypeError: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+c Int32 GraphInterface{V}, no edge_list: compiled (21, 41, 3, 5)::Tuple{Int32, Int64, Int32, Int64}
+c Int32 GraphInterface{V}, no edge_list: dynamic (21, 41, 3, 5)::Tuple{Int32, Int64, Int32, Int64} compiled (21, 41, 3, 5) same=true; fully_typed: false sites=3 in the probe's own body=3 declared dynamic=0
+c     site /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/entry.jl:217 _enter_erased in pc4
+c     site /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/trait_module.jl:976 _like_return in pc4
+c     site /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/trait_module.jl:976 checked_call in pc4
+# rc=0 load-after 1.16

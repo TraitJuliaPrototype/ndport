@@ -1,0 +1,5 @@
+# P4 19c2045 dirty=0 graphs=pkgs/Graphs-p4:54632125 dirty=0 date 2026-10-21T19:21:39+02:00
+Precompiling packages...
+  23.5 s  ✓ NetworkDynamics
+  1 dependency successfully precompiled in 24 seconds. 503 already precompiled.
+using s=2.8

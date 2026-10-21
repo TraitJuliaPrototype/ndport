@@ -1,0 +1,22 @@
+# G0 U: env_upstream default depot date 2026-10-21T18:45:08+02:00 load 2.65 julia-1.13 6d480d0753
+# G0 (a) upstream ND 1.3.0 Graphs 1.15.0
+a SimpleGraph{Int64} builds: nv=20 ne=40 dim=40
+a SimpleDiGraph{Int64} builds: nv=20 ne=40 dim=40
+a GenericGraph FAILS: MethodError: MethodError: Cannot `convert` an object of type Graphs.Test.GenericEdge{Int64} to an object of type Graphs.SimpleGraphs.SimpleEdge{Int64} | The function `convert` exists, but no method is defined for this combination of argument types. |  | Closest candidates are: |   (::Type{Graphs.SimpleGraphs.SimpleEdge{T}} where T<:Integer)(::Any, !Matched::Any) |    @ Graphs ~/.julia/packages/Graphs/yCOqT/src/SimpleGra
+a GenericGraph   frames: _@network_structure.jl:39 < IndexManager@network_structure.jl:32 < macro expansion@construction.jl:127 < macro expansion@construction.jl:124
+a GenericDiGraph FAILS: MethodError: MethodError: Cannot `convert` an object of type Graphs.Test.GenericEdge{Int64} to an object of type Graphs.SimpleGraphs.SimpleEdge{Int64} | The function `convert` exists, but no method is defined for this combination of argument types. |  | Closest candidates are: |   (::Type{Graphs.SimpleGraphs.SimpleEdge{T}} where T<:Integer)(::Any, !Matched::Any) |    @ Graphs ~/.julia/packages/Graphs/yCOqT/src/SimpleGra
+a GenericDiGraph   frames: _@network_structure.jl:39 < IndexManager@network_structure.jl:32 < macro expansion@construction.jl:127 < macro expansion@construction.jl:124
+a SimpleGraph{Int32} FAILS: MethodError: MethodError: Cannot `convert` an object of type  |   Graphs.SimpleGraphs.SimpleEdge{Int32} to an object of type  |   Graphs.SimpleGraphs.SimpleEdge{Int64} | The function `convert` exists, but no method is defined for this combination of argument types. |  | Closest candidates are: |   (::Type{Graphs.SimpleGraphs.SimpleEdge{T}} where T<:Integer)(::Any, !Matched::Any) |    @ Graphs ~/.julia/packages/Graphs/yCOqT/
+a SimpleGraph{Int32}   frames: _@network_structure.jl:39 < IndexManager@network_structure.jl:32 < macro expansion@construction.jl:127 < macro expansion@construction.jl:124
+a ff SimpleDiGraph builds
+a ff GenericDiGraph FAILS: NotImplementedError: method == not implemented.
+a ff GenericDiGraph   frames: _NI@interface.jl:18 < ==@interface.jl:108 < #171@construction.jl:86 < macro expansion@construction.jl:85
+# G0 (d) GraphMakie on a GenericGraph; digest_b's reads
+d digest_b: nv=20 ne=40 connected=true/true edges equal=true
+d graphplot SimpleGraph renders: (900, 1200) pos[1:2]=Point{2, Float32}[[-2.9292154, 0.29246387], [-1.9257163, -0.7295471]]
+d graphplot! SimpleGraph renders: (900, 1200)
+d graphplot GenericGraph renders: (900, 1200) pos[1:2]=Point{2, Float32}[[-2.9292154, 0.29246387], [-1.9257163, -0.7295471]]
+d graphplot! GenericGraph renders: (900, 1200)
+d graphplot GenericDiGraph renders: (900, 1200) pos[1:2]=Point{2, Float32}[[-2.9292154, 0.29246387], [-1.9257163, -0.7295471]]
+d graphplot! GenericDiGraph renders: (900, 1200)
+# rc=0 load-after 2.13

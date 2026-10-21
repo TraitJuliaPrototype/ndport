@@ -82,3 +82,22 @@ julia-1.13 6d480d0753, TraitWorld a373e30; NetworkDynamics `trait-port` c9339fd 
 - Step d attributed in one session (`scripts/p4_stepd_ab.jl`, `logs/p4/stepd-ab-s8.log`): erased batches 46.3–48.1 ms, the same network with typed batches (Polyester's serial path) 15.1–15.6 ms. The difference is the barrier: about 13 allocations and 0.8 µs per batch crossing from ND's facts-compiled core loop, against 2 allocations and 0.28 µs for the same call from plain code (`logs/p4/barrier-s6.log`, `barrier-facts-s6.log`).
 - ND's test subset (`scripts/nd_tests.jl`, `logs/p4/ndtest-*.log`): as at `upstream`, except the three allocation assertions (`diffusion_test.jl:111`, `inhomogeneous_test.jl:59`, `:93`).
 - Running notes, per sub-step: `logs/p4/NOTES.md`.
+
+### 2026-10-21: the graph trait (E-154, P4 step 2)
+
+julia-1.13 6d480d0753, TraitWorld 3bebf13; Graphs `trait-port-p4` 54632125 (`pkgs/Graphs-p4`: `Graphs.GraphInterface{V}`, declared as plain code, a family over `AbstractGraph`); NetworkDynamics `trait-port` 19c2045 (`graph_index` bounded by it; the feed-forward check's move, G3, reverted: see the notes); setting P4 with Graphs at the worktree; strict mode off; P1's load order; the harness at 029de9b. P4G-0: ND c9339fd, Graphs at `upstream`, two runs (`logs/p4g/P4G-0/`). P4G-1: two runs, one confirming run, one with `graphtype`, one attribution run (`logs/p4g/P4G-1*/`). Interop: ND's bounded functions reading plain graph types.
+
+| | U | P4G-0 | P4G-1 |
+|---|---|---|---|
+| digests against U, exact (common passes) | — | 0 differences | 0 differences (5 logs) |
+| a network on `GenericGraph` / `GenericDiGraph` / `SimpleGraph{Int32}` | fails (`MethodError`, the index manager's conversion) | fails | **builds; results equal to the `SimpleGraph{Int64}`'s** |
+| the `graphtype` pass (a–g on a `GenericGraph`) | fails at b | — | runs; 7 digests equal to `first`; 18.0 s (17.7 s compiling) |
+| a graph type whose `nv` returns the wrong type (`WrongNv`) | fails (conversion) | fails (conversion) | refused: `ImplementError` naming `nv`, `Int64`, `Int32` |
+| first step b | 1.4–1.6 s | 0.55–0.56 s | 0.55–0.56 s |
+| steady state c / d / f / g (min of runs) | — | 4.9 / 33.4 / 37.6 / 144.5 ms | 4.6 / 33.1 / 38.9 / 158.2 ms |
+| the common passes, per session | — | 58.3–58.4 s | 57.0–58.2 s |
+
+- The member table (`scripts/graph_check.jl`, `logs/p4g/check-*.log`): `SimpleGraph{Int64}`, `SimpleDiGraph`, `SimpleGraph{Int32}`, `GenericGraph`, `GenericDiGraph`, `ReverseView`, `UndirectedView` conform at their first use.
+- ND's test subset (`logs/p4g/ndtest-final.log`): as at c9339fd.
+- Two TraitWorld failures found (candidate deviation rows): `edge_list` on a `Dynamic` trait object (`TypeError`, `SimpleEdge{OpenParam}`; `logs/p4g/g0-P4-2.log`); a closure in a bounded function capturing a variable of a type not inferred (`FieldError`; `scripts/graph_g3_min.jl`, `logs/p4g/g3-min.log`), which stopped G3.
+- Running notes, per sub-step: `logs/p4g/NOTES.md`.

@@ -1,0 +1,9 @@
+# P4 c9339fd dirty=0 graphs=pkgs/Graphs-p4:54632125 dirty=0 date 2026-10-21T18:53:11+02:00
+Precompiling packages...
+   3.8 s  ✓ Graphs
+   1.3 s  ✓ Graphs → GraphsSharedArraysExt
+   2.3 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+   7.1 s  ✓ GraphMakie
+  24.7 s  ✓ NetworkDynamics
+  5 dependencies successfully precompiled in 29 seconds. 499 already precompiled.
+using s=2.8

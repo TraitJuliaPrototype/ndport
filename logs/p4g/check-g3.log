@@ -1,0 +1,45 @@
+# P4 nd=6044c0c dirty=0 graphs=pkgs/Graphs-p4:54632125 TraitWorld 3bebf13 date 2026-10-21T19:10:55+02:00 load 1.73
+ERROR: LoadError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+Stacktrace:
+  [1] getproperty(x::Type, f::Symbol)
+    @ Base ./Base_compiler.jl:51
+  [2] macro expansion
+    @ ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4/src/construction.jl:68 [inlined]
+  [3] macro expansion
+    @ ~/.julia/packages/TimerOutputs/0Wski/src/macros.jl:257 [inlined]
+  [4] Network(g::SimpleDiGraph{Int64}, vertexm::Vector{VertexModel}, edgem::Vector{EdgeModel}; execution::SequentialExecution{true}, aggregator::NetworkDynamics.var"#SequentialAggregator##0#SequentialAggregator##1"{typeof(+)}, check_graphelement::Bool, dealias::Bool, sparse::Bool, verbose::Bool)
+    @ NetworkDynamics ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4/src/construction.jl:53
+  [5] Network(g::SimpleDiGraph{Int64}, vertexm::Vector{VertexModel}, edgem::Vector{EdgeModel})
+    @ NetworkDynamics ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4/src/construction.jl:42
+  [6] ffnet(; kw::@Kwargs{})
+    @ Main ~/Repos/julia-trait-bound/ndport/scripts/rhs_check_nets.jl:60
+  [7] ffnet
+    @ ~/Repos/julia-trait-bound/ndport/scripts/rhs_check_nets.jl:43 [inlined]
+  [8] top-level scope
+    @ ~/Repos/julia-trait-bound/ndport/scripts/graph_check.jl:108
+  [9] include(mod::Module, _path::String)
+    @ Base ./Base.jl:310
+ [10] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:344
+ [11] _start()
+    @ Base ./client.jl:577
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/scripts/graph_check.jl:106
+# graph_check Graphs /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Graphs-p4 ND /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4 GraphInterface true
+M SimpleGraph{Int64} conforms: V=Int64 equal to the plain reads=true first call 0.206 s
+M SimpleDiGraph{Int64} conforms: V=Int64 equal to the plain reads=true first call 0.129 s
+M SimpleGraph{Int32} conforms: V=Int32 equal to the plain reads=true first call 0.205 s
+M GenericGraph conforms: V=Int64 equal to the plain reads=true first call 0.154 s
+M GenericDiGraph conforms: V=Int64 equal to the plain reads=true first call 0.207 s
+M ReverseView conforms: V=Int64 equal to the plain reads=true first call 0.130 s
+M UndirectedView conforms: V=Int64 equal to the plain reads=true first call 0.160 s
+M WrongNv REFUSED: ImplementError; operations named: ["nv"]; message: ImplementError: WrongNv is a member of a family implementation of Graphs.GraphInterface, but does not conform: |   `nv` at Tuple{WrongNv} returns `Int64`, declared `Int32`
+N SimpleGraph{Int64} builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N SimpleDiGraph{Int64} builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N SimpleGraph{Int32} builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N GenericGraph builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N GenericDiGraph builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N ReverseView: edge set equal to reverse(d)'s: true, order equal: false
+N ReverseView builds: nv=20 ne=40 du=682eb66c20c959c edgevec=b1d20d1c5f9f9eec | ref: the same graph before G2 (check-g1.log)
+N UndirectedView: edge order equal to SimpleGraph(d)'s: true
+N UndirectedView builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+# rc=1 load-after 1.21

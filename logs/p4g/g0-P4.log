@@ -1,0 +1,34 @@
+# G0 P4: env_p4 depot-p4 (Graphs at upstream, ND c9339fd, TraitWorld 3bebf13) date 2026-10-21T18:45:45+02:00 load 1.88
+# G0 (b) the member table; TraitWorld /home/hellmann/Repos/julia-trait-bound/TraitWorld Graphs 1.15.0 at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Graphs.jl
+b SimpleGraph{Int64} REFUSED: TypeError
+b SimpleGraph{Int64}   message: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+b SimpleGraph{Int64}   frames: op_ret@trait.jl:341 < edge_list@trait.jl:383 < _erased_op@attributes.jl:95 < opcall@core.jl:1057
+b SimpleDiGraph{Int64} REFUSED: TypeError
+b SimpleDiGraph{Int64}   message: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+b SimpleDiGraph{Int64}   frames: op_ret@trait.jl:341 < edge_list@trait.jl:383 < _erased_op@attributes.jl:95 < opcall@core.jl:1057
+b SimpleGraph{Int32} REFUSED: TypeError
+b SimpleGraph{Int32}   message: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+b SimpleGraph{Int32}   frames: op_ret@trait.jl:341 < edge_list@trait.jl:383 < _erased_op@attributes.jl:95 < opcall@core.jl:1057
+b GenericGraph REFUSED: TypeError
+b GenericGraph   message: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+b GenericGraph   frames: op_ret@trait.jl:341 < edge_list@trait.jl:383 < _erased_op@attributes.jl:95 < opcall@core.jl:1057
+b GenericDiGraph REFUSED: TypeError
+b GenericDiGraph   message: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+b GenericDiGraph   frames: op_ret@trait.jl:341 < edge_list@trait.jl:383 < _erased_op@attributes.jl:95 < opcall@core.jl:1057
+b ReverseView REFUSED: TypeError
+b ReverseView   message: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+b ReverseView   frames: op_ret@trait.jl:341 < edge_list@trait.jl:383 < _erased_op@attributes.jl:95 < opcall@core.jl:1057
+b UndirectedView REFUSED: TypeError
+b UndirectedView   message: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+b UndirectedView   frames: op_ret@trait.jl:341 < edge_list@trait.jl:383 < _erased_op@attributes.jl:95 < opcall@core.jl:1057
+b WrongNv REFUSED: ImplementError
+b WrongNv   message: ImplementError: WrongNv is a member of a family implementation of Main.GDecl.GraphInterface, but does not conform: |   `nv` at Tuple{WrongNv} returns `Int64`, declared `Int32`
+b WrongNv   frames: _check_member@implement.jl:859 < _conf_family_slow@implement.jl:810 < _conf_family@implement.jl:805 < macro expansion@entry.jl:-1
+b WrongNv second call: names WrongNv; operations named: ["nv"]; Int64 true; Int32 true
+# G0 (c) traits §5.2: with_dynamic(g) at a bound
+c Int64 GraphInterface FAILS: TypeError: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+c Int64 GraphInterface{V} where V FAILS: TypeError: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+c Int64 GraphInterface{Int} FAILS: TypeError: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+c Int32 GraphInterface FAILS: TypeError: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+c Int32 GraphInterface{V} where V FAILS: TypeError: TypeError: in SimpleEdge, in T, expected T<:Integer, got Type{TraitWorld.OpenParam}
+# rc=0 load-after 1.81

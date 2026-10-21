@@ -1,0 +1,65 @@
+# P4 6044c0c dirty=0 graphs=pkgs/Graphs-p4:54632125 dirty=0 date 2026-10-21T19:12:16+02:00 load 1.21
+ERROR: LoadError: FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+Stacktrace:
+  [1] getproperty(x::Type, f::Symbol)
+    @ Base ./Base_compiler.jl:51
+  [2] macro expansion
+    @ ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4/src/construction.jl:68 [inlined]
+  [3] macro expansion
+    @ ~/.julia/packages/TimerOutputs/0Wski/src/macros.jl:257 [inlined]
+  [4] Network(g::SimpleDiGraph{Int64}, vertexm::Vector{VertexModel}, edgem::Vector{EdgeModel}; execution::SequentialExecution{true}, aggregator::NetworkDynamics.var"#SequentialAggregator##0#SequentialAggregator##1"{typeof(+)}, check_graphelement::Bool, dealias::Bool, sparse::Bool, verbose::Bool)
+    @ NetworkDynamics ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4/src/construction.jl:53
+  [5] Network(g::SimpleDiGraph{Int64}, vertexm::Vector{VertexModel}, edgem::Vector{EdgeModel})
+    @ NetworkDynamics ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4/src/construction.jl:42
+  [6] ffnet(; kw::@Kwargs{})
+    @ Main ~/Repos/julia-trait-bound/ndport/scripts/rhs_check_nets.jl:60
+  [7] ffnet
+    @ ~/Repos/julia-trait-bound/ndport/scripts/rhs_check_nets.jl:43 [inlined]
+  [8] (::var"#13#14")(kw::@NamedTuple{})
+    @ Main ~/Repos/julia-trait-bound/ndport/scripts/rhs_check.jl:56
+  [9] top-level scope
+    @ ~/Repos/julia-trait-bound/ndport/scripts/rhs_check.jl:119
+ [10] include(mod::Module, _path::String)
+    @ Base ./Base.jl:310
+ [11] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:344
+ [12] _start()
+    @ Base ./client.jl:577
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/scripts/rhs_check.jl:87
+# rhs_check threads=2 julia=1.13.2 nd=/home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4
+R S-swing SequentialExecution{true} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing SequentialExecution{false} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing ThreadedExecution{true} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing ThreadedExecution{false} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing PolyesterExecution{true} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing PolyesterExecution{false} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing KAExecution{true} du=682eb66c20c959c o=error:MethodError agg=error:MethodError ext=error:MethodError
+R S-swing KAExecution{false} du=682eb66c20c959c o=error:MethodError agg=error:MethodError ext=error:MethodError
+J S-swing jac=1cab05d3aca3ef40
+R S-swing2 SequentialExecution{true} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 SequentialExecution{false} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 ThreadedExecution{true} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 ThreadedExecution{false} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 PolyesterExecution{true} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 PolyesterExecution{false} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 KAExecution{true} du=5861db2abdb48433 o=error:MethodError agg=error:MethodError ext=error:MethodError
+R S-swing2 KAExecution{false} du=5861db2abdb48433 o=error:MethodError agg=error:MethodError ext=error:MethodError
+J S-swing2 jac=1cab05d3aca3ef40
+E ff SequentialExecution{true} FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+E ff SequentialExecution{false} FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+E ff ThreadedExecution{true} FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+E ff ThreadedExecution{false} FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+E ff PolyesterExecution{true} FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+E ff PolyesterExecution{false} FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+E ff KAExecution{true} FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+E ff KAExecution{false} FieldError: type UnionAll has no field `parameters`, available fields: `var`, `body`
+J ff jac=f4343c82d0844cbc
+sametype=true
+A S-swing SequentialExecution{true} allocs=208 ns=1619
+A S-swing ThreadedExecution{true} allocs=5664 ns=44767
+A S-swing2 SequentialExecution{true} allocs=208 ns=1683
+A S-swing2 ThreadedExecution{true} allocs=5664 ns=45146
+S1 S-swing swing!/PureStateMap f=true g=true static=true
+S1 S-swing -/PureFeedForward f=true g=true static=true
+S1 S-swing2 swing2!/PureStateMap f=true g=true static=true
+S1 S-swing2 -/PureFeedForward f=true g=true static=true
