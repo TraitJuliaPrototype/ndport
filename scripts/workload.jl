@@ -6,7 +6,8 @@
 # Each step's first call is timed whole (as TraitDifferentialEquations' rows.jl `@first`).
 # Prints `L <group> <s>`, `T <pass> <step> <ms> compile <ms> recompile <ms> gc <ms>`, and the digests.
 #     julia --project=env_upstream scripts/workload.jl            (from ndport/)
-# NDW_PASSES=first,params,changed (default: all; `again` always runs).
+# NDW_PASSES=first,params,changed (default: all; `again` always runs). NDW_DIAG=1: the attribution run
+# (scripts/diag.jl; new CodeInstances per step by module and owner; its times are not measurements).
 const T0 = time_ns()
 const WITH_TW = get(ENV, "NDW_TRAITWORLD", "0") == "1"
 macro load(name, ex)
@@ -35,10 +36,13 @@ function timed(name, f)
     r
 end
 
+const DIAG = get(ENV, "NDW_DIAG", "0") == "1"
+DIAG && include(joinpath(@__DIR__, "diag.jl"))
+const step_timer = DIAG ? Base.invokelatest(NDWDiag.wrap, timed, NDW.PASS) : timed
 const PASSES = split(get(ENV, "NDW_PASSES", "first,again,params,changed"), ",")
 Base.cumulative_compile_timing(true)
-"first" in PASSES && NDW.run_pass(timed, "first", :swing)
-nw, prob = NDW.run_pass(timed, "again", :swing)
-"params" in PASSES && NDW.run_params(timed, nw, prob)
-"changed" in PASSES && NDW.run_pass(timed, "changed", :swing2)
+"first" in PASSES && NDW.run_pass(step_timer, "first", :swing)
+nw, prob = NDW.run_pass(step_timer, "again", :swing)
+"params" in PASSES && NDW.run_params(step_timer, nw, prob)
+"changed" in PASSES && NDW.run_pass(step_timer, "changed", :swing2)
 println("W total ", round((time_ns() - T0) / 1e9; digits = 1))
