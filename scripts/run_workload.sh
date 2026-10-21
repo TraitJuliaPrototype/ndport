@@ -28,8 +28,8 @@ for i in $(seq 1 "$runs"); do
   for attempt in 1 2; do
     {
       echo "# setting=$setting env=$ENVD julia=$J ${JF[*]} depot=${JULIA_DEPOT_PATH:-default} strict=off diag=${NDW_DIAG:-0}"
-      echo "# julia-1.13 $(git -C $R/julia-1.13 log -1 --format=%h) TraitWorld $(git -C $R/TraitWorld log -1 --format=%h) dirty=$(git -C $R/TraitWorld status --porcelain | wc -l)"
-      echo "# clones $(for d in pkgs/*/; do printf '%s:%s%s ' $(basename $d) $(git -C $d log -1 --format=%h) $([ -z "$(git -C $d status --porcelain)" ] || echo '*'); done)"
+      echo "# julia-1.13 $(git -C $R/julia-1.13 log -1 --format=%h) TraitWorld $(git -C $R/TraitWorld log -1 --format=%h) dirty=$(git -C $R/TraitWorld status --porcelain --untracked-files=no | wc -l)"
+      echo "# clones $(for d in pkgs/*/; do printf '%s:%s%s ' $(basename $d) $(git -C $d log -1 --format=%h) $([ -z "$(git -C $d status --porcelain --untracked-files=no)" ] || echo '*'); done)"
       echo "# date $(date -Is) load-before $(cut -d' ' -f1 /proc/loadavg)"
     } > "$f"
     NDW_TRAITWORLD=$TW jl scripts/workload.jl >> "$f" 2>&1; rc=$?
