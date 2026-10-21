@@ -48,8 +48,10 @@ end
 digest_a(r) = digest("a", :vdim => dim(r.vertex), :vpdim => pdim(r.vertex), :edim => dim(r.edge), :epdim => pdim(r.edge))
 
 # ---- b. the network -----------------------------------------------------------------------------
-function step_b(r)
+function step_b(r; graph = :simple)
     g = watts_strogatz(20, 4, 0.2; seed = 42)
+    # the `graphtype` pass (the graph plan's G7, E-154): the same graph as a `Graphs.Test.GenericGraph`
+    graph === :generic && return Network(Graphs.Test.generic_graph(g), r.vertex, r.edge; dealias = true)
     Network(g, r.vertex, r.edge; dealias = true)
 end
 function digest_b(nw)
@@ -117,10 +119,10 @@ digest_e(r) = digest("e", :ωsum => num(r.ωsum), :P2 => num(r.P2), :P3 => num(r
 
 # ---- the passes ---------------------------------------------------------------------------------
 "Steps a–e for one model; `timed(name, f)` runs and times each step, the digests outside it."
-function run_sim(timed, pass, model; γ = 0.1)
+function run_sim(timed, pass, model; γ = 0.1, graph = :simple)
     PASS[] = pass
     a = timed("a", () -> step_a(model)); digest_a(a)
-    nw = timed("b", () -> step_b(a)); digest_b(nw)
+    nw = timed("b", () -> step_b(a; graph)); digest_b(nw)
     c = timed("c", () -> step_c(nw; γ)); digest_c(c)
     d = timed("d", () -> step_d(nw, c.s)); digest_d(d)
     e = timed("e", () -> step_e(nw, d.sol)); digest_e(e)
@@ -132,8 +134,8 @@ function run_plot(timed, st)
     g = timed("g", () -> step_g(st.nw, st.d.prob, st.model)); digest_g(g)
     (st.nw, st.d.prob)
 end
-"Steps a–g for one model."
-run_pass(timed, pass, model; γ = 0.1) = run_plot(timed, run_sim(timed, pass, model; γ))
+"Steps a–g for one model; `graph = :generic`: the network on a `Graphs.Test.GenericGraph` (step b)."
+run_pass(timed, pass, model; γ = 0.1, graph = :simple) = run_plot(timed, run_sim(timed, pass, model; γ, graph))
 
 "The control: the parameters changed on the problem of the first pass (`remake`), no new types."
 function run_params(timed, nw, prob)

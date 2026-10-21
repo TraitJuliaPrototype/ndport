@@ -3,11 +3,14 @@
 #   again   (a–g, the same types)         the steady state
 #   params  (d–g: the problem remade with a new damping γ)   the control: new values, no new types
 #   changed (a–g, swing2!)                new equations: a new component function type
+#   graphtype (a–g, swing!, the network on a Graphs.Test.GenericGraph; only when NDW_PASSES names it):
+#                                         a graph type upstream refuses (the graph plan's G7, E-154). A step
+#                                         that throws prints `D graphtype <step> error=<type>` and ends the pass.
 # Each step's first call is timed whole (as TraitDifferentialEquations' rows.jl `@first`).
 # Prints `L <group> <s>`, `T <pass> <step> <ms> compile <ms> recompile <ms> gc <ms>`, and the digests.
 #     julia --project=env_upstream scripts/workload.jl            (from ndport/)
 # NDW_ORDER=simfirst: the plotting packages load after the first pass's simulation (steps a–e).
-# NDW_PASSES=first,params,changed (default: all; `again` always runs). NDW_DIAG=1: the attribution run
+# NDW_PASSES=first,params,changed (default: first,again,params,changed; `again` always runs; `graphtype` added on request). NDW_DIAG=1: the attribution run
 # (scripts/diag.jl; new CodeInstances per step by module and owner; its times are not measurements).
 const T0 = time_ns()
 const WITH_TW = get(ENV, "NDW_TRAITWORLD", "0") == "1"
@@ -66,4 +69,13 @@ end
 nw, prob = NDW.run_pass(step_timer, "again", :swing)
 "params" in PASSES && NDW.run_params(step_timer, nw, prob)
 "changed" in PASSES && NDW.run_pass(step_timer, "changed", :swing2)
+if "graphtype" in PASSES
+    gt_step = Ref("a")
+    gt_timer(name, f) = (gt_step[] = name; step_timer(name, f))
+    try
+        NDW.run_pass(gt_timer, "graphtype", :swing; graph = :generic)
+    catch err
+        println("D graphtype ", gt_step[], " error=", nameof(typeof(err))); flush(stdout)
+    end
+end
 println("W total ", round((time_ns() - T0) / 1e9; digits = 1))

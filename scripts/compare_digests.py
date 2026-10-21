@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Compare the digests of two workload logs (the P1 plan §4).
-    compare_digests.py <ref.log> <log> [--exact]
+    compare_digests.py <ref.log> <log> [--exact] [--passes=p1,p2,...] [--as=X:Y]
+--passes: only these passes, in both logs. --as=X:Y: the log's pass X against the ref's pass Y (the graph
+plan's criterion 2: `--as=graphtype:first` with one log as both arguments).
 Exact fields must be equal (reported; an error with --exact); tolerance fields must hold;
 reported fields are only printed. Trips closer than 0.05 in time are compared as unordered groups."""
 import sys, math
@@ -36,6 +38,15 @@ def groups(lines, times):
 
 def main():
     ref, new, exact = digests(sys.argv[1]), digests(sys.argv[2]), '--exact' in sys.argv
+    opts = dict(a[2:].split('=', 1) for a in sys.argv[3:] if a.startswith('--') and '=' in a)
+    if 'as' in opts:
+        x, y = opts['as'].split(':')
+        new = {(y, k[1]): v for k, v in new.items() if k[0] == x}
+        ref = {k: v for k, v in ref.items() if k[0] == y}
+    if 'passes' in opts:
+        ps = set(opts['passes'].split(','))
+        ref = {k: v for k, v in ref.items() if k[0] in ps}
+        new = {k: v for k, v in new.items() if k[0] in ps}
     bad_exact = bad_tol = 0
     for k in sorted(set(ref) | set(new)):
         if k not in ref or k not in new:
