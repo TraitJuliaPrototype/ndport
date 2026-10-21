@@ -13,64 +13,7 @@ using NetworkDynamics: get_buffers
 
 bits(x) = x === nothing ? "nothing" : string(hash(reinterpret(UInt64, collect(Float64, x))); base = 16)
 
-# ---- tier S: the workload's components (scripts/workload_steps.jl, step a) -------------------------
-function swing!(dv, v, esum, p, t)
-    P, I, γ = p
-    dv[1] = v[2]
-    dv[2] = (P - γ * v[2] + esum[1]) / I
-    nothing
-end
-function swing2!(dv, v, esum, p, t)
-    P, I, γ, κ = p
-    dv[1] = v[2]
-    dv[2] = (P - γ * v[2] - κ * v[2]^3 + esum[1]) / I
-    nothing
-end
-line!(e, v_s, v_d, (K,), t) = (e[1] = K * sin(v_s[1] - v_d[1]); nothing)
-
-function tierS(model::Symbol; kw...)
-    vertex = model === :swing ?
-        VertexModel(f = swing!, g = 1, sym = [:δ, :ω], psym = [:P_ref, :I => 1, :γ => 0.1]) :
-        VertexModel(f = swing2!, g = 1, sym = [:δ, :ω], psym = [:P_ref, :I => 1, :γ => 0.1, :κ => 0.5])
-    edge = EdgeModel(g = AntiSymmetric(line!), outsym = :P, psym = [:K => 6.0, :limit => 1.0])
-    Network(watts_strogatz(20, 4, 0.2; seed = 42), vertex, edge; dealias = true, kw...)
-end
-
-# ---- the feed-forward kinds, loopback edges, external inputs (the review's finding 7) -------------
-# hubs 1–4 on a ring, each vertex model distinct; injectors 5 (FeedForward) and 6 (PureFeedForward)
-# hang on hubs 1 and 2 by loopback edges.
-fhub!(du, u, i, p, t) = (du[1] = p[1] * i[1] - p[2] * u[1] + 0.1 * sin(t); nothing)
-fhub0!(du, u, i, p, t) = (du[1] = i[1] - 0.5 * u[1]; nothing)                      # pdim 0: p === nothing
-fhubext!(du, u, i, ext, p, t) = (du[1] = i[1] + p[1] * ext[1] - u[1]; nothing)     # an external input
-ghub_noff!(o, u, p, t) = (o[1] = p[3] * u[1]; nothing)                             # NoFeedForward
-finj!(du, u, i, p, t) = (du[1] = p[1] * (i[1] - u[1]); nothing)
-ginj_ff!(o, u, i, p, t) = (o[1] = p[2] * (u[1] - i[1]); nothing)                   # FeedForward
-ginj_pff!(o, i, p, t) = (o[1] = p[1] * i[1]; nothing)                              # PureFeedForward, dim 0
-
-fedge!(de, e, vs, vd, p, t) = (de[1] = p[1] * (vs[1] - vd[1]) - e[1]; nothing)
-gedge_ff!(os, od, e, vs, vd, p, t) = (od[1] = e[1] + p[2] * (vs[1] - vd[1]); os[1] = -od[1]; nothing)   # FeedForward
-gedge_noff!(os, od, e, p, t) = (od[1] = p[2] * e[1]; os[1] = -od[1]; nothing)                          # NoFeedForward
-fedgeext!(de, e, vs, vd, ext, p, t) = (de[1] = ext[1] - e[1] + p[1] * vs[1]; nothing)
-
-function ffnet(; kw...)
-    g = SimpleDiGraph(6)
-    for (s, d) in ((1, 2), (2, 3), (3, 4), (4, 1), (5, 1), (6, 2))
-        add_edge!(g, s, d)
-    end
-    v1 = VertexModel(f = fhub!, g = ghub_noff!, sym = [:x], outsym = [:y], psym = [:a => 1.1, :b => 0.4, :c => 1.3], insym = [:i], name = :hub_noff)
-    v2 = VertexModel(f = fhub!, g = 1, sym = [:x], psym = [:a => 0.9, :b => 0.6], insym = [:i], name = :hub_sm)
-    v3 = VertexModel(f = fhub0!, g = 1, sym = [:x], insym = [:i], name = :hub_p0)
-    v4 = VertexModel(f = fhubext!, g = 1, sym = [:x], psym = [:a => 0.7], insym = [:i], extin = [VIndex(2, :x)], name = :hub_ext)
-    v5 = VertexModel(f = finj!, g = ginj_ff!, sym = [:x], outsym = [:i], psym = [:a => 0.8, :b => 1.2], insym = [:u], name = :inj_ff)
-    v6 = VertexModel(g = ginj_pff!, outsym = [:i], psym = [:a => 0.5], insym = [:u], name = :inj_pff)
-    e12 = EdgeModel(g = AntiSymmetric(line!), outsym = [:P], psym = [:K => 6.0], name = :e_pff)
-    e23 = EdgeModel(f = fedge!, g = gedge_ff!, sym = [:e], outsym = (; src = [:P], dst = [:P]), psym = [:k => 0.3, :m => 0.8], name = :e_ff)
-    e34 = EdgeModel(f = fedge!, g = gedge_noff!, sym = [:e], outsym = (; src = [:P], dst = [:P]), psym = [:k => 0.2, :m => 1.5], name = :e_noff)
-    e41 = EdgeModel(f = fedgeext!, g = AntiSymmetric(1), sym = [:e], psym = [:k => 0.4], extin = [VIndex(3, :x)], name = :e_sm_ext)
-    l51 = LoopbackConnection(; potential = [:u], flow = [:i])
-    l62 = LoopbackConnection(; potential = [:u], flow = [:i])
-    Network(g, [v1, v2, v3, v4, v5, v6], [e12, e23, e34, e41, l51, l62]; kw...)
-end
+include(joinpath(@__DIR__, "rhs_check_nets.jl"))
 
 # ---- the checks ---------------------------------------------------------------------------------
 const STYLES = [SequentialExecution{true}(), SequentialExecution{false}(),
@@ -79,9 +22,6 @@ const STYLES = [SequentialExecution{true}(), SequentialExecution{false}(),
                 KAExecution{true}(), KAExecution{false}()]
 stylename(ex) = string(nameof(typeof(ex)), "{", NetworkDynamics.usebuffer(ex), "}")
 
-fixed_u(nw) = [sin(0.37i) + 0.05i for i in 1:dim(nw)]
-fixed_p(nw) = [1.0 + 0.5 * cos(0.61i) for i in 1:pdim(nw)]
-const T0 = 0.3
 
 function rhs_bits(nw)
     u, p = fixed_u(nw), fixed_p(nw)
@@ -140,5 +80,124 @@ for (name, nw) in (("S-swing", nwa), ("S-swing2", nwb))
     for ex in (SequentialExecution{true}(), ThreadedExecution{true}())
         c = cost(tierS(name == "S-swing" ? :swing : :swing2; execution = ex))
         @printf("A %s %s allocs=%d ns=%.0f\n", name, stylename(ex), c.allocs, c.ns)
+    end
+end
+
+# ---- S1 on: the operations on a kept model give apply_compf's and apply_compg's bits ------------
+if isdefined(NetworkDynamics, :ComponentDynamics)
+    ND = NetworkDynamics
+    function s1check(name, nw)
+        comps = vcat(collect(nw.im.vertexm), collect(nw.im.edgem))
+        for c in unique(comps)
+            isv = c isa VertexModel
+            fd = ND.FunctionDynamics(ND.compf(c), ND.compg(c), ND.fftype(c), ND.pdim(c), ND.extdim(c))
+            k = ND.Kept{ND.ComponentDynamics}(fd)
+            buf(n, s) = [sin(s * i) + 0.1i for i in 1:n]
+            u = buf(ND.dim(c), 0.3)
+            p = ND.pdim(c) == 0 ? nothing : buf(ND.pdim(c), 0.7)
+            ins = isv ? (buf(nw.im.edepth, 0.5),) : (buf(nw.im.vdepth, 0.5), buf(nw.im.vdepth, 0.9))
+            ND.extdim(c) > 0 && (ins = (ins..., buf(ND.extdim(c), 1.1)))
+            nout = isv ? (ND.outdim(c),) : (ND.outdim(c).src, ND.outdim(c).dst)
+            fok = if ND.compf(c) === nothing
+                ND.hasf(k) === false
+            else
+                du1, du2 = zeros(ND.dim(c)), zeros(ND.dim(c))
+                ND.apply_compf(ND.compf(c), du1, u, ins, p, T0)
+                ND.compf!(k, du2, u, ins, p, T0)
+                ND.hasf(k) && bits(du1) == bits(du2)
+            end
+            o1, o2 = map(zeros, nout), map(zeros, nout)
+            ND.apply_compg(ND.fftype(c), ND.compg(c), o1, u, ins, p, T0)
+            ND.compg!(k, o2, u, ins, p, T0)
+            gok = all(bits(a) == bits(b) for (a, b) in zip(o1, o2))
+            sok = ND.fftype(k) === ND.fftype(c) && ND.pdim(k) == ND.pdim(c) && ND.extdim(k) == ND.extdim(c)
+            println("S1 ", name, " ", ND.compf(c) === nothing ? "-" : nameof(ND.compf(c)), "/", typeof(ND.fftype(c)).name.name,
+                    " f=", fok, " g=", gok, " static=", sok)
+        end
+    end
+    for (name, make) in NETS
+        s1check(name, make((;)))
+    end
+end
+
+# ---- S2 on: Int strides give the same ranges, fully typed ----------------------------------------
+if isdefined(NetworkDynamics, :_dynamic)
+    ND = NetworkDynamics
+    using TraitWorld: fully_typed, isfullytyped
+    function s2check(name, nw)
+        ok = true
+        for b in (nw.vertexbatches..., nw.layer.edgebatches...)
+            for s in (b.statestride, b.pstride, b.inbufstride, b.outbufstride, b.extbufstride)
+                d = ND._dynamic(s)
+                for i in 1:length(b)
+                    if s.strides isa NamedTuple
+                        ok &= ND._range(d, i, :src) == ND._range(s, i, :src) && ND._range(d, i, :dst) == ND._range(s, i, :dst)
+                    else
+                        ok &= ND._range(d, i) == ND._range(s, i)
+                    end
+                end
+            end
+        end
+        println("S2 ", name, " ranges=", ok)
+    end
+    for (name, make) in NETS
+        s2check(name, make((;)))
+    end
+    for T in ((ND.BatchStride{Int}, Int), (ND.BatchStride{@NamedTuple{src::Int, dst::Int}}, Int, Symbol))
+        r = fully_typed(ND._range, T)
+        println("S2 fully_typed _range", T, " ", isfullytyped(r), isfullytyped(r) ? "" : string(" ", r))
+    end
+end
+
+# ---- S3 on: a batch kept and erased; `@set` keeps its kind ---------------------------------------
+if hasfield(NetworkDynamics.ComponentBatch, :model)
+    ND = NetworkDynamics
+    rebuild(b; kw...) = ND.ComponentBatch(ND.dispatchT(b), b.indices, b.compf, b.compg, b.ff, b.statestride, b.pstride,
+                                          b.inbufstride, b.outbufstride, b.extbufstride; kw...)
+    erasedT = Dict{String,Any}()
+    for (name, make) in NETS
+        nw = make((; execution = PolyesterExecution{true}()))     # typed batches (Polyester keeps them)
+        for b in (nw.vertexbatches..., nw.layer.edgebatches...)
+            b.model === nothing || continue
+            e = rebuild(b; kept = true, erased = true)
+            k = rebuild(b; kept = true)
+            e2 = NetworkDynamics.Accessors.@set e.compf = e.compf
+            k2 = NetworkDynamics.Accessors.@set k.compg = k.compg
+            ok = typeof(e2) === typeof(e) && typeof(k2) === typeof(k) && e2.model !== nothing &&
+                 ND.state_range(e, 1) == ND.state_range(b, 1) && ND.parameter_range(e, length(e)) == ND.parameter_range(b, length(b)) &&
+                 ND.fftype(ND.compiled_for(e.model)) === b.ff && ND.pdim(ND.compiled_for(e.model)) == ND.pdim(b)
+            name in ("S-swing", "S-swing2") && ND.dispatchT(b) === VertexModel && (erasedT[name] = typeof(e))
+            println("S3 ", name, " ", ND.dispatchT(b), " ", b.compf === nothing ? "-" : nameof(b.compf), " ok=", ok)
+        end
+    end
+    println("S3 erased vertex batches of swing!, swing2! of one type: ", erasedT["S-swing"] === erasedT["S-swing2"], " ", erasedT["S-swing"])
+end
+
+# ---- S4 on: the bounded batch functions on an erased batch give apply_comp!'s bits ----------------
+if isdefined(NetworkDynamics, :run_vertex_batch!)
+    ND = NetworkDynamics
+    function s4check(name, nw, ex)
+        u, p = fixed_u(nw), fixed_p(nw)
+        o0, agg, ext = get_buffers(nw, u, p, T0)
+        gbuf = ND.get_gbuf(nw.gbufprovider, o0)
+        ok = true
+        for b in (nw.vertexbatches..., nw.layer.edgebatches...), fg in (Val(:f), Val(:g), Val(:fg))
+            T = ND.dispatchT(b)
+            inbufs = T === VertexModel ? (agg, ext) : (gbuf, ext)
+            e = b.model === nothing ? rebuild(b; kept = true, erased = true) : b
+            du1, o1 = zeros(length(u)), copy(o0)
+            for i in 1:length(b)
+                ND.apply_comp!(T, fg, b, i, du1, u, o1, inbufs, p, T0)
+            end
+            du2, o2 = zeros(length(u)), copy(o0)
+            args = Ref((ex, fg, inbufs, du2, u, o2, p, T0))
+            m = ND.compiled_for(e.model)
+            T === VertexModel ? ND.run_vertex_batch!(m, [e], 1, args) : ND.run_edge_batch!(m, [e], 1, args)
+            ok &= bits(du1) == bits(du2) && bits(o1) == bits(o2)
+        end
+        println("S4 ", name, " ", stylename(ex), " batchfns=", ok)
+    end
+    for (name, make) in NETS, ex in (SequentialExecution{true}(), ThreadedExecution{false}())
+        s4check(name, make((; execution = ex)), ex)
     end
 end

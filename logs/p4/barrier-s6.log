@@ -1,0 +1,37 @@
+allocations=32 bytes=848
+rhs ns=4093
+compiled_for ns=221 allocs=2
+run_vertex_batch!(compiled_for) ns=285 allocs=2
+run_vertex_batch!(m held) ns=285 allocs=2
+process_batches!(vertex, :f) ns=1019 allocs=16
+not fully typed: Tuple{typeof(NetworkDynamics._process_kept!), SequentialExecution{true}, Val{:f}, typeof(NetworkDynamics.nofilt), Vector{NetworkDynamics.ComponentBatch{VertexModel, Any, Any, FeedForwardType, Int64, Int64, Int64, Int64, Int64, Vector{Int64}, TraitWorld.Kept{NetworkDynamics.ComponentDynamics}}}, Tuple{Vector{Float64}, Nothing}, Tuple{Vector{Float64}, Vector{Float64}, Vector{Float64}, Vector{Float64}, Float64}}
+  1 run-time site on normal paths; each pays the facts rule's cost:
+  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4/src/coreloop.jl:148: NetworkDynamics.run_vertex_batch!(Any, Vector{NetworkDynamics.ComponentBatch{VertexModel, Any, Any, FeedForwardType, Int64, Int64, Int64, Int64, Int64, Vector{Int64}, TraitWorld.Kept{NetworkDynamics.ComponentDynamics}}}, Int64, Base.RefValue{Tuple{SequentialExecution{true}, Val{:f}, Tuple{Vector{Float64}, Nothing}, Vector{Float64}, Vector{Float64}, Vector{Float64}, Vector{Float64}, Float64}})  in _process_kept!
+      its arguments are not concrete, so its result is `Any`: give the values concrete types (a typed field or container, a function barrier), or declare them `Dynamic{X}` with a trait that declares the result type
+not fully typed: Tuple{typeof(NetworkDynamics.run_vertex_batch!), TraitWorld.Kept{NetworkDynamics.ComponentDynamics}, Vector{NetworkDynamics.ComponentBatch{VertexModel, Any, Any, FeedForwardType, Int64, Int64, Int64, Int64, Int64, Vector{Int64}, TraitWorld.Kept{NetworkDynamics.ComponentDynamics}}}, Int64, Base.RefValue{Tuple{SequentialExecution{true}, Val{:f}, Tuple{Vector{Float64}, Nothing}, Vector{Float64}, Vector{Float64}, Vector{Float64}, Vector{Float64}, Float64}}}
+  27 run-time sites on normal paths; each pays the facts rule's cost:
+  task.jl:184: invoke(typeof(setproperty!), Type{Tuple{Any, Symbol, Any}}, Task, Symbol, Any)  in setproperty!
+      a call the compiler dispatches at run time
+  Base_compiler.jl:97: invoke_modify()  in record_running_time!
+      a call the compiler dispatches at run time
+  Base_compiler.jl:97: invoke_modify()  in slowlock
+      a call the compiler dispatches at run time
+  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/untyped.jl:233: Type{TraitWorld._UCall{_A, TraitWorld.Builder{S}}} where {_A, S<:Tuple}(TraitWorld.Builder)  in _pmiss
+      the function called is not known: pass it as a `Callable{A, S}`, or store it with a concrete type
+  essentials.jl:1095: Type{Val{_A}} where _A()  in Val
+      the function called is not known: pass it as a `Callable{A, S}`, or store it with a concrete type
+  task.jl:1311: !(Any)  in record_running_time!
+      its arguments are not concrete, so its result is `Any`: give the values concrete types (a typed field or container, a function barrier), or declare them `Dynamic{X}` with a trait that declares the result type
+  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/untyped.jl:230: <=(Any, UInt64)  in _pmiss
+      its arguments are not concrete, so its result is `Any`: give the values concrete types (a typed field or container, a function barrier), or declare them `Dynamic{X}` with a trait that declares the result type
+  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/untyped.jl:230: <=(UInt64, Any)  in _pmiss
+      its arguments are not concrete, so its result is `Any`: give the values concrete types (a typed field or container, a function barrier), or declare them `Dynamic{X}` with a trait that declares the result type
+  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/untyped.jl:244: <=(UInt64, Any)  in _pmiss
+      its arguments are not concrete, so its result is `Any`: give the values concrete types (a typed field or container, a function barrier), or declare them `Dynamic{X}` with a trait that declares the result type
+  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/untyped.jl:244: <=(Any, UInt64)  in _pmiss
+      its arguments are not concrete, so its result is `Any`: give the values concrete types (a typed field or container, a function barrier), or declare them `Dynamic{X}` with a trait that declares the result type
+  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/untyped.jl:238: TraitWorld.PEntry(DataType, Ptr{Nothing}, Any, Any, Any)  in _pmiss
+      its arguments are not concrete, so its result is `Any`: give the values concrete types (a typed field or container, a function barrier), or declare them `Dynamic{X}` with a trait that declares the result type
+  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/entry.jl:259: TraitWorld._assemble(TraitWorld.TraitList{Tuple{NetworkDynamics.ComponentDynamics}}, Any)  in run_vertex_batch!
+      its arguments are not concrete, so its result is `Any`: give the values concrete types (a typed field or container, a function barrier), or declare them `Dynamic{X}` with a trait that declares the result type
+  … 15 more

@@ -1,0 +1,78 @@
+# P4 e69ee00 dirty=2 date 2026-10-21T17:52:25+02:00 load 1.31
+# rhs_check threads=2 julia=1.13.2 nd=/home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4
+R S-swing SequentialExecution{true} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing SequentialExecution{false} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing ThreadedExecution{true} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing ThreadedExecution{false} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing PolyesterExecution{true} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing PolyesterExecution{false} du=682eb66c20c959c o=bc4d7597a094ff54 agg=c8df8b261b477f95 ext=nothing
+R S-swing KAExecution{true} du=682eb66c20c959c o=error:MethodError agg=error:MethodError ext=error:MethodError
+R S-swing KAExecution{false} du=682eb66c20c959c o=error:MethodError agg=error:MethodError ext=error:MethodError
+J S-swing jac=1cab05d3aca3ef40
+R S-swing2 SequentialExecution{true} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 SequentialExecution{false} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 ThreadedExecution{true} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 ThreadedExecution{false} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 PolyesterExecution{true} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 PolyesterExecution{false} du=5861db2abdb48433 o=d11200445f358a36 agg=73bba1d6a9dfc195 ext=nothing
+R S-swing2 KAExecution{true} du=5861db2abdb48433 o=error:MethodError agg=error:MethodError ext=error:MethodError
+R S-swing2 KAExecution{false} du=5861db2abdb48433 o=error:MethodError agg=error:MethodError ext=error:MethodError
+J S-swing2 jac=1cab05d3aca3ef40
+R ff SequentialExecution{true} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+R ff SequentialExecution{false} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+R ff ThreadedExecution{true} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+R ff ThreadedExecution{false} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+R ff PolyesterExecution{true} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+R ff PolyesterExecution{false} du=d3e44f5fa24e1778 o=aff1d5924eea309 agg=a65096b779cf8c4d ext=b08f4f848a575453
+E ff KAExecution{true} UndefVarError: `inbufs` not defined in `NetworkDynamics`
+Suggestion: check for spelling errors or missing imports.
+E ff KAExecution{false} UndefVarError: `inbufs` not defined in `NetworkDynamics`
+Suggestion: check for spelling errors or missing imports.
+J ff jac=7eeadc01e9f9c712
+sametype=false
+A S-swing SequentialExecution{true} allocs=0 ns=521
+A S-swing ThreadedExecution{true} allocs=5200 ns=43189
+A S-swing2 SequentialExecution{true} allocs=0 ns=542
+A S-swing2 ThreadedExecution{true} allocs=5200 ns=43610
+S1 S-swing swing!/PureStateMap f=true g=true static=true
+S1 S-swing -/PureFeedForward f=true g=true static=true
+S1 S-swing2 swing2!/PureStateMap f=true g=true static=true
+S1 S-swing2 -/PureFeedForward f=true g=true static=true
+S1 ff fhub!/NoFeedForward f=true g=true static=true
+S1 ff fhub!/PureStateMap f=true g=true static=true
+S1 ff fhub0!/PureStateMap f=true g=true static=true
+S1 ff fhubext!/PureStateMap f=true g=true static=true
+S1 ff finj!/FeedForward f=true g=true static=true
+S1 ff -/PureFeedForward f=true g=true static=true
+S1 ff -/PureFeedForward f=true g=true static=true
+S1 ff fedge!/FeedForward f=true g=true static=true
+S1 ff fedge!/NoFeedForward f=true g=true static=true
+S1 ff fedgeext!/PureStateMap f=true g=true static=true
+S1 ff -/PureFeedForward f=true g=true static=true
+S2 S-swing ranges=true
+S2 S-swing2 ranges=true
+S2 ff ranges=true
+S2 fully_typed _range(NetworkDynamics.BatchStride{Int64}, Int64) true
+S2 fully_typed _range(NetworkDynamics.BatchStride{@NamedTuple{src::Int64, dst::Int64}}, Int64, Symbol) true
+S3 S-swing VertexModel swing! ok=true
+S3 S-swing EdgeModel - ok=true
+S3 S-swing2 VertexModel swing2! ok=true
+S3 S-swing2 EdgeModel - ok=true
+S3 ff VertexModel fhub! ok=true
+S3 ff VertexModel fhub! ok=true
+S3 ff VertexModel fhub0! ok=true
+S3 ff VertexModel fhubext! ok=true
+S3 ff VertexModel finj! ok=true
+S3 ff VertexModel - ok=true
+S3 ff EdgeModel - ok=true
+S3 ff EdgeModel fedge! ok=true
+S3 ff EdgeModel fedge! ok=true
+S3 ff EdgeModel fedgeext! ok=true
+S3 ff EdgeModel - ok=true
+S3 erased vertex batches of swing!, swing2! of one type: true NetworkDynamics.ComponentBatch{VertexModel, Any, Any, FeedForwardType, Int64, Int64, Int64, Int64, Int64, Vector{Int64}, TraitWorld.Kept{NetworkDynamics.ComponentDynamics}}
+S4 S-swing SequentialExecution{true} batchfns=true
+S4 S-swing ThreadedExecution{false} batchfns=true
+S4 S-swing2 SequentialExecution{true} batchfns=true
+S4 S-swing2 ThreadedExecution{false} batchfns=true
+S4 ff SequentialExecution{true} batchfns=true
+S4 ff ThreadedExecution{false} batchfns=true

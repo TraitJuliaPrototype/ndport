@@ -1,0 +1,5 @@
+# P4 e69ee00 dirty=2 date 2026-10-21T17:51:43+02:00
+Precompiling packages...
+  22.6 s  ✓ NetworkDynamics
+  1 dependency successfully precompiled in 23 seconds. 503 already precompiled.
+using s=2.8
