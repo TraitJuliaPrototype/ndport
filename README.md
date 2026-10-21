@@ -23,7 +23,7 @@ The workload is part P1 of the meta plan ([`../writeup/plans/2026-10-21-ndport-w
 - `scripts/workload.jl` (the driver) and `scripts/workload_steps.jl` (the steps a–g): the loads timed in groups, then four passes in one session: `first`, `again`, `params` (the problem remade with new parameters: no new types), `changed` (a new component function). Each step prints `T <pass> <step> <ms> compile <ms> recompile <ms> gc <ms>` and a digest `D <pass> <step> …`, the digest outside the timed window.
 - `scripts/run_workload.sh <tag> <U|P0|A0|S> [runs]`: fresh sessions through the lock; refuses to run where a dependency is not precompiled; marks a run that precompiled INVALID. `NDW_DIAG=1` adds the attribution (`scripts/diag.jl`: new CodeInstances per step by module; its times are not measurements).
 - `scripts/compare_digests.py <ref.log> <log> [--exact]`, `scripts/summarize.py <logs>`, `scripts/check_env.py`.
-- The settings: U (`env_upstream`, patched build), P0 (`env_port`, TraitWorld loaded, product setting), A0 (`env_port` under `all`, depot `depot-facts/`), S (stock 1.13.2, depot `depot-stock/`); N (NetworkDynamics wrapped whole, `pkgs/NetworkDynamics-p3wrap`, `env_p3`, `depot-p3`), W (N plus the workload's own module a trait module), P4 (the port, `pkgs/NetworkDynamics-p4`, `env_p4`, `depot-p4`).
+- The settings: U (`env_upstream`, patched build), P0 (`env_port`, TraitWorld loaded, product setting), A0 (`env_port` under `all`, depot `depot-facts/`), S (stock 1.13.2, depot `depot-stock/`); N (NetworkDynamics wrapped whole, `pkgs/NetworkDynamics-p3wrap`, `env_p3`, `depot-p3`), W (N plus the workload's own module a trait module), P4 (the port, `pkgs/NetworkDynamics-p4`, `env_p4`, `depot-p4`), I (P6, E-155: the SciML core wrapped inside out, `pkgs/*-p6`, `env_p6`, `depot-p6`, NetworkDynamics as in N; its default script `p6_workload.jl` prints strict mode's state).
 - `NDW_ORDER=simfirst`: the plotting packages load after the first simulation (P3's order B), with the CodeInstances the load discards counted (`G` line). `NDW_STRICT=1`: strict mode. `NDW_SCRIPT=<path>`: another script in the harness (`p3_census.jl`, `p3_pirate.jl`).
 
 ## Results
@@ -101,3 +101,24 @@ julia-1.13 6d480d0753, TraitWorld 3bebf13; Graphs `trait-port-p4` 54632125 (`pkg
 - ND's test subset (`logs/p4g/ndtest-final.log`): as at c9339fd.
 - Two TraitWorld failures found (candidate deviation rows): `edge_list` on a `Dynamic` trait object (`TypeError`, `SimpleEdge{OpenParam}`; `logs/p4g/g0-P4-2.log`); a closure in a bounded function capturing a variable of a type not inferred (`FieldError`; `scripts/graph_g3_min.jl`, `logs/p4g/g3-min.log`), which stopped G3.
 - Running notes, per sub-step: `logs/p4g/NOTES.md`.
+
+### 2026-10-21: the SciML core wrapped inside out, under strict mode (E-155, P6)
+
+julia-1.13 6d480d0753, TraitWorld 3bebf13; NetworkDynamics p3-wrap e5425fd; Static.jl c34adbb; setting I (`env_p6`, `depot-p6`); strict mode on; P1's load order; one run per step; load 0.9–1.7; `logs/p6-s<k>/`, `logs/p6-s<k>-census/`, running notes `logs/p6/NOTES.md`. Measures upstream's code with the plan's two `@joint_owners` lines, compiled by facts as trait modules: no trait code (neither interop nor idiomatic). Steps: S1 SymbolicIndexingInterface, RecursiveArrayTools; S2 SciMLBase (joint owners: eight packages); S3 NonlinearSolveBase, BracketingNonlinearSolve, SciMLJacobianOperators; S4 the NonlinearSolve family; S5 DiffEqBase; S6 OrdinaryDiffEqCore (joint owner OrdinaryDiffEqDifferentiation), Tsit5, DiffEqCallbacks; S7 OrdinaryDiffEqRosenbrock.
+
+| Step | Rebuilt, precompile | First a–e | Again c / d / e | Dynamic calls (top 40) trait / plain | Loads ND / solvers |
+|---|---|---|---|---|---|
+| S0 (I0) | 74, 137 s | 36.4 s | 3.6 / 15.0 / 0.6 ms | 34,601 / 647 | 6.11 / 0.33 s |
+| S1 | 59, 147 s | 36.8 s | 3.5 / 15.1 / 0.7 ms | 34,605 / 644 | 6.15 / 0.36 s |
+| S2 | 48, 196 s | 52.4 s | 3.7 / 29.2 / 0.7 ms | 24,595 / 100,501 | 8.64 / 4.32 s |
+| S3 | 35, 176 s | 49.3 s | 3.8 / 28.6 / 0.8 ms | 24,994 / 98,419 | 8.19 / 4.28 s |
+| S4 | 9, 101 s | 49.1 s | 3.7 / 29.7 / 0.7 ms | 24,994 / 98,419 | 8.12 / 4.23 s |
+| S5 | 15, 68 s | 29.5 s | 3.6 / 16.0 / 0.7 ms | 40,254 / 5 | 8.35 / 0.46 s |
+| S6 | 10, 62 s | 28.9 s | 3.8 / 16.0 / 0.7 ms | 40,254 / 5 | 8.27 / 0.47 s |
+| S7 | 1, 46 s | 28.9 s | 3.6 / 16.2 / 0.7 ms | 40,254 / 5 | 8.19 / 0.43 s |
+
+- Every step: 25 digests equal to U's bit for bit; no pirate in a wrapped package; the only refusal OffsetArrays' `reshape` at the plotting load (Base's own code protected; present at I0).
+- S2–S4: plain callers lose constant propagation into SciMLBase's `getproperty` overloads (step d 29 ms; the solvers' images rejected at load). Gone from S5, when the solver's code is reached from DiffEqBase's trait code.
+- Order B at S7: the plotting load takes no CodeInstance of `:facts`, and the next pass recompiles nothing (S4: 5.4 s; N 0.04 s; U 4.7 s).
+- Packages' quick tests (`scripts/p6_tests.jl`): as at upstream, except 5 inference assertions in SciMLBase's at S2 (facts inference by design); ND's subset at S7 identical to upstream.
+
