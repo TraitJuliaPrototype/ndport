@@ -337,3 +337,33 @@ Commits (tag `p6-s4`): `NonlinearSolve-p6` 697c987, `NonlinearSolveFirstOrder-p6
   recompiled is plain code (DiffEqBase, OrdinaryDiffEqCore), as in U: the same cause as the load increase (P6-1's
   wide plain solver code is invalidated by Makie's methods). Recorded under P6-1; judged at S7 with T, per the
   coordinator's decision.
+
+## S5: DiffEqBase wrapped
+
+Commit: `OrdinaryDiffEq-p6` 45bf77e85 (tag `p6-s5`).
+
+- **P** (`logs/p6/precompile-s5.log`): 15 rebuilt (the plan's 8 + 7), 68 s. No `OwnershipError`: DiffEqBase's 28
+  front-end pirates are held by SciMLBase's line. New P6-3 warnings: `DiffEqBaseForwardDiffExt` defines
+  `DiffEqBase.hasdualpromote(…)` and `SciMLBase.wrapfun_iip(…)`, which win at facts of DiffEqBase's own code (its own
+  extension, followed).
+- **C**: DiffEqBase wrapped; pirates in wrapped packages 0.
+- **R**: 0 exact differences. **S**: `STRICT on`; only P6-2.
+- **T: back within I0's margin:** c 3.6, **d 16.0** (I0 15.0), e 0.7 ms.
+- **H** (top 40): **trait code 40,254, plain code 5** (S4: 24,994 / 98,419). P6-1's cost is gone already at S5:
+  the workload's `solve` now enters DiffEqBase's trait code, which reaches OrdinaryDiffEqCore's, Tsit5's and
+  Rosenbrock's methods; those are neutral methods reached from the facts owner, so they are compiled by facts
+  (facts §6.2), where constant propagation works at fact signatures (facts §4.1) and SciMLBase's `getproperty`
+  folds again. (The plan expected this at S6.)
+  - **New sites in the newly wrapped DiffEqBase** (906 in the top 40), each explained: the type-erased loops over
+    a callback vector (`continuous_callbacks isa AbstractVector`): `find_first_continuous_callback`'s
+    `any(callback -> callback isa VectorContinuousCallback, callbacks)` (`callbacks.jl:290`, 302 calls),
+    `Base.invokelatest(_find_callback_time_erased, …)` (`:275`, 302; upstream calls it dynamically on purpose, per its
+    comment), `apply_discrete_callback!` over the vector (`:759`, 302), and OrdinaryDiffEqCore's `handle_callbacks!`
+    destructuring their results (`integrator_utils.jl:1112`, `:1145`, about 160 each). Calls at an abstract element
+    type are run-time sites under the facts mode (facts §4.2: no `max_methods` speculation; the result `Any`), where
+    plain Julia infers them from the one closure or splits them. About 1–2 µs per integration step; T within margin.
+    Not the owner's bug (the vector is type-erased by design), so not fixed. Base's facts calls grew 19,602 → 25,058
+    by these (`indexed_iterate`, `!`, `ismissing`, `getindex(::Tuple)`).
+- **F**: **first a–e 29.5 s** (I0 36.4, N 37.8, U 21.5): c 13.5, **d 11.4** (S4 31.2), e 3.5 s. Session 90.3 s.
+- **L**: Graphs+ND 8.35, **solvers 0.46 s** (S4 4.23): the solvers' images are valid again, consistent with J's
+  attribution to P6-1.
