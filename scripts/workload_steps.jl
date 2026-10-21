@@ -4,20 +4,18 @@
 # Observables while the integrator steps, then the equations changed.
 # Each step returns its result; its digest (`D <pass> <step> key=value ...`: exact fields as hashes and
 # integers, values to 10 digits) is printed by `digest_<step>`, outside the timed window.
-# Loaded by workload.jl after the packages.
+# Loaded by workload.jl after the packages; the plotting steps f and g are in workload_plot.jl, included
+# into this module once Makie is loaded (so that the plotting packages can load after the simulation).
 module NDW
 
 using NetworkDynamics, Graphs, OrdinaryDiffEqTsit5, OrdinaryDiffEqRosenbrock
 import SymbolicIndexingInterface as SII
-using CairoMakie, GraphMakie, Observables
-using GraphMakie.NetworkLayout: Spring
 using Printf
 
 const OUT = joinpath(@__DIR__, "..", "out")
 const PASS = Ref("first")
 const SOLVE_KW = (; abstol = 1e-8, reltol = 1e-6)
 const TIMES = [0.5, 1.0, 1.5, 2.0, 3.0, 4.5, 6.0]
-const CRANGE = (-3.0, 3.0)                      # the colour range of ω (islands drift after the cascade)
 
 # ---- digests ----------------------------------------------------------------------------------
 bits(x) = string(hash(reinterpret(UInt64, collect(Float64, x))); base = 16)
@@ -117,71 +115,25 @@ function step_e(nw, sol)
 end
 digest_e(r) = digest("e", :ωsum => num(r.ωsum), :P2 => num(r.P2), :P3 => num(r.P3), :K3 => num(r.K3), :Pend => num(r.Pend))
 
-# ---- f. a GraphMakie plot -----------------------------------------------------------------------
-function step_f(nw, sol, tag)
-    s = NWState(sol, sol.t[end])
-    fig, ax, p = graphplot(get_graph(nw); layout = Spring(seed = 1), node_color = s.v[:, :ω], node_size = 14,
-                           edge_color = abs.(s.e[:, :P]), edge_width = 2,
-                           node_attr = (; colorrange = CRANGE, colormap = :balance))
-    hidedecorations!(ax)
-    file = joinpath(OUT, "graph-$tag-$(PASS[]).png")
-    save(file, fig)
-    (; pos = p[:node_pos][], colors = s.v[:, :ω], file)
-end
-pngsize(file) = (b = read(file, 24); Int.(ntoh.(reinterpret(UInt32, b[17:24]))))   # width, height from the header
-function digest_f(r)
-    digest("f", :pos => num(round.(Float64.(reduce(vcat, collect.(r.pos[1:3]))); digits = 4)),
-           :colors => num(r.colors[1:5]), :pixels => join(pngsize(r.file), "x"), :pngbytes => filesize(r.file))
-end
-
-# ---- g. a figure driven by Observables while the integrator steps -------------------------------
-function step_g(nw, prob, tag)
-    integ = init(remake(prob; p = copy(prob.p)), Tsit5(); SOLVE_KW...)
-    sel = Observable(2)                                  # the vertex whose trajectory is shown
-    colors = Observable(NWState(integ).v[:, :ω])
-    ts = Observable(Float64[integ.t])
-    hist = Observable(Vector{Float64}[copy(colors[])])   # every vertex's ω at every frame
-    line = lift((h, i) -> Point2f.(ts[], getindex.(h, i)), hist, sel)
-    ncalls = Ref(0)
-    on(_ -> ncalls[] += 1, colors)
-    fig = Figure(size = (900, 400))
-    ax1 = Axis(fig[1, 1]); hidedecorations!(ax1)
-    graphplot!(ax1, get_graph(nw); layout = Spring(seed = 1), node_color = colors, node_size = 14,
-               node_attr = (; colorrange = CRANGE, colormap = :balance))
-    ax2 = Axis(fig[1, 2]; xlabel = "t", ylabel = "ω")
-    lines!(ax2, line)
-    limits!(ax2, 0, 6, -4, 4)
-    frames = 0
-    for k in 1:10
-        step!(integ, 0.6, true)
-        ω = NWState(integ).v[:, :ω]
-        push!(ts[], integ.t)                             # ts first: the line reads ts[] when hist fires
-        hist[] = push!(hist[], copy(ω))
-        colors[] = ω
-        if k % 3 == 0
-            save(joinpath(OUT, "live-$tag-$(PASS[])-$k.png"), fig); frames += 1
-        end
-    end
-    sel[] = 3                                            # another trajectory, from the kept history
-    save(joinpath(OUT, "live-$tag-$(PASS[])-sel.png"), fig); frames += 1
-    (; t = integ.t, ω = colors[], line = line[], listeners = ncalls[], frames)
-end
-digest_g(r) = digest("g", :t => num(r.t), :ωend => num(r.ω[1:5]), :line => length(r.line),
-                     :sel3 => num(r.line[end][2]), :listeners => r.listeners, :frames => r.frames)
-
 # ---- the passes ---------------------------------------------------------------------------------
-"Steps a–g for one model; `timed(name, f)` runs and times each step, the digests outside it."
-function run_pass(timed, pass, model; γ = 0.1)
+"Steps a–e for one model; `timed(name, f)` runs and times each step, the digests outside it."
+function run_sim(timed, pass, model; γ = 0.1)
     PASS[] = pass
     a = timed("a", () -> step_a(model)); digest_a(a)
     nw = timed("b", () -> step_b(a)); digest_b(nw)
     c = timed("c", () -> step_c(nw; γ)); digest_c(c)
     d = timed("d", () -> step_d(nw, c.s)); digest_d(d)
     e = timed("e", () -> step_e(nw, d.sol)); digest_e(e)
-    f = timed("f", () -> step_f(nw, d.sol, model)); digest_f(f)
-    g = timed("g", () -> step_g(nw, d.prob, model)); digest_g(g)
-    (nw, d.prob)
+    (; nw, d, model)
 end
+"Steps f and g (workload_plot.jl) on what `run_sim` returned."
+function run_plot(timed, st)
+    f = timed("f", () -> step_f(st.nw, st.d.sol, st.model)); digest_f(f)
+    g = timed("g", () -> step_g(st.nw, st.d.prob, st.model)); digest_g(g)
+    (st.nw, st.d.prob)
+end
+"Steps a–g for one model."
+run_pass(timed, pass, model; γ = 0.1) = run_plot(timed, run_sim(timed, pass, model; γ))
 
 "The control: the parameters changed on the problem of the first pass (`remake`), no new types."
 function run_params(timed, nw, prob)

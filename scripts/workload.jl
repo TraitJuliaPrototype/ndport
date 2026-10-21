@@ -6,6 +6,7 @@
 # Each step's first call is timed whole (as TraitDifferentialEquations' rows.jl `@first`).
 # Prints `L <group> <s>`, `T <pass> <step> <ms> compile <ms> recompile <ms> gc <ms>`, and the digests.
 #     julia --project=env_upstream scripts/workload.jl            (from ndport/)
+# NDW_ORDER=simfirst: the plotting packages load after the first pass's simulation (steps a–e).
 # NDW_PASSES=first,params,changed (default: all; `again` always runs). NDW_DIAG=1: the attribution run
 # (scripts/diag.jl; new CodeInstances per step by module and owner; its times are not measurements).
 const T0 = time_ns()
@@ -16,13 +17,16 @@ macro load(name, ex)
         println("L ", $name, " ", round(t; digits = 2)); flush(stdout)
     end
 end
+const ORDER = get(ENV, "NDW_ORDER", "default")   # `simfirst`: the plotting packages load after the first simulation (P3's order B)
 WITH_TW && @load "TraitWorld" (@eval using TraitWorld)
 @load "Graphs,NetworkDynamics" (@eval using Graphs, NetworkDynamics)
 @load "solvers" (@eval using OrdinaryDiffEqTsit5, OrdinaryDiffEqRosenbrock, DiffEqCallbacks, SymbolicIndexingInterface)
-@load "CairoMakie,GraphMakie,Observables" (@eval using CairoMakie, GraphMakie, Observables)
+load_plotting() = (@load "CairoMakie,GraphMakie,Observables" (@eval using CairoMakie, GraphMakie, Observables);
+                   @load "plot steps" Base.include(NDW, joinpath(@__DIR__, "workload_plot.jl"));
+                   @eval CairoMakie.activate!(type = "png"))
 @load "steps" include(joinpath(@__DIR__, "workload_steps.jl"))
 mkpath(NDW.OUT)
-CairoMakie.activate!(type = "png")
+ORDER == "simfirst" || load_plotting()
 
 function timed(name, f)
     c0 = Base.cumulative_compile_time_ns(); g0 = Base.gc_num(); t0 = time_ns()
@@ -41,7 +45,13 @@ DIAG && include(joinpath(@__DIR__, "diag.jl"))
 const step_timer = DIAG ? Base.invokelatest(NDWDiag.wrap, timed, NDW.PASS) : timed
 const PASSES = split(get(ENV, "NDW_PASSES", "first,again,params,changed"), ",")
 Base.cumulative_compile_timing(true)
-"first" in PASSES && NDW.run_pass(step_timer, "first", :swing)
+if ORDER == "simfirst"
+    st = NDW.run_sim(step_timer, "first", :swing)
+    load_plotting()
+    Base.invokelatest(NDW.run_plot, step_timer, st)
+else
+    "first" in PASSES && NDW.run_pass(step_timer, "first", :swing)
+end
 nw, prob = NDW.run_pass(step_timer, "again", :swing)
 "params" in PASSES && NDW.run_params(step_timer, nw, prob)
 "changed" in PASSES && NDW.run_pass(step_timer, "changed", :swing2)
