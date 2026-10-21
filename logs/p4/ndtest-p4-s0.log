@@ -1,0 +1,19 @@
+# env_ndtest_p4 nd=pkgs/NetworkDynamics-p4 e5425fd date 2026-10-21T17:40:06+02:00 load 1.06
+# nd_tests threads=2 nd=/home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4
+# massmatrix_test.jl s=11.5
+# doctor_test.jl s=1.0
+--- Diffusion dynamics --- 
+Building Static Network Dynamics...
+Building Static Network Dynamics with artifical ODE Edges...
+Maximum difference between analytic solution and...
+	 * and solution with explicit Laplacian: 6.012215211792515e-8
+	 * and solution with static ND: 6.012215197914728e-8
+	 * and solution with promoted static edges ND: 2.8856597190929367e-7
+# diffusion_test.jl s=44.5
+--- Network dynamics with a static vertex ---
+These dynamics should flow to π, at t=500. they are there up to 4.766431693781215e-10
+# inhomogeneous_test.jl s=19.3
+TEST massmatrix_test.jl pass=6 fail=0 error=0 broken=0
+TEST doctor_test.jl pass=26 fail=0 error=0 broken=0
+TEST diffusion_test.jl pass=112 fail=0 error=0 broken=24
+TEST inhomogeneous_test.jl pass=45 fail=0 error=0 broken=12

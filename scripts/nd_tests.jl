@@ -37,7 +37,7 @@ for f in FILES
     Core.eval(m, :(using Test))
     Core.eval(m, :(include(x) = Base.include($m, x)))
     t0 = time()
-    @testset "$f" begin
+    @testset Test.DefaultTestSet "$f" begin
         Base.include(m, joinpath(TESTDIR, f))
     end
     println("# ", f, " s=", round(time() - t0; digits = 1))
