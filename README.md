@@ -62,3 +62,23 @@ Same builds; NetworkDynamics p3-wrap e5425fd; Static.jl c34adbb (the promotion f
 - The pirate: N strict off accepted (84 lost, 75 `:facts`); N strict on refused; P0 strict on accepted (81 lost).
 - The census (`logs/p3/census-P0.log`): pirates by the letter: NetworkDynamics 0, DiffEqBase 28, NonlinearSolveBase 12, NonlinearSolve 10, Makie 8, OrdinaryDiffEqCore 3, GraphMakie 2, the others 0.
 
+
+### 2026-10-21: the component dynamics behind a trait (E-152, P4 step 1)
+
+julia-1.13 6d480d0753, TraitWorld a373e30; NetworkDynamics `trait-port` c9339fd (`pkgs/NetworkDynamics-p4`); Static.jl c34adbb; setting P4 (`env_p4`, `depot-p4`); strict mode off; P1's load order; two runs (`logs/p4-1/`), one attribution run (`logs/p4-1-diag/`); N is E-153's one run (`logs/p3/N-1.log`). Measures ND's own trait code (the batch functions) calling the user's plain component functions: interop.
+
+| | U | N | P4 (2 runs) |
+|---|---|---|---|
+| tier S's two networks of one type (`rhs_check.jl`) | no | no | **yes** |
+| digests against U, exact | — | 0 differences | 0 differences |
+| "changed" b–e compile | 15.6–16.0 s (E-151) | 14.97 s | **0.43–0.49 s** |
+| "changed" b–e new CodeInstances of SciML and SII (attribution) | ~2,300 of 6,536 (c–e) | — | **0** of 207 |
+| steady state step c / **d** (a Tsit5 + Rodas5P solve) | 3.0 / 19.8 ms | 3.7 / 15.3 ms | 6.1 / **46.8–47.1 ms** |
+| steady state f / g | 35.4 / 158.2 ms | 39.1 / 165.9 ms | 36.8–37.7 / 139.5–184.7 ms |
+| one right-hand side, tier S, sequential (`rhs_check.jl`, two threads) | 0.50 µs, 0 B | 0.52 µs, 0 B | 3.1 µs, 848 B (32 allocations) |
+| first pass a–g | 39.7 s | 56.5 s | 54.9–55.6 s |
+| session | 69.9 s | 86.9 s | 67.5–68.4 s |
+
+- Step d attributed in one session (`scripts/p4_stepd_ab.jl`, `logs/p4/stepd-ab-s8.log`): erased batches 46.3–48.1 ms, the same network with typed batches (Polyester's serial path) 15.1–15.6 ms. The difference is the barrier: about 13 allocations and 0.8 µs per batch crossing from ND's facts-compiled core loop, against 2 allocations and 0.28 µs for the same call from plain code (`logs/p4/barrier-s6.log`, `barrier-facts-s6.log`).
+- ND's test subset (`scripts/nd_tests.jl`, `logs/p4/ndtest-*.log`): as at `upstream`, except the three allocation assertions (`diffusion_test.jl:111`, `inhomogeneous_test.jl:59`, `:93`).
+- Running notes, per sub-step: `logs/p4/NOTES.md`.

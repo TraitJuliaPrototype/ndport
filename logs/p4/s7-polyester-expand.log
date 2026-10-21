@@ -1,0 +1,82 @@
+begin
+    var"#2###NUM#THREADS##" = (Base.Threads.nthreads)()
+    nothing
+    if var"#2###NUM#THREADS##" == 1
+        var"#3#single_thread_result" = begin
+                begin
+                end
+                for i = 1:length(batch)
+                    _vertex!(m, fg, batch, i, du, u, o, inbufs, p, t)
+                end
+                begin
+                end
+            end
+        begin
+        end
+    else
+        var"#4#multi_thread_result" = let
+                var"#5#reduction_final" = begin
+                        var"#6###NUM#THREADS#TO#USE##" = var"#2###NUM#THREADS##"
+                        begin
+                            (var"##inner##loop##", var"#7###LOOP##", var"##split##recombined##") = (Polyester.splitloop)(static(1):StaticArrayInterface.static_length(batch))
+                            var"#8###ITER_LENG##" = (StaticArrayInterface.static_length)(var"#7###LOOP##")
+                        end
+                        var"#9###LOOP_STEP##" = (StaticArrayInterface.static_step)(var"#7###LOOP##")
+                        var"#10###LOOPOFFSET##" = (StaticArrayInterface.static_first)(var"#7###LOOP##")
+                        begin
+                            var"##closure##" = let
+                                    ((var"##LOOPOFFSET##", var"##LOOP_STEP##", var"##inner##loop##", var"##split##recombined##", var"##_vertex!#144", var"##m#145", var"##fg#146", var"##batch#147", var"##du#148", var"##u#149", var"##o#150", var"##inbufs#151", var"##p#152", var"##t#153"), var"##SUBSTART##"::Int, var"##SUBSTOP##"::Int)->begin
+                                            $(Expr(:meta, :inline))
+                                            begin
+                                                var"##LOOPOFFSET##" = (Polyester.unwrap_type)(var"##LOOPOFFSET##")
+                                                var"##LOOP_STEP##" = (Polyester.unwrap_type)(var"##LOOP_STEP##")
+                                                var"##inner##loop##" = (Polyester.unwrap_type)(var"##inner##loop##")
+                                                var"##split##recombined##" = (Polyester.unwrap_type)(var"##split##recombined##")
+                                                var"##_vertex!#144" = (Polyester.unwrap_type)(var"##_vertex!#144")
+                                                var"##m#145" = (Polyester.unwrap_type)(var"##m#145")
+                                                var"##fg#146" = (Polyester.unwrap_type)(var"##fg#146")
+                                                var"##batch#147" = (Polyester.unwrap_type)(var"##batch#147")
+                                                var"##du#148" = (Polyester.unwrap_type)(var"##du#148")
+                                                var"##u#149" = (Polyester.unwrap_type)(var"##u#149")
+                                                var"##o#150" = (Polyester.unwrap_type)(var"##o#150")
+                                                var"##inbufs#151" = (Polyester.unwrap_type)(var"##inbufs#151")
+                                                var"##p#152" = (Polyester.unwrap_type)(var"##p#152")
+                                                var"##t#153" = (Polyester.unwrap_type)(var"##t#153")
+                                            end
+                                            local var"##STEP##" = var"##LOOP_STEP##"
+                                            local var"##LOOPSTART##" = (var"##SUBSTART##" * var"##LOOP_STEP##" + var"##LOOPOFFSET##") - var"##LOOP_STEP##"
+                                            local var"##LOOP_STOP##" = (var"##SUBSTOP##" * var"##LOOP_STEP##" + var"##LOOPOFFSET##") - var"##LOOP_STEP##"
+                                            begin
+                                            end
+                                            begin
+                                            end
+                                            begin
+                                                $(Expr(:inbounds, true))
+                                                local var"#17#val" = begin
+                                                            begin
+                                                                var"##outer##"::Int = Int(var"##LOOPSTART##")::Int
+                                                                while var"##outer##" <= var"##LOOP_STOP##"
+                                                                    for var"##inner##" = var"##inner##loop##"
+                                                                        var"##i#143" = (Polyester.combine)(var"##split##recombined##", var"##inner##", var"##outer##")
+                                                                        begin
+                                                                            var"##_vertex!#144"(var"##m#145", var"##fg#146", var"##batch#147", var"##i#143", var"##du#148", var"##u#149", var"##o#150", var"##inbufs#151", var"##p#152", var"##t#153")
+                                                                        end
+                                                                    end
+                                                                    var"##outer##" += var"##STEP##"
+                                                                end
+                                                            end
+                                                        end
+                                                $(Expr(:inbounds, :pop))
+                                                var"#17#val"
+                                            end
+                                            begin
+                                            end
+                                            return
+                                        end
+                                end
+                        end
+                        (Polyester.batch)(var"##closure##", Val{false}(), (), (), (var"#8###ITER_LENG##", Polyester.min(var"#8###ITER_LENG##", var"#6###NUM#THREADS#TO#USE##")), var"#10###LOOPOFFSET##", var"#9###LOOP_STEP##", (Polyester.wrap_type)(var"##inner##loop##"), (Polyester.wrap_type)(var"##split##recombined##"), (Polyester.wrap_type)(_vertex!), (Polyester.wrap_type)(m), (Polyester.wrap_type)(fg), (Polyester.wrap_type)(batch), (Polyester.wrap_type)(du), (Polyester.wrap_type)(u), (Polyester.wrap_type)(o), (Polyester.wrap_type)(inbufs), (Polyester.wrap_type)(p), (Polyester.wrap_type)(t))
+                    end
+                begin
+                end
+                begin

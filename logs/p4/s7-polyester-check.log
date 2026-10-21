@@ -1,0 +1,21 @@
+┌ Warning: trait module PolyCheck: library code breaks a rule of the trait world:
+│   run_batch! (p4_polyester_check.jl:13): p4_polyester_check.jl:13: a trait object carrying Main.PolyCheck.Scale is passed to `wrap_type`, an ordinary function: it can do only what its traits declare. Declare `wrap_type` as an operation, or use the operations
+│   run_batch! (p4_polyester_check.jl:13): p4_polyester_check.jl:13: a trait object carrying Main.PolyCheck.Scale is passed to `batch`, an ordinary function: it can do only what its traits declare. Declare `batch` as an operation, or use the operations
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/trait_module.jl:1172
+ERROR: LoadError: TraitUseError: library code breaks a rule of the trait world:
+  p4_polyester_check.jl:13: a trait object carrying Main.PolyCheck.Scale is passed to `wrap_type`, an ordinary function: it can do only what its traits declare. Declare `wrap_type` as an operation, or use the operations
+  p4_polyester_check.jl:13: a trait object carrying Main.PolyCheck.Scale is passed to `batch`, an ordinary function: it can do only what its traits declare. Declare `batch` as an operation, or use the operations
+Stacktrace:
+  [1] _check_once(flag::Base.RefValue{Bool}, sig::Any)
+    @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/checks.jl:356
+  [2] run_batch!(s::Any, out::Vector{Float64}, xs::Vector{Float64})
+    @ Main.PolyCheck ./none:0
+  [3] top-level scope
+    @ ~/Repos/julia-trait-bound/ndport/scripts/p4_polyester_check.jl:20
+  [4] include(mod::Module, _path::String)
+    @ Base ./Base.jl:310
+  [5] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:344
+  [6] _start()
+    @ Base ./client.jl:577
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/scripts/p4_polyester_check.jl:20
