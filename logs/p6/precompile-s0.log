@@ -1,0 +1,88 @@
+# P6 precompile s0 date 2026-10-21T18:42:11+02:00 load 1.48
+# julia-1.13 6d480d0753 TraitWorld 3bebf13 dirty=0
+# trees BracketingNonlinearSolve-p6:560e001 DiffEqCallbacks-p6:14b58b5 NonlinearSolveBase-p6:343a7d8 NonlinearSolveFirstOrder-p6:5dd75e2 NonlinearSolve-p6:465df85 NonlinearSolveQuasiNewton-p6:4780f55 NonlinearSolveSpectralMethods-p6:1bbd07e OrdinaryDiffEq-p6:53e7d1d33 RecursiveArrayTools-p6:185fa2c SciMLBase-p6:365283c6 SciMLJacobianOperators-p6:72adf53 SimpleNonlinearSolve-p6:32da67e SymbolicIndexingInterface-p6:13d7d07 OrdinaryDiffEq-p6-ros:14f664a10 
+┌ Warning: could not download https://pkg.julialang.org/registries
+│   exception = RequestError: HTTP/1.1 403 Forbidden (CONNECT tunnel failed, response 403) while requesting https://pkg.julialang.org/registries
+└ @ Pkg.Registry ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/Registry/Registry.jl:121
+     Project No packages added to or removed from `~/Repos/julia-trait-bound/ndport/env_p6/Project.toml`
+    Manifest No packages added to or removed from `~/Repos/julia-trait-bound/ndport/env_p6/Manifest.toml`
+Precompiling packages...
+   1.2 s  ✓ SymbolicIndexingInterface
+   0.6 s  ✓ SymbolicIndexingInterface → SymbolicIndexingInterfacePrettyTablesExt
+   2.7 s  ✓ RecursiveArrayTools
+   0.5 s  ✓ RecursiveArrayTools → RecursiveArrayToolsTablesExt
+   0.7 s  ✓ RecursiveArrayTools → RecursiveArrayToolsSparseArraysExt
+   0.5 s  ✓ RecursiveArrayTools → RecursiveArrayToolsFastBroadcastExt
+   0.5 s  ✓ RecursiveArrayTools → RecursiveArrayToolsStatisticsExt
+   0.9 s  ✓ RecursiveArrayTools → RecursiveArrayToolsKernelAbstractionsExt
+   0.6 s  ✓ RecursiveArrayTools → RecursiveArrayToolsForwardDiffExt
+   0.6 s  ✓ RecursiveArrayTools → RecursiveArrayToolsStructArraysExt
+   9.1 s  ✓ Static
+   0.4 s  ✓ BitTwiddlingConvenienceFunctions
+   0.9 s  ✓ CPUSummary
+   0.4 s  ✓ FastBroadcast → FastBroadcastStaticExt
+   1.8 s  ✓ StaticArrayInterface
+   0.4 s  ✓ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+   0.6 s  ✓ PolyesterWeave
+   0.6 s  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+   0.5 s  ✓ CloseOpenIntervals
+   0.5 s  ✓ LayoutPointers
+   7.0 s  ✓ SciMLBase
+   0.8 s  ✓ StrideArraysCore
+   0.7 s  ✓ SciMLBase → SciMLBaseChainRulesCoreExt
+   0.8 s  ✓ SciMLBase → SciMLBaseStaticArraysExt
+   0.9 s  ✓ SciMLBase → SciMLBaseForwardDiffExt
+   0.7 s  ✓ SciMLBase → SciMLBaseDifferentiationInterfaceExt
+   1.2 s  ✓ SciMLBase → SciMLBaseDistributionsExt
+   0.7 s  ✓ Polyester
+   1.6 s  ✓ SciMLJacobianOperators
+   4.2 s  ✓ SciMLBase → SciMLBaseMakieExt
+   0.6 s  ✓ FastBroadcast → FastBroadcastPolyesterExt
+   4.3 s  ✓ LHLFactorization → LHLFactorizationPolyesterExt
+   4.1 s  ✓ LineSearch
+   0.9 s  ✓ RecursiveArrayTools → RecursiveArrayToolsFastBroadcastPolyesterExt
+   7.1 s  ✓ NonlinearSolveBase
+  15.6 s  ✓ LinearSolve
+   1.2 s  ✓ NonlinearSolveBase → NonlinearSolveBaseSparseArraysExt
+   1.3 s  ✓ NonlinearSolveBase → NonlinearSolveBaseSparseMatrixColoringsExt
+   0.8 s  ✓ NonlinearSolveBase → NonlinearSolveBaseChainRulesCoreExt
+   0.8 s  ✓ NonlinearSolveBase → NonlinearSolveBaseLineSearchExt
+  31.1 s  ✓ TraitWorld
+   1.5 s  ✓ BracketingNonlinearSolve
+   1.4 s  ✓ LinearSolve → LinearSolveChainRulesCoreExt
+   1.5 s  ✓ LinearSolve → LinearSolveEnzymeExt
+   1.5 s  ✓ LinearSolve → LinearSolveArnoldiMethodExt
+   1.8 s  ✓ LinearSolve → LinearSolveForwardDiffExt
+   4.1 s  ✓ NonlinearSolveBase → NonlinearSolveBaseForwardDiffExt
+   2.1 s  ✓ LinearSolve → LinearSolveKernelAbstractionsExt
+   0.9 s  ✓ BracketingNonlinearSolve → BracketingNonlinearSolveForwardDiffExt
+   1.5 s  ✓ NonlinearSolveBase → NonlinearSolveBaseLinearSolveExt
+   0.8 s  ✓ BracketingNonlinearSolve → BracketingNonlinearSolveChainRulesCoreExt
+   3.0 s  ✓ DiffEqBase
+   4.9 s  ✓ SimpleNonlinearSolve
+   6.4 s  ✓ NonlinearSolveSpectralMethods
+   1.0 s  ✓ DiffEqBase → DiffEqBaseSparseArraysExt
+   0.9 s  ✓ DiffEqBase → DiffEqBaseUnitfulExt
+   0.8 s  ✓ DiffEqBase → DiffEqBaseChainRulesCoreExt
+   3.0 s  ✓ DiffEqBase → DiffEqBaseForwardDiffExt
+   2.8 s  ✓ DiffEqCallbacks
+   0.9 s  ✓ SimpleNonlinearSolve → SimpleNonlinearSolveChainRulesCoreExt
+   0.9 s  ✓ NonlinearSolveSpectralMethods → NonlinearSolveSpectralMethodsForwardDiffExt
+   3.3 s  ✓ OrdinaryDiffEqCore
+   1.1 s  ✓ OrdinaryDiffEqCore → OrdinaryDiffEqCoreSparseArraysExt
+   2.5 s  ✓ SteadyStateDiffEq
+   1.1 s  ✓ OrdinaryDiffEqCore → OrdinaryDiffEqCorePolyesterExt
+  15.1 s  ✓ NonlinearSolveQuasiNewton
+   2.4 s  ✓ OrdinaryDiffEqDifferentiation
+   1.6 s  ✓ NonlinearSolveQuasiNewton → NonlinearSolveQuasiNewtonForwardDiffExt
+   1.5 s  ✓ OrdinaryDiffEqDifferentiation → OrdinaryDiffEqDifferentiationSparseArraysExt
+   9.9 s  ✓ OrdinaryDiffEqTsit5
+  35.7 s  ✓ NonlinearSolveFirstOrder
+  29.6 s  ✓ OrdinaryDiffEqRosenbrock
+  41.0 s  ✓ NonlinearSolve
+  22.1 s  ✓ NetworkDynamics
+  74 dependencies successfully precompiled in 137 seconds. 430 already precompiled.
+precompile s=137.0
+strict TraitWorld.STRICT[]=true
+using s=6.5
+# rc=0 wall=163s

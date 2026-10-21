@@ -1,0 +1,52 @@
+[deps]
+Static = "aedffcd0-7271-4cad-89d0-dc628f76c6d3"
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+DiffEqBase = "2b5f629d-d688-5b77-993f-72d75c75574e"
+DiffEqCallbacks = "459566f4-90b8-5000-8ac3-15dfb0a30def"
+GraphMakie = "1ecd5474-83a3-4783-bb4f-06765db800d2"
+Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
+Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
+NetworkDynamics = "22e9dc34-2a0d-11e9-0de0-8588d035468b"
+NetworkLayout = "46757867-2c16-5918-afeb-47bfcb05e46a"
+Observables = "510215fc-4207-5dde-b226-833fc4488ee2"
+OrdinaryDiffEqCore = "bbf590c4-e513-4bbe-9b18-05decba2e5d8"
+OrdinaryDiffEqRosenbrock = "43230ef6-c299-4910-a778-202eb28ce4ce"
+OrdinaryDiffEqTsit5 = "b1df2697-797e-41e3-8120-5422d3b24e4a"
+RecursiveArrayTools = "731186ca-8d62-57ce-b412-fbd966d074cd"
+SciMLBase = "0bca4576-84f4-4d90-8ffe-ffa030f20462"
+SymbolicIndexingInterface = "2efcf032-c050-4f8e-a9bb-153293bab1f5"
+TraitWorld = "7a3c1e52-9b4d-4f6e-8a21-5d0c3b9e7f14"
+NonlinearSolve = "8913a72c-1f9b-4ce2-8d82-65094dcecaec"
+NonlinearSolveBase = "be0214bd-f91f-a760-ac4e-3421ce2b2da0"
+BracketingNonlinearSolve = "70df07ce-3d50-431d-a3e7-ca6ddb60ac1e"
+NonlinearSolveFirstOrder = "5959db7a-ea39-4486-b5fe-2dd0bf03d60d"
+NonlinearSolveQuasiNewton = "9a2c21bd-3a47-402d-9113-8faf9a0ee114"
+NonlinearSolveSpectralMethods = "26075421-4e9a-44e1-8bd1-420ed7ad02b2"
+SimpleNonlinearSolve = "727e6d20-b764-4bd8-a329-72de5adea6c7"
+SciMLJacobianOperators = "19f34311-ddf3-4b8b-af20-060888a46c0e"
+
+[sources]
+Static = {path = "../pkgs/Static.jl"}
+DiffEqBase = {path = "../pkgs/OrdinaryDiffEq-p6/lib/DiffEqBase"}
+DiffEqCallbacks = {path = "../pkgs/DiffEqCallbacks-p6"}
+GraphMakie = {path = "../pkgs/GraphMakie.jl"}
+Graphs = {path = "../pkgs/Graphs.jl"}
+Makie = {path = "../pkgs/Makie.jl/Makie"}
+NetworkDynamics = {path = "../pkgs/NetworkDynamics-p3wrap"}
+NetworkLayout = {path = "../pkgs/NetworkLayout.jl"}
+Observables = {path = "../pkgs/Observables.jl"}
+OrdinaryDiffEqCore = {path = "../pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore"}
+OrdinaryDiffEqTsit5 = {path = "../pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqTsit5"}
+RecursiveArrayTools = {path = "../pkgs/RecursiveArrayTools-p6"}
+SciMLBase = {path = "../pkgs/SciMLBase-p6"}
+SymbolicIndexingInterface = {path = "../pkgs/SymbolicIndexingInterface-p6"}
+TraitWorld = {path = "../../TraitWorld"}
+OrdinaryDiffEqRosenbrock = {path = "../pkgs/OrdinaryDiffEq-p6-ros/lib/OrdinaryDiffEqRosenbrock"}
+NonlinearSolve = {path = "../pkgs/NonlinearSolve-p6"}
+NonlinearSolveBase = {path = "../pkgs/NonlinearSolveBase-p6"}
+BracketingNonlinearSolve = {path = "../pkgs/BracketingNonlinearSolve-p6"}
+NonlinearSolveFirstOrder = {path = "../pkgs/NonlinearSolveFirstOrder-p6"}
+NonlinearSolveQuasiNewton = {path = "../pkgs/NonlinearSolveQuasiNewton-p6"}
+NonlinearSolveSpectralMethods = {path = "../pkgs/NonlinearSolveSpectralMethods-p6"}
+SimpleNonlinearSolve = {path = "../pkgs/SimpleNonlinearSolve-p6"}
+SciMLJacobianOperators = {path = "../pkgs/SciMLJacobianOperators-p6"}

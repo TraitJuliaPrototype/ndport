@@ -13,3 +13,17 @@ NetworkLayout	0.4.11	JuliaGraphs/NetworkLayout.jl	.	32e72bf8e4b1fa79fdcc237d89d0
 Graphs	1.15.0	JuliaGraphs/Graphs.jl	.	dffc7a640133850569647851b4533a56fc7d40c8	match
 Observables	0.5.5	JuliaGizmos/Observables.jl	.	4e78ca2f7c251cde6ceb900baec1e38a424cd9db	match
 Static	1.4.6	SciML/Static.jl	.	ab590a78d9a8f0f2a6db04bb9e0afe6f18bd390f	match (no release tag; found by tree hash)
+NonlinearSolve	4.32.0	depot:NonlinearSolve/VlJu1	.	465df85ef04ab895e9646ae24eea0b3e90dfdff4	match (from depot)
+NonlinearSolveBase	2.55.0	depot:NonlinearSolveBase/ldW9x	.	343a7d8a73bb562c0e4ef60a083dcca4e3411ce3	match (from depot)
+BracketingNonlinearSolve	1.12.8	depot:BracketingNonlinearSolve/NxScJ	.	560e00137a4000146f262cf85a81d56191d95aa3	match (from depot)
+NonlinearSolveFirstOrder	2.10.0	depot:NonlinearSolveFirstOrder/mqtiW	.	5dd75e2020f212b35cccedb14f722ef1d406ace3	match (from depot)
+NonlinearSolveQuasiNewton	1.15.3	depot:NonlinearSolveQuasiNewton/rzYZ4	.	4780f55fb8d6ce73a1200b97e0525b17fe334bb2	match (from depot)
+NonlinearSolveSpectralMethods	1.8.3	depot:NonlinearSolveSpectralMethods/VzvhW	.	1bbd07e1e52f113e1f5f4024fc0f9d9334989d92	match (from depot)
+SimpleNonlinearSolve	2.14.6	depot:SimpleNonlinearSolve/RXisk	.	32da67e7b386154295f867a3c3af8916c77cead8	match (from depot)
+SciMLJacobianOperators	0.1.20	depot:SciMLJacobianOperators/mwklL	.	72adf53f489de8dbd2e5acf977fca769ebc60d73	match (from depot)
+SymbolicIndexingInterface	0.3.55	worktree:pkgs/SymbolicIndexingInterface-p6 (P6, branch p6-inside-out)	.	13d7d07078b4863fe656da3b8b9b5fead9f804a4	match
+RecursiveArrayTools	4.5.5	worktree:pkgs/RecursiveArrayTools-p6 (P6, branch p6-inside-out)	.	185fa2c5de04cca2ba7d1b6d4446148295f20447	match
+SciMLBase	3.58.0	worktree:pkgs/SciMLBase-p6 (P6, branch p6-inside-out)	.	365283c66ec24db40c3fae1f2694693070dd7a46	match
+DiffEqCallbacks	4.19.5	worktree:pkgs/DiffEqCallbacks-p6 (P6, branch p6-inside-out)	.	14b58b54e7c135c3863fc8c0e15cb1f2e392684d	match
+DiffEqBase,OrdinaryDiffEqCore,OrdinaryDiffEqTsit5	7.21.4,4.19.0,2.1.5	worktree:pkgs/OrdinaryDiffEq-p6 (P6, branch p6-inside-out)	lib/*	53e7d1d33377331ef8e9ddf2cb18a4873dd0fbc6	match
+OrdinaryDiffEqRosenbrock	2.7.5	worktree:pkgs/OrdinaryDiffEq-p6-ros (P6, branch p6-inside-out-ros, tag upstream-ros)	lib/OrdinaryDiffEqRosenbrock	14f664a10818f7f41dd346b5a3207f27da888627	match
