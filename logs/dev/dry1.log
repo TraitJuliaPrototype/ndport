@@ -1,0 +1,73 @@
+L Graphs,NetworkDynamics 2.65
+L solvers 0.13
+L CairoMakie,GraphMakie,Observables 2.79
+L steps 0.24
+D first a vdim=2 vpdim=3 edim=0 epdim=2
+T first a 971.2 compile 969.0 recompile 0.0 gc 91.6
+D first b nv=20 ne=40 edges=6499ccea4d513864 dim=40 pdim=140
+T first b 1719.9 compile 1718.3 recompile 217.9 gc 315.0
+D first c u=b20802e716eceacb p=7c8f234a0a2c253a δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874
+T first c 8418.4 compile 8401.8 recompile 0.0 gc 389.4
+D first d retcode=Success rretcode=Success trips=5 rtrips=5 ttrips=1 ω2=-1.947637855e-15,2.514520715e-15,-0.01879200383,0.003770461996,-0.001135169527,-0.003664305959,-0.0005874505691 ω2r=-0.01879200667,0.003770466626,0.004093265284,-0.001135165401,0.006438132086,-0.004447412424,-0.002246167529 nsteps=100 rnsteps=87
+T first d 12676.4 compile 12626.4 recompile 599.4 gc 350.2
+D first e ωsum=1.068288979e-15,-1.570346188e-15,-1.61676228e-15,-1.507474701e-15,-1.540434447e-15,-1.285267465e-15,-5.950101523e-16 P5=-0.08731332681,-0,-0,-0,-0,-0,-0 P3=0.7116789575,-0.1509251782,-0.06787583116,0.4896308007,-0,-0.05569570393 Kend=6,6,6,6,0,6 Pend=0.7307536372,-0.173055749,-0.06157049792,0.4949050661,-0,-0.06594578335
+T first e 3819.6 compile 3817.2 recompile 0.0 gc 331.4
+D first f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=0.004323872108,-0.0005874505691,-0.002580954748,-0.002234118986,-0.007643868117 png=true
+T first f 17005.9 compile 16856.8 recompile 4684.7 gc 866.8
+D first g t=6 ωend=0.003356518963,-0.00224616492,0.003559826284,-0.0005815381035,0.008921226584 line=11 sel3=0.003559826175 listeners=10 frames=4
+T first g 2834.0 compile 2668.7 recompile 80.1 gc 109.4
+D again a vdim=2 vpdim=3 edim=0 epdim=2
+T again a 0.2 compile 0.0 recompile 0.0 gc 0.0
+D again b nv=20 ne=40 edges=6499ccea4d513864 dim=40 pdim=140
+T again b 0.3 compile 0.0 recompile 0.0 gc 0.0
+D again c u=b20802e716eceacb p=7c8f234a0a2c253a δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874
+T again c 3.2 compile 0.0 recompile 0.0 gc 0.0
+D again d retcode=Success rretcode=Success trips=5 rtrips=5 ttrips=1 ω2=-1.947637855e-15,2.514520715e-15,-0.01879200383,0.003770461996,-0.001135169527,-0.003664305959,-0.0005874505691 ω2r=-0.01879200667,0.003770466626,0.004093265284,-0.001135165401,0.006438132086,-0.004447412424,-0.002246167529 nsteps=100 rnsteps=87
+T again d 12.0 compile 0.0 recompile 0.0 gc 0.0
+D again e ωsum=1.068288979e-15,-1.570346188e-15,-1.61676228e-15,-1.507474701e-15,-1.540434447e-15,-1.285267465e-15,-5.950101523e-16 P5=-0.08731332681,-0,-0,-0,-0,-0,-0 P3=0.7116789575,-0.1509251782,-0.06787583116,0.4896308007,-0,-0.05569570393 Kend=6,6,6,6,0,6 Pend=0.7307536372,-0.173055749,-0.06157049792,0.4949050661,-0,-0.06594578335
+T again e 0.3 compile 0.0 recompile 0.0 gc 0.0
+D again f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=0.004323872108,-0.0005874505691,-0.002580954748,-0.002234118986,-0.007643868117 png=true
+T again f 69.2 compile 0.0 recompile 0.0 gc 29.2
+D again g t=6 ωend=0.003356518963,-0.00224616492,0.003559826284,-0.0005815381035,0.008921226584 line=11 sel3=0.003559826175 listeners=10 frames=4
+T again g 174.2 compile 0.0 recompile 0.0 gc 28.1
+D params a vdim=2 vpdim=3 edim=0 epdim=2
+T params a 0.2 compile 0.0 recompile 0.0 gc 0.0
+D params b nv=20 ne=40 edges=6499ccea4d513864 dim=40 pdim=140
+T params b 0.3 compile 0.0 recompile 0.0 gc 0.0
+D params c u=b20802e716eceacb p=1e77f32d9eb960a1 δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874
+T params c 2.5 compile 0.0 recompile 0.0 gc 0.0
+D params d retcode=Success rretcode=Success trips=5 rtrips=5 ttrips=1 ω2=-1.80223189e-15,2.195080736e-15,-0.01833625176,0.003571329024,-0.001026025636,-0.003051486153,-0.0005066824032 ω2r=-0.01833625495,0.003571333543,0.003794446561,-0.001026021374,0.005558275636,-0.003569356241,-0.001613820782 nsteps=98 rnsteps=86
+T params d 11.5 compile 0.0 recompile 0.0 gc 0.0
+D params e ωsum=1.208665463e-16,6.976681491e-17,2.281161371e-16,2.012279232e-16,-1.478851763e-16,-8.600975834e-16,-6.045511314e-16 P5=-0.08731332681,-0,-0,-0,-0,-0,-0 P3=0.7126771918,-0.1514628807,-0.06724496074,0.4900816018,-0,-0.05498919152 Kend=6,6,6,6,0,6 Pend=0.7291596061,-0.1690473858,-0.06203489123,0.4947109713,-0,-0.06144967072
+T params e 0.4 compile 0.0 recompile 0.0 gc 0.0
+D params f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=0.003335886305,-0.0005066824032,-0.001997537215,-0.001712435644,-0.005935864362 png=true
+T params f 39.2 compile 0.0 recompile 0.0 gc 0.0
+D params g t=6 ωend=0.002514766598,-0.001613818576,0.002636880047,-0.0004697858141,0.006606568909 line=11 sel3=0.002636880148 listeners=10 frames=4
+T params g 169.5 compile 0.0 recompile 0.0 gc 26.5
+D changed a vdim=2 vpdim=4 edim=0 epdim=2
+T changed a 55.3 compile 54.9 recompile 0.0 gc 0.0
+D changed b nv=20 ne=40 edges=6499ccea4d513864 dim=40 pdim=160
+T changed b 62.0 compile 61.4 recompile 0.0 gc 0.0
+D changed c u=b20802e716eceacb p=fb4ee25a870d6187 δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874
+T changed c 5512.0 compile 5502.5 recompile 0.0 gc 82.4
+D changed d retcode=Success rretcode=Success trips=5 rtrips=5 ttrips=1 ω2=-1.947637855e-15,2.514520715e-15,-0.01879112706,0.003769817178,-0.001134921118,-0.003663637637,-0.0005871275916 ω2r=-0.01879112989,0.003769821809,0.004093072781,-0.001134916993,0.006437533661,-0.004447119843,-0.002245604799 nsteps=100 rnsteps=87
+T changed d 9731.4 compile 9694.1 recompile 0.0 gc 493.7
+D changed e ωsum=1.068288979e-15,-1.570346188e-15,4.290190365e-09,3.704094018e-07,5.919954212e-07,3.590933617e-07,3.056715172e-07 P5=-0.08731332681,-0,-0,-0,-0,-0,-0 P3=0.7116795235,-0.1509257537,-0.06787518944,0.4896311385,-0,-0.05569535999 Kend=6,6,6,6,0,6 Pend=0.7307525727,-0.1730537691,-0.06157073497,0.4949050599,-0,-0.0659437967
+T changed e 2750.7 compile 2749.2 recompile 0.0 gc 60.5
+D changed f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=0.004323279294,-0.0005871275916,-0.00258059046,-0.002233968585,-0.007642522377 png=true
+T changed f 541.1 compile 500.8 recompile 0.0 gc 0.0
+D changed g t=6 ωend=0.003356240897,-0.002245602184,0.003559258825,-0.0005813391561,0.008919961481 line=11 sel3=0.003559258766 listeners=10 frames=4
+T changed g 416.7 compile 231.4 recompile 0.0 gc 41.0
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/.julia/packages/OrdinaryDiffEqCore/rukHj/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/.julia/packages/OrdinaryDiffEqCore/rukHj/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/.julia/packages/OrdinaryDiffEqCore/rukHj/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/.julia/packages/OrdinaryDiffEqCore/rukHj/src/initdt.jl:23
+W total 73.1
