@@ -115,7 +115,7 @@ pushback entries, lessons for the guideline (B5). Not normative.
 - One vertex pass through `process_batches!` (one batch of 20): 16 allocations, about 1.0 µs.
 - **The crossing costs about 13 allocations and 0.7–0.8 µs when the caller is facts code** (ND's
   `_process_kept!`), **and 2 allocations and 0.28 µs when the same call is made from plain code** (`Main`):
-  measured by defining the same three-line caller in `Main` and, by `Core.eval`, in ND (`$TMPDIR` script, its
+  measured by defining the same three-line caller in `Main` and, by `Core.eval`, in ND (`scripts/p4_barrier_facts.jl`, `barrier-facts-s6.log`; first
   numbers: facts `compiled_for` 115 ns/2 allocs; facts call with `m::Any` 771 ns/12; facts `compiled_for`+call
   798 ns/13; the same with `::Kept{ComponentDynamics}` asserted 722 ns/13; plain `compiled_for`+call 276 ns/2).
 - `fully_typed(run_vertex_batch!, (Kept{ComponentDynamics}, …))`: 27 run-time sites, all in the machinery

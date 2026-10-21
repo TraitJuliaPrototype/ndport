@@ -1,0 +1,6 @@
+facts cf             ns=173 allocs=2
+plain cf             ns=143 allocs=4
+facts call m::Any    ns=771 allocs=12
+facts cf+call        ns=824 allocs=13
+facts cf::Kept+call  ns=756 allocs=13
+Any[Any]
