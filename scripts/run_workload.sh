@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run the workload in fresh sessions (the P1 plan §3): one Julia job at a time through the shared
 # lock, niced, offline, never precompiling. Logs to logs/<tag>/<setting>-<run>.log.
-#     scripts/run_workload.sh <tag> <setting: U|P0|A0|S> [runs=1]
+#     scripts/run_workload.sh <tag> <setting: U|P0|A0|S|N> [runs=1]
 # NDW_DIAG=1 adds the attribution run's instrument (diagnostic, not timed).
 set -uo pipefail
 cd "$(dirname "$0")/.."
@@ -12,6 +12,7 @@ case $setting in
   U)  ;;
   P0) ENVD=env_port; TW=1 ;;
   A0) ENVD=env_port; TW=1; JF=(-J "$R/julia-1.13/usr/lib/julia/facts/sys.so"); DEPOT="$ND/depot-facts:$HOME/.julia:" ;;
+  N)  ENVD=env_p3; TW=1; DEPOT="$ND/depot-p3:$HOME/.julia:" ;;   # P3: NetworkDynamics wrapped (pkgs/NetworkDynamics-p3wrap)
   S)  J=$HOME/.julia/juliaup/julia-1.13.2+0.x64.linux.gnu/bin/julia; DEPOT="$ND/depot-stock:$HOME/.julia:" ;;
   *) echo "unknown setting $setting"; exit 2 ;;
 esac

@@ -1,0 +1,23 @@
+┌ Warning: could not download https://pkg.julialang.org/registries
+│   exception = RequestError: HTTP/1.1 403 Forbidden (CONNECT tunnel failed, response 403) while requesting https://pkg.julialang.org/registries
+└ @ Pkg.Registry ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/Registry/Registry.jl:121
+     Project No packages added to or removed from `~/Repos/julia-trait-bound/ndport/env_p3/Project.toml`
+    Manifest No packages added to or removed from `~/Repos/julia-trait-bound/ndport/env_p3/Manifest.toml`
+Precompiling packages...
+  18.2 s  ✓ NetworkDynamics
+  1 dependency successfully precompiled in 19 seconds. 503 already precompiled.
+ERROR: UndefVarError: `get_compiler_options` not defined in `Base.Experimental`
+Suggestion: check for spelling errors or missing imports.
+Stacktrace:
+ [1] getproperty(x::Module, f::Symbol)
+   @ Base ./Base_compiler.jl:50
+ [2] top-level scope
+   @ none:1
+ [3] eval(m::Module, e::Any)
+   @ Core ./boot.jl:489
+ [4] exec_options(opts::Base.JLOptions)
+   @ Base ./client.jl:310
+ [5] _start()
+   @ Base ./client.jl:577
+precompile s=19.0
+using s=2.8

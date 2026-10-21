@@ -1,0 +1,170 @@
+
+-- dynamic calls by callee method (owner :facts: site/leaf/assoc/full | default owner: site/leaf/assoc/full)
+     1656000  Base.getproperty  Base_compiler.jl:51   :facts 0/0/1656000/0 | default 0/0/0/0
+      432000  Base.supertype  operators.jl:86   :facts 0/0/432000/0 | default 0/0/0/0
+      288002  Base.getproperty  Base_compiler.jl:57   :facts 288000/0/0/0 | default 2/0/0/0
+      144000  Base.convert  number.jl:6   :facts 0/144000/0/0 | default 0/0/0/0
+      144000  Base.inferencebarrier  essentials.jl:1103   :facts 144000/0/0/0 | default 0/0/0/0
+       72002  Base.==  promotion.jl:641   :facts 72000/0/0/0 | default 2/0/0/0
+       72000  Base.indexed_iterate  tuple.jl:163   :facts 72000/0/0/0 | default 0/0/0/0
+       72000  Base.not_sametype  promotion.jl:424   :facts 72000/0/0/0 | default 0/0/0/0
+       72000  Base.length  essentials.jl:991   :facts 72000/0/0/0 | default 0/0/0/0
+       72000  Static.known  /home/hellmann/.julia/packages/Static/WX7YF/src/Static.jl:339   :facts 72000/0/0/0 | default 0/0/0/0
+       72000  Static.convert  /home/hellmann/.julia/packages/Static/WX7YF/src/Static.jl:636   :facts 0/0/72000/0 | default 0/0/0/0
+       72000  Base.indexed_iterate  tuple.jl:163   :facts 72000/0/0/0 | default 0/0/0/0
+       56000  Base.+  int.jl:87   :facts 56000/0/0/0 | default 0/0/0/0
+       32001  Base.Colon  range.jl:5   :facts 32000/0/0/0 | default 1/0/0/0
+       32000  Base.+  promotion.jl:433   :facts 32000/0/0/0 | default 0/0/0/0
+       32000  Base.*  int.jl:88   :facts 32000/0/0/0 | default 0/0/0/0
+       32000  Base.-  int.jl:86   :facts 32000/0/0/0 | default 0/0/0/0
+       24000  Base.view  subarray.jl:213   :facts 24000/0/0/0 | default 0/0/0/0
+       16000  Base.+  operators.jl:653   :facts 16000/0/0/0 | default 0/0/0/0
+        8000  Base.maybeview  views.jl:236   :facts 8000/0/0/0 | default 0/0/0/0
+        4000  NetworkDynamics.apply_compg  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:218   :facts 4000/0/0/0 | default 0/0/0/0
+        2000  NetworkDynamics.apply_compf  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:213   :facts 2000/0/0/0 | default 0/0/0/0
+        2000  NetworkDynamics.apply_compg  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:230   :facts 2000/0/0/0 | default 0/0/0/0
+         107  Compiler.maybe_erase_unused!  ../usr/share/julia/Compiler/src/ssair/ir.jl:1985   :facts 0/0/0/0 | default 107/0/0/0
+         100  NetworkDynamics.Network  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:1   :facts 0/0/0/0 | default 99/1/0/0
+          90  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:707   :facts 0/0/0/0 | default 0/0/90/0
+          47  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:703   :facts 0/0/0/0 | default 47/0/0/0
+          25  Base.length  essentials.jl:11   :facts 0/0/0/0 | default 25/0/0/0
+          19  Compiler.doworkloop  ../usr/share/julia/Compiler/src/inferencestate.jl:1216   :facts 0/0/0/0 | default 19/0/0/0
+          14  Base.in  operators.jl:1371   :facts 0/0/0/0 | default 14/0/0/0
+          10  Compiler.#78  ../usr/share/julia/Compiler/src/inferencestate.jl:1199   :facts 0/0/0/0 | default 10/0/0/0
+           7  Compiler.typeinf_local  ../usr/share/julia/Compiler/src/abstractinterpretation.jl:4252   :facts 0/0/0/0 | default 7/0/0/0
+           7  Core.apply_type  :0   :facts 0/0/0/0 | default 0/0/7/0
+           5  Compiler.getfield_tfunc  ../usr/share/julia/Compiler/src/tfuncs.jl:1104   :facts 0/0/0/0 | default 4/0/1/0
+           4  Compiler._typename  ../usr/share/julia/Compiler/src/typeutils.jl:184   :facts 0/0/0/0 | default 0/0/4/0
+           3  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:701   :facts 0/0/0/0 | default 3/0/0/0
+           3  Core._call_in_world_total  :0   :facts 0/0/0/0 | default 0/0/3/0
+           3  Base.==  operators.jl:295   :facts 0/0/0/0 | default 0/0/3/0
+           3  Core.typename  boot.jl:1130   :facts 0/0/0/0 | default 0/0/3/0
+           2  Compiler.optimize  ../usr/share/julia/Compiler/src/optimize.jl:1038   :facts 0/0/0/0 | default 2/0/0/0
+
+-- dynamic calls by call site (the calling code, innermost frame first; the callee)
+      432000  supertype at ./operators.jl:86  ->  Base.getproperty
+      288000  typejoin at ./promotion.jl:102  ->  Base.getproperty
+      288000  typejoin at ./promotion.jl:102  ->  Base.getproperty
+      288000  typejoin at ./promotion.jl:103  ->  Base.supertype
+      216000  typejoin at ./promotion.jl:101  ->  Base.getproperty
+      216000  typejoin at ./promotion.jl:101  ->  Base.getproperty
+      144000  typejoin at ./promotion.jl:138  ->  Base.supertype
+       72000  typejoin at ./promotion.jl:114  ->  Base.getproperty
+       72000  typejoin at ./promotion.jl:51  ->  Base.inferencebarrier
+       72000  typejoin at ./promotion.jl:117  ->  Base.==
+       72000  typejoin at ./promotion.jl:102  ->  Base.getproperty
+       72000  typejoin at ./promotion.jl:102  ->  Base.getproperty
+       72000  typejoin at ./promotion.jl:116  ->  Base.getproperty
+       72000  typejoin at ./promotion.jl:116  ->  Base.length
+       72000  typejoin at ./promotion.jl:105  ->  Base.getproperty
+       72000  convert at /home/hellmann/.julia/packages/Static/WX7YF/src/Static.jl:637  ->  Static.known
+       72000  typejoin at ./promotion.jl:114  ->  Base.getproperty
+       72000  convert at /home/hellmann/.julia/packages/Static/WX7YF/src/Static.jl:637  ->  Base.convert
+       72000  typejoin at ./promotion.jl:105  ->  Base.getproperty
+       72000  typejoin at ./promotion.jl:51  ->  Base.inferencebarrier
+       28000  + at ./promotion.jl:433 (in promote at ./promotion.jl:405)  ->  Base.not_sametype
+       28000  + at ./promotion.jl:433  ->  Base.+
+       28000  + at ./promotion.jl:433 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+       28000  + at ./promotion.jl:433 (in _promote at ./promotion.jl:379)  ->  Static.convert
+       28000  + at ./promotion.jl:433 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+       28000  + at ./promotion.jl:433 (in _promote at ./promotion.jl:379)  ->  Base.convert
+       26000  * at ./promotion.jl:434 (in promote at ./promotion.jl:405)  ->  Base.not_sametype
+       26000  * at ./promotion.jl:434 (in _promote at ./promotion.jl:379)  ->  Static.convert
+       26000  * at ./promotion.jl:434 (in _promote at ./promotion.jl:379)  ->  Base.convert
+       26000  * at ./promotion.jl:434  ->  Base.*
+       26000  * at ./promotion.jl:434 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+       26000  * at ./promotion.jl:434 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+       10000  + at ./promotion.jl:433 (in promote at ./promotion.jl:405)  ->  Base.not_sametype
+       10000  + at ./promotion.jl:433 (in _promote at ./promotion.jl:379)  ->  Static.convert
+       10000  + at ./promotion.jl:433  ->  Base.+
+       10000  + at ./promotion.jl:433 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+       10000  + at ./promotion.jl:433 (in _promote at ./promotion.jl:379)  ->  Base.convert
+       10000  + at ./promotion.jl:433 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+        4000  #process_batches!##0 at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:116 (in apply_comp! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:208)  ->  NetworkDynamics.apply_compg
+        4000  #process_batches!##0 at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:116 (in _range at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/utils.jl:27)  ->  Base.+
+rhs: 3.0013103e6 µs per call; allocs 140480
+solve: 0.080714737 s
+
+-- dynamic calls by callee method (owner :facts: site/leaf/assoc/full | default owner: site/leaf/assoc/full)
+     1656000  Base.getproperty  Base_compiler.jl:51   :facts 0/0/1656000/0 | default 0/0/0/0
+      432000  Base.supertype  operators.jl:86   :facts 0/0/432000/0 | default 0/0/0/0
+      288032  Base.getproperty  Base_compiler.jl:57   :facts 288000/0/0/0 | default 32/0/0/0
+      144000  Base.convert  number.jl:6   :facts 0/144000/0/0 | default 0/0/0/0
+      144000  Base.inferencebarrier  essentials.jl:1103   :facts 144000/0/0/0 | default 0/0/0/0
+       72006  Base.==  promotion.jl:641   :facts 72000/0/0/0 | default 6/0/0/0
+       72000  Base.indexed_iterate  tuple.jl:163   :facts 72000/0/0/0 | default 0/0/0/0
+       72000  Base.not_sametype  promotion.jl:424   :facts 72000/0/0/0 | default 0/0/0/0
+       72000  Base.length  essentials.jl:991   :facts 72000/0/0/0 | default 0/0/0/0
+       72000  Static.known  /home/hellmann/.julia/packages/Static/WX7YF/src/Static.jl:339   :facts 72000/0/0/0 | default 0/0/0/0
+       72000  Static.convert  /home/hellmann/.julia/packages/Static/WX7YF/src/Static.jl:636   :facts 0/0/72000/0 | default 0/0/0/0
+       72000  Base.indexed_iterate  tuple.jl:163   :facts 72000/0/0/0 | default 0/0/0/0
+       56000  Base.+  int.jl:87   :facts 56000/0/0/0 | default 0/0/0/0
+       32001  Base.Colon  range.jl:5   :facts 32000/0/0/0 | default 1/0/0/0
+       32000  Base.+  promotion.jl:433   :facts 32000/0/0/0 | default 0/0/0/0
+       32000  Base.*  int.jl:88   :facts 32000/0/0/0 | default 0/0/0/0
+       32000  Base.-  int.jl:86   :facts 32000/0/0/0 | default 0/0/0/0
+       24000  Base.view  subarray.jl:213   :facts 24000/0/0/0 | default 0/0/0/0
+       16000  Base.+  operators.jl:653   :facts 16000/0/0/0 | default 0/0/0/0
+        8000  Base.maybeview  views.jl:236   :facts 8000/0/0/0 | default 0/0/0/0
+        4000  NetworkDynamics.apply_compg  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:218   :facts 4000/0/0/0 | default 0/0/0/0
+        2000  NetworkDynamics.apply_compf  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:213   :facts 2000/0/0/0 | default 0/0/0/0
+        2000  NetworkDynamics.apply_compg  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:230   :facts 2000/0/0/0 | default 0/0/0/0
+        1292  Compiler.maybe_erase_unused!  ../usr/share/julia/Compiler/src/ssair/ir.jl:1985   :facts 0/0/0/0 | default 1292/0/0/0
+        1087  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:707   :facts 0/0/0/0 | default 0/0/1087/0
+         435  Base.trypoptask  task.jl:1253   :facts 0/0/0/0 | default 432/2/0/1
+         433  Partr.multiq_check_empty  partr.jl:249   :facts 0/0/0/0 | default 431/1/0/1
+         341  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:703   :facts 0/0/0/0 | default 340/0/1/0
+         267  Base.length  essentials.jl:11   :facts 0/0/0/0 | default 267/0/0/0
+         247  Compiler.doworkloop  ../usr/share/julia/Compiler/src/inferencestate.jl:1216   :facts 0/0/0/0 | default 247/0/0/0
+         144  Core.apply_type  :0   :facts 0/0/0/0 | default 0/0/144/0
+         128  Compiler.#78  ../usr/share/julia/Compiler/src/inferencestate.jl:1199   :facts 0/0/0/0 | default 114/14/0/0
+         100  NetworkDynamics.Network  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:1   :facts 0/0/0/0 | default 99/1/0/0
+          81  Compiler.typeinf_local  ../usr/share/julia/Compiler/src/abstractinterpretation.jl:4252   :facts 0/0/0/0 | default 81/0/0/0
+          75  Core.typename  boot.jl:1130   :facts 0/0/0/0 | default 0/0/75/0
+          75  Base.in  operators.jl:1371   :facts 0/0/0/0 | default 58/0/17/0
+          51  Base.<=  bool.jl:162   :facts 0/0/0/0 | default 51/0/0/0
+          46  Base.getindex  array.jl:451   :facts 0/0/0/0 | default 0/0/46/0
+          39  Compiler.getresult_impl  ../usr/share/julia/Compiler/src/stmtinfo.jl:149   :facts 0/0/0/0 | default 39/0/0/0
+          37  Compiler.nsplit_impl  ../usr/share/julia/Compiler/src/stmtinfo.jl:147   :facts 0/0/0/0 | default 37/0/0/0
+
+-- dynamic calls by call site (the calling code, innermost frame first; the callee)
+      432000  supertype at ./operators.jl:86  ->  Base.getproperty
+      288000  typejoin at ./promotion.jl:102  ->  Base.getproperty
+      288000  typejoin at ./promotion.jl:102  ->  Base.getproperty
+      288000  typejoin at ./promotion.jl:103  ->  Base.supertype
+      216000  typejoin at ./promotion.jl:101  ->  Base.getproperty
+      216000  typejoin at ./promotion.jl:101  ->  Base.getproperty
+      144000  typejoin at ./promotion.jl:138  ->  Base.supertype
+       72000  typejoin at ./promotion.jl:114  ->  Base.getproperty
+       72000  typejoin at ./promotion.jl:51  ->  Base.inferencebarrier
+       72000  typejoin at ./promotion.jl:117  ->  Base.==
+       72000  typejoin at ./promotion.jl:102  ->  Base.getproperty
+       72000  typejoin at ./promotion.jl:102  ->  Base.getproperty
+       72000  typejoin at ./promotion.jl:116  ->  Base.getproperty
+       72000  typejoin at ./promotion.jl:116  ->  Base.length
+       72000  typejoin at ./promotion.jl:105  ->  Base.getproperty
+       72000  convert at /home/hellmann/.julia/packages/Static/WX7YF/src/Static.jl:637  ->  Static.known
+       72000  typejoin at ./promotion.jl:114  ->  Base.getproperty
+       72000  convert at /home/hellmann/.julia/packages/Static/WX7YF/src/Static.jl:637  ->  Base.convert
+       72000  typejoin at ./promotion.jl:105  ->  Base.getproperty
+       72000  typejoin at ./promotion.jl:51  ->  Base.inferencebarrier
+       28000  + at ./promotion.jl:433 (in promote at ./promotion.jl:405)  ->  Base.not_sametype
+       28000  + at ./promotion.jl:433  ->  Base.+
+       28000  + at ./promotion.jl:433 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+       28000  + at ./promotion.jl:433 (in _promote at ./promotion.jl:379)  ->  Static.convert
+       28000  + at ./promotion.jl:433 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+       28000  + at ./promotion.jl:433 (in _promote at ./promotion.jl:379)  ->  Base.convert
+       26000  * at ./promotion.jl:434 (in promote at ./promotion.jl:405)  ->  Base.not_sametype
+       26000  * at ./promotion.jl:434 (in _promote at ./promotion.jl:379)  ->  Static.convert
+       26000  * at ./promotion.jl:434 (in _promote at ./promotion.jl:379)  ->  Base.convert
+       26000  * at ./promotion.jl:434  ->  Base.*
+       26000  * at ./promotion.jl:434 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+       26000  * at ./promotion.jl:434 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+       10000  + at ./promotion.jl:433 (in promote at ./promotion.jl:405)  ->  Base.not_sametype
+       10000  + at ./promotion.jl:433 (in _promote at ./promotion.jl:379)  ->  Static.convert
+       10000  + at ./promotion.jl:433  ->  Base.+
+       10000  + at ./promotion.jl:433 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+       10000  + at ./promotion.jl:433 (in _promote at ./promotion.jl:379)  ->  Base.convert
+       10000  + at ./promotion.jl:433 (in promote at ./promotion.jl:404)  ->  Base.indexed_iterate
+        4000  #process_batches!##0 at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:116 (in apply_comp! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:208)  ->  NetworkDynamics.apply_compg
+        4000  #process_batches!##0 at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/coreloop.jl:116 (in _range at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p3wrap/src/utils.jl:27)  ->  Base.+

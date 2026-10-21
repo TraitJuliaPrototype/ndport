@@ -12,3 +12,4 @@ Makie	0.24.16	MakieOrg/Makie.jl	Makie	47479e0a9eabcb0c54f7cdeafb6af021deeaeb8e	m
 NetworkLayout	0.4.11	JuliaGraphs/NetworkLayout.jl	.	32e72bf8e4b1fa79fdcc237d89d02acf7961f967	match
 Graphs	1.15.0	JuliaGraphs/Graphs.jl	.	dffc7a640133850569647851b4533a56fc7d40c8	match
 Observables	0.5.5	JuliaGizmos/Observables.jl	.	4e78ca2f7c251cde6ceb900baec1e38a424cd9db	match
+Static	1.4.6	SciML/Static.jl	.	ab590a78d9a8f0f2a6db04bb9e0afe6f18bd390f	match (no release tag; found by tree hash)

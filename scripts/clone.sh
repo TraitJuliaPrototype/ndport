@@ -2,6 +2,7 @@
 # Clone the packages to port at the versions env_upstream resolved, each its own git repository
 # under pkgs/, on a branch `trait-port` from the release; the release is tagged `upstream`.
 # Usage: scripts/clone.sh   (needs github.com). Writes VERSIONS.tsv.
+# Static.jl 1.4.6 (added for P3) has no release tag: cloned by hand at ab590a78, found by its tree hash.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 M=env_upstream/Manifest.toml

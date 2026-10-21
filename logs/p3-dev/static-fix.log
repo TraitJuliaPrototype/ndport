@@ -1,0 +1,145 @@
+Precompiling packages...
+   6.8 s  ✓ Static
+   0.4 s  ✓ BitTwiddlingConvenienceFunctions
+   0.4 s  ✓ FastBroadcast → FastBroadcastStaticExt
+   0.9 s  ✓ CPUSummary
+   0.5 s  ✓ PolyesterWeave
+   1.6 s  ✓ StaticArrayInterface
+   0.4 s  ✓ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+   0.4 s  ✓ CloseOpenIntervals
+   0.5 s  ✓ LayoutPointers
+   0.5 s  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+   0.7 s  ✓ StrideArraysCore
+   0.5 s  ✓ Polyester
+   0.5 s  ✓ FastBroadcast → FastBroadcastPolyesterExt
+   0.9 s  ✓ OrdinaryDiffEqCore → OrdinaryDiffEqCorePolyesterExt
+   0.7 s  ✓ RecursiveArrayTools → RecursiveArrayToolsFastBroadcastPolyesterExt
+   3.3 s  ✓ LHLFactorization → LHLFactorizationPolyesterExt
+  18.8 s  ✓ NetworkDynamics
+  17 dependencies successfully precompiled in 33 seconds. 487 already precompiled.
+[ Info: Testing sin(0.5)
+[ Info: Testing cos(0.5)
+[ Info: Testing tan(0.5)
+[ Info: Testing asin(0.5)
+[ Info: Testing atan(0.5)
+[ Info: Testing acos(0.5)
+[ Info: Testing sinh(0.5)
+[ Info: Testing cosh(0.5)
+[ Info: Testing tanh(0.5)
+[ Info: Testing asinh(0.5)
+[ Info: Testing atanh(0.5)
+[ Info: Testing exp(0.5)
+[ Info: Testing exp2(0.5)
+[ Info: Testing exp10(0.5)
+[ Info: Testing expm1(0.5)
+[ Info: Testing log(0.5)
+[ Info: Testing log2(0.5)
+[ Info: Testing log10(0.5)
+[ Info: Testing log1p(0.5)
+[ Info: Testing exponent(0.5)
+[ Info: Testing sqrt(0.5)
+[ Info: Testing cbrt(0.5)
+[ Info: Testing sec(0.5)
+[ Info: Testing csc(0.5)
+[ Info: Testing cot(0.5)
+[ Info: Testing sech(0.5)
+[ Info: Testing secd(0.5)
+[ Info: Testing csch(0.5)
+[ Info: Testing cscd(0.5)
+[ Info: Testing cotd(0.5)
+[ Info: Testing cosd(0.5)
+[ Info: Testing tand(0.5)
+[ Info: Testing asind(0.5)
+[ Info: Testing acosd(0.5)
+[ Info: Testing atand(0.5)
+[ Info: Testing acotd(0.5)
+[ Info: Testing sech(0.5)
+[ Info: Testing coth(0.5)
+[ Info: Testing asech(0.5)
+[ Info: Testing acsch(0.5)
+[ Info: Testing deg2rad(0.5)
+[ Info: Testing mod2pi(0.5)
+[ Info: Testing sinpi(0.5)
+[ Info: Testing cospi(0.5)
+[ Info: Testing acosh(1.5)
+ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Static.jl/test/core_tests.jl:573
+precompile s=32.9
+Test Summary: | Pass  Total  Time
+StaticSymbol  |   10     10  0.3s
+Test Summary: | Pass  Total  Time
+StaticInt     |  387    387  0.9s
+Test Summary: | Pass  Total  Time
+StaticBool    |   95     95  0.1s
+Test Summary: | Pass  Total  Time
+operators     |   28     28  0.0s
+Test Summary:    | Pass  Total  Time
+static interface |   26     26  0.1s
+Test Summary: | Pass  Total  Time
+promote_shape |    9      9  0.0s
+Test Summary:   | Pass  Total  Time
+tuple utilities |   31     31  0.7s
+Test Summary: | Pass  Total  Time
+invperm       |    1      1  0.1s
+Test Summary: | Pass  Total  Time
+NDIndex       |   29     29  0.3s
+Test Summary: | Pass  Total  Time
+StaticFloat64 | 1864   1864  1.7s
+Test Summary:     | Pass  Total  Time
+string/print/show |    8      8  0.2s
+Test Summary:      | Pass  Total  Time
+Range Constructors |   39     39  0.2s
+Test Summary:    | Pass  Total  Time
+range properties |    4      4  0.0s
+Test Summary: | Pass  Total  Time
+iterate       |    8      8  0.0s
+Test Summary: | Pass  Total  Time
+length        |   12     12  0.0s
+Test Summary:                                    | Pass  Total  Time
+static_promote(::AbstractRange, ::AbstractRange) |    3      3  0.0s
+Test Summary: | Pass  Total  Time
+n-last/first  |    4      4  0.0s
+
+Allocation Tests: Error During Test at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Static.jl/test/core_tests.jl:573
+  Got exception outside of a @test
+  LoadError: ArgumentError: Package AllocCheck not found in current path.
+  - Run `import Pkg; Pkg.add("AllocCheck")` to install the AllocCheck package.
+  Stacktrace:
+    [1] macro expansion
+      @ ./loading.jl:2531 [inlined]
+    [2] macro expansion
+      @ ./lock.jl:376 [inlined]
+    [3] __require(into::Module, mod::Symbol)
+      @ Base ./loading.jl:2514
+    [4] require
+      @ ./loading.jl:2490 [inlined]
+    [5] eval_import_path
+      @ ./module.jl:36 [inlined]
+    [6] eval_import_path_all(at::Module, path::Expr, keyword::String)
+      @ Base ./module.jl:60
+    [7] _eval_using(to::Module, path::Expr)
+      @ Base ./module.jl:137
+    [8] top-level scope
+      @ ~/Repos/julia-trait-bound/ndport/pkgs/Static.jl/test/shared/alloc_tests.jl:1
+    [9] include(mapexpr::Function, mod::Module, _path::String)
+      @ Base ./Base.jl:311
+   [10] top-level scope
+      @ ~/Repos/julia-trait-bound/ndport/pkgs/Static.jl/test/core_tests.jl:574
+   [11] macro expansion
+      @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [12] macro expansion
+      @ ~/Repos/julia-trait-bound/ndport/pkgs/Static.jl/test/core_tests.jl:574 [inlined]
+   [13] include(mapexpr::Function, mod::Module, _path::String)
+      @ Base ./Base.jl:311
+   [14] top-level scope
+      @ none:1
+   [15] eval(m::Module, e::Any)
+      @ Core ./boot.jl:489
+   [16] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:310
+   [17] _start()
+      @ Base ./client.jl:577
+  in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Static.jl/test/shared/alloc_tests.jl:1
+Test Summary:    | Error  Total  Time
+Allocation Tests |     1      1  0.6s
+RNG of the outermost testset: Random.Xoshiro(0x21bf84afead129b9, 0xc989cb4e51df47c0, 0x6678554f828124f3, 0xaeb9e48688065d97, 0x45cbd0d6252148d9)
