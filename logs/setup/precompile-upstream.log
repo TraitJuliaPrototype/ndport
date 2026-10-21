@@ -1,0 +1,451 @@
+┌ Warning: Error initializing Revise
+└ @ Main ~/.julia/config/startup.jl:4
+Precompiling packages...
+   0.3 s  ✓ DataValueInterfaces
+   0.3 s  ✓ TensorCore
+   0.4 s  ✓ MappedArrays
+   0.4 s  ✓ ConstructionBase
+   0.3 s  ✓ StatsAPI
+   0.4 s  ✓ Observables
+   0.3 s  ✓ HelpPlots
+   0.3 s  ✓ RoundingEmulator
+   0.3 s  ✓ PolygonOps
+   0.8 s  ✓ Format
+   0.4 s  ✓ IterTools
+   0.4 s  ✓ IntervalSets
+   0.3 s  ✓ CEnum
+   0.3 s  ✓ ArgCheck
+   0.3 s  ✓ Inflate
+   0.3 s  ✓ Contour
+   0.4 s  ✓ TranscodingStreams
+   0.3 s  ✓ LaTeXStrings
+   0.5 s  ✓ EnzymeCore
+   0.2 s  ✓ IfElse
+   0.6 s  ✓ OrdinaryDiffEqRosenbrockTableaus
+   0.9 s  ✓ ChainRulesCore
+   0.3 s  ✓ PtrArrays
+   0.3 s  ✓ ManualMemory
+   0.4 s  ✓ Adapt
+   1.1 s  ✓ AdaptivePredicates
+   0.3 s  ✓ DataAPI
+   0.3 s  ✓ InverseFunctions
+   0.2 s  ✓ CompositionsBase
+   0.4 s  ✓ LazyModules
+   0.3 s  ✓ EnumX
+   0.4 s  ✓ InverseFunctions → InverseFunctionsDatesExt
+   0.4 s  ✓ AbstractTrees
+   0.4 s  ✓ IntegerMathUtils
+   0.3 s  ✓ ExprTools
+   1.5 s  ✓ ExproniconLite
+   0.4 s  ✓ BFloat16s
+   0.4 s  ✓ Primes
+   0.9 s  ✓ FillArrays
+   0.3 s  ✓ IndirectArrays
+   0.3 s  ✓ RangeArrays
+   0.3 s  ✓ HashArrayMappedTries
+   0.3 s  ✓ FastClosures
+   0.5 s  ✓ OrderedCollections
+   0.6 s  ✓ ProgressMeter
+   0.3 s  ✓ Mixers
+   0.3 s  ✓ PolynomialRoots
+   0.2 s  ✓ SIMDTypes
+   0.2 s  ✓ IteratorInterfaceExtensions
+   0.7 s  ✓ OffsetArrays
+   0.3 s  ✓ DelimitedFiles
+   0.3 s  ✓ NaNMath
+   0.8 s  ✓ Crayons
+   0.8 s  ✓ SignedDistanceFields
+   0.7 s  ✓ LogExpFunctions
+   0.7 s  ✓ Requires
+   0.6 s  ✓ Scratch
+   2.2 s  ✓ BaseDirs
+   0.5 s  ✓ LoggingExtras
+   0.6 s  ✓ SimpleTraits
+   0.5 s  ✓ Hungarian
+   1.1 s  ✓ StructUtils
+   0.5 s  ✓ Statistics → SparseArraysExt
+   0.5 s  ✓ WoodburyMatrices
+   0.7 s  ✓ AMD
+   0.5 s  ✓ SuiteSparse
+   0.5 s  ✓ Animations
+   0.4 s  ✓ Compat
+   1.0 s  ✓ UnicodeFun
+   0.6 s  ✓ JLLWrappers
+   1.4 s  ✓ AdaptiveArrayPools
+   0.6 s  ✓ TruncatedStacktraces
+   5.6 s  ✓ Krylov
+   2.8 s  ✓ StringManipulation
+   0.6 s  ✓ CommonSolve
+   1.2 s  ✓ BinaryHeaps
+   5.5 s  ✓ SparseColumnPivotedQR
+   0.6 s  ✓ SciMLPublic
+   0.7 s  ✓ CommonWorldInvalidations
+   6.5 s  ✓ SIMD
+  13.7 s  ✓ Unitful
+   3.1 s  ✓ FindFirstFunctions
+   0.8 s  ✓ FastPower
+   0.9 s  ✓ MuladdMacro
+   1.3 s  ✓ RecipesBase
+   1.9 s  ✓ ConcreteStructs
+   1.0 s  ✓ ADTypes
+   1.0 s  ✓ CpuId
+   0.9 s  ✓ ArnoldiMethod
+   0.6 s  ✓ StaticArrays → StaticArraysStatisticsExt
+   0.8 s  ✓ PkgVersion
+   0.3 s  ✓ ConstructionBase → ConstructionBaseLinearAlgebraExt
+   0.5 s  ✓ ConstructionBase → ConstructionBaseStaticArraysExt
+   0.9 s  ✓ ComputePipeline
+   0.3 s  ✓ IntervalSets → IntervalSetsRandomExt
+   0.3 s  ✓ IntervalSets → IntervalSetsStatisticsExt
+   0.3 s  ✓ ConstructionBase → ConstructionBaseIntervalSetsExt
+   0.8 s  ✓ CodecZstd
+  15.7 s  ✓ LHLFactorization
+   0.5 s  ✓ ChainRulesCore → ChainRulesCoreSparseArraysExt
+   0.6 s  ✓ StaticArrays → StaticArraysChainRulesCoreExt
+   0.3 s  ✓ EnzymeCore → EnzymeCoreChainRulesCoreExt
+   0.4 s  ✓ AliasTables
+   0.7 s  ✓ ThreadingUtilities
+   0.6 s  ✓ ArrayInterface
+   1.8 s  ✓ Adapt → AdaptSparseArraysExt
+   1.7 s  ✓ Adapt → AdaptStaticArraysExt
+   1.2 s  ✓ GPUArraysCore
+   0.5 s  ✓ EnzymeCore → AdaptExt
+   0.7 s  ✓ Missings
+  11.2 s  ✓ Automa
+   0.8 s  ✓ AbstractFFTs
+   0.5 s  ✓ CompositionsBase → CompositionsBaseInverseFunctionsExt
+   0.6 s  ✓ TriplotBase
+  21.1 s  ✓ PureKLU
+   1.9 s  ✓ RuntimeGeneratedFunctions
+   1.4 s  ✓ Jieko
+   0.7 s  ✓ FillArrays → FillArraysStaticArraysExt
+   0.3 s  ✓ ScopedValues
+   0.4 s  ✓ FillArrays → FillArraysStatisticsExt
+   0.6 s  ✓ FillArrays → FillArraysSparseArraysExt
+   0.4 s  ✓ ProgressMeter → ProgressMeterDistributedExt
+   0.3 s  ✓ TableTraits
+  21.4 s  ✓ Parsers
+   0.4 s  ✓ PaddedViews
+   0.3 s  ✓ OffsetArrays → OffsetArraysAdaptExt
+   0.3 s  ✓ StackViews
+   0.5 s  ✓ Graphics
+   0.9 s  ✓ Sobol
+   1.7 s  ✓ DataStructures
+   0.3 s  ✓ LogExpFunctions → LogExpFunctionsInverseFunctionsExt
+   0.3 s  ✓ Ratios
+   1.0 s  ✓ LogExpFunctions → LogExpFunctionsChainRulesCoreExt
+   0.7 s  ✓ Gamma
+   0.5 s  ✓ RelocatableFolders
+   0.4 s  ✓ StructUtils → StructUtilsStaticArraysCoreExt
+   1.5 s  ✓ ColorVectorSpace
+   0.9 s  ✓ SciMLLogging
+   0.6 s  ✓ AxisAlgorithms
+   0.3 s  ✓ Compat → CompatLinearAlgebraExt
+   0.8 s  ✓ PDMats
+   0.8 s  ✓ Libffi_jll
+   0.8 s  ✓ EarCut_jll
+   0.8 s  ✓ Bzip2_jll
+   2.9 s  ✓ FileIO
+   0.8 s  ✓ isoband_jll
+   1.0 s  ✓ XZ_jll
+   0.6 s  ✓ Xorg_xtrans_jll
+   0.8 s  ✓ Rmath_jll
+   0.8 s  ✓ Opus_jll
+   0.8 s  ✓ x265_jll
+   1.1 s  ✓ IntelOpenMP_jll
+   0.8 s  ✓ LLVMExtra_jll
+   0.8 s  ✓ libpng_jll
+   0.8 s  ✓ CRlibm_jll
+   0.8 s  ✓ Imath_jll
+   0.8 s  ✓ Libmount_jll
+   1.2 s  ✓ oneTBB_jll
+   0.8 s  ✓ libfdk_aac_jll
+   0.8 s  ✓ Libuuid_jll
+   0.8 s  ✓ FriBidi_jll
+   0.7 s  ✓ LERC_jll
+   0.7 s  ✓ Xorg_libXau_jll
+   0.7 s  ✓ Ogg_jll
+   0.8 s  ✓ LAME_jll
+   0.7 s  ✓ CoreMath_jll
+   0.8 s  ✓ Graphite2_jll
+   0.8 s  ✓ x264_jll
+   0.8 s  ✓ LLVMOpenMP_jll
+   0.8 s  ✓ Xorg_libpciaccess_jll
+   0.8 s  ✓ Libiconv_jll
+   0.7 s  ✓ libdeflate_jll
+   0.7 s  ✓ Pixman_jll
+   0.7 s  ✓ libaom_jll
+   0.7 s  ✓ Giflib_jll
+   0.8 s  ✓ Expat_jll
+   0.8 s  ✓ OpenBLASConsistentFPCSR_jll
+   0.9 s  ✓ JpegTurbo_jll
+   0.8 s  ✓ OpenSpecFun_jll
+   0.7 s  ✓ SparseColumnPivotedQR → SparseColumnPivotedQRAMDExt
+   0.9 s  ✓ FunctionWrappersWrappers
+   0.5 s  ✓ Unitful → ConstructionBaseUnitfulExt
+   0.6 s  ✓ Unitful → PrintfExt
+   0.5 s  ✓ Unitful → InverseFunctionsUnitfulExt
+   0.5 s  ✓ Unitful → NaNMathExt
+   0.4 s  ✓ FindFirstFunctions → FindFirstFunctionsEnzymeCoreExt
+   0.5 s  ✓ IntervalSets → IntervalSetsRecipesBaseExt
+   0.4 s  ✓ ADTypes → ADTypesConstructionBaseExt
+   0.4 s  ✓ ADTypes → ADTypesChainRulesCoreExt
+   1.0 s  ✓ DifferentiationInterface
+   0.4 s  ✓ ADTypes → ADTypesEnzymeCoreExt
+   0.7 s  ✓ Setfield
+   0.8 s  ✓ AxisArrays
+   5.5 s  ✓ SparseMatrixColorings
+   0.5 s  ✓ ArrayInterface → ArrayInterfaceChainRulesCoreExt
+   2.0 s  ✓ FastBroadcast
+   8.9 s  ✓ FastInterpolations
+   0.5 s  ✓ ArrayInterface → ArrayInterfaceFillArraysExt
+   0.5 s  ✓ ArrayInterface → ArrayInterfaceStaticArraysCoreExt
+   1.0 s  ✓ FastInterpolations → FastInterpolationsColorVectorSpaceExt
+   1.3 s  ✓ SciMLStructures
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+   1.8 s  ✓ MaybeInplace
+   0.4 s  ✓ AbstractFFTs → AbstractFFTsChainRulesCoreExt
+  10.5 s  ✓ Static
+   1.3 s  ✓ PreallocationTools
+   0.8 s  ✓ FFTA
+   1.3 s  ✓ LHLFactorization → LHLFactorizationSparseExt
+   1.6 s  ✓ Accessors
+   1.1 s  ✓ Tables
+   0.4 s  ✓ MosaicViews
+   0.5 s  ✓ SortingAlgorithms
+   3.6 s  ✓ SparseConnectivityTracer
+   0.8 s  ✓ QuadGK
+   0.4 s  ✓ Ratios → RatiosFixedPointNumbersExt
+   1.1 s  ✓ HypergeometricFunctions
+   7.5 s  ✓ Moshi
+   4.0 s  ✓ Graphs
+   1.6 s  ✓ FilePathsBase
+   1.9 s  ✓ Interpolations
+   8.1 s  ✓ JSON
+   4.2 s  ✓ ColorSchemes
+   0.6 s  ✓ FillArrays → FillArraysPDMatsExt
+   0.8 s  ✓ FreeType2_jll
+   1.1 s  ✓ QOI
+   0.5 s  ✓ Isoband
+   0.8 s  ✓ Rmath
+   0.6 s  ✓ CRlibm
+   1.2 s  ✓ MKL_jll
+   1.0 s  ✓ libvorbis_jll
+   0.5 s  ✓ CoreMath
+   0.8 s  ✓ Xorg_libXdmcp_jll
+   0.9 s  ✓ libdrm_jll
+   1.1 s  ✓ GettextRuntime_jll
+   8.2 s  ✓ GeometryBasics
+   0.8 s  ✓ Libtiff_jll
+   1.0 s  ✓ Glib_jll
+   0.7 s  ✓ RespecializeParams
+   0.4 s  ✓ DifferentiationInterface → DifferentiationInterfaceGPUArraysCoreExt
+   0.6 s  ✓ DifferentiationInterface → DifferentiationInterfaceStaticArraysExt
+   2.1 s  ✓ SpecialFunctions
+   0.7 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseArraysExt
+   0.5 s  ✓ DifferentiationInterface → DifferentiationInterfaceChainRulesCoreExt
+   0.8 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseMatrixColoringsExt
+   0.9 s  ✓ SparseMatrixColorings → SparseMatrixColoringsColorsExt
+   0.6 s  ✓ FastInterpolations → FastInterpolationsChainRulesCoreExt
+   0.6 s  ✓ FastInterpolations → FastInterpolationsRecipesBaseExt
+   0.5 s  ✓ ArrayInterface → ArrayInterfaceSparseArraysExt
+   0.6 s  ✓ FiniteDiff
+   0.6 s  ✓ MaybeInplace → MaybeInplaceSparseArraysExt
+   0.5 s  ✓ BitTwiddlingConvenienceFunctions
+   1.0 s  ✓ CPUSummary
+   0.4 s  ✓ FastBroadcast → FastBroadcastStaticExt
+   0.5 s  ✓ PreallocationTools → PreallocationToolsEnzymeCoreExt
+   2.0 s  ✓ StaticArrayInterface
+   0.5 s  ✓ Accessors → IntervalSetsExt
+   0.7 s  ✓ Accessors → StaticArraysExt
+   1.3 s  ✓ Accessors → LinearAlgebraExt
+   1.3 s  ✓ Accessors → UnitfulExt
+  17.5 s  ✓ LLVM
+   0.9 s  ✓ StructUtils → StructUtilsTablesExt
+   1.4 s  ✓ StructArrays
+  20.6 s  ✓ TiffImages
+   2.7 s  ✓ StatsBase
+   0.8 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerChainRulesCoreExt
+   0.9 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerLogExpFunctionsExt
+   1.0 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNaNMathExt
+   0.8 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseConnectivityTracerExt
+   1.0 s  ✓ Graphs → GraphsSharedArraysExt
+   0.4 s  ✓ FilePathsBase → FilePathsBaseMmapExt
+   0.6 s  ✓ FilePaths
+   0.9 s  ✓ Interpolations → InterpolationsUnitfulExt
+   1.7 s  ✓ ColorBrewer
+   0.8 s  ✓ FreeType
+   1.0 s  ✓ Fontconfig_jll
+   2.0 s  ✓ IntervalArithmetic
+  13.7 s  ✓ ImageCore
+   7.7 s  ✓ PlotUtils
+   2.9 s  ✓ Xorg_libxcb_jll
+   0.9 s  ✓ libsixel_jll
+   0.8 s  ✓ GeometryBasics → IntervalSetsExt
+   1.3 s  ✓ NetworkLayout
+   1.0 s  ✓ Packing
+   0.9 s  ✓ OpenJPH_jll
+   1.5 s  ✓ ShaderAbstractions
+   0.7 s  ✓ ColorVectorSpace → SpecialFunctionsExt
+   1.9 s  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt
+   1.9 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerSpecialFunctionsExt
+   1.7 s  ✓ StatsFuns
+   5.7 s  ✓ GridLayoutBase
+   0.6 s  ✓ FiniteDiff → FiniteDiffStaticArraysExt
+  20.9 s  ✓ PrettyTables
+   0.5 s  ✓ FiniteDiff → FiniteDiffSparseArraysExt
+   0.5 s  ✓ DifferentiationInterface → DifferentiationInterfaceFiniteDiffExt
+   0.5 s  ✓ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+   0.6 s  ✓ PolyesterWeave
+   0.7 s  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+   0.6 s  ✓ CloseOpenIntervals
+   0.7 s  ✓ LayoutPointers
+   3.6 s  ✓ ForwardDiff
+   1.5 s  ✓ SymbolicIndexingInterface
+   0.7 s  ✓ LLVM → BFloat16sExt
+   0.4 s  ✓ StructArrays → LinearAlgebraExt
+   1.9 s  ✓ UnsafeAtomics
+   2.6 s  ✓ Roots
+   3.4 s  ✓ SciMLOperators
+   0.5 s  ✓ StructArrays → GPUArraysCoreExt
+   0.9 s  ✓ StructArrays → StaticArraysExt
+   0.6 s  ✓ StructArrays → SparseArraysExt
+   0.4 s  ✓ StructArrays → AdaptExt
+   0.5 s  ✓ Accessors → StructArraysExt
+   0.7 s  ✓ PDMats → StatsBaseExt
+   0.9 s  ✓ IntervalArithmetic → IntervalArithmeticSparseArraysExt
+   0.8 s  ✓ IntervalArithmetic → IntervalArithmeticIrrationalConstantsExt
+   0.7 s  ✓ IntervalArithmetic → IntervalArithmeticRecipesBaseExt
+   1.8 s  ✓ FreeTypeAbstraction
+   0.7 s  ✓ IntervalArithmetic → IntervalArithmeticDiffRulesExt
+   0.9 s  ✓ IntervalArithmetic → IntervalArithmeticLinearAlgebraExt
+   0.6 s  ✓ IntervalArithmetic → IntervalArithmeticIntervalSetsExt
+   0.9 s  ✓ Xorg_libX11_jll
+   1.5 s  ✓ ImageBase
+   1.7 s  ✓ JpegTurbo
+   1.1 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+   1.9 s  ✓ Sixel
+   1.1 s  ✓ OpenEXR_jll
+   3.3 s  ✓ PNGFiles
+   0.5 s  ✓ StatsFuns → StatsFunsInverseFunctionsExt
+   1.3 s  ✓ StatsFuns → StatsFunsChainRulesCoreExt
+   0.8 s  ✓ ForwardDiff → ForwardDiffStaticArraysExt
+   0.9 s  ✓ StrideArraysCore
+   0.7 s  ✓ Unitful → ForwardDiffExt
+   0.5 s  ✓ FastPower → FastPowerForwardDiffExt
+   0.8 s  ✓ PureKLU → PureKLUForwardDiffExt
+   0.6 s  ✓ DifferentiationInterface → DifferentiationInterfaceForwardDiffExt
+   0.6 s  ✓ FastInterpolations → FastInterpolationsForwardDiffExt
+   0.6 s  ✓ IntervalArithmetic → IntervalArithmeticForwardDiffExt
+   0.9 s  ✓ Interpolations → InterpolationsForwardDiffExt
+   1.1 s  ✓ PreallocationTools → PreallocationToolsForwardDiffExt
+   0.7 s  ✓ SymbolicIndexingInterface → SymbolicIndexingInterfacePrettyTablesExt
+   1.1 s  ✓ Atomix
+   0.8 s  ✓ Roots → RootsForwardDiffExt
+   4.4 s  ✓ TimerOutputs
+   0.6 s  ✓ Roots → RootsChainRulesCoreExt
+   0.7 s  ✓ Roots → RootsUnitfulExt
+   0.8 s  ✓ SciMLOperators → SciMLOperatorsSparseArraysExt
+   0.9 s  ✓ Xorg_libXfixes_jll
+   4.0 s  ✓ RecursiveArrayTools
+   1.1 s  ✓ Xorg_libXrender_jll
+   1.0 s  ✓ Xorg_libXext_jll
+   3.1 s  ✓ ExactPredicates
+   1.6 s  ✓ ImageAxes
+   1.3 s  ✓ OpenEXR
+   0.8 s  ✓ Polyester
+   4.8 s  ✓ MathTeXEngine
+   0.5 s  ✓ RecursiveArrayTools → RecursiveArrayToolsTablesExt
+   0.7 s  ✓ RecursiveArrayTools → RecursiveArrayToolsSparseArraysExt
+   0.5 s  ✓ RecursiveArrayTools → RecursiveArrayToolsFastBroadcastExt
+   0.5 s  ✓ RecursiveArrayTools → RecursiveArrayToolsStatisticsExt
+   0.6 s  ✓ RecursiveArrayTools → RecursiveArrayToolsForwardDiffExt
+   0.5 s  ✓ RecursiveArrayTools → RecursiveArrayToolsStructArraysExt
+   2.9 s  ✓ KernelAbstractions
+   1.0 s  ✓ Cairo_jll
+   0.9 s  ✓ libva_jll
+   4.6 s  ✓ Distributions
+   1.1 s  ✓ Libglvnd_jll
+   1.0 s  ✓ HarfBuzz_jll
+   0.6 s  ✓ FastBroadcast → FastBroadcastPolyesterExt
+   1.1 s  ✓ KernelAbstractions → SparseArraysExt
+   0.9 s  ✓ KernelAbstractions → LinearAlgebraExt
+   3.9 s  ✓ DelaunayTriangulation
+   1.2 s  ✓ KernelAbstractions → EnzymeExt
+   4.6 s  ✓ LHLFactorization → LHLFactorizationPolyesterExt
+   1.3 s  ✓ StructArrays → KernelAbstractionsExt
+   1.0 s  ✓ RecursiveArrayTools → RecursiveArrayToolsKernelAbstractionsExt
+   1.0 s  ✓ ImageMetadata
+   1.0 s  ✓ Distributions → DistributionsSparseConnectivityTracerExt
+   1.0 s  ✓ Distributions → DistributionsChainRulesCoreExt
+   1.1 s  ✓ libwebp_jll
+   0.9 s  ✓ libass_jll
+   1.0 s  ✓ Pango_jll
+   0.9 s  ✓ RecursiveArrayTools → RecursiveArrayToolsFastBroadcastPolyesterExt
+   8.1 s  ✓ SciMLBase
+   1.3 s  ✓ Netpbm
+   1.4 s  ✓ KernelDensity
+   1.2 s  ✓ FFMPEG_jll
+   1.1 s  ✓ Cairo
+   1.6 s  ✓ WebP
+   0.8 s  ✓ SciMLBase → SciMLBaseChainRulesCoreExt
+   0.8 s  ✓ SciMLBase → SciMLBaseStaticArraysExt
+   0.9 s  ✓ SciMLBase → SciMLBaseForwardDiffExt
+   0.7 s  ✓ SciMLBase → SciMLBaseDifferentiationInterfaceExt
+   4.8 s  ✓ NNlib
+   1.2 s  ✓ SciMLBase → SciMLBaseDistributionsExt
+   1.0 s  ✓ ImageIO
+   1.0 s  ✓ NNlib → NNlibSpecialFunctionsExt
+   1.8 s  ✓ SciMLJacobianOperators
+   1.1 s  ✓ NNlib → NNlibForwardDiffExt
+   1.2 s  ✓ NNlib → NNlibEnzymeCoreExt
+   1.8 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNNlibExt
+   3.9 s  ✓ LineSearch
+   6.1 s  ✓ NonlinearSolveBase
+   1.0 s  ✓ NonlinearSolveBase → NonlinearSolveBaseSparseMatrixColoringsExt
+   1.1 s  ✓ NonlinearSolveBase → NonlinearSolveBaseSparseArraysExt
+   1.1 s  ✓ NonlinearSolveBase → NonlinearSolveBaseChainRulesCoreExt
+   1.3 s  ✓ NonlinearSolveBase → NonlinearSolveBaseLineSearchExt
+  13.5 s  ✓ LinearSolve
+   1.9 s  ✓ BracketingNonlinearSolve
+   1.7 s  ✓ LinearSolve → LinearSolveEnzymeExt
+   4.7 s  ✓ NonlinearSolveBase → NonlinearSolveBaseForwardDiffExt
+   1.8 s  ✓ LinearSolve → LinearSolveChainRulesCoreExt
+   1.6 s  ✓ LinearSolve → LinearSolveArnoldiMethodExt
+   2.2 s  ✓ LinearSolve → LinearSolveKernelAbstractionsExt
+   2.0 s  ✓ LinearSolve → LinearSolveForwardDiffExt
+   7.0 s  ✓ NonlinearSolveSpectralMethods
+   1.0 s  ✓ BracketingNonlinearSolve → BracketingNonlinearSolveForwardDiffExt
+   1.6 s  ✓ NonlinearSolveBase → NonlinearSolveBaseLinearSolveExt
+   0.9 s  ✓ NonlinearSolveSpectralMethods → NonlinearSolveSpectralMethodsForwardDiffExt
+   0.8 s  ✓ BracketingNonlinearSolve → BracketingNonlinearSolveChainRulesCoreExt
+   3.1 s  ✓ DiffEqBase
+   5.3 s  ✓ SimpleNonlinearSolve
+   1.1 s  ✓ DiffEqBase → DiffEqBaseSparseArraysExt
+   1.0 s  ✓ DiffEqBase → DiffEqBaseUnitfulExt
+   0.8 s  ✓ DiffEqBase → DiffEqBaseChainRulesCoreExt
+   3.1 s  ✓ DiffEqBase → DiffEqBaseForwardDiffExt
+   3.3 s  ✓ DiffEqCallbacks
+  15.8 s  ✓ NonlinearSolveQuasiNewton
+   0.9 s  ✓ SimpleNonlinearSolve → SimpleNonlinearSolveChainRulesCoreExt
+   3.4 s  ✓ OrdinaryDiffEqCore
+   2.5 s  ✓ SteadyStateDiffEq
+   1.8 s  ✓ NonlinearSolveQuasiNewton → NonlinearSolveQuasiNewtonForwardDiffExt
+   1.2 s  ✓ OrdinaryDiffEqCore → OrdinaryDiffEqCoreSparseArraysExt
+   1.1 s  ✓ OrdinaryDiffEqCore → OrdinaryDiffEqCorePolyesterExt
+   2.5 s  ✓ OrdinaryDiffEqDifferentiation
+   1.7 s  ✓ OrdinaryDiffEqDifferentiation → OrdinaryDiffEqDifferentiationSparseArraysExt
+  10.8 s  ✓ OrdinaryDiffEqTsit5
+  39.3 s  ✓ NonlinearSolveFirstOrder
+  33.1 s  ✓ OrdinaryDiffEqRosenbrock
+  47.6 s  ✓ NonlinearSolve
+  22.3 s  ✓ NetworkDynamics
+ 135.5 s  ✓ Makie
+   3.5 s  ✓ IntervalArithmetic → IntervalArithmeticMakieExt
+   3.8 s  ✓ SciMLBase → SciMLBaseMakieExt
+   4.0 s  ✓ IntervalSets → IntervalSetsMakieExt
+   4.2 s  ✓ GraphMakie
+  29.3 s  ✓ CairoMakie
+  445 dependencies successfully precompiled in 320 seconds. 58 already precompiled.
+precompile s=320.2
+using s=5.4
