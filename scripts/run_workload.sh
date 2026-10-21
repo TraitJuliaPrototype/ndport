@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Run the workload in fresh sessions (the P1 plan §3): one Julia job at a time through the shared
 # lock, niced, offline, never precompiling. Logs to logs/<tag>/<setting>-<run>.log.
-#     scripts/run_workload.sh <tag> <setting: U|P0|A0|S|N> [runs=1]
-# NDW_DIAG=1 adds the attribution run's instrument (diagnostic, not timed).
+#     scripts/run_workload.sh <tag> <setting: U|P0|A0|S|N|P4> [runs=1]
+# NDW_DIAG=1 adds the attribution run's instrument (diagnostic, not timed). NDW_STRICT=1: strict mode on.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 ND=$PWD; R=$(cd .. && pwd)
@@ -13,11 +13,13 @@ case $setting in
   P0) ENVD=env_port; TW=1 ;;
   A0) ENVD=env_port; TW=1; JF=(-J "$R/julia-1.13/usr/lib/julia/facts/sys.so"); DEPOT="$ND/depot-facts:$HOME/.julia:" ;;
   N)  ENVD=env_p3; TW=1; DEPOT="$ND/depot-p3:$HOME/.julia:" ;;   # P3: NetworkDynamics wrapped (pkgs/NetworkDynamics-p3wrap)
+  P4) ENVD=env_p4; TW=1; DEPOT="$ND/depot-p4:$HOME/.julia:" ;;   # P4: the port (pkgs/NetworkDynamics-p4, branch trait-port)
   S)  J=$HOME/.julia/juliaup/julia-1.13.2+0.x64.linux.gnu/bin/julia; DEPOT="$ND/depot-stock:$HOME/.julia:" ;;
   *) echo "unknown setting $setting"; exit 2 ;;
 esac
 export OPENBLAS_NUM_THREADS=1 JULIA_PKG_OFFLINE=true JULIA_PKG_PRECOMPILE_AUTO=0 JULIA_NUM_PRECOMPILE_TASKS=4
-unset JULIA_TW_STRICT JULIA_COMPILE_BY_FACTS
+unset JULIA_COMPILE_BY_FACTS
+if [ "${NDW_STRICT:-0}" = 1 ]; then export JULIA_TW_STRICT=1; STRICT=on; else unset JULIA_TW_STRICT; STRICT=off; fi
 [ -n "$DEPOT" ] && export JULIA_DEPOT_PATH=$DEPOT || unset JULIA_DEPOT_PATH
 L=$ND/logs/$tag; mkdir -p "$L"
 jl() { flock /tmp/claude-1000/julia-review.lock nice -n 19 timeout 900 "$J" "${JF[@]}" --startup-file=no --threads=1 --project=$ENVD "$@"; }
@@ -28,7 +30,7 @@ for i in $(seq 1 "$runs"); do
   f=$L/$setting-$i.log
   for attempt in 1 2; do
     {
-      echo "# setting=$setting env=$ENVD julia=$J ${JF[*]} depot=${JULIA_DEPOT_PATH:-default} strict=off diag=${NDW_DIAG:-0}"
+      echo "# setting=$setting env=$ENVD julia=$J ${JF[*]} depot=${JULIA_DEPOT_PATH:-default} strict=$STRICT diag=${NDW_DIAG:-0}"
       echo "# julia-1.13 $(git -C $R/julia-1.13 log -1 --format=%h) TraitWorld $(git -C $R/TraitWorld log -1 --format=%h) dirty=$(git -C $R/TraitWorld status --porcelain --untracked-files=no | wc -l)"
       echo "# clones $(for d in pkgs/*/; do printf '%s:%s%s ' $(basename $d) $(git -C $d log -1 --format=%h) $([ -z "$(git -C $d status --porcelain --untracked-files=no)" ] || echo '*'); done)"
       echo "# date $(date -Is) load-before $(cut -d' ' -f1 /proc/loadavg)"
