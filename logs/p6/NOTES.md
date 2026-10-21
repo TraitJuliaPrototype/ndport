@@ -253,3 +253,24 @@ releases: the baseline), both with `depot-p6` first. Files whose dependencies ar
   `solution_new_original_retcode(…)` is fully typed under facts.
 - Not a G1 failure (no value differs), not a bug; P6 continues. Candidate pushback **P6-4** (below): packages'
   own inference tests (`@inferred`, `return_types`) fail where facts inference is wider by design.
+
+## S3: NonlinearSolveBase, BracketingNonlinearSolve, SciMLJacobianOperators wrapped
+
+Commits (tag `p6-s3`): `NonlinearSolveBase-p6` 293712e, `BracketingNonlinearSolve-p6` 7433e0b,
+`SciMLJacobianOperators-p6` 3840f8a. No declaration (the plan §1.4: NonlinearSolve's methods of NonlinearSolveBase's
+functions name SciMLBase's types).
+
+- **P** (`logs/p6/precompile-s3.log`): 35 rebuilt (the plan's 17 + 18), 176 s (wall 267 s). No `OwnershipError`
+  (BracketingNonlinearSolve's plain-definition front ends pass the wrap's check: SciMLBase's line names it).
+  One new extension warning (P6-3): `NonlinearSolveBaseSparseMatrixColoringsExt` defines
+  `NonlinearSolveBase.Utils.is_extension_loaded(…)`, which wins at a fact of NonlinearSolveBase's own facts code: the
+  package's own extension, followed.
+- **C**: wrapped + BracketingNonlinearSolve, NonlinearSolveBase, SciMLJacobianOperators; pirates in wrapped
+  packages 0; only Differentiation's 10 remain on P6's packages.
+- **R**: 0 exact differences. **S**: `STRICT on`; only P6-2.
+- **T** (recorded; judged at S6/S7): c 3.8, d **28.6** (P6-1), e 0.8 ms. Step f again 389 ms, of which GC 348 ms
+  (a full collection landed there; params f 43 ms).
+- **H** (top 40): trait code 24,994, plain code 98,419 (S2: 24,595 / 100,501). No site in the newly wrapped modules.
+- **F**: first a–e 49.3 s (S2 52.4; I0 36.4): **c 8.1 s** (S2 17.1, I0 21.0: the fixed point's path now in
+  images compiled by facts), d 31.2 s, e 3.3 s.
+- **L**: Graphs+ND 8.19 s, solvers 4.28 s, plotting 6.59 s.

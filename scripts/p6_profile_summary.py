@@ -26,7 +26,7 @@ def parse(path):
     return mods, meths
 
 mods, meths = parse(sys.argv[1])
-print(f"H {sys.argv[1]}: {sum(v[0] for v in mods.values())} dynamic calls in the top 40 methods, {sum(v[1] for v in mods.values())} from facts code")
+print(f"H {sys.argv[1]}: {sum(v[0] for v in mods.values())} dynamic calls in the top 40 methods: from trait code (facts owner) {sum(v[1] for v in mods.values())}, from plain code (default owner) {sum(v[2] for v in mods.values())}")
 for k, v in sorted(mods.items(), key=lambda kv: -kv[1][0]):
     print(f"H module {k:32s} all={v[0]:>10d} facts={v[1]:>10d} default={v[2]:>10d}")
 if len(sys.argv) > 2:
