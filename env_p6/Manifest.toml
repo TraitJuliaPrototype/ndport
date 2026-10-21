@@ -2329,7 +2329,7 @@ uuid = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
 version = "1.4.0"
 
 [[deps.RecursiveArrayTools]]
-deps = ["Adapt", "ArrayInterface", "GPUArraysCore", "LinearAlgebra", "PrecompileTools", "RecipesBase", "SciMLPublic", "SciMLStructures", "StaticArraysCore", "SymbolicIndexingInterface"]
+deps = ["Adapt", "ArrayInterface", "GPUArraysCore", "LinearAlgebra", "PrecompileTools", "RecipesBase", "SciMLPublic", "SciMLStructures", "StaticArraysCore", "SymbolicIndexingInterface", "TraitWorld"]
 path = "../pkgs/RecursiveArrayTools-p6"
 uuid = "731186ca-8d62-57ce-b412-fbd966d074cd"
 version = "4.5.5"
@@ -2875,7 +2875,7 @@ uuid = "bea87d4a-7f5b-5778-9afe-8cc45184846c"
 version = "7.10.1+0"
 
 [[deps.SymbolicIndexingInterface]]
-deps = ["Accessors", "ArrayInterface", "PrecompileTools", "RuntimeGeneratedFunctions", "StaticArraysCore"]
+deps = ["Accessors", "ArrayInterface", "PrecompileTools", "RuntimeGeneratedFunctions", "StaticArraysCore", "TraitWorld"]
 path = "../pkgs/SymbolicIndexingInterface-p6"
 uuid = "2efcf032-c050-4f8e-a9bb-153293bab1f5"
 version = "0.3.55"

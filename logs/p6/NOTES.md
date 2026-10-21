@@ -69,3 +69,20 @@ No tree changes. ndport commit: the workspace, scripts, `env_p6`, logs (this com
   14.6 s. Session 89.8 s.
 - **T** (I0, the reference): again c 3.6, d 15.0, e 0.6 ms (f 39.0, g 442.2). N: d 15.3 ms.
 - **L**: TraitWorld 0.11 s, Graphs+NetworkDynamics 6.11 s, solvers 0.33 s, plotting 6.3 s.
+
+## S1: SymbolicIndexingInterface and RecursiveArrayTools wrapped
+
+Commits: `SymbolicIndexingInterface-p6` dcc3b12, `RecursiveArrayTools-p6` f29eae0 (tag `p6-s1`), made by
+`scripts/p6_wrap.py` (the wrap's three lines and TraitWorld in `[deps]`).
+
+- **P** (`logs/p6/precompile-s1.log`): 59 rebuilt (the plan's 21 + 38), 147 s (wall 164 s). No `OwnershipError`,
+  no warning. SII 1.6 s, RAT 7.4 s themselves.
+- **C** (`logs/p6-s1-census/I-1.log`): wrapped NetworkDynamics, RecursiveArrayTools, SymbolicIndexingInterface;
+  pirates in wrapped packages 0. The filtered list is unchanged from S0.
+- **H**: no site in RAT; SII's 420 are its `ParameterHookWrapper` constructor called from NetworkDynamics'
+  `setindex!` (`symbolicindexing.jl:372–373`), as at I0. Iterators 180 → 360 is the top-40 cut (a second method of
+  180 calls from NetworkDynamics' `init_formulas.jl` enters the list); no new site in the newly wrapped modules.
+- **R**: 0 exact differences (25 digests). **S**: `STRICT on`; only I0's OffsetArrays refusal.
+- **F**: first a–e 36.8 s (I0 36.4); c 21.2, d 11.2, e 3.2 s. **T**: c 3.5, d 15.1, e 0.7 ms: within I0's margin.
+- **L**: TraitWorld 0.11, Graphs+NetworkDynamics 6.15, solvers 0.36, plotting 6.53 s.
+- Calibration (the plan §1.3): S1's build 147 s; S2–S4 estimated about the same.
