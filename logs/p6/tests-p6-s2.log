@@ -1,0 +1,173 @@
+# env_p6test group=s2 strict=1 TraitWorld 3bebf13 date 2026-10-21T19:21:23+02:00 load 0.95
+┌ Warning: could not download https://pkg.julialang.org/registries
+│   exception = RequestError: HTTP/1.1 403 Forbidden (CONNECT tunnel failed, response 403) while requesting https://pkg.julialang.org/registries
+└ @ Pkg.Registry ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/Registry/Registry.jl:121
+    Updating `~/Repos/julia-trait-bound/ndport/env_p6test/Project.toml`
+  [8dfed614] ~ Test ⇒ v1.11.0
+    Updating `~/Repos/julia-trait-bound/ndport/env_p6test/Manifest.toml`
+  [8dfed614] ~ Test ⇒ v1.11.0
+# precompile s=1.0
+# p6_tests s2 SymbolicIndexingInterface=/home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SymbolicIndexingInterface-p6 RecursiveArrayTools=/home/hellmann/Repos/julia-trait-bound/ndport/pkgs/RecursiveArrayTools-p6 SciMLBase=/home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6
+# SymbolicIndexingInterface/example_test.jl s=1.7
+# SymbolicIndexingInterface/fallback_test.jl s=0.9
+# SymbolicIndexingInterface/parameter_timeseries_collection_test.jl s=0.6
+# SymbolicIndexingInterface/problem_state_test.jl s=6.6
+# SymbolicIndexingInterface/symbol_cache_test.jl s=3.0
+# SymbolicIndexingInterface/trait_test.jl s=0.1
+# SymbolicIndexingInterface/type_grouped_indexes_test.jl s=2.8
+# SymbolicIndexingInterface/batched_interface_test.jl s=1.7
+# SymbolicIndexingInterface/remake_test.jl s=3.5
+
+RecursiveArrayTools/Core/partitions_and_static_arrays.jl: Error During Test at /home/hellmann/Repos/julia-trait-bound/ndport/scripts/p6_tests.jl:44
+  Got exception outside of a @test
+  LoadError: MethodError: Cannot `convert` an object of type Vector{Float32} to an object of type AP
+  The function `convert` exists, but no method is defined for this combination of argument types.
+  Closest candidates are:
+    convert(::Type{T}, !Matched::T) where T
+     @ Base Base_compiler.jl:136
+  Stacktrace:
+    [1] setindex!
+      @ ./array.jl:1019 [inlined]
+    [2] (::Base.var"#getindex##2#getindex##3"{Vector{AP}})(i::Int64, v::Vector{Float32})
+      @ Base ./array.jl:444
+    [3] afoldl(::Base.var"#getindex##2#getindex##3"{Vector{AP}}, ::Int64, ::Vector{Float32}, ::Vector{StaticArraysCore.SMatrix{2, 2, Int64}}, ::Vector{StaticArraysCore.SVector{3, Float64}})
+      @ Base ./operators.jl:610
+    [4] getindex(::Type{AP}, ::Vector{Float32}, ::Vector{StaticArraysCore.SMatrix{2, 2, Int64}}, ::Vector{StaticArraysCore.SVector{3, Float64}})
+      @ Base ./array.jl:443
+    [5] top-level scope
+      @ ~/Repos/julia-trait-bound/ndport/pkgs/RecursiveArrayTools-p6/test/Core/partitions_and_static_arrays.jl:3
+    [6] include(mod::Module, _path::String)
+      @ Base ./Base.jl:310
+    [7] top-level scope
+      @ ~/Repos/julia-trait-bound/ndport/scripts/p6_tests.jl:38
+    [8] macro expansion
+      @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+    [9] macro expansion
+      @ ~/Repos/julia-trait-bound/ndport/scripts/p6_tests.jl:45 [inlined]
+   [10] macro expansion
+      @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [11] macro expansion
+      @ ~/Repos/julia-trait-bound/ndport/scripts/p6_tests.jl:45 [inlined]
+   [12] include(mod::Module, _path::String)
+      @ Base ./Base.jl:310
+   [13] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:344
+   [14] _start()
+      @ Base ./client.jl:577
+  in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/RecursiveArrayTools-p6/test/Core/partitions_and_static_arrays.jl:3
+# RecursiveArrayTools/Core/partitions_and_static_arrays.jl s=1.3
+# RecursiveArrayTools/Core/copy_static_array_test.jl s=1.9
+# RecursiveArrayTools/Core/named_array_partition_tests.jl s=2.4
+# RecursiveArrayTools/Core/scimlstructures_test.jl s=1.8
+# RecursiveArrayTools/Core/tabletraits.jl s=2.4
+
+Inference and allocations: Test Failed at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:157
+  Expression: only(rt_basic_dense) <: SciMLBase.AbstractDiffEqArray
+   Evaluated: Any <: AbstractDiffEqArray
+  Stacktrace:
+   [1] top-level scope
+     @ ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:111
+   [2] macro expansion
+     @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [3] macro expansion
+     @ ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:157 [inlined]
+   [4] macro expansion
+     @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:758 [inlined]
+
+Inference and allocations: Test Failed at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:158
+  Expression: only(rt_basic_nondense) <: SciMLBase.AbstractDiffEqArray
+   Evaluated: Any <: AbstractDiffEqArray
+  Stacktrace:
+   [1] top-level scope
+     @ ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:111
+   [2] macro expansion
+     @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [3] macro expansion
+     @ ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:158 [inlined]
+   [4] macro expansion
+     @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:758 [inlined]
+
+Inference and allocations: Test Failed at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:157
+  Expression: only(rt_basic_dense) <: SciMLBase.AbstractDiffEqArray
+   Evaluated: Any <: AbstractDiffEqArray
+  Stacktrace:
+   [1] top-level scope
+     @ ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:111
+   [2] macro expansion
+     @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [3] macro expansion
+     @ ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:157 [inlined]
+   [4] macro expansion
+     @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:758 [inlined]
+
+Inference and allocations: Test Failed at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:158
+  Expression: only(rt_basic_nondense) <: SciMLBase.AbstractDiffEqArray
+   Evaluated: Any <: AbstractDiffEqArray
+  Stacktrace:
+   [1] top-level scope
+     @ ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:111
+   [2] macro expansion
+     @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [3] macro expansion
+     @ ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/interpolation_tests.jl:158 [inlined]
+   [4] macro expansion
+     @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:758 [inlined]
+# SciMLBase/interpolation_tests.jl s=9.8
+
+solution_new_original_retcode type inference: Error During Test at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/solution_interface.jl:355
+  Got exception outside of a @test
+  return type ODESolution{Float64, 2, Vector{Vector{Float64}}, Nothing, Nothing, Vector{Float64}, Nothing, Nothing, ODEProblem{Vector{Float64}, Tuple{Float64, Float64}, false, SciMLBase.NullParameters, ODEFunction{false, SciMLBase.AutoSpecialize, Main.solution_interface.var"#48#49", LinearAlgebra.UniformScaling{Bool}, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, typeof(SciMLBase.DEFAULT_OBSERVED), Nothing, Nothing, Nothing, Nothing}, Base.Pairs{Symbol, Union{}, Nothing, @NamedTuple{}}, SciMLBase.StandardODEProblem}, Symbol, SciMLBase.LinearInterpolation{Vector{Float64}, Vector{Vector{Float64}}}, Nothing, Nothing, Vector{Float64}, NonlinearSolution{Float64, 1, Vector{Float64}, Vector{Float64}, Nothing, Nothing, Any, Nothing, Nothing, Nothing, SciMLBase.ReturnCode.T}, Nothing, Nothing, SciMLBase.ReturnCode.T} does not match inferred return type Any
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] top-level scope
+      @ ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/solution_interface.jl:361
+    [3] macro expansion
+      @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+    [4] macro expansion
+      @ ~/Repos/julia-trait-bound/ndport/pkgs/SciMLBase-p6/test/solution_interface.jl:396 [inlined]
+    [5] include(mod::Module, _path::String)
+      @ Base ./Base.jl:310
+    [6] top-level scope
+      @ ~/Repos/julia-trait-bound/ndport/scripts/p6_tests.jl:38
+    [7] macro expansion
+      @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+    [8] macro expansion
+      @ ~/Repos/julia-trait-bound/ndport/scripts/p6_tests.jl:45 [inlined]
+    [9] macro expansion
+      @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [10] macro expansion
+      @ ~/Repos/julia-trait-bound/ndport/scripts/p6_tests.jl:45 [inlined]
+   [11] include(mod::Module, _path::String)
+      @ Base ./Base.jl:310
+   [12] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:344
+   [13] _start()
+      @ Base ./client.jl:577
+# SciMLBase/solution_interface.jl s=7.0
+# SciMLBase/integrator_tests.jl s=0.2
+# SciMLBase/callback_constructors.jl s=0.1
+# SciMLBase/convert_tests.jl s=0.3
+# SciMLBase/function_wrappers.jl s=0.2
+# SciMLBase/problem_building_test.jl s=4.7
+TEST SymbolicIndexingInterface/example_test.jl pass=73 fail=0 error=0 broken=0
+TEST SymbolicIndexingInterface/fallback_test.jl pass=13 fail=0 error=0 broken=0
+TEST SymbolicIndexingInterface/parameter_timeseries_collection_test.jl pass=227 fail=0 error=0 broken=0
+TEST SymbolicIndexingInterface/problem_state_test.jl pass=9 fail=0 error=0 broken=0
+TEST SymbolicIndexingInterface/symbol_cache_test.jl pass=85 fail=0 error=0 broken=0
+TEST SymbolicIndexingInterface/trait_test.jl pass=7 fail=0 error=0 broken=0
+TEST SymbolicIndexingInterface/type_grouped_indexes_test.jl pass=53 fail=0 error=0 broken=0
+TEST SymbolicIndexingInterface/batched_interface_test.jl pass=35 fail=0 error=0 broken=0
+TEST SymbolicIndexingInterface/remake_test.jl pass=219 fail=0 error=0 broken=0
+TEST RecursiveArrayTools/Core/partitions_and_static_arrays.jl pass=0 fail=0 error=1 broken=0
+TEST RecursiveArrayTools/Core/copy_static_array_test.jl pass=39 fail=0 error=0 broken=0
+TEST RecursiveArrayTools/Core/named_array_partition_tests.jl pass=41 fail=0 error=0 broken=0
+TEST RecursiveArrayTools/Core/scimlstructures_test.jl pass=53 fail=0 error=0 broken=0
+TEST RecursiveArrayTools/Core/tabletraits.jl pass=446 fail=0 error=0 broken=0
+TEST SciMLBase/interpolation_tests.jl pass=423 fail=4 error=0 broken=0
+TEST SciMLBase/solution_interface.jl pass=116 fail=0 error=1 broken=0
+TEST SciMLBase/integrator_tests.jl pass=14 fail=0 error=0 broken=0
+TEST SciMLBase/callback_constructors.jl pass=12 fail=0 error=0 broken=0
+TEST SciMLBase/convert_tests.jl pass=14 fail=0 error=0 broken=0
+TEST SciMLBase/function_wrappers.jl pass=28 fail=0 error=0 broken=0
+TEST SciMLBase/problem_building_test.jl pass=187 fail=0 error=0 broken=0

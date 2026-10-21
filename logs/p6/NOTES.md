@@ -216,3 +216,40 @@ blocks the track).
   check that the list is complete (SciMLBase's eight names held all 117).
 - A full workload run with strict mode on and Makie loaded logs OffsetArrays' `reshape` refusal (Base's code
   protected): expected, not a regression.
+
+## The coordinator's decision (choice 37; open issue 50 for the user)
+
+Continue with option 1: S3–S7 as planned with every check; T is recorded at each step and judged at S6 and S7; H
+reports per step the dynamic calls in plain callers against trait code (the profile's owner columns). The candidates
+are pushback **P6-1** (getproperty, constant propagation), **P6-2** (OffsetArrays' `reshape`), **P6-3** (extensions).
+The solvers' load increase is attributed at J (S4).
+
+## S2, continued: Q (the packages' quick tests)
+
+`scripts/p6_tests.jl` (group `s2`), `scripts/p6_tests.sh`; environments `env_p6test` (env_p6's project and the test
+dependencies already in its manifest; nothing new built) and `env_p6test_u` (env_upstream's project, the registry's
+releases: the baseline), both with `depot-p6` first. Files whose dependencies are not in the stack's manifest
+(SafeTestsets, SciMLTesting, AllocCheck, Zygote, Measurements, the shorthand sublibrary) are left out.
+
+| File | upstream (`logs/p6/tests-u-s2.log`) | P6 S2 (`logs/p6/tests-p6-s2.log`, strict on) |
+|---|---|---|
+| SII: example, fallback, parameter_timeseries_collection, problem_state, symbol_cache, trait, type_grouped_indexes, batched_interface, remake | 721 pass | 721 pass |
+| RAT: partitions_and_static_arrays | 1 error | 1 error (the same: `convert(::Type{AP}, ::Vector{Float32})`; the file needs the shorthand sublibrary) |
+| RAT: copy_static_array, named_array_partition, scimlstructures, tabletraits | 579 pass | 579 pass |
+| SciMLBase: interpolation_tests | 427 pass | **423 pass, 4 fail** |
+| SciMLBase: solution_interface | 116 pass | **116 pass, 1 error** |
+| SciMLBase: integrator, callback_constructors, convert, function_wrappers, problem_building | 255 pass | 255 pass |
+
+**The 5 differences are inference assertions, not results** (`scripts/p6_q_sites.jl`, `logs/p6-diag/q-sites-s2.log`):
+- `interpolation_tests.jl:157–158` (twice each, `idxs` `Nothing` and `Int`): `Base.return_types(basic_dense, (Vector{Float64}, …))`
+  `<: AbstractDiffEqArray` is `Any`. Reflection shows facts inference for a facts method (facts §7.2). `fully_typed`
+  finds the cause: RAT's `DiffEqArray` constructor at a type with an uninferred parameter (`vector_of_array.jl:328`,
+  `DiffEqArray{…, _A, …} where _A`) and SII's `SymbolCache` likewise (`symbol_cache.jl:71`) are run-time sites, whose
+  result is `Any` (facts §4.2: no result type from the one method that matches); plain inference gives the
+  `UnionAll`. The test's own comment says the two parameters are not inferred upstream either. Values unchanged.
+- `solution_interface.jl` "solution_new_original_retcode type inference": `@inferred bvde_like(odesol, nlsol)`, a
+  plain test function reading `n.resid` through SciMLBase's `getproperty(::AbstractSolution, ::Symbol)`: P6-1
+  (`n.resid` infers to `Any`, `getfield` to `Vector{Float64}`). The direct call
+  `solution_new_original_retcode(…)` is fully typed under facts.
+- Not a G1 failure (no value differs), not a bug; P6 continues. Candidate pushback **P6-4** (below): packages'
+  own inference tests (`@inferred`, `return_types`) fail where facts inference is wider by design.
