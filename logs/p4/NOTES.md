@@ -130,3 +130,104 @@ pushback entries, lessons for the guideline (B5). Not normative.
 - Candidate alternative (not taken, the plan's shape kept): store the model `Compiled` at construction
   (`Kept{ComponentDynamics}(compiled_for(fd))`) and drop the per-crossing `compiled_for`: would save about
   2 of the 13 allocations per crossing.
+
+## S7: Polyester (no code change)
+
+- `Polyester.@batch`'s expansion (`scripts/p4_polyester_expand.jl`, `s7-polyester-expand.log`): the loop body
+  becomes a closure that captures nothing; every variable, the trait object included, is passed bare through
+  `Polyester.wrap_type(m)` and then as an argument of `Polyester.batch(closure, …, wrap_type(m), …)`.
+- So it is not §5.3's "closure over a trait object passed to Base": it passes the trait object bare to two
+  ordinary functions of another package. Confirmed by a five-line trait module
+  (`scripts/p4_polyester_check.jl`, `s7-polyester-check.log`): the definition check refuses it,
+  `TraitUseError`, "a trait object … is passed to `wrap_type`, an ordinary function" and the same for `batch`.
+- **Outcome: `PolyesterExecution` keeps typed batches** (the plan's alternative); S5 already erases only the
+  sequential and threaded styles. Nothing to commit. **For PB-7:** the answer is "refused: bare, not a closure".
+  The idiomatic form (the same loop over the trait object, parallel) needs either Polyester's loop over an
+  operation the trait declares, or a rule for trait objects passed through a package's macro machinery.
+
+## S8: E-152's runs
+
+- Two runs in P4 (`logs/p4-1/P4-{1,2}.log`), one attribution run (`logs/p4-1-diag/P4-1.log`); the code is
+  c9339fd, as at S6's T run (`ndtest-p4-s6.log`), so that T run is S8's (TraitWorld a373e30 in both).
+
+| # | Criterion | Result | Pass |
+|---|---|---|---|
+| 0 | tier S's two networks of one type | `sametype=true` (S5 on; `rhs-s5.log`, `rhs-s6.log`) | **yes** |
+| 1 | digests exact against U; again = first; rhs_check hashes = U | 0 exact differences in 25 digests, both runs (also against N); every R/J line equal to U | **yes** |
+| 2 | "changed" b–e new CodeInstances of SciML packages and SII ≤ 50 | **0**. b–e create 207 CodeInstances in all (b 91, c 82, d 34, e 0), all `:facts`, of Base, TraitWorld, NetworkDynamics, ForwardDiff (3), Static (2), Core, Main (U: c 2,737, d 2,734, e 1,065) | **yes** |
+| 3 | "changed" b–e compile ≤ 2,000 ms, both runs | **426 and 493 ms** (b 80–81, c 220–228, d 127–185, e 0); N 14,970; P0 14,977–15,220. a–g: a 54–56, f 0, g 0 compile | **yes** |
+| 4 | steady state ≤ 1.10 × N + 5 ms per step (min of 2 runs) | a 1.6 (N 1.7), b 0.5 (0.5), c 6.1 (3.7; bound 9.1), **d 46.8 (15.3; bound 21.8)**, e 1.0 (0.6), f 36.8 (39.1), g 139.5 (165.9). d is 46.8, 46.8, 47.1 in three runs (with S6's) | **no, at step d (confirmed)** |
+| 5 | first session (reported) | first pass a–g 54.9–55.6 s (N 56.5, P0 39.9–40.0); loads 5.9–6.0 s (N 6.1, P0 6.2–6.3); session 67.5–68.4 s (N 86.9, P0 71.1–71.3) | — |
+| 6 | allocations per rhs ≤ passes with batches + crossings (tier S: 3 + 3) | **32 allocations**, 848 bytes; 3.1 µs (U 0.50 µs, 0; N 0.52 µs, 0). The 3 `Ref`s are the passes'; about 9–10 more per crossing come from the entry's generic path compiled by facts (S6's notes) | **no**; not the Ref pattern: TraitWorld's (PB-4) |
+| 7 | ND's test subset as at `upstream`, except PB-4's allocation assertions | the same passes; fails only `diffusion_test.jl:111` (1,728 B), `inhomogeneous_test.jl:59` (61), `:93` (1,306 vs 5,206 for 50 vs 400 batches) | **yes** |
+
+- **Step d attributed** (`scripts/p4_stepd_ab.jl`, `logs/p4/stepd-ab-s8.log`, one session, one thread): erased
+  batches 46.3–48.1 ms; the same network with typed batches 15.1–15.6 ms. So the 31 ms are the barrier, about
+  2.6 µs more per right-hand side, so roughly 12,000 right-hand-side calls in step d (Tsit5, Rodas5P at duals,
+  the callbacks' conditions through `get_buffers`); a reading, not counted.
+- Step c's steady state also grows (3.7 → 6.1 ms), within the margin.
+- Per the plan (§3, "What a failure changes"): **criterion 4 failing, confirmed → the port stops before step 2;
+  the numbers go to open issues §4 item 35 and PB-4; the user decides.** I stopped here.
+
+## Candidate pushback entries (the log's shape), for the coordinator
+
+**PB-4 (amend with numbers): the barrier per batch costs about 13 allocations and 0.8 µs from trait code.**
+- The code: `_process_kept!` (`coreloop.jl`), `run_vertex_batch!(compiled_for(batch.model), batches, k, args)`,
+  per batch per pass; tier S: 3 crossings per right-hand side.
+- Measured: 32 allocations and 3.1 µs per right-hand side (U 0, 0.50 µs). Per crossing from ND's facts code
+  about 13 allocations and 0.8 µs; the same call from plain code 2 allocations and 0.28 µs. ND's allocation
+  tests fail by construction (counts above). Step d's steady state 46.8 against N's 15.3 ms.
+- Why (by `fully_typed`, not by reading TraitWorld further): a family member takes the generic path
+  (lowering §9.3); the machinery on that path is facts code when trait code calls it (lowering §2, L-17) and has
+  run-time sites (`_pmiss`, `_assemble(TraitList{…}, Any)`, `PEntry(…)`); and `compiled_for(::Kept{X})` infers
+  `Any` in facts code, so the crossing is a dynamic call even where the kept value's type is known
+  (asserting `::Kept{ComponentDynamics}` does not change the cost).
+- The idiomatic form: a library's own family opened by `compiled_for` at a loop over its data (A12) costs a
+  plain function barrier: one dynamic call, no allocation per batch.
+- The reference: §6.8 says a `Compiled` value of unknown type selects its code once per call; nothing on its
+  cost or allocations. Open issues §4 item 35.
+- Blocks: **yes for criterion 4** (the plan's rule pauses the port). For the user: whether serving family
+  members in the entry's table, and a typed generic path when the caller is facts code, become work items.
+- What the port did: kept the plan's shape; recorded the numbers; stopped before step 2.
+
+**PB-7 (answer): Polyester's `@batch` passes the trait object bare.** See S7: refused by the definition check
+(`wrap_type`, `batch`). Polyester keeps typed batches. A question for the user only if Polyester should join the
+erased path: then a rule for trait objects passed through another package's loop machinery is needed.
+
+**New, small: a tuple sliced by a run-time range (S2).** Not a design pushback: the facts mode does what facts §3
+says (a non-concrete `Tuple{Vararg{Int}}` argument is a run-time site). Upstream relied on static values to
+fold `sum(t[1:idx-1])`; the port added a typed loop for Int strides. A guideline lesson (below), not a log entry.
+
+**Observation for P3's record (not P4's): threads in the facts mode.** The wrapped package without traits (S0):
+`ThreadedExecution` 43.8 µs and 5,200 bytes per right-hand side against U's 9.2 µs and 2,848 bytes. After S6
+48 µs. Evidence §5 lists threads as untested in the facts mode.
+
+## Lessons for the guideline (B5), as they stand after this step
+
+- A trait at a library's internal calling convention can come first; one trait and one family serve the core
+  loop's vertex and edge batches alike.
+- A library's own implementation as a family over its own parametric type (`FunctionDynamics{F, G, FF, PDIM,
+  EXTDIM}`) keeps the user's functions typed inside the key and out of every other type: the network's type is
+  the same for both equations, and changing the equations compiles 0.4–0.5 s instead of 15 s, with no new code
+  in SciML or SymbolicIndexingInterface.
+- Values that decide types in hot code (dimensions zero or not) go in the key as type parameters of the
+  implementing type.
+- **The crossing has a cost per call that a library must budget for:** from trait code, about 13 allocations and
+  0.8 µs per crossing for a family member (this build). A per-batch barrier inside a right-hand side called
+  thousands of times per solve shows in the steady state (3× in step d). Put the crossing where the work behind
+  it is large, or measure it first with a one-session A/B against the typed path.
+- At a barrier, the other arguments travel as heap objects: one `Ref` per pass, built only when a batch runs,
+  the container and an index.
+- Code that leans on static values folding (a tuple sliced by a computed range) needs a typed path once those
+  values become run-time values; `fully_typed` on the helper finds it.
+- In a wrapped package the package's `@compile_workload` becomes `TraitWorld.@workload` with the first bounded
+  function (PrecompileTools then remains a dependency only through TraitWorld).
+- A package's macro that hands loop variables to its own functions (`Polyester.@batch`) is not a closure passed
+  to Base: the definition check refuses a trait object there. Read the expansion first.
+- A one-method helper on `Union{StyleA, StyleB}` beside upstream's per-style methods is ambiguous; define one
+  method per style that calls a shared internal function.
+
+## Upstream bugs met (not the port's)
+
+- `KAExecution`: `get_buffers` fails (`get_backend(nothing)`); `compkernel_fg!` names its argument `inbuf` and
+  uses `inbufs` (an `UndefVarError` on any network with a feed-forward edge).
