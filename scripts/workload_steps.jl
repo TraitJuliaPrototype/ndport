@@ -48,12 +48,14 @@ end
 digest_a(r) = digest("a", :vdim => dim(r.vertex), :vpdim => pdim(r.vertex), :edim => dim(r.edge), :epdim => pdim(r.edge))
 
 # ---- b. the network -----------------------------------------------------------------------------
-function step_b(r; graph = :simple)
+function step_b(r)
     g = watts_strogatz(20, 4, 0.2; seed = 42)
-    # the `graphtype` pass (the graph plan's G7, E-154): the same graph as a `Graphs.Test.GenericGraph`
-    graph === :generic && return Network(Graphs.Test.generic_graph(g), r.vertex, r.edge; dealias = true)
     Network(g, r.vertex, r.edge; dealias = true)
 end
+# the `graphtype` pass (the graph plan's G7, E-154): the same graph as a `Graphs.Test.GenericGraph`. A `Val`, so
+# that the other passes' code does not infer the other graph type's network (that moved 5 s of compile into b)
+step_b(r, ::Val{:simple}) = step_b(r)
+step_b(r, ::Val{:generic}) = Network(Graphs.Test.generic_graph(watts_strogatz(20, 4, 0.2; seed = 42)), r.vertex, r.edge; dealias = true)
 function digest_b(nw)
     g = get_graph(nw)
     es = [(src(e), dst(e)) for e in edges(g)]
@@ -119,10 +121,10 @@ digest_e(r) = digest("e", :ωsum => num(r.ωsum), :P2 => num(r.P2), :P3 => num(r
 
 # ---- the passes ---------------------------------------------------------------------------------
 "Steps a–e for one model; `timed(name, f)` runs and times each step, the digests outside it."
-function run_sim(timed, pass, model; γ = 0.1, graph = :simple)
+function run_sim(timed, pass, model; γ = 0.1, graph = Val(:simple))
     PASS[] = pass
     a = timed("a", () -> step_a(model)); digest_a(a)
-    nw = timed("b", () -> step_b(a; graph)); digest_b(nw)
+    nw = timed("b", () -> step_b(a, graph)); digest_b(nw)
     c = timed("c", () -> step_c(nw; γ)); digest_c(c)
     d = timed("d", () -> step_d(nw, c.s)); digest_d(d)
     e = timed("e", () -> step_e(nw, d.sol)); digest_e(e)
@@ -134,8 +136,8 @@ function run_plot(timed, st)
     g = timed("g", () -> step_g(st.nw, st.d.prob, st.model)); digest_g(g)
     (st.nw, st.d.prob)
 end
-"Steps a–g for one model; `graph = :generic`: the network on a `Graphs.Test.GenericGraph` (step b)."
-run_pass(timed, pass, model; γ = 0.1, graph = :simple) = run_plot(timed, run_sim(timed, pass, model; γ, graph))
+"Steps a–g for one model; `graph = Val(:generic)`: the network on a `Graphs.Test.GenericGraph` (step b)."
+run_pass(timed, pass, model; γ = 0.1, graph = Val(:simple)) = run_plot(timed, run_sim(timed, pass, model; γ, graph))
 
 "The control: the parameters changed on the problem of the first pass (`remake`), no new types."
 function run_params(timed, nw, prob)

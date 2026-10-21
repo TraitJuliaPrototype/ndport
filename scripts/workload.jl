@@ -73,7 +73,7 @@ if "graphtype" in PASSES
     gt_step = Ref("a")
     gt_timer(name, f) = (gt_step[] = name; step_timer(name, f))
     try
-        NDW.run_pass(gt_timer, "graphtype", :swing; graph = :generic)
+        NDW.run_pass(gt_timer, "graphtype", :swing; graph = Val(:generic))
     catch err
         println("D graphtype ", gt_step[], " error=", nameof(typeof(err))); flush(stdout)
     end
