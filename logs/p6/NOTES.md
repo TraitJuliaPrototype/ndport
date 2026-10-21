@@ -161,3 +161,58 @@ Commit: `SciMLBase-p6` b50f4684 (tag `p6-s2`): the wrap with
   4. a different order: wrap the hot plain callers (DiffEqBase, OrdinaryDiffEqCore, the solvers) in the same step as
      SciMLBase (S2+S5+S6+S7 as one step), so that no plain caller on the workload's per-step path is left above it.
      LinearSolve's `build_linear_solution` (Rosenbrock's linear solves) would stay a plain caller.
+
+## Candidate pushback entries (the log's shape; IDs P6-n assigned by the coordinator)
+
+**P6-a. Plain callers lose constant propagation into a wrapped package's `getproperty` overloads** (met at S2;
+blocks the track).
+- *The code:* SciMLBase's `Base.getproperty(A::DEIntegrator, sym::Symbol)` (`integrator_interface.jl:833`),
+  `(A::AbstractSolution, sym)` (`solution_interface.jl:72`), `(prob::AbstractSciMLProblem, sym)`
+  (`problem_interface.jl:1`), `(x::AbstractSciMLFunction, sym)` (`scimlfunctions.jl:6190`); their plain callers in
+  DiffEqBase (`callbacks.jl:150–171`, `integrator.sol.stats.ncondition += 1`), OrdinaryDiffEqCore, Tsit5, Rosenbrock,
+  LinearSolve.
+- *The idiomatic form:* an interface package overloads `getproperty` on its abstract types with a `Symbol` switch;
+  implementers' concrete subtypes inherit it; callers write `x.field` and get the field's type by constant propagation.
+- *The reference:* [facts §6.3](../../../writeup/reference/facts.md#calls-between-the-modes): "No constant propagation
+  crosses the modes." (and §6.2: a facts method reached from the default owner is still compiled by facts).
+- *What it costs:* results bit for bit the same; every such field read in plain code infers to the union of the
+  struct's field types; the steady-state solve (step d) 29.2 against 15.0 ms; the first simulation's step d 30.9
+  against 11.1 s. Nothing warns.
+- *Blocks:* P6 past S2 under the plan's check T.
+- *What the port did:* stopped at S2 and recorded it (options above).
+
+**P6-b. Strict mode refuses a plotting package's `reshape` pirate to protect Base's own code** (I0; does not block).
+- *The code:* OffsetArrays' `Base.reshape(A::AbstractArray, inds::Tuple{Vararg{Union{Colon,Integer,AbstractUnitRange}}})`,
+  loaded by Makie; Base's `reshape(::Vector{Dict{Symbol,Any}}, ::Val)` holds the fact
+  `reshape(…, ::Tuple{Vararg{OneTo{Int}}})`.
+- *The idiomatic form:* a package that extends Base's array API for all arrays (a pirate by the letter, long accepted).
+- *The reference:* [facts §10.2](../../../writeup/reference/facts.md#strict-mode), [traits §10.3](../../../writeup/reference/traits.md#103-strict-mode);
+  TraitWorld's `is_trait_world(Base) = true`, so Base's compiled code is protected.
+- *What it costs:* the method stays inactive in strict sessions that load Makie; digests unchanged. Every strict run
+  of the full workload logs the refusal.
+- *Blocks:* no. It is not P6's: present at I0, before any SciML package is wrapped.
+
+**P6-c. A plain package's extension rewrites a wrapped core's facts at every load** (S2; does not block).
+- *The code:* `PreallocationToolsForwardDiffExt`'s `forwarddiff_compat_chunk_size(::Int)` wins at a fact of
+  SciMLBase's keyword body; `SciMLBaseForwardDiffExt`'s `anyeltypedual` methods win at facts of `promote_u0`.
+- *The idiomatic form:* extensions that refine a function for a trigger's types, loaded whenever the trigger is.
+- *The reference:* [traits §10.3](../../../writeup/reference/traits.md#103-strict-mode) (the extension's warning: a
+  stakeholder's change, followed); [facts §2.2](../../../writeup/reference/facts.md#g2) (the exception).
+- *What it costs:* the warnings at every load; SciMLBase's facts code at those sites compiles again; plausibly part of
+  the solvers' load rising from 0.33 to 4.3 s at S2 (not attributed; J was due at S4).
+- *Blocks:* no. The plan's expected P6-7, met earlier than order B.
+
+## Lessons for the guideline's B5
+
+- After wrapping a package that **other plain packages call on their hot paths**, profile the steady state of the
+  **callers** too: the dispatch profiler's "default owner" columns show plain code that lost types. P3-1's lesson
+  (profile after wrapping) holds, but the run-time sites can appear in the plain callers, not in the wrapped code.
+- `getproperty` overloads on abstract types (and any method whose callers rely on constant propagation of an
+  argument) in a package to be wrapped: a plain caller's `x.field` then infers to the union of all fields. Check with
+  `Base.return_types(x -> x.field, (T,))` against `getfield` (`scripts/p6_constprop_probe.jl`).
+- In an inside-out order, wrap a core package together with its hot plain callers, or expect the steady state of the
+  intermediate steps to fall.
+- `@joint_owners` inside the wrap's `@trait_module begin … end` works (the probe); the census after loading is the
+  check that the list is complete (SciMLBase's eight names held all 117).
+- A full workload run with strict mode on and Makie loaded logs OffsetArrays' `reshape` refusal (Base's code
+  protected): expected, not a regression.
