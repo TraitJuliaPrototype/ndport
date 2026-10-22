@@ -139,5 +139,5 @@ julia-1.13 build 2943086604; TraitWorld c655dde (`TraitWorld-port`); NetworkDyna
 - G3 (the feed-forward check in `check_feedforward_leaves(g::GraphInterface{V}, …)`, upstream's block unchanged): P, C (the `ff` network now builds on a `GenericDiGraph`), R (equal to U), T (as at c9339fd) pass on c655dde; T-59's reproducer passes.
 - P builds: P4P 450 packages 329 s; IP 450, 370 s; M 450, 368 s (fresh depots, strict on for IP and M).
 - C (strict on): pirates in wrapped packages 0, except one in NetworkDynamics that TraitWorld generates for a family implementation (`_family_registry`, `logs/merge/family-registry.log`). H: plain dynamic calls 5; P4's crossings add 35,290 `checked_call`s from trait code.
-- Strict on costs step d 1–3 ms in P4 alone and in the merge alike (`strict1-pair/`, two cores): P4 35.1, M 35.9 ms.
+- In the same conditions (strict on, two cores; `strict1-pair/`) step d is 35.1 ms in P4 alone and 35.9 ms in the merge: the merge's strict-on runs above P4's strict-off reference are spread and strict mode, not P6's wrap.
 
