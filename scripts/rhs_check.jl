@@ -121,7 +121,7 @@ if isdefined(NetworkDynamics, :ComponentDynamics) && !isdefined(NetworkDynamics,
     end
 end
 
-# ---- P4 step 3 (E-166) on: the kind's operations on a kept model give apply_compf's and apply_compg's bits ----
+# ---- P4 step 3 (E-166) on, lines `K`: the kind's operations on a kept model give apply_compf's and apply_compg's bits ----
 if isdefined(NetworkDynamics, :VertexDynamics)
     ND = NetworkDynamics
     function s3check(name, nw)
@@ -130,6 +130,9 @@ if isdefined(NetworkDynamics, :VertexDynamics)
             isv = c isa VertexModel
             fd = ND.FunctionDynamics(ND.compf(c), ND.compg(c), ND.fftype(c), ND.pdim(c), ND.extdim(c))
             k = isv ? ND.Kept{ND.VertexDynamics}(fd) : ND.Kept{ND.EdgeDynamics}(fd)
+            # the supertrait's operations from plain code take a kept value of the supertrait: a Kept{VertexDynamics}
+            # is not accepted by `hasf` (MethodError; E-166 notes, a candidate row)
+            kc = ND.Kept{ND.ComponentDynamics}(fd)
             buf(n, s) = [sin(s * i) + 0.1i for i in 1:n]
             u = buf(ND.dim(c), 0.3)
             p = ND.pdim(c) == 0 ? nothing : buf(ND.pdim(c), 0.7)
@@ -137,19 +140,19 @@ if isdefined(NetworkDynamics, :VertexDynamics)
             ND.extdim(c) > 0 && (ins = (ins..., buf(ND.extdim(c), 1.1)))
             nout = isv ? (ND.outdim(c),) : (ND.outdim(c).src, ND.outdim(c).dst)
             fok = if ND.compf(c) === nothing
-                ND.hasf(k) === false
+                ND.hasf(kc) === false
             else
                 du1, du2 = zeros(ND.dim(c)), zeros(ND.dim(c))
                 ND.apply_compf(ND.compf(c), du1, u, ins, p, T0)
                 isv ? ND.vertexf!(k, du2, u, ins, p, T0) : ND.edgef!(k, du2, u, ins, p, T0)
-                ND.hasf(k) && bits(du1) == bits(du2)
+                ND.hasf(kc) && bits(du1) == bits(du2)
             end
             o1, o2 = map(zeros, nout), map(zeros, nout)
             ND.apply_compg(ND.fftype(c), ND.compg(c), o1, u, ins, p, T0)
             isv ? ND.vertexg!(k, o2[1], u, ins, p, T0) : ND.edgeg!(k, o2[1], o2[2], u, ins, p, T0)
             gok = all(bits(a) == bits(b) for (a, b) in zip(o1, o2))
-            sok = ND.fftype(k) === ND.fftype(c) && ND.pdim(k) == ND.pdim(c) && ND.extdim(k) == ND.extdim(c)
-            println("S3 ", name, " ", isv ? "vertex " : "edge ", ND.compf(c) === nothing ? "-" : nameof(ND.compf(c)), "/",
+            sok = ND.fftype(kc) === ND.fftype(c) && ND.pdim(kc) == ND.pdim(c) && ND.extdim(kc) == ND.extdim(c)
+            println("K ", name, " ", isv ? "vertex " : "edge ", ND.compf(c) === nothing ? "-" : nameof(ND.compf(c)), "/",
                     typeof(ND.fftype(c)).name.name, " f=", fok, " g=", gok, " static=", sok)
         end
     end
@@ -193,6 +196,9 @@ if hasfield(NetworkDynamics.ComponentBatch, :model)
     rebuild(b; kw...) = ND.ComponentBatch(ND.dispatchT(b), b.indices, b.compf, b.compg, b.ff, b.statestride, b.pstride,
                                           b.inbufstride, b.outbufstride, b.extbufstride; kw...)
     erasedT = Dict{String,Any}()
+    # from P4 step 3 the batch keeps its kind's trait; plain code reads the supertrait's facts through a kept value of
+    # the supertrait (a Kept{VertexDynamics} is not accepted by `fftype`: E-166 notes, a candidate row)
+    cdview(m) = isdefined(ND, :VertexDynamics) ? ND.Kept{ND.ComponentDynamics}(getfield(m, :t)) : ND.compiled_for(m)
     for (name, make) in NETS
         nw = make((; execution = PolyesterExecution{true}()))     # typed batches (Polyester keeps them)
         for b in (nw.vertexbatches..., nw.layer.edgebatches...)
@@ -203,7 +209,7 @@ if hasfield(NetworkDynamics.ComponentBatch, :model)
             k2 = NetworkDynamics.Accessors.@set k.compg = k.compg
             ok = typeof(e2) === typeof(e) && typeof(k2) === typeof(k) && e2.model !== nothing &&
                  ND.state_range(e, 1) == ND.state_range(b, 1) && ND.parameter_range(e, length(e)) == ND.parameter_range(b, length(b)) &&
-                 ND.fftype(ND.compiled_for(e.model)) === b.ff && ND.pdim(ND.compiled_for(e.model)) == ND.pdim(b)
+                 ND.fftype(cdview(e.model)) === b.ff && ND.pdim(cdview(e.model)) == ND.pdim(b)
             name in ("S-swing", "S-swing2") && ND.dispatchT(b) === VertexModel && (erasedT[name] = typeof(e))
             println("S3 ", name, " ", ND.dispatchT(b), " ", b.compf === nothing ? "-" : nameof(b.compf), " ok=", ok)
         end

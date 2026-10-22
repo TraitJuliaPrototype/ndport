@@ -1,0 +1,39 @@
+# setting=M order=default script=scripts/p4s3_supertrait.jl env=env_merged julia=/home/hellmann/Repos/julia-trait-bound/julia-1.13/julia  depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-merged:/home/hellmann/.julia: strict=off diag=0 cpus=0-1(taskset) ionice=idle
+# julia-1.13 fa4e7f5798 lib-built 2026-10-21 20:43 TraitWorld(TraitWorld-port) 3ae361c dirty=0
+# clones BracketingNonlinearSolve-p6:7433e0b DiffEqCallbacks.jl:14b58b5 DiffEqCallbacks-p6:0b6042d GraphMakie.jl:327f80b Graphs.jl:dffc7a64 Graphs-p4:54632125 Makie.jl:47479e0a NetworkDynamics.jl:ec6afc0 NetworkDynamics-p3wrap:e5425fd NetworkDynamics-p4:4df44d4depot-facts depot-merged:depot-p3depot-p4 depot-p4pin:depot-p6depot-p6pin depot-stock:env_mergedenv_ndtest_p4 env_ndtest_p4pin:env_ndtest_p6env_ndtest_u env_p3:env_p4env_p4_pin env_p6:env_p6_pinenv_p6test env_p6test_u:env_portenv_upstream logs:outpkgs README.md:scriptsVERSIONS.tsv NetworkLayout.jl:32e72bf NonlinearSolveBase-p6:293712e NonlinearSolveFirstOrder-p6:30c42a6 NonlinearSolve-p6:697c987 NonlinearSolveQuasiNewton-p6:afc14ed NonlinearSolveSpectralMethods-p6:6ef8fa9 Observables.jl:4e78ca2 OrdinaryDiffEq.jl:53e7d1d33 OrdinaryDiffEq-p6:1dcb9dd04 OrdinaryDiffEq-p6-ros:effcc0f08 RecursiveArrayTools.jl:185fa2c RecursiveArrayTools-p6:f29eae0 SciMLBase.jl:365283c6 SciMLBase-p6:b50f4684 SciMLJacobianOperators-p6:3840f8a SimpleNonlinearSolve-p6:f95ae0e Static.jl:c34adbb SymbolicIndexingInterface.jl:13d7d07 SymbolicIndexingInterface-p6:dcc3b12 
+# date 2026-10-22T14:59:57+02:00 load-before 2.06
+C member conforms to VertexDynamics => true  du=[0.0, 0.0]
+C member conforms to ComponentDynamics => true  du=[0.0, 0.0]
+C family member, untyped caller (table) => (true, 3, 0)  du=[0.2, 1.48]
+C family member, Kept vector (table) => (true, 3, 0)  du=[0.2, 1.48]
+C family member, typed caller => (true, 3, 0)  du=[0.2, 1.48]
+C Swing (plain module, one-line), table => (true, 3, 0)  du=[0.2, 1.48]
+C Swing, typed caller => (true, 3, 0)  du=[0.2, 1.48]
+C Swing conforms to VertexDynamics => true  du=[0.2, 1.48]
+C no supertrait family: @implement VertexDynamics D where D<:GD => declared  du=[0.2, 1.48]
+C no supertrait family: conforms => true  du=[0.2, 1.48]
+C no supertrait family: Kept ERROR TraitBoundError: TraitBoundError: Main.CDp.GD{typeof(swingf!)} forwards Main.CDp.VertexDynamics to Main.CDp.GD{typeof(swingf!)}, which does not implement Main.CDp.ComponentDynamics
+C no supertrait family: table ERROR TraitBoundError: TraitBoundError: Main.CDp.GD{typeof(swingf!)} forwards Main.CDp.VertexDynamics to Main.CDp.GD{typeof(swingf!)}, which does not implement Main.CDp.ComponentDynamics
+C no supertrait family: typed caller ERROR TraitBoundError: TraitBoundError: Main.CDp.GD{typeof(swingf!)} forwards Main.CDp.VertexDynamics to Main.CDp.GD{typeof(swingf!)}, which does not implement Main.CDp.ComponentDynamics
+C plain code: hasf(Kept{VertexDynamics}(member)) ERROR MethodError: MethodError: no method matching hasf(::Kept{Main.CDp.VertexDynamics})
+The function `hasf` exists, but no method is defined for this combination of argument types.
+Argument 1 of `hasf` is bounded by Main.CDp.ComponentDynamics; a Kept{Main.CDp.VertexDynamics} conforms to none of them (declare an implementation with `@implement`, or convert it).
+
+Closest candidates are:
+  hasf(!Matched::Main.Plain.Sw
+C plain code: hasf(compiled_for(Kept{VertexDynamics}(member))) ERROR MethodError: MethodError: no method matching hasf(::Kept{Main.CDp.VertexDynamics})
+The function `hasf` exists, but no method is defined for this combination of argument types.
+Argument 1 of `hasf` is bounded by Main.CDp.ComponentDynamics; a Kept{Main.CDp.VertexDynamics} conforms to none of them (declare an implementation with `@implement`, or convert it).
+
+Closest candidates are:
+  hasf(!Matched::Main.Plain.Sw
+C plain code: hasf(Kept{VertexDynamics}(Swing())) ERROR MethodError: MethodError: no method matching hasf(::Kept{Main.CDp.VertexDynamics})
+The function `hasf` exists, but no method is defined for this combination of argument types.
+Argument 1 of `hasf` is bounded by Main.CDp.ComponentDynamics; a Kept{Main.CDp.VertexDynamics} conforms to none of them (declare an implementation with `@implement`, or convert it).
+
+Closest candidates are:
+  hasf(!Matched::Main.Plain.Sw
+C plain code: vertexf! on Kept{VertexDynamics}(member) => nothing  du=[0.2, 1.48]
+C crossing, family member ns=119.0 allocs=5
+C crossing, Swing ns=108.2 allocs=4
+# rc=0 load-after 1.89

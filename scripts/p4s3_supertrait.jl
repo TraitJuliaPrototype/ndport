@@ -72,6 +72,11 @@ show1("no supertrait family: conforms", () -> Base.invokelatest(conforms, typeof
 show1("no supertrait family: Kept", () -> Base.invokelatest(() -> Kept{CDp.VertexDynamics}(gdm)))
 show1("no supertrait family: table", () -> Base.invokelatest(() -> CDp.cross([Kept{CDp.VertexDynamics}(gdm)], du, u, ins, p, 0.0)))
 show1("no supertrait family: typed caller", () -> Base.invokelatest(() -> CDp.probe(gdm, du, u, ins, p, 0.0)))
+# the supertrait's operation from plain code, on a kept value of the subtrait
+show1("plain code: hasf(Kept{VertexDynamics}(member))", () -> CDp.hasf(Kept{CDp.VertexDynamics}(fdm)))
+show1("plain code: hasf(compiled_for(Kept{VertexDynamics}(member)))", () -> CDp.hasf(compiled_for(Kept{CDp.VertexDynamics}(fdm))))
+show1("plain code: hasf(Kept{VertexDynamics}(Swing()))", () -> CDp.hasf(Kept{CDp.VertexDynamics}(Plain.Swing())))
+show1("plain code: vertexf! on Kept{VertexDynamics}(member)", () -> CDp.vertexf!(Kept{CDp.VertexDynamics}(fdm), du, u, ins, p, 0.0))
 kk = [Kept{CDp.VertexDynamics}(fdm)]; ks = [Kept{CDp.VertexDynamics}(Plain.Swing())]
 tm(f, n = 200_000) = (f(); f(); t0 = time_ns(); for _ in 1:n; f(); end; (time_ns() - t0) / n)
 @printf("C crossing, family member ns=%.1f allocs=%d\n", minimum(tm(() -> CDp.cross(kk, du, u, ins, p, 0.0)) for _ in 1:3), @allocations(CDp.cross(kk, du, u, ins, p, 0.0)))

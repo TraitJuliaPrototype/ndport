@@ -70,3 +70,42 @@ c655dde 2 fail and 3 error). TraitWorld's suite passes on `w49` and on main (`ex
 | **W** | `s1-W/M-1.log` | 25 digests, 0 exact differences against U; again c / d / e **4.8 / 28.8 / 1.0 ms** (M-0 5.2 / 34.7 / 1.0); changed b–e 0.54 s; first a–e 31.6 s; load Graphs+ND 3.02 s; session 67.5 s; load 1.5 |
 
 The baseline for S3-2 on.
+
+## S3-2: the traits per kind (NetworkDynamics 4df44d4)
+
+`ComponentDynamics` keeps `hasf`, `fftype`, `pdim`, `extdim` (default 0) and, through S3-2 only, `compf!`/`compg!`
+(the review's blocker 1); `VertexDynamics <: ComponentDynamics` (`vertexf!`, `vertexg!`) and `EdgeDynamics <:
+ComponentDynamics` (`edgef!`, `edgeg!`); `FunctionDynamics` implements all three as families. Not exported or
+`public` yet (3b, when users name them).
+
+| Check | Log | Result |
+|---|---|---|
+| **P** | `precompile-s2.log` | ND and its dependents 53 s; strict on; no `OwnershipError`, no `PirateError`; the 15 extension warnings ND's own precompilation prints as before |
+| **R** | `rhs-s2.log` | R/J equal to U; `sametype=true`; the kind's operations on a `Kept{VertexDynamics}`/`Kept{EdgeDynamics}` give `apply_compf`/`apply_compg`'s bits for every component of the check networks: 15 of 15 lines (labelled `S3 … vertex|edge` in this log, `K` from S3-3 on) |
+
+**Found:** a supertrait's operation called from plain code on a kept value of the subtrait is refused:
+`hasf(Kept{VertexDynamics}(x))` raises `MethodError: no method matching hasf(::Kept{VertexDynamics})`, also after
+`compiled_for`, for a family member and for a one-line `Swing` alike; the subtrait's own operations work
+(`vertexf!(Kept{VertexDynamics}(x), …)`). Minimal reproducer: `scripts/p4s3_supertrait.jl`, the lines `plain code:`
+(`s3-supertrait/M-1.log`, TraitWorld `w49`). Inside bounded code (`m::VertexDynamics`) the supertrait's operations
+work (S3-0 (c)), so the core loop is not affected. Traits §3.6 says "`@trait B <: A` makes `A`'s operations available
+through a `B` bound"; a kept value of `B` at `A`'s operation from plain code is not said. A candidate T- row or an open
+question for the coordinator. The check scripts read the static facts through `Kept{ComponentDynamics}(held object)`
+(`rhs_check.jl`, `cdview`).
+
+## S3-3: the batches per kind (NetworkDynamics 4e5f5a2)
+
+`ComponentBatch` keeps `_kept_model(dT, FunctionDynamics(…))`: `Kept{VertexDynamics}` or `Kept{EdgeDynamics}`;
+`_process_kept!` calls `_run_batch!(dispatchT(batch), compiled_for(batch.model), batches, k, args)`, a dispatch on
+the batch vector's kind (a constant); `run_vertex_batch!(m::VertexDynamics, batches::Vector, k::Int,
+args::Base.RefValue)` and `run_edge_batch!(m::EdgeDynamics, …)` keep upstream's annotations; `_vertex!`/`_edge!`
+call the kind's operations; `compf!`/`compg!` are `FunctionDynamics`' own helpers. `_dynamics` (the `conforms` test
+for a user's value) is left to 3b with the adaptors: no record holds a user's value before S3-4.
+
+| Check | Log | Result |
+|---|---|---|
+| **P** | `precompile-s3.log` | 54 s; strict on; no `OwnershipError`, no `PirateError`; the extension warnings as at S3-2 |
+| **R** | `rhs-s3.log` | R/J equal to U; `sametype=true` (the erased vertex batch type `ComponentBatch{VertexModel, Any, …, Kept{VertexDynamics}}` for `swing!` and `swing2!`); `K` lines 15 of 15 true; step 1's `S3` lines ok. Tier S sequential 1,234–1,249 ns, 240 bytes (S3-1 1,211–1,238 ns, 208 bytes) |
+| **X** | `s3-split/M-1.log` | the right-hand side 1,238 ns, 5 allocations (S3-1 1,177); the crossing into an empty batch 39 / 36 / 47 ns (S3-1 39 / 37 / 48): **the S3-3 mark (≤ S3-1's + 15 ns) passes** |
+| **Y** | `rhs-s3.log` | the typed batches on function models: R's `PolyesterExecution{true,false}` and `KAExecution` lines equal to U's (the KA `E` lines as U's). `scripts/p4_polyester_check.jl` is PB-7's definition-check probe, untouched by this step, not rerun |
+| **W** | `s3-W/M-1.log`, `s3-W2/M-1.log` | 0 exact differences (both); again c / d / e 4.4 / 33.6 / 0.9 and 4.4 / **29.5** / 0.9 ms (load 1.2–1.6; the first d is spread, the second run confirms); changed b–e 0.55–0.56 s; first a–e 30.8–31.4 s; session 65.2–66.1 s. Against S3-1 (28.8): 29.5 within 5 % + 0.5 ms |
