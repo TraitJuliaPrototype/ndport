@@ -1,0 +1,25 @@
+# P4 nd=324bcb7 dirty=0 graphs=pkgs/Graphs-p4:54632125 TraitWorld c655dde date 2026-10-22T12:59:38+02:00 load 3.32
+# graph_check Graphs /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/Graphs-p4 ND /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4 GraphInterface true
+M SimpleGraph{Int64} conforms: V=Int64 equal to the plain reads=true first call 0.110 s
+M SimpleDiGraph{Int64} conforms: V=Int64 equal to the plain reads=true first call 0.135 s
+M SimpleGraph{Int32} conforms: V=Int32 equal to the plain reads=true first call 0.200 s
+M GenericGraph conforms: V=Int64 equal to the plain reads=true first call 0.250 s
+M GenericDiGraph conforms: V=Int64 equal to the plain reads=true first call 0.215 s
+M ReverseView conforms: V=Int64 equal to the plain reads=true first call 0.135 s
+M UndirectedView conforms: V=Int64 equal to the plain reads=true first call 0.171 s
+M WrongNv REFUSED: ImplementError; operations named: ["nv"]; message: ImplementError: WrongNv is a member of a family implementation of Graphs.GraphInterface, but does not conform: |   `nv` at Tuple{WrongNv} returns `Int64`, declared `Int32`
+N SimpleGraph{Int64} builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N SimpleDiGraph{Int64} builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N SimpleGraph{Int32} builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N GenericGraph builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N GenericDiGraph builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N ReverseView: edge set equal to reverse(d)'s: true, order equal: false
+N ReverseView builds: nv=20 ne=40 du=682eb66c20c959c edgevec=b1d20d1c5f9f9eec | ref: the same graph before G2 (check-g1.log)
+N UndirectedView: edge order equal to SimpleGraph(d)'s: true
+N UndirectedView builds: nv=20 ne=40 du=682eb66c20c959c | ref: nv true ne true edgevec true du true
+N ff GenericDiGraph builds: du=d3e44f5fa24e1778 | ref: edgevec true du true (ffnet() du true)
+N ff refusal SimpleDiGraph: ArgumentError: ArgumentError: Feed forward vertex models are only allowed a
+N ff refusal GenericDiGraph: ArgumentError: ArgumentError: Feed forward vertex models are only allowed a
+W WrongNv: ImplementError: ImplementError: WrongNv is a member of a family implementation of Graphs.GraphInterface, but does not conform: |   `nv` at Tuple{WrongNv} returns `Int64`, declared `Int32`
+W WrongNv   frames: _check_member@implement.jl:864 < _conf_family_slow@implement.jl:810 < _conf_family@implement.jl:805 < macro expansion@entry.jl:-1 < _assemble@entry.jl:428 < _enter_keyed@entry.jl:259 < _enter_compiled@entry.jl:229 < enter@entry.jl:224 < macro expansion@trait_module.jl:976 < _@network_structure.jl:41 < IndexManager@network_structure.jl:40 < macro expansion@construction.jl:100
+# rc=0 load-after 2.84

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Run the workload in fresh sessions (the P1 plan §3): one Julia job at a time through the shared
 # lock, niced, offline, never precompiling. Logs to logs/<tag>/<setting>-<run>.log.
-#     scripts/run_workload.sh <tag> <setting: U|P0|A0|S|N|W|P4|I> [runs=1]
+#     scripts/run_workload.sh <tag> <setting: U|P0|A0|S|N|W|P4|I|P4P|IP|M> [runs=1]
 # NDW_DIAG=1 adds the attribution run's instrument (diagnostic, not timed). NDW_STRICT=1: strict mode on. NDW_SCRIPT=<path>: another script in the same harness. NDW_ORDER=simfirst: P3's order B.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 ND=$PWD; R=$(cd .. && pwd)
 tag=$1; setting=$2; runs=${3:-1}
-J=$R/julia-1.13/julia; JF=(); DEPOT=""; ENVD=env_upstream; TW=0; WMOD=0; DEFSCRIPT=scripts/workload.jl
+J=$R/julia-1.13/julia; JF=(); DEPOT=""; ENVD=env_upstream; TW=0; WMOD=0; DEFSCRIPT=scripts/workload.jl; TWDIR=TraitWorld
 case $setting in
   U)  ;;
   P0) ENVD=env_port; TW=1 ;;
@@ -16,6 +16,9 @@ case $setting in
   W)  ENVD=env_p3; TW=1; WMOD=1; DEPOT="$ND/depot-p3:$HOME/.julia:" ;;   # P3: N plus the workload's module a trait module
   P4) ENVD=env_p4; TW=1; DEPOT="$ND/depot-p4:$HOME/.julia:" ;;   # P4: the port (pkgs/NetworkDynamics-p4, branch trait-port)
   I)  ENVD=env_p6; TW=1; DEPOT="$ND/depot-p6:$HOME/.julia:"; DEFSCRIPT=scripts/p6_workload.jl ;;   # P6 (E-155): the core wrapped inside out (pkgs/*-p6), NetworkDynamics as in N; prints STRICT
+  P4P) ENVD=env_p4_pin; TW=1; TWDIR=TraitWorld-port; DEPOT="$ND/depot-p4pin:$HOME/.julia:" ;;   # P4 on the pinned TraitWorld (E-165: the steady-state reference)
+  IP) ENVD=env_p6_pin; TW=1; TWDIR=TraitWorld-port; DEPOT="$ND/depot-p6pin:$HOME/.julia:"; DEFSCRIPT=scripts/p6_workload.jl ;;   # P6's last step (S7) on the pinned TraitWorld (E-165)
+  M)  ENVD=env_merged; TW=1; TWDIR=TraitWorld-port; DEPOT="$ND/depot-merged:$HOME/.julia:"; DEFSCRIPT=scripts/p6_workload.jl ;;   # the merge (E-165): P4's NetworkDynamics and Graphs on P6's core, branches `port`; prints STRICT
   S)  J=$HOME/.julia/juliaup/julia-1.13.2+0.x64.linux.gnu/bin/julia; DEPOT="$ND/depot-stock:$HOME/.julia:" ;;
   *) echo "unknown setting $setting"; exit 2 ;;
 esac
@@ -33,7 +36,7 @@ for i in $(seq 1 "$runs"); do
   for attempt in 1 2; do
     {
       echo "# setting=$setting order=${NDW_ORDER:-default} script=${NDW_SCRIPT:-$DEFSCRIPT} env=$ENVD julia=$J ${JF[*]} depot=${JULIA_DEPOT_PATH:-default} strict=$STRICT diag=${NDW_DIAG:-0}"
-      echo "# julia-1.13 $(git -C $R/julia-1.13 log -1 --format=%h) TraitWorld $(git -C $R/TraitWorld log -1 --format=%h) dirty=$(git -C $R/TraitWorld status --porcelain --untracked-files=no | wc -l)"
+      echo "# julia-1.13 $(git -C $R/julia-1.13 log -1 --format=%h) lib-built $(stat -c %y $R/julia-1.13/usr/lib/libjulia-internal.so.1.13.2 | cut -c1-16) TraitWorld($TWDIR) $(git -C $R/$TWDIR log -1 --format=%h) dirty=$(git -C $R/$TWDIR status --porcelain --untracked-files=no | wc -l)"
       echo "# clones $(for d in pkgs/*/; do printf '%s:%s%s ' $(basename $d) $(git -C $d log -1 --format=%h) $([ -z "$(git -C $d status --porcelain --untracked-files=no)" ] || echo '*'); done)"
       echo "# date $(date -Is) load-before $(cut -d' ' -f1 /proc/loadavg)"
     } > "$f"

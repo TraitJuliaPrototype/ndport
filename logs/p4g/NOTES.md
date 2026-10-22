@@ -258,3 +258,22 @@ the call** with `FieldError: type UnionAll has no field parameters`.
 - The two candidate deviation rows above (the reference's owner). The second blocks G3 in its plan's form.
 - G3's way forward: wait for a TraitWorld fix, or allow a typed form (`eidx = findall(is_loopback, edgem)::Vector{Int}`)
   as principled rather than a workaround.
+
+## G3 again (2026-10-22, E-154's open part, under E-165)
+
+NetworkDynamics `trait-port` 324bcb7 (6044c0c's change cherry-picked onto the revert 19c2045; tagged `p4-s2`);
+Graphs-p4 54632125; TraitWorld c655dde (the worktree `TraitWorld-port`; T-59 fixed in f06b82d); julia-1.13 build
+2943086604 (libjulia-internal built 2026-10-21 20:43); `env_p4_pin` and `env_ndtest_p4pin` (copies of `env_p4`,
+`env_ndtest_p4` whose TraitWorld path is `../../TraitWorld-port`), depot `depot-p4pin` (fresh); strict mode off.
+
+| Check | Log | Result |
+|---|---|---|
+| P | `precompile-g3-pin.log` | builds: 450 packages in 329 s (a fresh depot: everything above TraitWorld), `using NetworkDynamics` 3.1 s |
+| C | `check-g3-pin.log` | the member table and `WrongNv` as in `check-final.log`; **the `ff` network on a `GenericDiGraph` builds** (`du` equal to the `SimpleDiGraph`'s; at 19c2045 it failed with Graphs' `NotImplementedError` for `==` on `GenericEdge`); the refusals on both graph types the same `ArgumentError` |
+| R | `rhs-g3-pin.log` | R/J lines equal to U's; `sametype=true`; the `ff` network passes the check; one right-hand side 208 B, 1.7 µs sequential (as `rhs-final.log`); the two `KAExecution` errors on `ff` are upstream's (also in `logs/p4/rhs-U.log`) |
+| T | `ndtest-g3-pin.log` | as at c9339fd and 19c2045: massmatrix 6, doctor 26, diffusion 111 + 1 fail, inhomogeneous 43 + 2 fail (P4-1's three allocation assertions) |
+| T-59's reproducer | `g3-min-pin.log` | all six forms `true` (b1, b2 failed on 3bebf13) |
+| W | `../merge/p4-pin/P4P-{1,2}.log` | 25 digests, 0 exact differences against U (two runs) |
+
+G3 holds in its plan's form: upstream's block moved unchanged into `check_feedforward_leaves(g::GraphInterface{V}, …)`,
+no typed form needed.
