@@ -1,0 +1,109 @@
+# setting=M order=default script=scripts/p6_workload.jl env=env_merged julia=/home/hellmann/Repos/julia-trait-bound/julia-1.13/julia  depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-merged:/home/hellmann/.julia: strict=on diag=0 cpus=0-1(taskset) ionice=idle
+# julia-1.13 fa4e7f5798 lib-built 2026-10-21 20:43 TraitWorld(TraitWorld-port) 3ae361c dirty=0
+# clones BracketingNonlinearSolve-p6:7433e0b DiffEqCallbacks.jl:14b58b5 DiffEqCallbacks-p6:0b6042d GraphMakie.jl:327f80b Graphs.jl:dffc7a64 Graphs-p4:54632125 Makie.jl:47479e0a NetworkDynamics.jl:ec6afc0 NetworkDynamics-p3wrap:e5425fd NetworkDynamics-p4:4e5f5a2 NetworkLayout.jl:32e72bf NonlinearSolveBase-p6:293712e NonlinearSolveFirstOrder-p6:30c42a6 NonlinearSolve-p6:697c987 NonlinearSolveQuasiNewton-p6:afc14ed NonlinearSolveSpectralMethods-p6:6ef8fa9 Observables.jl:4e78ca2 OrdinaryDiffEq.jl:53e7d1d33 OrdinaryDiffEq-p6:1dcb9dd04 OrdinaryDiffEq-p6-ros:effcc0f08 RecursiveArrayTools.jl:185fa2c RecursiveArrayTools-p6:f29eae0 SciMLBase.jl:365283c6 SciMLBase-p6:b50f4684 SciMLJacobianOperators-p6:3840f8a SimpleNonlinearSolve-p6:f95ae0e Static.jl:c34adbb SymbolicIndexingInterface.jl:13d7d07 SymbolicIndexingInterface-p6:dcc3b12 
+# date 2026-10-22T15:12:16+02:00 load-before 2.30
+L TraitWorld 0.14
+L Graphs,NetworkDynamics 9.43
+L solvers 0.52
+L steps 0.06
+L CairoMakie,GraphMakie,Observables 8.1
+L plot steps 0.01
+T first a 550.3 compile 543.9 recompile 27.3 gc 0.0
+D first a vdim=2 vpdim=3 edim=0 epdim=2
+T first b 842.9 compile 833.4 recompile 7.4 gc 57.3
+D first b nv=20 ne=40 connected=true edges=6499ccea4d513864 dim=40 pdim=140
+T first c 17803.5 compile 17709.4 recompile 75.4 gc 493.1
+D first c u=b20802e716eceacb p=7c8f234a0a2c253a δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874 fix=true λmax=-2.308852461e-14
+T first d 14164.3 compile 14017.8 recompile 45.0 gc 343.6
+D first d retcode=Success rretcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1,1.809068084,2.224116492,2.499471687,2.756386226,2.817606897,2.825230753,3.112909394,3.140182305,3.260305788,3.355679986,3.441859374,3.486329467,3.64942549,3.792884724,4.04797065 trtrips=1,1.809068112,2.224116516,2.499471716,2.75638625,2.817606931,2.825230768,3.112909402,3.140182323,3.260305832,3.355679979,3.441859413,3.486329472,3.649425493,3.792884724,4.047970645 ω2=-1.947637855e-15,2.514520715e-15,-0.04751035189,-0.1787344011,-0.09691742147,-0.7577319673,-2.034377446 ω2r=-1.101099686e-15,1.143679639e-15,-0.04751034122,-0.1787343862,-0.09691740223,-0.7577319602,-2.034377438 sol=b1e9898349ea5849 rsol=f9513783093062a9 nsteps=179 rnsteps=157
+T first e 4008.0 compile 4003.3 recompile 21.1 gc 104.1
+D first e ωsum=1.068288979e-15,-1.570346188e-15,-1.451258818e-15,-1.353084311e-15,-5.551115123e-16,-4.440892099e-16,8.881784197e-16 P2=-0.1280424121,-0.1280424121,-0.4598860489,-0.3909288835,0.6156849161,-0.03886958238,-0.2563265503 P3=0,0.6156849161,0.2161449076,0,-0.04493877656,-0.3568719863 K3=0,6,6,0,6,6 Pend=0,-0.2563265503,-0,-0,-0.341324321,-0
+T first f 19499.7 compile 19352.5 recompile 5508.0 gc 861.6
+D first f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=2.866861926,-2.034377446,2.810704225,-2.348777454,2.428858939 pixels=1200x900 pngbytes=147918
+T first g 3312.6 compile 3059.8 recompile 108.7 gc 244.2
+D first g t=6 ωend=2.866861946,-2.034377453,2.810704233,-2.348777445,2.428858945 line=11 sel3=2.810704231 listeners=10 frames=4
+T again a 1.9 compile 0.0 recompile 0.0 gc 0.0
+D again a vdim=2 vpdim=3 edim=0 epdim=2
+T again b 0.8 compile 0.0 recompile 0.0 gc 0.0
+D again b nv=20 ne=40 connected=true edges=6499ccea4d513864 dim=40 pdim=140
+T again c 5.4 compile 0.0 recompile 0.0 gc 0.0
+D again c u=b20802e716eceacb p=7c8f234a0a2c253a δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874 fix=true λmax=-2.308852461e-14
+T again d 33.4 compile 0.0 recompile 0.0 gc 0.0
+D again d retcode=Success rretcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1,1.809068084,2.224116492,2.499471687,2.756386226,2.817606897,2.825230753,3.112909394,3.140182305,3.260305788,3.355679986,3.441859374,3.486329467,3.64942549,3.792884724,4.04797065 trtrips=1,1.809068112,2.224116516,2.499471716,2.75638625,2.817606931,2.825230768,3.112909402,3.140182323,3.260305832,3.355679979,3.441859413,3.486329472,3.649425493,3.792884724,4.047970645 ω2=-1.947637855e-15,2.514520715e-15,-0.04751035189,-0.1787344011,-0.09691742147,-0.7577319673,-2.034377446 ω2r=-1.101099686e-15,1.143679639e-15,-0.04751034122,-0.1787343862,-0.09691740223,-0.7577319602,-2.034377438 sol=b1e9898349ea5849 rsol=f9513783093062a9 nsteps=179 rnsteps=157
+T again e 1.1 compile 0.0 recompile 0.0 gc 0.0
+D again e ωsum=1.068288979e-15,-1.570346188e-15,-1.451258818e-15,-1.353084311e-15,-5.551115123e-16,-4.440892099e-16,8.881784197e-16 P2=-0.1280424121,-0.1280424121,-0.4598860489,-0.3909288835,0.6156849161,-0.03886958238,-0.2563265503 P3=0,0.6156849161,0.2161449076,0,-0.04493877656,-0.3568719863 K3=0,6,6,0,6,6 Pend=0,-0.2563265503,-0,-0,-0.341324321,-0
+T again f 49.4 compile 0.0 recompile 0.0 gc 0.0
+D again f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=2.866861926,-2.034377446,2.810704225,-2.348777454,2.428858939 pixels=1200x900 pngbytes=147918
+T again g 220.3 compile 0.0 recompile 0.0 gc 38.1
+D again g t=6 ωend=2.866861946,-2.034377453,2.810704233,-2.348777445,2.428858945 line=11 sel3=2.810704231 listeners=10 frames=4
+T params d 542.9 compile 535.2 recompile 0.0 gc 0.0
+D params d retcode=Success ω2=-1.80223189e-15,2.195080736e-15,-0.04634797308,-0.1651252615,-0.07508903725,-1.017917522,-2.050000744
+T params e 7.5 compile 6.0 recompile 0.0 gc 0.0
+D params e ωsum=1.208665463e-16,6.976681491e-17,-4.320003556e-16,-2.359223927e-16,4.440892099e-16,4.440892099e-16,4.440892099e-16 P2=-0.1280424121,-0.1280424121,-0.4551065301,-0.4016464528,0.6239886875,-0.1714363442,-0.2271283289 P3=0,0.6239886875,0.3200752051,0,-0.03046343673,-0.3363519472 K3=0,6,6,0,6,6 Pend=0,-0.2271283289,-0,0,-0,-0
+T params f 50.4 compile 5.6 recompile 0.0 gc 0.0
+D params f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=2.393835112,-2.050000744,2.417681854,-1.658798851,2.146657946 pixels=1200x900 pngbytes=148572
+T params g 217.2 compile 6.4 recompile 0.0 gc 46.0
+D params g t=6 ωend=3.513056939,-3.49402894,3.475000941,-3.49402894,3.49402894 line=11 sel3=3.475000858 listeners=10 frames=4
+T changed a 74.1 compile 71.6 recompile 0.0 gc 0.0
+D changed a vdim=2 vpdim=4 edim=0 epdim=2
+T changed b 131.7 compile 128.5 recompile 0.0 gc 0.0
+D changed b nv=20 ne=40 connected=true edges=6499ccea4d513864 dim=40 pdim=160
+T changed c 369.8 compile 330.3 recompile 0.0 gc 0.0
+D changed c u=b20802e716eceacb p=fb4ee25a870d6187 δ=0.1449730792,0.02825773053,0.1663151014,0.04281046533,0.1836270154 Pmax=0.7391453874 fix=true λmax=-2.308852461e-14
+T changed d 227.7 compile 170.9 recompile 0.0 gc 0.0
+D changed d retcode=Success rretcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,6,12,37,11 rtrips=8,1,4,40,38,39,10,14,9,7,13,6,12,37,11 ttrips=1,1.809988351,2.226830234,2.502433186,2.760357232,2.823895346,2.831696918,3.114568618,3.151342203,3.309111254,3.352229395,3.458950044,3.648503489,3.802549264,4.024678303 trtrips=1,1.809988386,2.226830268,2.502433225,2.760357267,2.823895393,2.831696941,3.11456864,3.151342225,3.309111318,3.352229409,3.458950071,3.648503505,3.802549282,4.02467831 ω2=-1.947637855e-15,2.514520715e-15,-0.04745288174,-0.1777326322,-0.09365361308,-0.6991022031,-1.150719911 ω2r=-1.101099686e-15,1.143679639e-15,-0.04745287104,-0.177732614,-0.09365357751,-0.699102193,-1.150719909 sol=9877b0bd0c40a8c6 rsol=fd04d60e913971ec nsteps=175 rnsteps=154
+T changed e 1.1 compile 0.0 recompile 0.0 gc 0.0
+D changed e ωsum=1.068288979e-15,-1.570346188e-15,-2.544798565e-06,-0.0001052397478,-0.01334048321,-1.014488332,-1.368564958 P2=-0.1280424121,-0.1280424121,-0.4593457967,-0.3914848699,0.6121062079,0.0477898004,0.06462736114 P3=0,0.6121062079,0.232214062,0,-0.04251490102,-0.3536818554 K3=0,6,6,0,6,6 Pend=-0,0.06462736114,0.006299508371,0,-0.1273872145,-0
+T changed f 45.0 compile 0.0 recompile 0.0 gc 0.0
+D changed f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=1.194372932,-1.150719911,1.199953953,-1.227636603,1.199289872 pixels=1200x900 pngbytes=147697
+T changed g 255.4 compile 0.0 recompile 0.0 gc 94.3
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(PreallocationTools.forwarddiff_compat_chunk_size), Int64}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.var"#_#466"(::Pairs{Symbol, Union…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld-port/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}, Val{1}}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld-port/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(SciMLBase.wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(SciMLBase.wrapfun_iip), DiffEqBase.ParameterDespecializationWrapper{typeof(DiffEqBase._despecialized_precompile_rhs!)}, Tuple{Vector{Float64}, Vector{Float64}, SciMLBase.DespecializedParameters, Float64}}, a fact of trait code (CodeInstance for MethodInstance for SciMLBase.wrapfun_iip(::ParameterDespeciali…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld-port/src/strict.jl:148
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(DiffEqBase.hasdualpromote), Any, Number}, which wins at Tuple{typeof(DiffEqBase.hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (CodeInstance for MethodInstance for DiffEqBase.promote_f(::ODEFunction{true, Au…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld-port/src/strict.jl:148
+┌ Warning: The package extension NonlinearSolveBaseSparseMatrixColoringsExt defines Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, which wins at Tuple{typeof(NonlinearSolveBase.Utils.is_extension_loaded), Val{:SparseMatrixColorings}}, a fact of trait code (CodeInstance for MethodInstance for NonlinearSolveBase.select_fastest_coloring_…) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld-port/src/strict.jl:148
+┌ Error: strict mode left a package's winning pirates inactive at its load:
+│   PirateError: strict mode refuses `reshape(AbstractArray, Tuple{Vararg{Union{Colon, Integer, Abst…)`, defined by OffsetArrays.
+│   It would change what trait-world code computes, at the call `Tuple{typeof(reshape), Vector{Dict{Symbol, Any}}, Tuple{Vararg{OneTo{Int64}}}}`.
+│   OffsetArrays owns neither the function nor a type in that signature (a pirate).
+│   Turn strict mode off (`TraitWorld.strict!(false)`) to follow the method as plain Julia does, or define it where a type it is for is owned.
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld-port/src/hooks.jl:288
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+D changed g t=6 ωend=1.19437293,-1.150719911,1.199953955,-1.227636604,1.199289873 line=11 sel3=1.199953914 listeners=10 frames=4
+W total 91.1
+STRICT on
+# rc=0 load-after 2.63

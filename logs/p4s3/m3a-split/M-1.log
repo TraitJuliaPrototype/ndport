@@ -1,0 +1,27 @@
+# setting=M order=default script=scripts/p4s3_rhs_split.jl env=env_merged julia=/home/hellmann/Repos/julia-trait-bound/julia-1.13/julia  depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-merged:/home/hellmann/.julia: strict=off diag=0 cpus=0-1(taskset) ionice=idle
+# julia-1.13 fa4e7f5798 lib-built 2026-10-21 20:43 TraitWorld(TraitWorld-port) 3ae361c dirty=0
+# clones BracketingNonlinearSolve-p6:7433e0b DiffEqCallbacks.jl:14b58b5 DiffEqCallbacks-p6:0b6042d GraphMakie.jl:327f80b Graphs.jl:dffc7a64 Graphs-p4:54632125 Makie.jl:47479e0a NetworkDynamics.jl:ec6afc0 NetworkDynamics-p3wrap:e5425fd NetworkDynamics-p4:4e5f5a2 NetworkLayout.jl:32e72bf NonlinearSolveBase-p6:293712e NonlinearSolveFirstOrder-p6:30c42a6 NonlinearSolve-p6:697c987 NonlinearSolveQuasiNewton-p6:afc14ed NonlinearSolveSpectralMethods-p6:6ef8fa9 Observables.jl:4e78ca2 OrdinaryDiffEq.jl:53e7d1d33 OrdinaryDiffEq-p6:1dcb9dd04 OrdinaryDiffEq-p6-ros:effcc0f08 RecursiveArrayTools.jl:185fa2c RecursiveArrayTools-p6:f29eae0 SciMLBase.jl:365283c6 SciMLBase-p6:b50f4684 SciMLJacobianOperators-p6:3840f8a SimpleNonlinearSolve-p6:f95ae0e Static.jl:c34adbb SymbolicIndexingInterface.jl:13d7d07 SymbolicIndexingInterface-p6:dcc3b12 
+# date 2026-10-22T15:13:49+02:00 load-before 2.82
+ND /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-p4/src/NetworkDynamics.jl
+vertex batches 1 edge batches 1 sizes [20] [40]
+X rhs ns=1312 allocs=5
+X rhs bytes=240
+X vertex :g full batch (20) ns=54 allocs=1
+X vertex :g empty batch ns=47 allocs=1
+X vertex :g work alone (the held FunctionDynamics, typed) ns=15 allocs=0
+X edge :fg full batch (40) ns=703 allocs=0
+X edge :fg empty batch ns=37 allocs=0
+X edge :fg work alone (the held FunctionDynamics, typed) ns=659 allocs=0
+X vertex :f full batch (20) ns=256 allocs=1
+X vertex :f empty batch ns=41 allocs=1
+X vertex :f work alone (the held FunctionDynamics, typed) ns=191 allocs=0
+X vertex :g process_batches! ns=67 allocs=2
+X vertex :g process_batches! bytes=80
+X edge :fg process_batches! ns=761 allocs=1
+X edge :fg process_batches! bytes=64
+X vertex :f process_batches! ns=287 allocs=2
+X vertex :f process_batches! bytes=96
+X compiled_for(kept) ns=0 allocs=0
+X Ref of the pass's arguments ns=0 allocs=0
+X typed batches rhs ns=660 allocs=0
+# rc=0 load-after 2.70

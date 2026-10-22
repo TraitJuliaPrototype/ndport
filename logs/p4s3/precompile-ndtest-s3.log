@@ -1,1 +1,16 @@
 # P4 4e5f5a2 dirty=0 graphs=pkgs/Graphs-p4:54632125 dirty=0 TraitWorld(TraitWorld-port) 3ae361c date 2026-10-22T15:02:51+02:00
+┌ Warning: The project dependencies or compat requirements have changed since the manifest was last resolved.
+│ It is recommended to `Pkg.resolve()` or consider `Pkg.update()` if necessary.
+└ @ Pkg.API ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/API.jl:1312
+Precompiling packages...
+   0.9 s  ✓ AbstractFFTs → AbstractFFTsTestExt
+  52.2 s  ✓ TraitWorld
+   0.8 s  ✓ FilePathsBase → FilePathsBaseTestExt
+   1.0 s  ✓ Distributions → DistributionsTestExt
+   4.7 s  ✓ Graphs
+   1.4 s  ✓ Graphs → GraphsSharedArraysExt
+   2.6 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+  49.7 s  ✓ NetworkDynamics
+   7.5 s  ✓ GraphMakie
+  9 dependencies successfully precompiled in 121 seconds. 502 already precompiled.
+using s=2.9

@@ -16,10 +16,12 @@ tmin(f) = minimum(tm(f) for _ in 1:3)
 # every timed call behind a function barrier, its arguments captured as a concrete tuple (no global reads)
 bench(f, args...) = (g = () -> f(args...); (tmin(g), @allocations(g())))
 showb(label, (t, a)) = @printf("X %s ns=%.0f allocs=%d\n", label, t, a)
+bytes(f, args...) = (g = () -> f(args...); g(); g(); @allocated g())
 println("ND ", pathof(ND))
 vb = nw.vertexbatches; eb = nw.layer.edgebatches
 println("vertex batches ", length(vb), " edge batches ", length(eb), " sizes ", length.(vb), " ", length.(eb))
 showb("rhs", bench(rhs, nw, du, u, p))
+@printf("X rhs bytes=%d\n", bytes(rhs, nw, du, u, p))
 o, agg, ext = ND.get_buffers(nw, u, p, T0)
 gbuf = ND.get_gbuf(nw.gbufprovider, o); ND.gather!(nw.gbufprovider, gbuf, o)
 ex = SequentialExecution{true}()
@@ -43,6 +45,7 @@ for (name, bs, fg, inb) in (("vertex :g", vb, Val(:g), (nothing, nothing)), ("ed
 end
 for (name, bs, fg, filt, inb) in (("vertex :g", vb, Val(:g), !ND.hasff, (nothing, nothing)), ("edge :fg", eb, Val(:fg), ND.hasff, (gbuf, ext)), ("vertex :f", vb, Val(:f), !ND.hasff, (agg, ext)))
     showb("$name process_batches!", bench(ND.process_batches!, ex, fg, filt, bs, inb, (du, u, o, p, T0)))
+    @printf("X %s process_batches! bytes=%d\n", name, bytes(ND.process_batches!, ex, fg, filt, bs, inb, (du, u, o, p, T0)))
 end
 cfk(v) = ND.compiled_for(v[1].model)
 showb("compiled_for(kept)", bench(cfk, vb))

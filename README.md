@@ -141,3 +141,21 @@ julia-1.13 build 2943086604; TraitWorld c655dde (`TraitWorld-port`); NetworkDyna
 - C (strict on): pirates in wrapped packages 0, except one in NetworkDynamics that TraitWorld generates for a family implementation (`_family_registry`, `logs/merge/family-registry.log`). H: plain dynamic calls 5; P4's crossings add 35,290 `checked_call`s from trait code.
 - In the same conditions (strict on, two cores; `strict1-pair/`) step d is 35.1 ms in P4 alone and 35.9 ms in the merge: the merge's strict-on runs above P4's strict-off reference are spread and strict mode, not P6's wrap.
 
+### 2026-10-22: the batches' crossings and the traits per kind (E-166, P4 step 3, part 3a)
+
+julia-1.13 build 2943086604; TraitWorld `w49` 3ae361c (`TraitWorld-port`: c655dde plus W-49, which retires lowering L-39–L-41; on TraitWorld main as 4410407); NetworkDynamics `port` 4e5f5a2 (`VertexDynamics`, `EdgeDynamics` subtraits of `ComponentDynamics`, the batches per kind; upstream's annotations kept); setting M; P1's load order; two cores, idle I/O, one precompile task; load 1.2–3.1; `logs/p4s3/` (notes: `logs/p4s3/NOTES.md`). Interop: ND's bounded functions calling the user's plain functions. The step-3 plan: [`../writeup/plans/2026-10-22-ndport-step3.md`](../writeup/plans/2026-10-22-ndport-step3.md).
+
+| | M-0 (E-165) | S3-1 (W-49 only) | M-3a strict off (2 runs) | M-3a strict on (2 runs) |
+|---|---|---|---|---|
+| digests against U, exact | 0 differences | 0 | 0 | 0 |
+| crossing into an empty batch | 165–182 ns | 37–48 ns | 36–47 ns | — |
+| one right-hand side, tier S | 1,834 ns, 5 allocations | 1,177 ns | 1,238–1,312 ns, 5 allocations | — |
+| again c / d / e | 5.2 / 34.7 / 1.0 ms | 4.8 / 28.8 / 1.0 | 4.4 / 29.5–33.6 / 0.9 | 5.0–5.4 / 33.4–34.6 / 1.1–1.3 |
+| changed b–e | 0.56 s | 0.54 s | 0.55–0.56 s | 0.73–1.02 s |
+| first a–e | 31.1 s | 31.6 s | 30.8–31.4 s | 33.0–37.4 s |
+| session | 65.9 s | 67.5 s | 65.2–66.1 s | 83.8–91.1 s |
+
+- Probe A (`scripts/p4s3_cross_shapes.jl`): ND's shape (`bs::Vector, k::Int, args::RefValue`) 217 → 84 ns; `where {A}` 294 → 72 ns (tabled); nine arguments raise `MethodError` before, run after.
+- Strict on: the one refusal OffsetArrays' `reshape` (Base's code), the extension warnings as E-165's. The census: NetworkDynamics' three family registry methods (L-38), every other package as E-165. ND's test subset as before.
+- A right-hand side allocates 240 bytes after the traits per kind (208 with W-49 alone): the trait object carries the supertrait's view too; not attributed further.
+

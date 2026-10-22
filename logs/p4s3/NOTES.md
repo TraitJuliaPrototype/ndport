@@ -109,3 +109,71 @@ for a user's value) is left to 3b with the adaptors: no record holds a user's va
 | **X** | `s3-split/M-1.log` | the right-hand side 1,238 ns, 5 allocations (S3-1 1,177); the crossing into an empty batch 39 / 36 / 47 ns (S3-1 39 / 37 / 48): **the S3-3 mark (≤ S3-1's + 15 ns) passes** |
 | **Y** | `rhs-s3.log` | the typed batches on function models: R's `PolyesterExecution{true,false}` and `KAExecution` lines equal to U's (the KA `E` lines as U's). `scripts/p4_polyester_check.jl` is PB-7's definition-check probe, untouched by this step, not rerun |
 | **W** | `s3-W/M-1.log`, `s3-W2/M-1.log` | 0 exact differences (both); again c / d / e 4.4 / 33.6 / 0.9 and 4.4 / **29.5** / 0.9 ms (load 1.2–1.6; the first d is spread, the second run confirms); changed b–e 0.55–0.56 s; first a–e 30.8–31.4 s; session 65.2–66.1 s. Against S3-1 (28.8): 29.5 within 5 % + 0.5 ms |
+
+## M-3a: E-166's runs at NetworkDynamics 4e5f5a2, TraitWorld `w49` 3ae361c
+
+Strict off: `s3-W/`, `s3-W2/` (above). Strict on: `m3a-strict1/`, `m3a-strict1-confirm/`. Census and dispatch
+profile (strict on, `JULIA_FACTS_DISPATCH_PROFILE=1`): `m3a-CH/M-1.log` (`M-1-noprofile.log`: the same census
+without the profile, the first attempt). X with bytes: `m3a-split/`. `fully_typed` at the entries:
+`m3a-fully-typed/`. T: `ndtest-s3.log` (after `precompile-ndtest-s3.log`, `env_ndtest_p4pin` rebuilt on `w49`).
+Load 1.2–3.1; the machine shared (the user's own jobs).
+
+| | M-0 (E-165) | S3-1 | M-3a strict off (2 runs) | M-3a strict on (2 runs) |
+|---|---|---|---|---|
+| digests against U, exact | 0 | 0 | 0, 0 | 0, 0 |
+| refusals | — | — | — | OffsetArrays' `reshape` only; the extension warnings as E-165's (15 lines) |
+| crossing into an empty batch | 165–182 ns (S3-0) | 37–48 ns | 36–47 ns | — |
+| one right-hand side, tier S (X) | 1,834 ns, 5 allocations | 1,177 ns | 1,238–1,312 ns, 5 allocations, 240 bytes | — |
+| again c / d / e | 5.2 / 34.7 / 1.0 ms | 4.8 / 28.8 / 1.0 | 4.4 / 29.5–33.6 / 0.9 | 5.0–5.4 / 33.4–34.6 / 1.1–1.3 |
+| changed b–e | 0.56 s | 0.54 s | 0.55–0.56 s | 0.73–1.02 s (E-165: 0.63) |
+| first a–e | 31.1 s | 31.6 s | 30.8–31.4 s | 33.0–37.4 s |
+| load Graphs+ND | 2.94 s | 3.02 s | 2.89–2.95 s | 7.8–9.4 s |
+| session | 65.9 s | 67.5 s | 65.2–66.1 s | 83.8–91.1 s |
+
+- **Census (C):** NetworkDynamics 3 "pirates": the three `TraitWorld._family_registry(::Val{…}, ::Val{:NetworkDynamics})`
+  methods of its three families (L-38), every other wrapped package as E-165 (joint as at S7); total 67.
+- **Profile (H), steps c–e again:** 75,977 dynamic calls in the top 40, 5 from plain code; TraitWorld 35,290, all
+  `checked_call` from the crossings (as E-165: the worker's call stays a run-time site for non-concrete arguments,
+  plan §2.1); NetworkDynamics 1,840 (E-165 2,020).
+- **`fully_typed`** at `_process_kept!` and at `run_vertex_batch!`/`run_edge_batch!`'s entries: 26–27 run-time sites,
+  all in TraitWorld's table machinery (`_pmiss`, `_assemble`, `_enter_compiled`) and Base's task code; none in
+  NetworkDynamics' source. The entry assembles `TraitList{Tuple{ComponentDynamics, VertexDynamics}}`: the trait object
+  carries the supertrait's view too.
+- **Bytes:** a right-hand side allocates 240 bytes at S3-3 against 208 at S3-1 (R's `A` lines; ND's test
+  `diffusion_test.jl:111` 352 against 288 bytes): 32 bytes more per right-hand side with the traits per kind, the same
+  allocation count, the crossing's time unchanged. Not attributed further (the two-trait object, above, is the
+  candidate).
+- **T:** massmatrix 6, doctor 26, diffusion 111 + 1 fail, inhomogeneous 43 + 2 fail: as before. The three allocation
+  assertions: `diffusion_test.jl:111` 352 bytes (before 288), `inhomogeneous_test.jl:59` 7 allocations (7),
+  `:93` 103 == 403 (the same).
+- **Threaded style** (R's `A` lines, two threads on two cores at nice 19): 698–708 µs per right-hand side against U's
+  9.1 µs in the same conditions; reported, not a criterion; the same at S3-1.
+
+## E-166's questions (part 3a)
+
+0. **Results exactly equal to U, strict off and on:** yes; every workload log 0 exact differences (two strict off,
+   two strict on), every R/J line of `rhs_check.jl` equal to U's at S3-1, S3-2, S3-3. Gate passed.
+1. **The network's type the same for `swing!` and `swing2!`:** yes (`sametype=true`; the erased vertex batch type
+   holds `Kept{VertexDynamics}`). Gate passed.
+2. **A crossing at most 90 ns (before 162–172):** 36–48 ns from S3-1 on (S3-0: 165–182 ns); at S3-3 within S3-1's
+   + 15 ns. Pass.
+3. **Step d at most 32.0 ms strict off:** 29.5 ms, the minimum of two runs at S3-3 (33.6 and 29.5; S3-1 28.8;
+   M-0 34.7; P6 16.8; U 15.3). c 4.4, e 0.9 ms within 1.10 × M-0's + 0.5 ms. Pass.
+4. **Changed b–e at most 1.0 s:** 0.55–0.56 s strict off. Pass. Strict on 0.73–1.02 s (reported; E-165 0.63 s).
+   Strict on d 33.4–34.6 ms, within 1.10 × strict off's + 5 ms (37.5).
+5. **Strict mode refuses nothing in the port's code; the census counts only L-38's methods:** yes; the one refusal is
+   OffsetArrays' `reshape` in Base's code (as M-0); the census counts NetworkDynamics' three family registry methods.
+   Pass.
+6. **ND's test subset as before:** yes (the same passes and the same three allocation assertions).
+
+## Findings for the coordinator
+
+- **W-49 retires L-39, L-40, L-41** on `w49` and on TraitWorld main (4410407).
+- **Candidate T- row (S3-0 (c)):** a family implementing a subtrait, without the supertrait's family, is accepted at
+  `@implement`, and `conforms(T, Sub)` answers `true` for its member; the first use raises `TraitBoundError` with a
+  message naming the member as forwarding to itself (`scripts/p4s3_supertrait.jl`, "no supertrait family").
+- **Candidate T- row or open question (S3-2):** a supertrait's operation from plain code on a kept value of the
+  subtrait: `hasf(Kept{VertexDynamics}(x))` raises `MethodError` (`scripts/p4s3_supertrait.jl`, "plain code").
+- **Choices made here:** the traits not exported or `public` in 3a; `_dynamics` (the `conforms` test) deferred to 3b
+  with the adaptors; the batch function selected by `_run_batch!(dispatchT(batch), …)` (a dispatch on the vector's
+  kind) rather than the `===` test of S3-0's code, so that no call passes a vertex model to the edge bound.
