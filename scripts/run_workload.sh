@@ -22,12 +22,12 @@ case $setting in
   S)  J=$HOME/.julia/juliaup/julia-1.13.2+0.x64.linux.gnu/bin/julia; DEPOT="$ND/depot-stock:$HOME/.julia:" ;;
   *) echo "unknown setting $setting"; exit 2 ;;
 esac
-export OPENBLAS_NUM_THREADS=1 JULIA_PKG_OFFLINE=true JULIA_PKG_PRECOMPILE_AUTO=0 JULIA_NUM_PRECOMPILE_TASKS=4
+export OPENBLAS_NUM_THREADS=1 JULIA_PKG_OFFLINE=true JULIA_PKG_PRECOMPILE_AUTO=0 JULIA_NUM_PRECOMPILE_TASKS=1 JULIA_NUM_THREADS=1
 unset JULIA_COMPILE_BY_FACTS
 if [ "${NDW_STRICT:-0}" = 1 ]; then export JULIA_TW_STRICT=1; STRICT=on; else unset JULIA_TW_STRICT; STRICT=off; fi
 [ -n "$DEPOT" ] && export JULIA_DEPOT_PATH=$DEPOT || unset JULIA_DEPOT_PATH
 L=$ND/logs/$tag; mkdir -p "$L"
-jl() { flock /tmp/claude-1000/julia-review.lock nice -n 19 timeout 900 "$J" "${JF[@]}" --startup-file=no --threads=1 --project=$ENVD "$@"; }
+jl() { flock /tmp/claude-1000/julia-review.lock taskset -c 0-1 ionice -c3 nice -n 19 timeout 900 "$J" "${JF[@]}" --startup-file=no --threads=1 --project=$ENVD "$@"; }
 # every direct dependency precompiled in this setting, or the run is skipped
 miss=$(jl -e 'using Pkg; for (n, u) in Pkg.project().dependencies; Base.isprecompiled(Base.PkgId(u, n)) || print(n, " "); end')
 if [ -n "$miss" ]; then echo "$setting: not precompiled: $miss -- skipped"; exit 3; fi
@@ -35,7 +35,7 @@ for i in $(seq 1 "$runs"); do
   f=$L/$setting-$i.log
   for attempt in 1 2; do
     {
-      echo "# setting=$setting order=${NDW_ORDER:-default} script=${NDW_SCRIPT:-$DEFSCRIPT} env=$ENVD julia=$J ${JF[*]} depot=${JULIA_DEPOT_PATH:-default} strict=$STRICT diag=${NDW_DIAG:-0}"
+      echo "# setting=$setting order=${NDW_ORDER:-default} script=${NDW_SCRIPT:-$DEFSCRIPT} env=$ENVD julia=$J ${JF[*]} depot=${JULIA_DEPOT_PATH:-default} strict=$STRICT diag=${NDW_DIAG:-0} cpus=0-1(taskset) ionice=idle"
       echo "# julia-1.13 $(git -C $R/julia-1.13 log -1 --format=%h) lib-built $(stat -c %y $R/julia-1.13/usr/lib/libjulia-internal.so.1.13.2 | cut -c1-16) TraitWorld($TWDIR) $(git -C $R/$TWDIR log -1 --format=%h) dirty=$(git -C $R/$TWDIR status --porcelain --untracked-files=no | wc -l)"
       echo "# clones $(for d in pkgs/*/; do printf '%s:%s%s ' $(basename $d) $(git -C $d log -1 --format=%h) $([ -z "$(git -C $d status --porcelain --untracked-files=no)" ] || echo '*'); done)"
       echo "# date $(date -Is) load-before $(cut -d' ' -f1 /proc/loadavg)"

@@ -23,7 +23,7 @@ The workload is part P1 of the meta plan ([`../writeup/plans/2026-10-21-ndport-w
 - `scripts/workload.jl` (the driver) and `scripts/workload_steps.jl` (the steps a–g): the loads timed in groups, then four passes in one session: `first`, `again`, `params` (the problem remade with new parameters: no new types), `changed` (a new component function). Each step prints `T <pass> <step> <ms> compile <ms> recompile <ms> gc <ms>` and a digest `D <pass> <step> …`, the digest outside the timed window.
 - `scripts/run_workload.sh <tag> <U|P0|A0|S> [runs]`: fresh sessions through the lock; refuses to run where a dependency is not precompiled; marks a run that precompiled INVALID. `NDW_DIAG=1` adds the attribution (`scripts/diag.jl`: new CodeInstances per step by module; its times are not measurements).
 - `scripts/compare_digests.py <ref.log> <log> [--exact]`, `scripts/summarize.py <logs>`, `scripts/check_env.py`.
-- The settings: U (`env_upstream`, patched build), P0 (`env_port`, TraitWorld loaded, product setting), A0 (`env_port` under `all`, depot `depot-facts/`), S (stock 1.13.2, depot `depot-stock/`); N (NetworkDynamics wrapped whole, `pkgs/NetworkDynamics-p3wrap`, `env_p3`, `depot-p3`), W (N plus the workload's own module a trait module), P4 (the port, `pkgs/NetworkDynamics-p4`, `env_p4`, `depot-p4`), I (P6, E-155: the SciML core wrapped inside out, `pkgs/*-p6`, `env_p6`, `depot-p6`, NetworkDynamics as in N; its default script `p6_workload.jl` prints strict mode's state).
+- The settings: U (`env_upstream`, patched build), P0 (`env_port`, TraitWorld loaded, product setting), A0 (`env_port` under `all`, depot `depot-facts/`), S (stock 1.13.2, depot `depot-stock/`); N (NetworkDynamics wrapped whole, `pkgs/NetworkDynamics-p3wrap`, `env_p3`, `depot-p3`), W (N plus the workload's own module a trait module), P4 (the port, `pkgs/NetworkDynamics-p4`, `env_p4`, `depot-p4`), I (P6, E-155: the SciML core wrapped inside out, `pkgs/*-p6`, `env_p6`, `depot-p6`, NetworkDynamics as in N; its default script `p6_workload.jl` prints strict mode's state). From E-165: P4P (`env_p4_pin`, `depot-p4pin`), IP (`env_p6_pin`, `depot-p6pin`): the tracks' last steps on TraitWorld c655dde (the worktree `TraitWorld-port`); M (`env_merged`, `depot-merged`): the merge, the trees on branches `port` (`logs/merge/NOTES.md`). Since 2026-10-22 13:34 every run is on two cores (`taskset -c 0-1`), idle I/O class, one precompile task; the header says so.
 - `NDW_ORDER=simfirst`: the plotting packages load after the first simulation (P3's order B), with the CodeInstances the load discards counted (`G` line). `NDW_STRICT=1`: strict mode. `NDW_SCRIPT=<path>`: another script in the harness (`p3_census.jl`, `p3_pirate.jl`).
 
 ## Results
@@ -121,4 +121,23 @@ julia-1.13 6d480d0753, TraitWorld 3bebf13; NetworkDynamics p3-wrap e5425fd; Stat
 - S2–S4: plain callers lose constant propagation into SciMLBase's `getproperty` overloads (step d 29 ms; the solvers' images rejected at load). Gone from S5, when the solver's code is reached from DiffEqBase's trait code.
 - Order B at S7: the plotting load takes no CodeInstance of `:facts`, and the next pass recompiles nothing (S4: 5.4 s; N 0.04 s; U 4.7 s).
 - Packages' quick tests (`scripts/p6_tests.jl`): as at upstream, except 5 inference assertions in SciMLBase's at S2 (facts inference by design); ND's subset at S7 identical to upstream.
+
+### 2026-10-22: the two tracks merged (E-165), and G3
+
+julia-1.13 build 2943086604; TraitWorld c655dde (`TraitWorld-port`); NetworkDynamics `port` 324bcb7 (tag `p4-s2`: step 2 with G3), Graphs `port` 54632125; the P6 trees on `port` from their `p6-s<k>` tags (Rosenbrock `port-ros`); P1's load order; one run per check, confirming runs named; load 1.2–3.3; `logs/merge/`, G3 in `logs/p4g/` ("G3 again"). P4P and M measure P4's trait code (ND's bounded functions calling the user's plain functions: interop) on plain or wrapped SciML; IP measures upstream's code compiled by facts (no trait code).
+
+| | P4P (strict off, 2 runs) | IP (strict on) | M strict off | M strict on (3 runs) |
+|---|---|---|---|---|
+| digests against U, exact | 0 differences | 0 differences | 0 differences | 0 differences |
+| refusals | — | OffsetArrays' `reshape` (Base's code) | — | the same one only |
+| first a–e | 39.1 s | 30.2–31.6 s | 31.1 s | 31.0–32.7 s |
+| changed b–e | 0.54–0.63 s | 15.7 s | 0.56 s | 0.63 s |
+| again c / d / e | 5.0–5.1 / 34.4–35.0 / 0.9 ms | 3.7 / 16.8 / 0.9 ms | 5.2 / 34.7 / 1.0 ms | 5.1–5.3 / 35.9–37.8 / 1.0–1.3 ms |
+| load Graphs+ND | 3.1 s | 7.6–7.9 s | 2.9 s | 7.9–8.1 s |
+| session | 70.2 s | 91.2–95.7 s | 65.9 s | 75.2–78.6 s |
+
+- G3 (the feed-forward check in `check_feedforward_leaves(g::GraphInterface{V}, …)`, upstream's block unchanged): P, C (the `ff` network now builds on a `GenericDiGraph`), R (equal to U), T (as at c9339fd) pass on c655dde; T-59's reproducer passes.
+- P builds: P4P 450 packages 329 s; IP 450, 370 s; M 450, 368 s (fresh depots, strict on for IP and M).
+- C (strict on): pirates in wrapped packages 0, except one in NetworkDynamics that TraitWorld generates for a family implementation (`_family_registry`, `logs/merge/family-registry.log`). H: plain dynamic calls 5; P4's crossings add 35,290 `checked_call`s from trait code.
+- Strict on costs step d 1–3 ms in P4 alone and in the merge alike (`strict1-pair/`, two cores): P4 35.1, M 35.9 ms.
 
