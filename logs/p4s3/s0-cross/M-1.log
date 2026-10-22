@@ -1,0 +1,16 @@
+# setting=M order=default script=scripts/p4s3_cross_shapes.jl env=env_merged julia=/home/hellmann/Repos/julia-trait-bound/julia-1.13/julia  depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-merged:/home/hellmann/.julia: strict=off diag=0 cpus=0-1(taskset) ionice=idle
+# julia-1.13 fa4e7f5798 lib-built 2026-10-21 20:43 TraitWorld(TraitWorld-port) c655dde dirty=0
+# clones BracketingNonlinearSolve-p6:7433e0b DiffEqCallbacks.jl:14b58b5 DiffEqCallbacks-p6:0b6042d GraphMakie.jl:327f80b Graphs.jl:dffc7a64 Graphs-p4:54632125 Makie.jl:47479e0a NetworkDynamics.jl:ec6afc0 NetworkDynamics-p3wrap:e5425fd NetworkDynamics-p4:324bcb7 NetworkLayout.jl:32e72bf NonlinearSolveBase-p6:293712e NonlinearSolveFirstOrder-p6:30c42a6 NonlinearSolve-p6:697c987 NonlinearSolveQuasiNewton-p6:afc14ed NonlinearSolveSpectralMethods-p6:6ef8fa9 Observables.jl:4e78ca2 OrdinaryDiffEq.jl:53e7d1d33 OrdinaryDiffEq-p6:1dcb9dd04 OrdinaryDiffEq-p6-ros:effcc0f08 RecursiveArrayTools.jl:185fa2c RecursiveArrayTools-p6:f29eae0 SciMLBase.jl:365283c6 SciMLBase-p6:b50f4684 SciMLJacobianOperators-p6:3840f8a SimpleNonlinearSolve-p6:f95ae0e Static.jl:c34adbb SymbolicIndexingInterface.jl:13d7d07 SymbolicIndexingInterface-p6:dcc3b12 
+# date 2026-10-22T14:23:16+02:00 load-before 0.88
+TraitWorld 0.1.0 /home/hellmann/Repos/julia-trait-bound/TraitWorld-port/src/TraitWorld.jl
+A1 bs::Vector, k::Int, args::RefValue (ND's shape)             empty batch ns=217.0 allocs=1
+A2 bs::Vector{Batch}, args::RefValue                           empty batch ns=73.9 allocs=1
+A3 bs::Vector{Batch}, args::RefValue{AT} (concrete)            empty batch ns=53.2 allocs=1
+A4 bs::Vector{Batch}, args::RefValue{A} where A                empty batch ns=294.0 allocs=3
+A5 bs::Vector{Batch}, du::Vector{Float64}, u::Vector{Float64}  empty batch ns=49.6 allocs=0
+A6 bs::Vector{Batch}, du, u                                    empty batch ns=67.8 allocs=0
+A7 bs, k, du, u (all untyped)                                  empty batch ns=68.1 allocs=0
+A8 bs, k, args (untyped, a Ref)                                empty batch ns=73.8 allocs=1
+A9 nine arguments, untyped                                     error MethodError: no method matching (::TraitWorld._UWrap)(::TraitWorld._UCall{Main.CR.var"##tw_untyped_ri#271", implementation of Main.CR.VD at Main.CR.Fam{typeof(u
+A10 nine arguments, abstract annotations                       error MethodError: no method matching (::TraitWorld._UWrap)(::TraitWorld._UCall{Main.CR.var"##tw_untyped_rj#292", implementation of Main.CR.VD at Main.CR.Fam{typeof(u
+# rc=0 load-after 0.89
