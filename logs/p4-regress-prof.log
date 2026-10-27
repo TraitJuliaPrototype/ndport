@@ -1,0 +1,4 @@
+┌ Warning: There were no samples collected.
+│ Run your program longer (perhaps by running it multiple times),
+│ or adjust the delay between samples with `Profile.init()`.
+└ @ Profile ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Profile/src/Profile.jl:1367

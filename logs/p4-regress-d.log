@@ -1,0 +1,199 @@
+
+-- dynamic calls by callee method (owner :facts: site/leaf/assoc/full | default owner: site/leaf/assoc/full)
+        7347  TraitWorld.checked_call  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/checks.jl:320   :facts 7347/0/0/0 | default 0/0/0/0
+         162  DiffEqBase.apply_discrete_callback!  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:759   :facts 0/0/0/0 | default 162/0/0/0
+         162  DiffEqBase._find_callback_time_erased  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:275   :facts 0/0/0/0 | default 162/0/0/0
+          68  Compiler.maybe_erase_unused!  ../usr/share/julia/Compiler/src/ssair/ir.jl:1985   :facts 0/0/0/0 | default 68/0/0/0
+          44  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:707   :facts 0/0/0/0 | default 0/0/44/0
+          16  Base.getproperty  Base_compiler.jl:57   :facts 0/0/0/0 | default 16/0/0/0
+          15  DiffEqBase.apply_callback!  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:668   :facts 0/0/0/0 | default 15/0/0/0
+          15  Base.setproperty!  Base_compiler.jl:58   :facts 0/0/0/0 | default 15/0/0/0
+           9  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:703   :facts 0/0/0/0 | default 9/0/0/0
+           8  Base.print  strings/io.jl:241   :facts 1/0/0/0 | default 7/0/0/0
+           5  Base.length  essentials.jl:11   :facts 0/0/0/0 | default 5/0/0/0
+           5  FunctionWrappers.FunctionWrapper  /home/hellmann/.julia/packages/FunctionWrappers/Q5cBx/src/FunctionWrappers.jl:105   :facts 0/0/0/0 | default 0/5/0/0
+           5  Compiler.doworkloop  ../usr/share/julia/Compiler/src/inferencestate.jl:1212   :facts 0/0/0/0 | default 5/0/0/0
+           4  Core.apply_type  :0   :facts 0/0/0/0 | default 0/0/4/0
+           3  Base.<=  int.jl:560   :facts 3/0/0/0 | default 0/0/0/0
+           3  Base.length  tuple.jl:28   :facts 3/0/0/0 | default 0/0/0/0
+           3  Base.iterate  tuple.jl:71   :facts 3/0/0/0 | default 0/0/0/0
+           3  SciMLBase.getproperty  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase.jl/src/problems/problem_interface.jl:1   :facts 0/0/0/0 | default 3/0/0/0
+           3  Core.tuple  :0   :facts 0/0/0/0 | default 0/0/3/0
+           3  FunctionWrappersWrappers.FunctionWrappersWrapper  /home/hellmann/.julia/packages/FunctionWrappersWrappers/7CPBX/src/FunctionWrappersWrappers.jl:218   :facts 0/0/0/0 | default 0/3/0/0
+           2  OrdinaryDiffEqCore._wrap_calls  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/solve.jl:155   :facts 0/0/0/0 | default 2/0/0/0
+           2  Base.fl_lower  flfrontend.jl:21   :facts 0/0/0/0 | default 2/0/0/0
+           2  Base.print  strings/io.jl:32   :facts 1/0/0/0 | default 1/0/0/0
+           2  Base.getindex  tuple.jl:33   :facts 2/0/0/0 | default 0/0/0/0
+           2  SciMLBase.FINALIZE_DEFAULT  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase.jl/src/callbacks.jl:4   :facts 0/0/0/0 | default 2/0/0/0
+           2  SciMLBase.Void  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase.jl/src/utils.jl:700   :facts 0/0/0/0 | default 0/2/0/0
+           2  SciMLBase.save_discretes_if_enabled!  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase.jl/src/callbacks.jl:648   :facts 0/0/0/0 | default 2/0/0/0
+           2  Base.write  io.jl:857   :facts 1/0/0/0 | default 1/0/0/0
+           2  Accessors.set  /home/hellmann/.julia/packages/Accessors/e7kZq/src/optics.jl:399   :facts 0/0/0/0 | default 1/1/0/0
+           2  Base.Colon  range.jl:5   :facts 0/0/0/0 | default 2/0/0/0
+           2  Base.view  subarray.jl:213   :facts 0/0/0/0 | default 2/0/0/0
+           2  Base._str_sizehint  strings/io.jl:116   :facts 0/0/0/0 | default 2/0/0/0
+           2  Base.resize!  array.jl:1538   :facts 1/0/0/0 | default 1/0/0/0
+           2  OrdinaryDiffEqCore._condition_signatures  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/solve.jl:170   :facts 0/0/0/0 | default 2/0/0/0
+           2  Compiler.#78  ../usr/share/julia/Compiler/src/inferencestate.jl:1195   :facts 0/0/0/0 | default 2/0/0/0
+           2  OrdinaryDiffEqCore.#_despecialize_callback##4  none:0   :facts 0/0/0/0 | default 0/0/2/0
+           2  Base.collect_to_with_first!  array.jl:861   :facts 0/0/0/0 | default 0/0/2/0
+           2  Base._array_for_inner  array.jl:701   :facts 0/0/0/0 | default 0/2/0/0
+           2  Compiler.typeinf_local  ../usr/share/julia/Compiler/src/abstractinterpretation.jl:4258   :facts 0/0/0/0 | default 2/0/0/0
+           2  Base.Generator  generator.jl:33   :facts 0/0/0/0 | default 0/2/0/0
+
+-- dynamic calls by call site (the calling code, innermost frame first; the callee)
+        4275  #tw_untyped_run_vertex_batch!#434 at ./none:-1  ->  TraitWorld.checked_call
+        3072  #tw_untyped_run_edge_batch!#450 at ./none:-1  ->  TraitWorld.checked_call
+         162  find_first_continuous_callback at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:297  ->  DiffEqBase._find_callback_time_erased
+         162  handle_callbacks! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/integrators/integrator_utils.jl:1136 (in apply_discrete_callback! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:836)  ->  DiffEqBase.apply_discrete_callback!
+          68  simple_dce! at ./../usr/share/julia/Compiler/src/ssair/ir.jl:2113  ->  Compiler.maybe_erase_unused!
+          39  widen_all_consts! at ./../usr/share/julia/Compiler/src/optimize.jl:330  ->  Compiler.widenconst
+          15  handle_callbacks! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/integrators/integrator_utils.jl:1117 (in apply_ith_callback! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/integrators/integrator_utils.jl:1094)  ->  DiffEqBase.apply_callback!
+          15  handle_callbacks! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/integrators/integrator_utils.jl:1116  ->  Base.setproperty!
+           6  #argtypes_to_type##0 at ./../usr/share/julia/Compiler/src/typeutils.jl:52  ->  Compiler.widenconst
+           5  typeinf at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:4584  ->  Compiler.doworkloop
+           5  doworkloop at ./../usr/share/julia/Compiler/src/inferencestate.jl:1215  ->  Base.length
+           4  jl_f__apply_iterate at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/builtins.c:876 (in jl_apply at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/julia.h:2332)  ->  Core.apply_type
+           4  #with_output_color#874 at ./util.jl:78  ->  Base.print
+           3  jl_f__apply_iterate at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/builtins.c:876 (in jl_apply at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/julia.h:2332)  ->  Core.tuple
+           3  iterate at ./tuple.jl:74  ->  Base.length
+           3  iterate at ./tuple.jl:74  ->  Base.<=
+           2  doworkloop at ./../usr/share/julia/Compiler/src/inferencestate.jl:1218  ->  Compiler.#78
+           2  collect at ./array.jl:833  ->  Base._array_for_inner
+           2  #6 at /home/hellmann/.julia/packages/FunctionWrappersWrappers/7CPBX/src/FunctionWrappersWrappers.jl:327  ->  FunctionWrappers.FunctionWrapper
+           2  #String##0 at ./strings/lazy.jl:86  ->  Base.iterate
+           2  print at ./strings/io.jl:48  ->  Base.print
+           2  #_despecialize_callback##2 at ./none:-1  ->  Base.Generator
+           2  typeinf at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:4593  ->  Compiler.typeinf_local
+           2  lift_comparison_leaves! at ./../usr/share/julia/Compiler/src/ssair/passes.jl:609  ->  Compiler.widenconst
+           2  iterate at ./tuple.jl:74  ->  Base.getindex
+           2  ijl_lower at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/ast.c:1248 (in jl_apply at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/julia.h:2332)  ->  Base.fl_lower
+           2  #_despecialize_callback##2 at ./none:-1  ->  OrdinaryDiffEqCore._condition_signatures
+           2  collect at ./array.jl:838  ->  Base.collect_to_with_first!
+           2  #_despecialize_callback##2 at ./none:-1  ->  Base.getproperty
+           2  print_to_string at ./strings/io.jl:140  ->  Base._str_sizehint
+           1  #DiffEqArray#9 at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/RecursiveArrayTools.jl/src/vector_of_array.jl:328  ->  RecursiveArrayTools.DiffEqArray
+           1  #_ode_init#142 at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/solve.jl:906  ->  OrdinaryDiffEqCore.zero_func_struct
+           1  #handle_message#6 at ./logging/ConsoleLogger.jl:126  ->  Base.string
+           1  #handle_message_nothrow#2 at ./logging/logging.jl:434  ->  Base.merge
+           1  nonmissingtype at ./missing.jl:39  ->  Base.typesplit
+           1  show at ./ryu/Ryu.jl:118  ->  Base.-
+           1  fresh at /tmp/claude-1000/-home-hellmann-Repos-julia-trait-bound/6b66fb82-07fa-48b1-b063-bc3f0b65ba26/scratchpad/p4d.jl:6  ->  SciMLBase.remake
+           1  _despecialize_callback at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/solve.jl:115  ->  Base.Colon
+           1  _despecialize_callback at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/solve.jl:125  ->  Accessors.set
+           1  fresh at /tmp/claude-1000/-home-hellmann-Repos-julia-trait-bound/6b66fb82-07fa-48b1-b063-bc3f0b65ba26/scratchpad/p4d.jl:6  ->  SciMLBase.getproperty
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+Tsit5:   0.004505 seconds (16.99 k allocations: 1.241 MiB)
+Rodas5P:   0.338559 seconds (630.03 k allocations: 20.839 MiB)
+Tsit5:   0.052659 seconds (16.98 k allocations: 1.241 MiB, 90.56% gc time)
+Rodas5P:   0.311193 seconds (630.02 k allocations: 20.838 MiB)
+
+-- dynamic calls by callee method (owner :facts: site/leaf/assoc/full | default owner: site/leaf/assoc/full)
+        7347  TraitWorld.checked_call  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/checks.jl:320   :facts 7347/0/0/0 | default 0/0/0/0
+         541  Base.trypoptask  task.jl:1253   :facts 0/0/0/0 | default 538/2/0/1
+         539  Partr.multiq_check_empty  partr.jl:249   :facts 0/0/0/0 | default 536/2/0/1
+         418  Compiler.maybe_erase_unused!  ../usr/share/julia/Compiler/src/ssair/ir.jl:1985   :facts 0/0/0/0 | default 418/0/0/0
+         324  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:707   :facts 0/0/0/0 | default 0/0/324/0
+         162  DiffEqBase.apply_discrete_callback!  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:759   :facts 0/0/0/0 | default 162/0/0/0
+         162  DiffEqBase._find_callback_time_erased  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:275   :facts 0/0/0/0 | default 162/0/0/0
+          58  Compiler.doworkloop  ../usr/share/julia/Compiler/src/inferencestate.jl:1212   :facts 0/0/0/0 | default 58/0/0/0
+          58  Base.length  essentials.jl:11   :facts 0/0/0/0 | default 58/0/0/0
+          58  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:703   :facts 0/0/0/0 | default 58/0/0/0
+          45  Core.apply_type  :0   :facts 0/0/0/0 | default 0/0/45/0
+          28  Compiler.#78  ../usr/share/julia/Compiler/src/inferencestate.jl:1195   :facts 0/0/0/0 | default 24/4/0/0
+          24  Base.getproperty  Base_compiler.jl:57   :facts 0/0/0/0 | default 24/0/0/0
+          19  Compiler.typeinf_local  ../usr/share/julia/Compiler/src/abstractinterpretation.jl:4258   :facts 0/0/0/0 | default 19/0/0/0
+          16  Core.typename  boot.jl:1130   :facts 0/0/0/0 | default 0/0/16/0
+          15  Base.setproperty!  Base_compiler.jl:58   :facts 0/0/0/0 | default 15/0/0/0
+          15  DiffEqBase.apply_callback!  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:668   :facts 0/0/0/0 | default 15/0/0/0
+          14  Compiler.getresult_impl  ../usr/share/julia/Compiler/src/stmtinfo.jl:149   :facts 0/0/0/0 | default 14/0/0/0
+          13  Base.getindex  array.jl:451   :facts 0/0/0/0 | default 0/0/13/0
+          12  Compiler.getsplit_impl  ../usr/share/julia/Compiler/src/stmtinfo.jl:148   :facts 0/0/0/0 | default 12/0/0/0
+          12  Compiler.nsplit_impl  ../usr/share/julia/Compiler/src/stmtinfo.jl:147   :facts 0/0/0/0 | default 12/0/0/0
+          11  Compiler.add_edges_impl  ../usr/share/julia/Compiler/src/stmtinfo.jl:47   :facts 0/0/0/0 | default 11/0/0/0
+          10  Base.in  operators.jl:1371   :facts 0/0/0/0 | default 10/0/0/0
+           8  Base.print  strings/io.jl:241   :facts 1/0/0/0 | default 7/0/0/0
+           7  Core._hasmethod  boot.jl:1098   :facts 0/0/0/0 | default 6/0/1/0
+           6  Base.resize!  array.jl:1538   :facts 1/0/0/0 | default 5/0/0/0
+           5  Compiler.finishinfer!  ../usr/share/julia/Compiler/src/typeinfer.jl:596   :facts 0/0/0/0 | default 5/0/0/0
+           5  Compiler.finish_nocycle  ../usr/share/julia/Compiler/src/typeinfer.jl:226   :facts 0/0/0/0 | default 5/0/0/0
+           5  Compiler.finish!  ../usr/share/julia/Compiler/src/typeinfer.jl:104   :facts 0/0/0/0 | default 5/0/0/0
+           5  Compiler.is_already_cached  ../usr/share/julia/Compiler/src/typeinfer.jl:712   :facts 0/0/0/0 | default 5/0/0/0
+           5  Compiler.optimize  ../usr/share/julia/Compiler/src/optimize.jl:1038   :facts 0/0/0/0 | default 5/0/0/0
+           5  FunctionWrappers.FunctionWrapper  /home/hellmann/.julia/packages/FunctionWrappers/Q5cBx/src/FunctionWrappers.jl:105   :facts 0/0/0/0 | default 0/5/0/0
+           5  Compiler.getfield_tfunc  ../usr/share/julia/Compiler/src/tfuncs.jl:1104   :facts 0/0/0/0 | default 5/0/0/0
+           4  Compiler.instanceof_tfunc  ../usr/share/julia/Compiler/src/tfuncs.jl:98   :facts 0/0/0/0 | default 4/0/0/0
+           3  FunctionWrappersWrappers.FunctionWrappersWrapper  /home/hellmann/.julia/packages/FunctionWrappersWrappers/7CPBX/src/FunctionWrappersWrappers.jl:218   :facts 0/0/0/0 | default 0/3/0/0
+           3  Base.<=  int.jl:560   :facts 3/0/0/0 | default 0/0/0/0
+           3  Compiler.typeinf_ext_toplevel  ../usr/share/julia/Compiler/src/typeinfer.jl:1655   :facts 0/0/0/0 | default 3/0/0/0
+           3  Base.length  tuple.jl:28   :facts 3/0/0/0 | default 0/0/0/0
+           3  Base.task_done_hook  task.jl:848   :facts 0/0/0/0 | default 1/1/0/1
+           3  SciMLBase.getproperty  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/SciMLBase.jl/src/problems/problem_interface.jl:1   :facts 0/0/0/0 | default 3/0/0/0
+
+-- dynamic calls by call site (the calling code, innermost frame first; the callee)
+        4275  #tw_untyped_run_vertex_batch!#434 at ./none:-1  ->  TraitWorld.checked_call
+        3072  #tw_untyped_run_edge_batch!#450 at ./none:-1  ->  TraitWorld.checked_call
+         540  ijl_task_get_next at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/scheduler.c:447 (in get_next_task at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/scheduler.c:385)  ->  Base.trypoptask
+         538  ijl_task_get_next at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/scheduler.c:453 (in check_empty at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/scheduler.c:396)  ->  Partr.multiq_check_empty
+         415  simple_dce! at ./../usr/share/julia/Compiler/src/ssair/ir.jl:2113  ->  Compiler.maybe_erase_unused!
+         222  widen_all_consts! at ./../usr/share/julia/Compiler/src/optimize.jl:330  ->  Compiler.widenconst
+         162  find_first_continuous_callback at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:297  ->  DiffEqBase._find_callback_time_erased
+         162  handle_callbacks! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/integrators/integrator_utils.jl:1136 (in apply_discrete_callback! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:836)  ->  DiffEqBase.apply_discrete_callback!
+          58  doworkloop at ./../usr/share/julia/Compiler/src/inferencestate.jl:1215  ->  Base.length
+          58  typeinf at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:4584  ->  Compiler.doworkloop
+          45  jl_f__apply_iterate at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/builtins.c:876 (in jl_apply at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/julia.h:2332)  ->  Core.apply_type
+          39  #argtypes_to_type##0 at ./../usr/share/julia/Compiler/src/typeutils.jl:52  ->  Compiler.widenconst
+          28  doworkloop at ./../usr/share/julia/Compiler/src/inferencestate.jl:1218  ->  Compiler.#78
+          19  #argtypes_to_type##0 at ./../usr/share/julia/Compiler/src/typeutils.jl:52  ->  Compiler.widenconst
+          19  typeinf at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:4593  ->  Compiler.typeinf_local
+          16  force_const_prop at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:1195  ->  Core.typename
+          15  handle_callbacks! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/integrators/integrator_utils.jl:1116  ->  Base.setproperty!
+          15  sroa_pass! at ./../usr/share/julia/Compiler/src/ssair/passes.jl:1441  ->  Compiler.widenconst
+          15  handle_callbacks! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/integrators/integrator_utils.jl:1117 (in apply_ith_callback! at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/integrators/integrator_utils.jl:1094)  ->  DiffEqBase.apply_callback!
+          14  getresult at ./../usr/share/julia/Compiler/src/types.jl:528  ->  Compiler.getresult_impl
+          13  jl_f__apply_iterate at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/builtins.c:876 (in jl_apply at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/julia.h:2332)  ->  Base.getindex
+          12  getsplit at ./../usr/share/julia/Compiler/src/types.jl:527  ->  Compiler.getsplit_impl
+          12  nsplit at ./../usr/share/julia/Compiler/src/types.jl:526  ->  Compiler.nsplit_impl
+          11  add_edges! at ./../usr/share/julia/Compiler/src/types.jl:523  ->  Compiler.add_edges_impl
+           9  _uncompressed_ir at ./runtime_internals.jl:1621  ->  Base.getproperty
+           9  is_immutable_argtype at ./../usr/share/julia/Compiler/src/typeutils.jl:328  ->  Compiler.widenconst
+           9  is_mutation_free_argtype at ./../usr/share/julia/Compiler/src/typeutils.jl:347  ->  Compiler.widenconst
+           7  lift_comparison_leaves! at ./../usr/share/julia/Compiler/src/ssair/passes.jl:609  ->  Compiler.widenconst
+           7  hasmethod at ./reflection.jl:1085  ->  Core._hasmethod
+           5  getfield_nothrow at ./../usr/share/julia/Compiler/src/tfuncs.jl:1060  ->  Compiler.widenconst
+           5  widen_all_consts! at ./../usr/share/julia/Compiler/src/optimize.jl:336  ->  Compiler.widenconst
+           5  finishinfer! at ./../usr/share/julia/Compiler/src/typeinfer.jl:701  ->  Compiler.is_already_cached
+           5  finish_nocycle at ./../usr/share/julia/Compiler/src/typeinfer.jl:228  ->  Compiler.finishinfer!
+           5  jl_f__apply_iterate at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/builtins.c:876 (in jl_apply at /home/hellmann/Repos/julia-trait-bound/julia-1.13/src/julia.h:2332)  ->  Compiler.getfield_tfunc
+           5  finish_nocycle at ./../usr/share/julia/Compiler/src/typeinfer.jl:231  ->  Compiler.optimize
+           5  finish_nocycle at ./../usr/share/julia/Compiler/src/typeinfer.jl:235  ->  Compiler.finish!
+           5  replace_code_newstyle! at ./../usr/share/julia/Compiler/src/ssair/legacy.jl:77  ->  Base.resize!
+           5  finishinfer! at ./../usr/share/julia/Compiler/src/typeinfer.jl:696  ->  Compiler.widenconst
+           5  getfield_effects at ./../usr/share/julia/Compiler/src/tfuncs.jl:2570  ->  Compiler.widenconst
+           5  builtin_tfunction at ./../usr/share/julia/Compiler/src/tfuncs.jl:2810  ->  Base.in

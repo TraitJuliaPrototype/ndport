@@ -1,0 +1,199 @@
+
+-- dynamic calls by callee method (owner :facts: site/leaf/assoc/full | default owner: site/leaf/assoc/full)
+      861000  Base.getproperty  Base_compiler.jl:51   :facts 0/0/861000/0 | default 0/0/0/0
+      344416  Base.getproperty  Base_compiler.jl:57   :facts 344400/0/0/0 | default 16/0/0/0
+      309960  Base.sizeof  essentials.jl:838   :facts 0/0/309960/0 | default 0/0/0/0
+      309960  Base.+  int.jl:87   :facts 309960/0/0/0 | default 0/0/0/0
+      223860  Base.unwrap_unionall  essentials.jl:542   :facts 223860/0/0/0 | default 0/0/0/0
+      223860  Base.length  essentials.jl:991   :facts 223860/0/0/0 | default 0/0/0/0
+      189422  Base.Colon  range.jl:5   :facts 189420/0/0/0 | default 2/0/0/0
+      189420  Base.==  promotion.jl:641   :facts 189420/0/0/0 | default 0/0/0/0
+      189420  Base.isabstracttype  runtime_internals.jl:1111   :facts 189420/0/0/0 | default 0/0/0/0
+      189420  Base.datatype_fieldcount  runtime_internals.jl:1280   :facts 0/0/189420/0 | default 0/0/0/0
+      189420  Base.&  int.jl:393   :facts 189420/0/0/0 | default 0/0/0/0
+      189420  Base.fieldcount  runtime_internals.jl:1308   :facts 189420/0/0/0 | default 0/0/0/0
+      189420  Base.iterate  range.jl:924   :facts 189420/0/0/0 | default 0/0/0/0
+      172201  Base.!=  operators.jl:320   :facts 172201/0/0/0 | default 0/0/0/0
+      172200  Base.padding  reinterpretarray.jl:769   :facts 0/0/172200/0 | default 0/0/0/0
+      137760  Base.iterate  range.jl:926   :facts 137760/0/0/0 | default 0/0/0/0
+      137760  Base.append!  array.jl:1416   :facts 137760/0/0/0 | default 0/0/0/0
+      137760  Core.Int64  boot.jl:1010   :facts 0/137760/0/0 | default 0/0/0/0
+      137760  Base.fieldoffset  runtime_internals.jl:1197   :facts 0/0/137760/0 | default 0/0/0/0
+      103320  Base.<  int.jl:83   :facts 103320/0/0/0 | default 0/0/0/0
+       68880  Base.rem  int.jl:342   :facts 68880/0/0/0 | default 0/0/0/0
+       34441  Base.-  int.jl:86   :facts 34441/0/0/0 | default 0/0/0/0
+       34440  Base.isvatuple  essentials.jl:591   :facts 34440/0/0/0 | default 0/0/0/0
+       34440  Base.>  operators.jl:425   :facts 34440/0/0/0 | default 0/0/0/0
+       34440  Base.padding  reinterpretarray.jl:769   :facts 0/0/34440/0 | default 0/0/0/0
+       34440  Base.datatype_alignment  runtime_internals.jl:592   :facts 0/0/34440/0 | default 0/0/0/0
+       34440  Base.getindex  essentials.jl:990   :facts 34440/0/0/0 | default 0/0/0/0
+       34440  Base.CyclePadding  reinterpretarray.jl:787   :facts 0/0/34440/0 | default 0/0/0/0
+       34440  Base.isvarargtype  essentials.jl:587   :facts 34440/0/0/0 | default 0/0/0/0
+       34440  Base.CyclePadding  reinterpretarray.jl:749   :facts 0/34440/0/0 | default 0/0/0/0
+       24612  TraitWorld.checked_call  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/checks.jl:320   :facts 23380/1232/0/0 | default 0/0/0/0
+       17220  Base.iterate  reinterpretarray.jl:755   :facts 17220/0/0/0 | default 0/0/0/0
+       17220  Base.lcm  intfuncs.jl:136   :facts 17220/0/0/0 | default 0/0/0/0
+         140  DiffEqBase._find_callback_time_erased  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:275   :facts 0/0/0/0 | default 140/0/0/0
+         140  DiffEqBase.apply_discrete_callback!  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:759   :facts 0/0/0/0 | default 140/0/0/0
+          68  Compiler.maybe_erase_unused!  ../usr/share/julia/Compiler/src/ssair/ir.jl:1985   :facts 0/0/0/0 | default 68/0/0/0
+          44  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:707   :facts 0/0/0/0 | default 0/0/44/0
+          15  DiffEqBase.apply_callback!  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:668   :facts 0/0/0/0 | default 15/0/0/0
+          15  Base.setproperty!  Base_compiler.jl:58   :facts 0/0/0/0 | default 15/0/0/0
+           9  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:703   :facts 0/0/0/0 | default 9/0/0/0
+
+-- dynamic calls by call site (the calling code, innermost frame first; the callee)
+      189420  padding at ./reinterpretarray.jl:772  ->  Base.fieldcount
+      189420  padding at ./reinterpretarray.jl:772  ->  Base.iterate
+      189420  isabstracttype at ./runtime_internals.jl:1115  ->  Base.getproperty
+      189420  isabstracttype at ./runtime_internals.jl:1115  ->  Base.getproperty
+      189420  datatype_fieldcount at ./runtime_internals.jl:1281  ->  Base.getproperty
+      189420  isabstracttype at ./runtime_internals.jl:1113  ->  Base.unwrap_unionall
+      189420  datatype_fieldcount at ./runtime_internals.jl:1293  ->  Base.getproperty
+      189420  isabstracttype at ./runtime_internals.jl:1115  ->  Base.&
+      189420  padding at ./reinterpretarray.jl:772  ->  Base.Colon
+      189420  fieldcount at ./runtime_internals.jl:1321  ->  Base.datatype_fieldcount
+      189420  isabstracttype at ./runtime_internals.jl:1115  ->  Base.==
+      189420  datatype_fieldcount at ./runtime_internals.jl:1290  ->  Base.isabstracttype
+      154980  datatype_fieldcount at ./runtime_internals.jl:1299  ->  Base.length
+      154980  datatype_fieldcount at ./runtime_internals.jl:1299  ->  Base.getproperty
+      154980  datatype_fieldcount at ./runtime_internals.jl:1299  ->  Base.getproperty
+      137760  padding at ./reinterpretarray.jl:773  ->  Base.+
+      137760  padding at ./reinterpretarray.jl:775  ->  Base.append!
+      137760  padding at ./reinterpretarray.jl:779  ->  Base.sizeof
+      137760  padding at ./reinterpretarray.jl:780  ->  Base.iterate
+      137760  padding at ./reinterpretarray.jl:773  ->  Base.fieldoffset
+      137760  padding at ./reinterpretarray.jl:775  ->  Base.padding
+      137760  padding at ./reinterpretarray.jl:773  ->  Core.Int64
+      137760  padding at ./reinterpretarray.jl:776  ->  Base.!=
+      137760  padding at ./reinterpretarray.jl:779  ->  Base.+
+      103320  padding at ./reinterpretarray.jl:781  ->  Base.sizeof
+      103320  padding at ./reinterpretarray.jl:781  ->  Base.<
+       34440  CyclePadding at ./reinterpretarray.jl:791  ->  Base.!=
+       34440  isvatuple at ./essentials.jl:596  ->  Base.getindex
+       34440  CyclePadding at ./reinterpretarray.jl:788  ->  Base.sizeof
+       34440  CyclePadding at ./reinterpretarray.jl:788  ->  Base.datatype_alignment
+       34440  padding at ./reinterpretarray.jl:770  ->  Base.padding
+       34440  CyclePadding at ./reinterpretarray.jl:789  ->  Base.+
+       34440  isvatuple at ./essentials.jl:596  ->  Base.isvarargtype
+       34440  CyclePadding at ./reinterpretarray.jl:789  ->  Base.rem
+       34440  datatype_alignment at ./runtime_internals.jl:594  ->  Base.getproperty
+       34440  CyclePadding at ./reinterpretarray.jl:789  ->  Base.-
+       34440  CyclePadding at ./reinterpretarray.jl:789  ->  Base.rem
+       34440  isvatuple at ./essentials.jl:596  ->  Base.>
+       34440  datatype_fieldcount at ./runtime_internals.jl:1295  ->  Base.length
+       34440  datatype_fieldcount at ./runtime_internals.jl:1295  ->  Base.getproperty
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+┌ Warning: Verbosity toggle: dt_epsilon 
+│  Initial timestep too small (near machine epsilon), using default: dt = 1.0e-6
+└ @ OrdinaryDiffEqCore ~/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/OrdinaryDiffEqCore/src/initdt.jl:23
+Tsit5:   0.004463 seconds (16.98 k allocations: 1.241 MiB)
+Rodas5P:   0.313735 seconds (630.03 k allocations: 20.839 MiB)
+Tsit5:   0.004390 seconds (16.99 k allocations: 1.241 MiB)
+Rodas5P:   0.317797 seconds (630.02 k allocations: 20.838 MiB)
+
+-- dynamic calls by callee method (owner :facts: site/leaf/assoc/full | default owner: site/leaf/assoc/full)
+      861000  Base.getproperty  Base_compiler.jl:51   :facts 0/0/861000/0 | default 0/0/0/0
+      344424  Base.getproperty  Base_compiler.jl:57   :facts 344400/0/0/0 | default 24/0/0/0
+      309960  Base.sizeof  essentials.jl:838   :facts 0/0/309960/0 | default 0/0/0/0
+      309960  Base.+  int.jl:87   :facts 309960/0/0/0 | default 0/0/0/0
+      223860  Base.unwrap_unionall  essentials.jl:542   :facts 223860/0/0/0 | default 0/0/0/0
+      223860  Base.length  essentials.jl:991   :facts 223860/0/0/0 | default 0/0/0/0
+      189422  Base.Colon  range.jl:5   :facts 189420/0/0/0 | default 2/0/0/0
+      189420  Base.==  promotion.jl:641   :facts 189420/0/0/0 | default 0/0/0/0
+      189420  Base.isabstracttype  runtime_internals.jl:1111   :facts 189420/0/0/0 | default 0/0/0/0
+      189420  Base.datatype_fieldcount  runtime_internals.jl:1280   :facts 0/0/189420/0 | default 0/0/0/0
+      189420  Base.&  int.jl:393   :facts 189420/0/0/0 | default 0/0/0/0
+      189420  Base.fieldcount  runtime_internals.jl:1308   :facts 189420/0/0/0 | default 0/0/0/0
+      189420  Base.iterate  range.jl:924   :facts 189420/0/0/0 | default 0/0/0/0
+      172202  Base.!=  operators.jl:320   :facts 172201/0/0/0 | default 0/0/1/0
+      172200  Base.padding  reinterpretarray.jl:769   :facts 0/0/172200/0 | default 0/0/0/0
+      137760  Base.iterate  range.jl:926   :facts 137760/0/0/0 | default 0/0/0/0
+      137760  Base.append!  array.jl:1416   :facts 137760/0/0/0 | default 0/0/0/0
+      137760  Core.Int64  boot.jl:1010   :facts 0/137760/0/0 | default 0/0/0/0
+      137760  Base.fieldoffset  runtime_internals.jl:1197   :facts 0/0/137760/0 | default 0/0/0/0
+      103320  Base.<  int.jl:83   :facts 103320/0/0/0 | default 0/0/0/0
+       68880  Base.rem  int.jl:342   :facts 68880/0/0/0 | default 0/0/0/0
+       34441  Base.-  int.jl:86   :facts 34441/0/0/0 | default 0/0/0/0
+       34440  Base.isvatuple  essentials.jl:591   :facts 34440/0/0/0 | default 0/0/0/0
+       34440  Base.>  operators.jl:425   :facts 34440/0/0/0 | default 0/0/0/0
+       34440  Base.padding  reinterpretarray.jl:769   :facts 0/0/34440/0 | default 0/0/0/0
+       34440  Base.datatype_alignment  runtime_internals.jl:592   :facts 0/0/34440/0 | default 0/0/0/0
+       34440  Base.getindex  essentials.jl:990   :facts 34440/0/0/0 | default 0/0/0/0
+       34440  Base.CyclePadding  reinterpretarray.jl:787   :facts 0/0/34440/0 | default 0/0/0/0
+       34440  Base.isvarargtype  essentials.jl:587   :facts 34440/0/0/0 | default 0/0/0/0
+       34440  Base.CyclePadding  reinterpretarray.jl:749   :facts 0/34440/0/0 | default 0/0/0/0
+       24612  TraitWorld.checked_call  /home/hellmann/Repos/julia-trait-bound/TraitWorld/src/checks.jl:320   :facts 23380/1232/0/0 | default 0/0/0/0
+       17220  Base.iterate  reinterpretarray.jl:755   :facts 17220/0/0/0 | default 0/0/0/0
+       17220  Base.lcm  intfuncs.jl:136   :facts 17220/0/0/0 | default 0/0/0/0
+         689  Base.trypoptask  task.jl:1253   :facts 0/0/0/0 | default 685/3/0/1
+         687  Partr.multiq_check_empty  partr.jl:249   :facts 0/0/0/0 | default 684/2/0/1
+         418  Compiler.maybe_erase_unused!  ../usr/share/julia/Compiler/src/ssair/ir.jl:1985   :facts 0/0/0/0 | default 418/0/0/0
+         324  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:707   :facts 0/0/0/0 | default 0/0/324/0
+         140  DiffEqBase._find_callback_time_erased  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:275   :facts 0/0/0/0 | default 140/0/0/0
+         140  DiffEqBase.apply_discrete_callback!  /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/OrdinaryDiffEq.jl/lib/DiffEqBase/src/callbacks.jl:759   :facts 0/0/0/0 | default 140/0/0/0
+          58  Compiler.widenconst  ../usr/share/julia/Compiler/src/typelattice.jl:703   :facts 0/0/0/0 | default 58/0/0/0
+
+-- dynamic calls by call site (the calling code, innermost frame first; the callee)
+      189420  padding at ./reinterpretarray.jl:772  ->  Base.fieldcount
+      189420  padding at ./reinterpretarray.jl:772  ->  Base.iterate
+      189420  isabstracttype at ./runtime_internals.jl:1115  ->  Base.getproperty
+      189420  isabstracttype at ./runtime_internals.jl:1115  ->  Base.getproperty
+      189420  datatype_fieldcount at ./runtime_internals.jl:1281  ->  Base.getproperty
+      189420  isabstracttype at ./runtime_internals.jl:1113  ->  Base.unwrap_unionall
+      189420  datatype_fieldcount at ./runtime_internals.jl:1293  ->  Base.getproperty
+      189420  isabstracttype at ./runtime_internals.jl:1115  ->  Base.&
+      189420  padding at ./reinterpretarray.jl:772  ->  Base.Colon
+      189420  fieldcount at ./runtime_internals.jl:1321  ->  Base.datatype_fieldcount
+      189420  isabstracttype at ./runtime_internals.jl:1115  ->  Base.==
+      189420  datatype_fieldcount at ./runtime_internals.jl:1290  ->  Base.isabstracttype
+      154980  datatype_fieldcount at ./runtime_internals.jl:1299  ->  Base.length
+      154980  datatype_fieldcount at ./runtime_internals.jl:1299  ->  Base.getproperty
+      154980  datatype_fieldcount at ./runtime_internals.jl:1299  ->  Base.getproperty
+      137760  padding at ./reinterpretarray.jl:773  ->  Base.+
+      137760  padding at ./reinterpretarray.jl:775  ->  Base.append!
+      137760  padding at ./reinterpretarray.jl:779  ->  Base.sizeof
+      137760  padding at ./reinterpretarray.jl:780  ->  Base.iterate
+      137760  padding at ./reinterpretarray.jl:773  ->  Base.fieldoffset
+      137760  padding at ./reinterpretarray.jl:775  ->  Base.padding
+      137760  padding at ./reinterpretarray.jl:773  ->  Core.Int64
+      137760  padding at ./reinterpretarray.jl:776  ->  Base.!=
+      137760  padding at ./reinterpretarray.jl:779  ->  Base.+
+      103320  padding at ./reinterpretarray.jl:781  ->  Base.sizeof
+      103320  padding at ./reinterpretarray.jl:781  ->  Base.<
+       34440  CyclePadding at ./reinterpretarray.jl:791  ->  Base.!=
+       34440  isvatuple at ./essentials.jl:596  ->  Base.getindex
+       34440  CyclePadding at ./reinterpretarray.jl:788  ->  Base.sizeof
+       34440  CyclePadding at ./reinterpretarray.jl:788  ->  Base.datatype_alignment
+       34440  padding at ./reinterpretarray.jl:770  ->  Base.padding
+       34440  CyclePadding at ./reinterpretarray.jl:789  ->  Base.+
+       34440  isvatuple at ./essentials.jl:596  ->  Base.isvarargtype
+       34440  CyclePadding at ./reinterpretarray.jl:789  ->  Base.rem
+       34440  datatype_alignment at ./runtime_internals.jl:594  ->  Base.getproperty
+       34440  CyclePadding at ./reinterpretarray.jl:789  ->  Base.-
+       34440  CyclePadding at ./reinterpretarray.jl:789  ->  Base.rem
+       34440  isvatuple at ./essentials.jl:596  ->  Base.>
+       34440  datatype_fieldcount at ./runtime_internals.jl:1295  ->  Base.length
+       34440  datatype_fieldcount at ./runtime_internals.jl:1295  ->  Base.getproperty

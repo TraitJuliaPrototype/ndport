@@ -9,7 +9,7 @@ for path in sys.argv[1:]:
     for line in open(path):
         f = line.split()
         if line.startswith('T '): rows[(setting, f[1], f[2])].append((float(f[3]), float(f[5])))
-        elif line.startswith('L '): rows[(setting, 'load', f[1])].append((1000 * float(f[2]), 0.0))
+        elif line.startswith('L '): rows[(setting, 'load', ' '.join(f[1:-1]))].append((1000 * float(f[-1]), 0.0))   # a label may hold spaces
         elif line.startswith('W total'): rows[(setting, 'total', '-')].append((1000 * float(f[2]), 0.0))
 print(f'{"setting":8} {"pass":8} {"step":34} {"n":>2} {"min ms":>9} {"median ms":>9} {"compile":>9}')
 for (s, ps, st), v in sorted(rows.items(), key=lambda kv: kv[0][0]):
