@@ -1,0 +1,54 @@
+# strict=0 2026-10-29T15:52:05+01:00 env=env_w96 julia-1.13 bfca89decc TraitWorld f270262 TDE 5862baa TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c
+jl: slot 1 (cores 0-3), depot /tmp/claude-1000/depots/w96
+┌ Warning: The project dependencies or compat requirements have changed since the manifest was last resolved.
+│ It is recommended to `Pkg.resolve()` or consider `Pkg.update()` if necessary.
+└ @ Pkg.API ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/API.jl:1312
+Precompiling packages...
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceChainRulesCoreExt
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceFillArraysExt
+   0.3 s  ✓ ADTypes → ADTypesChainRulesCoreExt
+   3.0 s  ✓ SparseConnectivityTracer
+   0.8 s  ✓ SparseMatrixColorings → SparseMatrixColoringsColorsExt
+   0.5 s  ✓ DifferentiationInterface → DifferentiationInterfaceStaticArraysExt
+   0.4 s  ✓ DifferentiationInterface → DifferentiationInterfaceChainRulesCoreExt
+   0.7 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerChainRulesCoreExt
+   1.2 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNaNMathExt
+   1.1 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerLogExpFunctionsExt
+   1.4 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerSpecialFunctionsExt
+   0.9 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseConnectivityTracerExt
+  15.6 s  ✓ Static
+   0.4 s  ✓ BitTwiddlingConvenienceFunctions
+  16.4 s  ✓ LLVM
+   1.1 s  ✓ CPUSummary
+   2.0 s  ✓ StaticArrayInterface
+   0.6 s  ✓ LLVM → BFloat16sExt
+   0.5 s  ✓ PolyesterWeave
+   0.5 s  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+   0.4 s  ✓ CloseOpenIntervals
+   1.8 s  ✓ UnsafeAtomics
+   0.5 s  ✓ LayoutPointers
+   0.6 s  ✓ Atomix
+   0.7 s  ✓ StrideArraysCore
+   0.6 s  ✓ Polyester
+   2.6 s  ✓ KernelAbstractions
+   0.8 s  ✓ KernelAbstractions → LinearAlgebraExt
+   0.9 s  ✓ KernelAbstractions → SparseArraysExt
+   3.9 s  ✓ NNlib
+   1.3 s  ✓ NNlib → NNlibForwardDiffExt
+   1.4 s  ✓ NNlib → NNlibSpecialFunctionsExt
+   1.7 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNNlibExt
+  39.5 s  ✓ TraitWorld
+   1.6 s  ✓ TraitArrayTools
+   2.3 s  ✓ TraitIndexing
+   4.1 s  ✓ Graphs
+   1.2 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+  10.4 s  ✓ ODECore
+   2.5 s  ✓ TraitRodas
+  15.6 s  ✓ TraitMakie
+   4.1 s  ✓ MakieCompat
+   8.6 s  ✓ TraitNonlinearSolve
+   2.0 s  ✓ GraphMakie
+  13.0 s  ✓ TraitDifferentialEquations
+  21.7 s  ✓ NetworkDynamics
+  46 dependencies successfully precompiled in 83 seconds. 171 already precompiled.
+# rc=0

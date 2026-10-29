@@ -1,0 +1,33 @@
+[deps]
+GraphMakie = "1ecd5474-83a3-4783-bb4f-06765db800d2"
+Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
+MakieCompat = "5b0f4c2e-8a51-4d3e-9c77-2f6a1e0b8d43"
+NetworkDynamics = "22e9dc34-2a0d-11e9-0de0-8588d035468b"
+NetworkLayout = "46757867-2c16-5918-afeb-47bfcb05e46a"
+ODECore = "dde65c3d-a5a2-4c0b-ae11-c816328cb47b"
+Observables = "510215fc-4207-5dde-b226-833fc4488ee2"
+Static = "aedffcd0-7271-4cad-89d0-dc628f76c6d3"
+SymbolicIndexingInterface = "2efcf032-c050-4f8e-a9bb-153293bab1f5"
+TraitArrayTools = "1b9b79cd-6bec-4e99-a18c-2677d046d2b7"
+TraitDifferentialEquations = "fc9886c1-0241-47c4-acfc-eaf7404dec9a"
+TraitIndexing = "33517989-6c57-4017-8c1a-5a2ed17d5e8b"
+TraitMakie = "46a11cac-d2c9-498a-a901-1fb9b8611426"
+TraitNonlinearSolve = "86edfd3c-937f-4bf9-a2a0-6a6d82efd3fb"
+TraitRodas = "bf920f43-cef2-427b-965f-14169ab0c399"
+TraitWorld = "7a3c1e52-9b4d-4f6e-8a21-5d0c3b9e7f14"
+
+[sources]
+GraphMakie = {path = "../pkgs/GraphMakie-ports"}
+Graphs = {path = "../pkgs/Graphs-p4"}
+MakieCompat = {path = "../../TraitMakie/compat/MakieCompat"}
+NetworkDynamics = {path = "../pkgs/NetworkDynamics-ports"}
+NetworkLayout = {path = "../pkgs/NetworkLayout.jl"}
+ODECore = {path = "../../TraitDifferentialEquations-w96/lib/ODECore"}
+Static = {path = "../pkgs/Static.jl"}
+TraitArrayTools = {path = "../../TraitDifferentialEquations-w96/lib/TraitArrayTools"}
+TraitDifferentialEquations = {path = "../../TraitDifferentialEquations-w96"}
+TraitIndexing = {path = "../../TraitDifferentialEquations-w96/lib/TraitIndexing"}
+TraitMakie = {path = "../../TraitMakie"}
+TraitNonlinearSolve = {path = "../../TraitDifferentialEquations-w96/lib/TraitNonlinearSolve"}
+TraitRodas = {path = "../../TraitDifferentialEquations-w96/lib/TraitRodas"}
+TraitWorld = {path = "../../TraitWorld"}

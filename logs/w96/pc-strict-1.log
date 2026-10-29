@@ -1,0 +1,23 @@
+# strict=1 2026-10-29T15:55:36+01:00 env=env_w96 julia-1.13 bfca89decc TraitWorld f270262 TDE 5862baa TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c
+jl: slot 1 (cores 0-3), depot /tmp/claude-1000/depots/w96s
+┌ Warning: The project dependencies or compat requirements have changed since the manifest was last resolved.
+│ It is recommended to `Pkg.resolve()` or consider `Pkg.update()` if necessary.
+└ @ Pkg.API ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/API.jl:1312
+Precompiling packages...
+   0.8 s  ✓ SparseMatrixColorings → SparseMatrixColoringsColorsExt
+   0.9 s  ✓ NetworkLayout
+  34.4 s  ✓ TraitWorld
+   1.6 s  ✓ TraitArrayTools
+   2.3 s  ✓ TraitIndexing
+   4.1 s  ✓ Graphs
+   1.2 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+  10.1 s  ✓ ODECore
+   2.6 s  ✓ TraitRodas
+  15.2 s  ✓ TraitMakie
+   4.6 s  ✓ MakieCompat
+   8.6 s  ✓ TraitNonlinearSolve
+   2.3 s  ✓ GraphMakie
+  13.3 s  ✓ TraitDifferentialEquations
+  23.0 s  ✓ NetworkDynamics
+  15 dependencies successfully precompiled in 79 seconds. 202 already precompiled.
+# rc=0

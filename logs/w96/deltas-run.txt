@@ -1,0 +1,45 @@
+again    d nsteps  U′   38  w96   38  R5    7
+again    d rnsteps U′   38  w96   38  R5    7
+again    d rtrips  order equal to U′: w96 True  R5 True
+again    d trips   order equal to U′: w96 True  R5 True
+again    d trtrips max |PT - U′|  w96 7.00e-09  R5 7.00e-09
+again    d ttrips  max |PT - U′|  w96 2.60e-08  R5 4.13e-06
+again    d ω2      max |PT - U′|  w96 2.28e-08  R5 1.96e-06
+again    d ω2r     max |PT - U′|  w96 6.80e-09  R5 6.80e-09
+again    e K3      max |PT - U′|  w96 0.00e+00  R5 0.00e+00
+again    e P2      max |PT - U′|  w96 1.97e-08  R5 4.74e-06
+again    e P3      max |PT - U′|  w96 4.61e-08  R5 4.49e-06
+again    e Pend    max |PT - U′|  w96 6.56e-08  R5 7.66e-06
+again    e ωsum    max |PT - U′|  w96 8.88e-16  R5 2.22e-15
+changed  d nsteps  U′   36  w96   36  R5    7
+changed  d rnsteps U′   36  w96   36  R5    7
+changed  d rtrips  order equal to U′: w96 True  R5 True
+changed  d trips   order equal to U′: w96 True  R5 True
+changed  d trtrips max |PT - U′|  w96 1.10e-08  R5 1.10e-08
+changed  d ttrips  max |PT - U′|  w96 2.60e-08  R5 4.62e-06
+changed  d ω2      max |PT - U′|  w96 1.99e-08  R5 2.55e-06
+changed  d ω2r     max |PT - U′|  w96 9.60e-09  R5 9.60e-09
+changed  e K3      max |PT - U′|  w96 0.00e+00  R5 0.00e+00
+changed  e P2      max |PT - U′|  w96 1.45e-08  R5 1.46e-06
+changed  e P3      max |PT - U′|  w96 3.70e-08  R5 4.32e-06
+changed  e Pend    max |PT - U′|  w96 1.49e-08  R5 1.97e-06
+changed  e ωsum    max |PT - U′|  w96 2.10e-08  R5 1.56e-06
+first    d nsteps  U′   38  w96   38  R5    7
+first    d rnsteps U′   38  w96   38  R5    7
+first    d rtrips  order equal to U′: w96 True  R5 True
+first    d trips   order equal to U′: w96 True  R5 True
+first    d trtrips max |PT - U′|  w96 7.00e-09  R5 7.00e-09
+first    d ttrips  max |PT - U′|  w96 2.60e-08  R5 4.13e-06
+first    d ω2      max |PT - U′|  w96 2.28e-08  R5 1.96e-06
+first    d ω2r     max |PT - U′|  w96 6.80e-09  R5 6.80e-09
+first    e K3      max |PT - U′|  w96 0.00e+00  R5 0.00e+00
+first    e P2      max |PT - U′|  w96 1.97e-08  R5 4.74e-06
+first    e P3      max |PT - U′|  w96 4.61e-08  R5 4.49e-06
+first    e Pend    max |PT - U′|  w96 6.56e-08  R5 7.66e-06
+first    e ωsum    max |PT - U′|  w96 8.88e-16  R5 2.22e-15
+params   d ω2      max |PT - U′|  w96 2.20e-08  R5 4.04e-06
+params   e K3      max |PT - U′|  w96 0.00e+00  R5 0.00e+00
+params   e P2      max |PT - U′|  w96 1.17e-08  R5 4.93e-06
+params   e P3      max |PT - U′|  w96 2.41e-08  R5 2.63e-06
+params   e Pend    max |PT - U′|  w96 9.50e-09  R5 1.34e-06
+params   e ωsum    max |PT - U′|  w96 2.07e-15  R5 2.07e-15

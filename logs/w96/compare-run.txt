@@ -1,0 +1,36 @@
+# W-96 (E-248): R5's comparisons on TDE w96 (5862baa); U′ and the tight runs are R5's (logs/r5)
+== PT-1 vs PT-2 (exact)
+compared 32 digests: 0 exact differences, 0 failures
+== PT strict vs PT-1 (exact)
+compared 32 digests: 0 exact differences, 0 failures
+== PT graphtype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+== plots PT-1 vs PT-2, strict
+compared 50 plot lines: 0 failures
+compared 50 plot lines: 0 failures
+== plots graphtype vs first
+largest differences by kind: {}
+compared 10 plot lines: 0 failures
+== U′ vs PT (tolerance; passes first, again, params, changed: U′ refuses the graph type)
+('again', 'c') u: exact field differs: b20802e716eceacb | 7791143c24ef0fa6
+('again', 'd') rsol: exact field differs: c076864e2927a906 | 7f69ebe993a2fca5
+('again', 'd') sol: exact field differs: d0cf11aebce8d072 | a67498d205421621
+('again', 'f') pixels: exact field differs: 1200x900 | 600x450
+('changed', 'c') u: exact field differs: b20802e716eceacb | 7791143c24ef0fa6
+('changed', 'd') rsol: exact field differs: 61f613aedf528e94 | 4c1b9a172b0637a8
+('changed', 'd') sol: exact field differs: 1178ae6ad05b042c | f73e556454678ca8
+('changed', 'f') pixels: exact field differs: 1200x900 | 600x450
+('first', 'c') u: exact field differs: b20802e716eceacb | 7791143c24ef0fa6
+('first', 'd') rsol: exact field differs: c076864e2927a906 | 7f69ebe993a2fca5
+('first', 'd') sol: exact field differs: d0cf11aebce8d072 | a67498d205421621
+('first', 'f') pixels: exact field differs: 1200x900 | 600x450
+('params', 'f') pixels: exact field differs: 1200x900 | 600x450
+compared 25 digests: 13 exact differences, 0 failures
+== plots U′ vs PT
+largest differences by kind: {}
+compared 40 plot lines: 0 failures
+== N lines
+N first nwtype 88d8d8de556e4e2c Network{9 parameters}
+N again nwtype 88d8d8de556e4e2c Network{9 parameters}
+N changed nwtype 88d8d8de556e4e2c Network{9 parameters}
+N graphtype nwtype 17e5ef97102a6b49 Network{9 parameters}
