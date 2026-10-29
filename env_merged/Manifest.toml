@@ -2,7 +2,7 @@
 
 julia_version = "1.13.2"
 manifest_format = "2.1"
-project_hash = "83da2f817a4ea959ede6fd1f8e11fe1694578ec4"
+project_hash = "26c96c36d15caec16caccd45fed5ecd3487dae0d"
 
 [[deps.ADTypes]]
 deps = ["PrecompileTools"]
@@ -2943,10 +2943,16 @@ version = "1.2.2"
     FlameGraphs = "08572546-2f56-4bcf-ba4e-bab62c3a3f89"
 
 [[deps.TraitWorld]]
-deps = ["PrecompileTools", "Serialization"]
-path = "../../TraitWorld-port"
+deps = ["Dates", "LinearAlgebra", "PrecompileTools", "Serialization"]
+path = "../../TraitWorld"
 uuid = "7a3c1e52-9b4d-4f6e-8a21-5d0c3b9e7f14"
 version = "0.1.0"
+
+    [deps.TraitWorld.extensions]
+    TraitWorldCthulhuExt = "Cthulhu"
+
+    [deps.TraitWorld.weakdeps]
+    Cthulhu = "f68482b8-f384-11e8-15f7-abe071a5a75f"
 
 [[deps.TranscodingStreams]]
 git-tree-sha1 = "0c45878dcfdcfa8480052b6ab162cdd138781742"

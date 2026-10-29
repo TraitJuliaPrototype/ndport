@@ -40,7 +40,7 @@ OrdinaryDiffEqTsit5 = {path = "../pkgs/OrdinaryDiffEq-p6/lib/OrdinaryDiffEqTsit5
 RecursiveArrayTools = {path = "../pkgs/RecursiveArrayTools-p6"}
 SciMLBase = {path = "../pkgs/SciMLBase-p6"}
 SymbolicIndexingInterface = {path = "../pkgs/SymbolicIndexingInterface-p6"}
-TraitWorld = {path = "../../TraitWorld-port"}
+TraitWorld = {path = "../../TraitWorld"}
 OrdinaryDiffEqRosenbrock = {path = "../pkgs/OrdinaryDiffEq-p6-ros/lib/OrdinaryDiffEqRosenbrock"}
 NonlinearSolve = {path = "../pkgs/NonlinearSolve-p6"}
 NonlinearSolveBase = {path = "../pkgs/NonlinearSolveBase-p6"}

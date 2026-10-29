@@ -159,3 +159,24 @@ julia-1.13 build 2943086604; TraitWorld `w49` 3ae361c (`TraitWorld-port`: c655dd
 - Strict on: the one refusal OffsetArrays' `reshape` (Base's code), the extension warnings as E-165's. The census: NetworkDynamics' three family registry methods (L-38), every other package as E-165. ND's test subset as before.
 - A right-hand side allocates 240 bytes after the traits per kind (208 with W-49 alone): the trait object carries the supertrait's view too; not attributed further.
 
+
+### 2026-10-29: the merged port revived on the current builds (E-235)
+
+julia-1.13 bfca89decc, TraitWorld main ca92f22 (before: julia-1.13 2943086604, TraitWorld `w49` 3ae361c); setting M (`env_merged`, `depot-merged`; NetworkDynamics `port` 4e5f5a2, Graphs `port` 54632125, P6's trees on `port`); `env_merged` resolved offline with TraitWorld from main (the manifest's only change), rebuilt with strict mode on (`scripts/p6_precompile.sh`, four tasks on four cores: `logs/revive/precompile-merged-bfca89decc.log`); P1's load order; two cores; one run strict off (`logs/revive/`), one strict on (`logs/revive-strict1/`); load 1.3–2.9. Interop: ND's bounded functions calling the user's plain functions, upstream SciML compiled by facts.
+
+| | M-3a strict off (E-166, 2 runs) | revived, strict off | M-3a strict on (E-166) | revived, strict on |
+|---|---|---|---|---|
+| digests against U (E-151) and E-166, exact | 0 differences | 0, 0 | 0 | 0, 0 |
+| refusals under strict mode | — | — | OffsetArrays' `reshape` | **none** |
+| extension warnings (precompile) | 69 | — | — | 59 (new: LinearSolveForwardDiffExt, NonlinearSolveBaseForwardDiffExt) |
+| first a–e | 30.8–31.4 s | 26.0 s | 33.0 s | 25.4 s |
+| first plot (f) | 15.3–15.4 s | 15.0 s | 20.7 s | 14.8 s |
+| changed b–e | 0.55–0.56 s | 0.47 s | 1.02 s | 0.47 s |
+| again c / d / e | 4.4 / 29.5–33.6 / 0.9 ms | 4.5 / 29.6 / 0.8 ms | 5.0 / 34.6 / 1.3 ms | 4.5 / 29.1 / 0.8 ms |
+| load Graphs+ND | 2.89–2.95 s | 2.55 s | 7.8 s | 5.31 s |
+| session | 65.2–66.1 s | 59.6 s | 83.8 s | 62.0 s |
+
+- Nothing broke: the stack precompiles (370 packages rebuilt, 388 s) and runs; no `OwnershipError`, no `PirateError`.
+- Step d is back at E-166's 29 ms: E-162's 267.7 ms (julia-1.13 0c589fd385, open issue 66) does not recur on bfca89decc (W-57's part 1).
+- The strict-mode refusal of OffsetArrays' `reshape` (pushback P6-2) no longer occurs; not attributed.
+- From 2026-10-29 setting M loads TraitWorld from main (`../TraitWorld`); `TraitWorld-port` stays at `w49` for P4P and IP.

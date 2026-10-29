@@ -18,7 +18,7 @@ case $setting in
   I)  ENVD=env_p6; TW=1; DEPOT="$ND/depot-p6:$HOME/.julia:"; DEFSCRIPT=scripts/p6_workload.jl ;;   # P6 (E-155): the core wrapped inside out (pkgs/*-p6), NetworkDynamics as in N; prints STRICT
   P4P) ENVD=env_p4_pin; TW=1; TWDIR=TraitWorld-port; DEPOT="$ND/depot-p4pin:$HOME/.julia:" ;;   # P4 on the pinned TraitWorld (E-165: the steady-state reference)
   IP) ENVD=env_p6_pin; TW=1; TWDIR=TraitWorld-port; DEPOT="$ND/depot-p6pin:$HOME/.julia:"; DEFSCRIPT=scripts/p6_workload.jl ;;   # P6's last step (S7) on the pinned TraitWorld (E-165)
-  M)  ENVD=env_merged; TW=1; TWDIR=TraitWorld-port; DEPOT="$ND/depot-merged:$HOME/.julia:"; DEFSCRIPT=scripts/p6_workload.jl ;;   # the merge (E-165): P4's NetworkDynamics and Graphs on P6's core, branches `port`; prints STRICT
+  M)  ENVD=env_merged; TW=1; TWDIR=TraitWorld; DEPOT="$ND/depot-merged:$HOME/.julia:"; DEFSCRIPT=scripts/p6_workload.jl ;;   # the merge (E-165): P4's NetworkDynamics and Graphs on P6's core, branches `port`; prints STRICT; TraitWorld main from 2026-10-29 (E-235; before: TraitWorld-port)
   S)  J=$HOME/.julia/juliaup/julia-1.13.2+0.x64.linux.gnu/bin/julia; DEPOT="$ND/depot-stock:$HOME/.julia:" ;;
   *) echo "unknown setting $setting"; exit 2 ;;
 esac
@@ -27,7 +27,7 @@ unset JULIA_COMPILE_BY_FACTS
 if [ "${NDW_STRICT:-0}" = 1 ]; then export JULIA_TW_STRICT=1; STRICT=on; else unset JULIA_TW_STRICT; STRICT=off; fi
 [ -n "$DEPOT" ] && export JULIA_DEPOT_PATH=$DEPOT || unset JULIA_DEPOT_PATH
 L=$ND/logs/$tag; mkdir -p "$L"
-jl() { flock /tmp/claude-1000/julia-review.lock taskset -c 0-1 ionice -c3 nice -n 19 timeout 900 "$J" "${JF[@]}" --startup-file=no --threads=1 --project=$ENVD "$@"; }
+jl() { flock /tmp/claude-1000/julia-review.lock taskset -c 0-1 ionice -c3 nice -n 19 timeout -s KILL 900 "$J" "${JF[@]}" --startup-file=no --threads=1 --project=$ENVD "$@"; }
 # every direct dependency precompiled in this setting, or the run is skipped
 miss=$(jl -e 'using Pkg; for (n, u) in Pkg.project().dependencies; Base.isprecompiled(Base.PkgId(u, n)) || print(n, " "); end')
 if [ -n "$miss" ]; then echo "$setting: not precompiled: $miss -- skipped"; exit 3; fi

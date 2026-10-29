@@ -3,10 +3,11 @@
 # into depot-p6 with strict mode on (JULIA_TW_STRICT=1, which the precompile workers inherit), through the shared lock.
 #     scripts/p6_precompile.sh <tag> [resolve]   -> logs/p6/precompile-<tag>.log
 # `resolve`: Pkg.resolve() first (offline), after the project's sources changed.
+# NDP_TASKS (default 1) precompile tasks, NDP_CPUS (default 0-1) the cores; P6ENV, P6DEPOT, P6LOGDIR, TWDIR choose the setting.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 tag=$1; res=${2:-}
-export JULIA_DEPOT_PATH=$PWD/${P6DEPOT:-depot-p6}:$HOME/.julia: JULIA_PKG_OFFLINE=true OPENBLAS_NUM_THREADS=1 JULIA_NUM_PRECOMPILE_TASKS=1 JULIA_NUM_THREADS=1 JULIA_TW_STRICT=1
+export JULIA_DEPOT_PATH=$PWD/${P6DEPOT:-depot-p6}:$HOME/.julia: JULIA_PKG_OFFLINE=true OPENBLAS_NUM_THREADS=1 JULIA_NUM_PRECOMPILE_TASKS=${NDP_TASKS:-1} JULIA_NUM_THREADS=1 JULIA_TW_STRICT=1
 unset JULIA_COMPILE_BY_FACTS
 L=${P6LOGDIR:-logs/p6}; mkdir -p $L; f=$L/precompile-$tag.log
 {
@@ -15,7 +16,7 @@ L=${P6LOGDIR:-logs/p6}; mkdir -p $L; f=$L/precompile-$tag.log
   echo "# trees $(for d in pkgs/*-p6 pkgs/*-p6-ros pkgs/NetworkDynamics-p4 pkgs/Graphs-p4; do printf '%s:%s%s ' $(basename $d) $(git -C $d log -1 --format=%h) $([ -z "$(git -C $d status --porcelain --untracked-files=no)" ] || echo '*'); done)"
 } > $f
 t0=$(date +%s)
-flock /tmp/claude-1000/julia-review.lock taskset -c 0-1 ionice -c3 nice -n 19 timeout 3600 ../julia-1.13/julia --startup-file=no --project=${P6ENV:-env_p6} -e '
+flock /tmp/claude-1000/julia-review.lock taskset -c ${NDP_CPUS:-0-1} ionice -c3 nice -n 19 timeout -s KILL 3600 ../julia-1.13/julia --startup-file=no --project=${P6ENV:-env_p6} -e '
   using Pkg
   "resolve" in ARGS && Pkg.resolve()
   t = @elapsed Pkg.precompile()
