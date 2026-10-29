@@ -1,0 +1,4 @@
+# setting=S env=env_upstream julia=/home/hellmann/.julia/juliaup/julia-1.13.2+0.x64.linux.gnu/bin/julia depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-stock:/home/hellmann/.julia: strict=0 2026-10-29T16:15:09+01:00 julia-1.13 bfca89decc TraitWorld 4961de8 TDE e9e07ed TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c
+jl: slot 2 (cores 4-7), depot /tmp/claude-1000/depots/ndr7S
+precompile s=2.4
+# rc=0 wall=7s

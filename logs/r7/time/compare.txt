@@ -1,0 +1,31 @@
+# R7 (E-250): the measured sessions' digests; 2026-10-29T16:47:05+01:00
+== PT-0 vs E-249's run-PT-1 (exact)
+compared 25 digests: 0 exact differences, 0 failures
+== UP-0 vs E-249's run-UP-1 (exact)
+compared 25 digests: 0 exact differences, 0 failures
+== U-0 vs E-151's U (logs/p1/U-1.log, exact)
+compared 25 digests: 0 exact differences, 0 failures
+== S-0 vs E-151's U (logs/p1/U-1.log, exact)
+compared 25 digests: 0 exact differences, 0 failures
+== M-0 vs E-151's U (logs/p1/U-1.log, exact)
+compared 25 digests: 0 exact differences, 0 failures
+== PT-1 vs E-249's run-PT-1 (exact)
+compared 25 digests: 0 exact differences, 0 failures
+== UP-1 vs E-249's run-UP-1 (exact)
+compared 25 digests: 0 exact differences, 0 failures
+== U-1 vs E-151's U (logs/p1/U-1.log, exact)
+compared 25 digests: 0 exact differences, 0 failures
+== S-1 vs E-151's U (logs/p1/U-1.log, exact)
+compared 25 digests: 0 exact differences, 0 failures
+== M-1 vs E-151's U (logs/p1/U-1.log, exact)
+compared 25 digests: 0 exact differences, 0 failures
+== PT-2 vs E-249's run-PT-1 (exact)
+compared 25 digests: 0 exact differences, 0 failures
+== UP-2 vs E-249's run-UP-1 (exact)
+compared 25 digests: 0 exact differences, 0 failures
+== U-2 vs E-151's U (logs/p1/U-1.log, exact)
+compared 25 digests: 0 exact differences, 0 failures
+== S-2 vs E-151's U (logs/p1/U-1.log, exact)
+compared 25 digests: 0 exact differences, 0 failures
+== M-2 vs E-151's U (logs/p1/U-1.log, exact)
+compared 25 digests: 0 exact differences, 0 failures

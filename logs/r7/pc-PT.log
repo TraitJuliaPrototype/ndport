@@ -1,0 +1,40 @@
+# setting=PT env=env_r5 julia=../julia-1.13/julia depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-ports:/home/hellmann/.julia: strict=0 2026-10-29T16:07:47+01:00 julia-1.13 bfca89decc TraitWorld 4961de8 TDE e9e07ed TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c
+jl: slot 1 (cores 0-3), depot /tmp/claude-1000/depots/ndr7
+Precompiling packages...
+   0.4 s  ✓ ArrayInterface → ArrayInterfaceChainRulesCoreExt
+   0.6 s  ✓ GPUArraysCore
+   0.6 s  ✓ ADTypes → ADTypesChainRulesCoreExt
+   1.7 s  ✓ PreallocationTools
+   0.9 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerChainRulesCoreExt
+   0.4 s  ✓ DifferentiationInterface → DifferentiationInterfaceChainRulesCoreExt
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+   0.9 s  ✓ SparseMatrixColorings → SparseMatrixColoringsColorsExt
+   0.4 s  ✓ DifferentiationInterface → DifferentiationInterfaceGPUArraysCoreExt
+   1.0 s  ✓ PreallocationTools → PreallocationToolsForwardDiffExt
+  17.9 s  ✓ LLVM
+   0.6 s  ✓ LLVM → BFloat16sExt
+   1.8 s  ✓ UnsafeAtomics
+   0.7 s  ✓ Atomix
+   2.9 s  ✓ KernelAbstractions
+   1.1 s  ✓ KernelAbstractions → LinearAlgebraExt
+   1.3 s  ✓ KernelAbstractions → SparseArraysExt
+   4.7 s  ✓ NNlib
+   1.5 s  ✓ NNlib → NNlibSpecialFunctionsExt
+   1.6 s  ✓ NNlib → NNlibForwardDiffExt
+   2.3 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNNlibExt
+  47.6 s  ✓ TraitWorld
+   2.6 s  ✓ TraitArrayTools
+   4.0 s  ✓ TraitIndexing
+   7.2 s  ✓ Graphs
+   1.5 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+  16.2 s  ✓ ODECore
+  24.4 s  ✓ TraitMakie
+   4.7 s  ✓ TraitRodas
+   6.8 s  ✓ MakieCompat
+  14.0 s  ✓ TraitNonlinearSolve
+   3.7 s  ✓ GraphMakie
+  20.4 s  ✓ TraitDifferentialEquations
+  31.3 s  ✓ NetworkDynamics
+  34 dependencies successfully precompiled in 113 seconds. 183 already precompiled.
+precompile s=113.6
+# rc=0 wall=114s

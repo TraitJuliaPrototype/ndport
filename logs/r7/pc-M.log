@@ -1,0 +1,521 @@
+# setting=M env=env_merged julia=../julia-1.13/julia depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-merged:/home/hellmann/.julia: strict=1 2026-10-29T16:09:41+01:00 julia-1.13 bfca89decc TraitWorld 4961de8 TDE e9e07ed TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c
+jl: slot 3 (cores 8-11), depot /tmp/claude-1000/depots/ndr7m
+Precompiling packages...
+   0.5 s  ✓ EnzymeCore → AdaptExt
+   0.6 s  ✓ EnzymeCore → EnzymeCoreChainRulesCoreExt
+   0.5 s  ✓ ArrayInterface → ArrayInterfaceChainRulesCoreExt
+   0.8 s  ✓ GPUArraysCore
+   0.9 s  ✓ FastInterpolations → FastInterpolationsRecipesBaseExt
+   0.6 s  ✓ IntervalSets → IntervalSetsRecipesBaseExt
+   1.7 s  ✓ PreallocationTools
+   0.7 s  ✓ ADTypes → ADTypesChainRulesCoreExt
+   1.0 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerChainRulesCoreExt
+   0.6 s  ✓ DifferentiationInterface → DifferentiationInterfaceChainRulesCoreExt
+   4.9 s  ✓ SciMLOperators
+   1.5 s  ✓ NetworkLayout
+   1.9 s  ✓ ShaderAbstractions
+   1.2 s  ✓ Distributions → DistributionsSparseConnectivityTracerExt
+   0.7 s  ✓ FastInterpolations → FastInterpolationsForwardDiffExt
+   0.9 s  ✓ Roots → RootsForwardDiffExt
+   1.7 s  ✓ Interpolations → InterpolationsForwardDiffExt
+   7.3 s  ✓ GridLayoutBase
+   0.9 s  ✓ IntervalArithmetic → IntervalArithmeticForwardDiffExt
+   0.7 s  ✓ IntervalArithmetic → IntervalArithmeticDiffRulesExt
+   0.9 s  ✓ IntervalArithmetic → IntervalArithmeticRecipesBaseExt
+   0.4 s  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+   0.5 s  ✓ StructArrays → GPUArraysCoreExt
+   0.6 s  ✓ DifferentiationInterface → DifferentiationInterfaceGPUArraysCoreExt
+   0.5 s  ✓ PreallocationTools → PreallocationToolsEnzymeCoreExt
+   1.4 s  ✓ PreallocationTools → PreallocationToolsForwardDiffExt
+   0.8 s  ✓ SciMLOperators → SciMLOperatorsSparseArraysExt
+  25.1 s  ✓ LLVM
+   0.9 s  ✓ LLVM → BFloat16sExt
+   2.6 s  ✓ UnsafeAtomics
+   0.9 s  ✓ Atomix
+   4.2 s  ✓ KernelAbstractions
+   1.7 s  ✓ KernelAbstractions → LinearAlgebraExt
+   1.8 s  ✓ KernelAbstractions → SparseArraysExt
+   1.4 s  ✓ StructArrays → KernelAbstractionsExt
+   1.8 s  ✓ KernelAbstractions → EnzymeExt
+   5.8 s  ✓ NNlib
+   1.7 s  ✓ NNlib → NNlibSpecialFunctionsExt
+   1.7 s  ✓ NNlib → NNlibForwardDiffExt
+   1.7 s  ✓ NNlib → NNlibEnzymeCoreExt
+   2.9 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNNlibExt
+┌ Warning: downloading texture atlas failed, need to re-create from scratch.
+│   exception =
+│    RequestError: HTTP/1.1 403 not in this command's allowed_domains ? re-run the command with this host listed if it needs it (CONNECT tunnel failed, response 403) while requesting https://github.com/MakieOrg/Makie.jl/releases/download/v0.21.0/v7_texture_atlas_2048_64.bin
+│    Stacktrace:
+│       [1] (::Downloads.var"#23#24"{IOStream, Base.DevNull, Nothing, Vector{Pair{String, String}}, Float64, Nothing, Bool, Nothing, Bool, Nothing, String, Base.RefValue{Union{Downloads.RequestError, Downloads.Response}}, Int64, Bool, Bool, Downloads.Downloader})(easy::Downloads.Curl.Easy)
+│         @ Downloads ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:484
+│       [2] with_handle(f::Downloads.var"#23#24"{IOStream, Base.DevNull, Nothing, Vector{Pair{String, String}}, Float64, Nothing, Bool, Nothing, Bool, Nothing, String, Base.RefValue{Union{Downloads.RequestError, Downloads.Response}}, Int64, Bool, Bool, Downloads.Downloader}, handle::Downloads.Curl.Easy)
+│         @ Downloads.Curl ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Curl/Curl.jl:105
+│       [3] #21
+│         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:395 [inlined]
+│       [4] arg_write(f::Downloads.var"#21#22"{Base.DevNull, Nothing, Vector{Pair{String, String}}, Float64, Nothing, Bool, Nothing, Bool, Nothing, String, Base.RefValue{Union{Downloads.RequestError, Downloads.Response}}, Int64, Bool, Bool, Downloads.Downloader}, arg::IOStream)
+│         @ ArgTools ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/ArgTools/src/ArgTools.jl:134
+│       [5] #19
+│         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:394 [inlined]
+│       [6] arg_read
+│         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/ArgTools/src/ArgTools.jl:76 [inlined]
+│       [7] request(url::String; input::Nothing, output::IOStream, method::Nothing, headers::Vector{Pair{String, String}}, timeout::Float64, progress::Nothing, verbose::Bool, debug::Nothing, throw::Bool, downloader::Nothing, interrupt::Nothing)
+│         @ Downloads ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:393
+│       [8] request
+│         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:355 [inlined]
+│       [9] #7
+│         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:273 [inlined]
+│      [10] open(f::Downloads.var"#7#8"{Nothing, Vector{Pair{String, String}}, Float64, Nothing, Bool, Nothing, Nothing, String, Base.RefValue{Downloads.Response}}, args::String; kwargs::@Kwargs{write::Bool, lock::Bool})
+│         @ Base ./io.jl:429
+│      [11] open_nolock(::Function, ::Vararg{Any}; kws::@Kwargs{write::Bool})
+│         @ ArgTools ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/ArgTools/src/ArgTools.jl:35
+│      [12] open_nolock
+│         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/ArgTools/src/ArgTools.jl:35 [inlined]
+│      [13] arg_write(f::Function, arg::String)
+│         @ ArgTools ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/ArgTools/src/ArgTools.jl:103
+│      [14] #download#5
+│         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:272 [inlined]
+│      [15] download
+│         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:252 [inlined]
+│      [16] cached_load(resolution::Int64, pix_per_glyph::Int64)
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/utilities/texture_atlas.jl:152
+│      [17] #get_texture_atlas##0
+│         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/utilities/texture_atlas.jl:141 [inlined]
+│      [18] get!(default::Makie.var"#get_texture_atlas##0#get_texture_atlas##1"{Int64, Int64}, h::Dict{Tuple{Int64, Int64}, Makie.TextureAtlas}, key::Tuple{Int64, Int64})
+│         @ Base ./dict.jl:460
+│     ┌[19] get_texture_atlas
+│     │   @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/utilities/texture_atlas.jl:140 [inlined]
+│     ╰──── repeated 2 times
+│      [21] register_text_computations!(attr::ComputePipeline.ComputeGraph)
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/basic_recipes/text.jl:373
+│      [22] calculated_attributes!
+│         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/basic_recipes/text.jl:441 [inlined]
+│      [23] connect_plot!(parent::Makie.Scene, plot::Makie.Text{Tuple{Vector{GeometryBasics.Point{2, Float32}}}})
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/compute-plots.jl:875
+│      [24] plot!(scene::Makie.Scene, plot::Makie.Text{Tuple{Vector{GeometryBasics.Point{2, Float32}}}})
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/interfaces.jl:211
+│      [25] _create_plot!(F::Function, attributes::Dict{Symbol, Any}, scene::Makie.Scene, args::Observables.Observable{GeometryBasics.Point{2, Float32}})
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/figureplotting.jl:556
+│      [26] text!(::Makie.Scene, ::Vararg{Any}; kw::@Kwargs{text::Observables.Observable{Any}, fontsize::Observables.Observable{Any}, color::Observables.Observable{Any}, visible::Observables.Observable{Any}, align::Observables.Observable{Tuple{Symbol, Symbol}}, rotation::Observables.Observable{Float32}, font::Observables.Observable{Any}, markerspace::Symbol, inspectable::Bool})
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/recipes.jl:550
+│      [27] Makie.LineAxis(parent::Makie.Scene, attrs::Makie.Attributes)
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/lineaxis.jl:410
+│      [28] Makie.LineAxis(parent::Makie.Scene; kwargs...)
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/lineaxis.jl:3
+│      [29] LineAxis
+│         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/lineaxis.jl:1 [inlined]
+│      [30] initialize_block!(ax::Makie.Axis; palette::Nothing)
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks/axis.jl:346
+│      [31] initialize_block!(ax::Makie.Axis)
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks/axis.jl:154
+│      [32] _block(T::Type{Makie.Axis}, fig_or_scene::Makie.Figure, args::Vector{Any}, kwdict::Dict{Symbol, Any}, bbox::Nothing; kwdict_complete::Bool)
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:405
+│      [33] _block
+│         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:321 [inlined]
+│      [34] #_block#1662
+│         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:266 [inlined]
+│      [35] _block(::Type{Makie.Axis}, ::Makie.Figure)
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:265
+│      [36] _block(::Type{Makie.Axis}, ::GridLayoutBase.GridPosition; kwargs::@Kwargs{})
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:260
+│      [37] _block
+│         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:251 [inlined]
+│      [38] #_#1660
+│         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:242 [inlined]
+│      [39] Makie.Axis(args::GridLayoutBase.GridPosition)
+│         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:241
+│      [40] top-level scope
+│         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/precompiles.jl:23
+│      [41] macro expansion
+│         @ ~/.julia/packages/PrecompileTools/QUxvR/src/workloads.jl:70 [inlined]
+│      [42] macro expansion
+│         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/precompiles.jl:27 [inlined]
+│      [43] include(mapexpr::Function, mod::Module, _path::String)
+│         @ Base ./Base.jl:311
+│      [44] top-level scope
+│         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/Makie.jl:456
+│      [45] include(mod::Module, _path::String)
+│         @ Base ./Base.jl:310
+│      [46] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt128}}, source::Nothing, preresolved::Vector{Pair{Base.PkgId, String}})
+│         @ Base ./loading.jl:3210
+│      [47] top-level scope
+│         @ stdin:5
+│      [48] eval(m::Module, e::Any)
+│         @ Core ./boot.jl:489
+│      [49] include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+│         @ Base ./loading.jl:3045
+│      [50] include_string
+│         @ ./loading.jl:3055 [inlined]
+│      [51] exec_options(opts::Base.JLOptions)
+│         @ Base ./client.jl:342
+│      [52] _start()
+│         @ Base ./client.jl:577
+└ @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/utilities/texture_atlas.jl:154
+┌ Warning: Makie is caching fonts, this may take a while. This should usually not happen, unless you're getting your own texture atlas or are without internet!
+└ @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/utilities/texture_atlas.jl:166
+  62.1 s  ✓ TraitWorld
+   2.7 s  ✓ SymbolicIndexingInterface
+   1.4 s  ✓ SymbolicIndexingInterface → SymbolicIndexingInterfacePrettyTablesExt
+   5.8 s  ✓ Graphs
+   1.7 s  ✓ Graphs → GraphsSharedArraysExt
+   2.4 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+  12.3 s  ✓ RecursiveArrayTools
+   1.7 s  ✓ RecursiveArrayTools → RecursiveArrayToolsTablesExt
+   1.9 s  ✓ RecursiveArrayTools → RecursiveArrayToolsSparseArraysExt
+   2.4 s  ✓ RecursiveArrayTools → RecursiveArrayToolsFastBroadcastExt
+   2.0 s  ✓ RecursiveArrayTools → RecursiveArrayToolsStatisticsExt
+   1.6 s  ✓ RecursiveArrayTools → RecursiveArrayToolsForwardDiffExt
+   3.0 s  ✓ RecursiveArrayTools → RecursiveArrayToolsKernelAbstractionsExt
+   1.7 s  ✓ RecursiveArrayTools → RecursiveArrayToolsStructArraysExt
+   2.2 s  ✓ RecursiveArrayTools → RecursiveArrayToolsFastBroadcastPolyesterExt
+  14.9 s  ✓ SciMLBase
+   1.8 s  ✓ SciMLBase → SciMLBaseChainRulesCoreExt
+   2.4 s  ✓ SciMLBase → SciMLBaseStaticArraysExt
+   3.0 s  ✓ SciMLBase → SciMLBaseForwardDiffExt
+   1.9 s  ✓ SciMLBase → SciMLBaseDifferentiationInterfaceExt
+   2.3 s  ✓ SciMLBase → SciMLBaseDistributionsExt
+   3.9 s  ✓ SciMLJacobianOperators
+   6.3 s  ✓ LineSearch
+  10.1 s  ✓ NonlinearSolveBase
+   2.5 s  ✓ NonlinearSolveBase → NonlinearSolveBaseSparseMatrixColoringsExt
+   3.3 s  ✓ NonlinearSolveBase → NonlinearSolveBaseSparseArraysExt
+   3.0 s  ✓ NonlinearSolveBase → NonlinearSolveBaseChainRulesCoreExt
+   2.8 s  ✓ NonlinearSolveBase → NonlinearSolveBaseLineSearchExt
+  25.0 s  ✓ LinearSolve
+   5.6 s  ✓ BracketingNonlinearSolve
+   4.0 s  ✓ LinearSolve → LinearSolveEnzymeExt
+  10.3 s  ✓ NonlinearSolveBase → NonlinearSolveBaseForwardDiffExt
+   3.0 s  ✓ LinearSolve → LinearSolveChainRulesCoreExt
+   3.9 s  ✓ LinearSolve → LinearSolveArnoldiMethodExt
+┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+   6.1 s  ✓ LinearSolve → LinearSolveKernelAbstractionsExt
+   5.5 s  ✓ LinearSolve → LinearSolveForwardDiffExt
+  17.4 s  ✓ NonlinearSolveSpectralMethods
+   3.7 s  ✓ NonlinearSolveBase → NonlinearSolveBaseLinearSolveExt
+   3.2 s  ✓ BracketingNonlinearSolve → BracketingNonlinearSolveForwardDiffExt
+   2.1 s  ✓ NonlinearSolveSpectralMethods → NonlinearSolveSpectralMethodsForwardDiffExt
+   7.6 s  ✓ DiffEqBase
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+   2.1 s  ✓ BracketingNonlinearSolve → BracketingNonlinearSolveChainRulesCoreExt
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+  31.5 s  ✓ SimpleNonlinearSolve
+   3.0 s  ✓ DiffEqBase → DiffEqBaseSparseArraysExt
+  44.9 s  ✓ NonlinearSolveQuasiNewton
+   2.5 s  ✓ DiffEqBase → DiffEqBaseUnitfulExt
+   2.0 s  ✓ DiffEqBase → DiffEqBaseChainRulesCoreExt
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+   7.6 s  ✓ DiffEqBase → DiffEqBaseForwardDiffExt
+   7.2 s  ✓ DiffEqCallbacks
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+   3.6 s  ✓ SimpleNonlinearSolve → SimpleNonlinearSolveChainRulesCoreExt
+   9.6 s  ✓ OrdinaryDiffEqCore
+   5.6 s  ✓ NonlinearSolveQuasiNewton → NonlinearSolveQuasiNewtonForwardDiffExt
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(hasdualpromote), Any, Number}, which wins at Tuple{typeof(hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+   3.9 s  ✓ OrdinaryDiffEqCore → OrdinaryDiffEqCoreSparseArraysExt
+┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+   3.7 s  ✓ OrdinaryDiffEqCore → OrdinaryDiffEqCorePolyesterExt
+   9.2 s  ✓ SteadyStateDiffEq
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(hasdualpromote), Any, Number}, which wins at Tuple{typeof(hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+   9.0 s  ✓ OrdinaryDiffEqDifferentiation
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(hasdualpromote), Any, Number}, which wins at Tuple{typeof(hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+   7.4 s  ✓ OrdinaryDiffEqDifferentiation → OrdinaryDiffEqDifferentiationSparseArraysExt
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(hasdualpromote), Any, Number}, which wins at Tuple{typeof(hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+  47.3 s  ✓ OrdinaryDiffEqTsit5
+ 130.3 s  ✓ NonlinearSolveFirstOrder
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+ 283.9 s  ✓ Makie
+   6.1 s  ✓ IntervalArithmetic → IntervalArithmeticMakieExt
+   6.6 s  ✓ IntervalSets → IntervalSetsMakieExt
+  10.2 s  ✓ SciMLBase → SciMLBaseMakieExt
+  13.4 s  ✓ GraphMakie
+ 131.3 s  ✓ OrdinaryDiffEqRosenbrock
+  67.7 s  ✓ CairoMakie
+ 104.6 s  ✓ NonlinearSolve
+┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(hasdualpromote), Any, Number}, which wins at Tuple{typeof(hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+┌ Warning: The package extension NonlinearSolveBaseSparseMatrixColoringsExt defines Tuple{typeof(is_extension_loaded), Val{:SparseMatrixColorings}}, which wins at Tuple{typeof(is_extension_loaded), Val{:SparseMatrixColorings}}, a fact of trait code (in NonlinearSolveBase.select_fastest_coloring_algorithm) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+└ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+  29.8 s  ✓ NetworkDynamics
+  109 dependencies successfully precompiled in 411 seconds. 395 already precompiled.
+
+  12 dependencies had output during precompilation:
+┌ OrdinaryDiffEqRosenbrock
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(hasdualpromote), Any, Number}, which wins at Tuple{typeof(hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ SimpleNonlinearSolve
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ NetworkDynamics
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(hasdualpromote), Any, Number}, which wins at Tuple{typeof(hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension NonlinearSolveBaseSparseMatrixColoringsExt defines Tuple{typeof(is_extension_loaded), Val{:SparseMatrixColorings}}, which wins at Tuple{typeof(is_extension_loaded), Val{:SparseMatrixColorings}}, a fact of trait code (in NonlinearSolveBase.select_fastest_coloring_algorithm) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ LinearSolve → LinearSolveForwardDiffExt
+│  ┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ OrdinaryDiffEqDifferentiation
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(hasdualpromote), Any, Number}, which wins at Tuple{typeof(hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ DiffEqBase → DiffEqBaseForwardDiffExt
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ NonlinearSolve
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ SimpleNonlinearSolve → SimpleNonlinearSolveChainRulesCoreExt
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ OrdinaryDiffEqDifferentiation → OrdinaryDiffEqDifferentiationSparseArraysExt
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(hasdualpromote), Any, Number}, which wins at Tuple{typeof(hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ SteadyStateDiffEq
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), Number, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), NamedTuple, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), @NamedTuple{rate::Float64}, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension SciMLBaseForwardDiffExt defines Tuple{typeof(anyeltypedual), Any, Type{Val{counter}}} where counter, which wins at Tuple{typeof(anyeltypedual), Float64, Type{Val{0}}}, a fact of trait code (in SciMLBase.promote_u0) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(hasdualpromote), Any, Number}, which wins at Tuple{typeof(hasdualpromote), Vector{Float64}, Float64}, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}, Val{CS}} where {T1, T2, T3, T4, CS}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.promote_f) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension DiffEqBaseForwardDiffExt defines Tuple{typeof(wrapfun_iip), Any, Tuple{T1, T2, T3, T4}} where {T1, T2, T3, T4}, which wins at Tuple{typeof(wrapfun_iip), ParameterDespecializationWrapper{typeof(_despecialized_precompile_rhs!)}, Tuple{Vector{Float…, a fact of trait code (in DiffEqBase.wrapfun_iip) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ NonlinearSolveFirstOrder
+│  ┌ Warning: The package extension PreallocationToolsForwardDiffExt defines Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, which wins at Tuple{typeof(forwarddiff_compat_chunk_size), Int64}, a fact of trait code (in PreallocationTools.DiffCache) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+│  ┌ Warning: The package extension LinearSolveForwardDiffExt defines Tuple{typeof(setproperty!), DualLinearCache, Symbol, Any}, which wins at Tuple{typeof(setproperty!), Any, Symbol, Any}, a fact of trait code (in Base._wait2) with none of the extension's triggers in it: followed as its parent's change; that trait code compiles again
+│  └ @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/strict.jl:160
+└  
+┌ Makie
+│  ┌ Warning: downloading texture atlas failed, need to re-create from scratch.
+│  │   exception =
+│  │    RequestError: HTTP/1.1 403 not in this command's allowed_domains ? re-run the command with this host listed if it needs it (CONNECT tunnel failed, response 403) while requesting https://github.com/MakieOrg/Makie.jl/releases/download/v0.21.0/v7_texture_atlas_2048_64.bin
+│  │    Stacktrace:
+│  │       [1] (::Downloads.var"#23#24"{IOStream, Base.DevNull, Nothing, Vector{Pair{String, String}}, Float64, Nothing, Bool, Nothing, Bool, Nothing, String, Base.RefValue{Union{Downloads.RequestError, Downloads.Response}}, Int64, Bool, Bool, Downloads.Downloader})(easy::Downloads.Curl.Easy)
+│  │         @ Downloads ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:484
+│  │       [2] with_handle(f::Downloads.var"#23#24"{IOStream, Base.DevNull, Nothing, Vector{Pair{String, String}}, Float64, Nothing, Bool, Nothing, Bool, Nothing, String, Base.RefValue{Union{Downloads.RequestError, Downloads.Response}}, Int64, Bool, Bool, Downloads.Downloader}, handle::Downloads.Curl.Easy)
+│  │         @ Downloads.Curl ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Curl/Curl.jl:105
+│  │       [3] #21
+│  │         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:395 [inlined]
+│  │       [4] arg_write(f::Downloads.var"#21#22"{Base.DevNull, Nothing, Vector{Pair{String, String}}, Float64, Nothing, Bool, Nothing, Bool, Nothing, String, Base.RefValue{Union{Downloads.RequestError, Downloads.Response}}, Int64, Bool, Bool, Downloads.Downloader}, arg::IOStream)
+│  │         @ ArgTools ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/ArgTools/src/ArgTools.jl:134
+│  │       [5] #19
+│  │         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:394 [inlined]
+│  │       [6] arg_read
+│  │         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/ArgTools/src/ArgTools.jl:76 [inlined]
+│  │       [7] request(url::String; input::Nothing, output::IOStream, method::Nothing, headers::Vector{Pair{String, String}}, timeout::Float64, progress::Nothing, verbose::Bool, debug::Nothing, throw::Bool, downloader::Nothing, interrupt::Nothing)
+│  │         @ Downloads ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:393
+│  │       [8] request
+│  │         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:355 [inlined]
+│  │       [9] #7
+│  │         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:273 [inlined]
+│  │      [10] open(f::Downloads.var"#7#8"{Nothing, Vector{Pair{String, String}}, Float64, Nothing, Bool, Nothing, Nothing, String, Base.RefValue{Downloads.Response}}, args::String; kwargs::@Kwargs{write::Bool, lock::Bool})
+│  │         @ Base ./io.jl:429
+│  │      [11] open_nolock(::Function, ::Vararg{Any}; kws::@Kwargs{write::Bool})
+│  │         @ ArgTools ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/ArgTools/src/ArgTools.jl:35
+│  │      [12] open_nolock
+│  │         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/ArgTools/src/ArgTools.jl:35 [inlined]
+│  │      [13] arg_write(f::Function, arg::String)
+│  │         @ ArgTools ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/ArgTools/src/ArgTools.jl:103
+│  │      [14] #download#5
+│  │         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:272 [inlined]
+│  │      [15] download
+│  │         @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Downloads/src/Downloads.jl:252 [inlined]
+│  │      [16] cached_load(resolution::Int64, pix_per_glyph::Int64)
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/utilities/texture_atlas.jl:152
+│  │      [17] #get_texture_atlas##0
+│  │         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/utilities/texture_atlas.jl:141 [inlined]
+│  │      [18] get!(default::Makie.var"#get_texture_atlas##0#get_texture_atlas##1"{Int64, Int64}, h::Dict{Tuple{Int64, Int64}, Makie.TextureAtlas}, key::Tuple{Int64, Int64})
+│  │         @ Base ./dict.jl:460
+│  │     ┌[19] get_texture_atlas
+│  │     │   @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/utilities/texture_atlas.jl:140 [inlined]
+│  │     ╰──── repeated 2 times
+│  │      [21] register_text_computations!(attr::ComputePipeline.ComputeGraph)
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/basic_recipes/text.jl:373
+│  │      [22] calculated_attributes!
+│  │         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/basic_recipes/text.jl:441 [inlined]
+│  │      [23] connect_plot!(parent::Makie.Scene, plot::Makie.Text{Tuple{Vector{GeometryBasics.Point{2, Float32}}}})
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/compute-plots.jl:875
+│  │      [24] plot!(scene::Makie.Scene, plot::Makie.Text{Tuple{Vector{GeometryBasics.Point{2, Float32}}}})
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/interfaces.jl:211
+│  │      [25] _create_plot!(F::Function, attributes::Dict{Symbol, Any}, scene::Makie.Scene, args::Observables.Observable{GeometryBasics.Point{2, Float32}})
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/figureplotting.jl:556
+│  │      [26] text!(::Makie.Scene, ::Vararg{Any}; kw::@Kwargs{text::Observables.Observable{Any}, fontsize::Observables.Observable{Any}, color::Observables.Observable{Any}, visible::Observables.Observable{Any}, align::Observables.Observable{Tuple{Symbol, Symbol}}, rotation::Observables.Observable{Float32}, font::Observables.Observable{Any}, markerspace::Symbol, inspectable::Bool})
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/recipes.jl:550
+│  │      [27] Makie.LineAxis(parent::Makie.Scene, attrs::Makie.Attributes)
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/lineaxis.jl:410
+│  │      [28] Makie.LineAxis(parent::Makie.Scene; kwargs...)
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/lineaxis.jl:3
+│  │      [29] LineAxis
+│  │         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/lineaxis.jl:1 [inlined]
+│  │      [30] initialize_block!(ax::Makie.Axis; palette::Nothing)
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks/axis.jl:346
+│  │      [31] initialize_block!(ax::Makie.Axis)
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks/axis.jl:154
+│  │      [32] _block(T::Type{Makie.Axis}, fig_or_scene::Makie.Figure, args::Vector{Any}, kwdict::Dict{Symbol, Any}, bbox::Nothing; kwdict_complete::Bool)
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:405
+│  │      [33] _block
+│  │         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:321 [inlined]
+│  │      [34] #_block#1662
+│  │         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:266 [inlined]
+│  │      [35] _block(::Type{Makie.Axis}, ::Makie.Figure)
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:265
+│  │      [36] _block(::Type{Makie.Axis}, ::GridLayoutBase.GridPosition; kwargs::@Kwargs{})
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:260
+│  │      [37] _block
+│  │         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:251 [inlined]
+│  │      [38] #_#1660
+│  │         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:242 [inlined]
+│  │      [39] Makie.Axis(args::GridLayoutBase.GridPosition)
+│  │         @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/makielayout/blocks.jl:241
+│  │      [40] top-level scope
+│  │         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/precompiles.jl:23
+│  │      [41] macro expansion
+│  │         @ ~/.julia/packages/PrecompileTools/QUxvR/src/workloads.jl:70 [inlined]
+│  │      [42] macro expansion
+│  │         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/precompiles.jl:27 [inlined]
+│  │      [43] include(mapexpr::Function, mod::Module, _path::String)
+│  │         @ Base ./Base.jl:311
+│  │      [44] top-level scope
+│  │         @ ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/Makie.jl:456
+│  │      [45] include(mod::Module, _path::String)
+│  │         @ Base ./Base.jl:310
+│  │      [46] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt128}}, source::Nothing, preresolved::Vector{Pair{Base.PkgId, String}})
+│  │         @ Base ./loading.jl:3210
+│  │      [47] top-level scope
+│  │         @ stdin:5
+│  │      [48] eval(m::Module, e::Any)
+│  │         @ Core ./boot.jl:489
+│  │      [49] include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+│  │         @ Base ./loading.jl:3045
+│  │      [50] include_string
+│  │         @ ./loading.jl:3055 [inlined]
+│  │      [51] exec_options(opts::Base.JLOptions)
+│  │         @ Base ./client.jl:342
+│  │      [52] _start()
+│  │         @ Base ./client.jl:577
+│  └ @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/utilities/texture_atlas.jl:154
+│  ┌ Warning: Makie is caching fonts, this may take a while. This should usually not happen, unless you're getting your own texture atlas or are without internet!
+│  └ @ Makie ~/Repos/julia-trait-bound/ndport/pkgs/Makie.jl/Makie/src/utilities/texture_atlas.jl:166
+└  
+precompile s=411.3
+# rc=0 wall=415s

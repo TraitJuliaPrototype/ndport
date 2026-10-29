@@ -1,0 +1,21 @@
+# setting=PTs env=env_r5 julia=../julia-1.13/julia depot=/home/hellmann/Repos/julia-trait-bound/ndport/depot-ports-strict:/home/hellmann/.julia: strict=1 2026-10-29T16:07:47+01:00 julia-1.13 bfca89decc TraitWorld 4961de8 TDE e9e07ed TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c
+jl: slot 3 (cores 8-11), depot /tmp/claude-1000/depots/ndr7s
+Precompiling packages...
+   1.4 s  ✓ SparseMatrixColorings → SparseMatrixColoringsColorsExt
+   1.7 s  ✓ NetworkLayout
+  48.5 s  ✓ TraitWorld
+   3.1 s  ✓ TraitArrayTools
+   4.0 s  ✓ TraitIndexing
+   7.6 s  ✓ Graphs
+   1.5 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+  15.0 s  ✓ ODECore
+   4.6 s  ✓ TraitRodas
+  26.6 s  ✓ TraitMakie
+  14.0 s  ✓ TraitNonlinearSolve
+   7.8 s  ✓ MakieCompat
+   3.3 s  ✓ GraphMakie
+  20.6 s  ✓ TraitDifferentialEquations
+  30.5 s  ✓ NetworkDynamics
+  15 dependencies successfully precompiled in 112 seconds. 202 already precompiled.
+precompile s=112.6
+# rc=0 wall=113s

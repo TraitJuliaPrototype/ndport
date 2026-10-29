@@ -1,0 +1,7 @@
+# strict=0 2026-10-29T16:47:12+01:00 script=scripts/r7_probe_d.jl env=env_r5 julia-1.13 bfca89decc TraitWorld 4961de8 TDE e9e07ed TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie 498be7c load 1.47
+jl: slot 2 (cores 4-7), depot /home/hellmann/.julia/agent-depots/ndr7
+PD plain Tsit5 ms=0.06 alloc=0.02 steps=6 nf=38
+PD plain Rodas5 ms=0.43 alloc=0.14 steps=8 nf=73
+PD events Tsit5 ms=377.2 alloc=199.56 steps=159 nf=988
+PD events Rodas5 ms=469.37 alloc=241.07 steps=196 nf=1781
+# rc=0

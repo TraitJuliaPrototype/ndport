@@ -1,0 +1,126 @@
+# R7 (E-249): the finish round's comparisons; 2026-10-29T16:18:12+01:00
+# run-PT-1: # julia-1.13 bfca89decc TraitWorld 4961de8 TDE e9e07ed TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c ndport a1b82aa | 39 digests, 60 plot lines, # rc=0 load-after 10.15
+# run-PT-2: # julia-1.13 bfca89decc TraitWorld 4961de8 TDE e9e07ed TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c ndport a1b82aa | 39 digests, 60 plot lines, # rc=0 load-after 11.05
+# strict-PT-1: # julia-1.13 bfca89decc TraitWorld 4961de8 TDE e9e07ed TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c ndport a1b82aa | 39 digests, 60 plot lines, # rc=0 load-after 8.99
+# strict-PT-2: # julia-1.13 bfca89decc TraitWorld 4961de8 TDE e9e07ed TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c ndport a1b82aa | 39 digests, 60 plot lines, # rc=0 load-after 6.29
+# run-UP-1: # julia-1.13 bfca89decc TraitWorld 4961de8 TDE e9e07ed TraitMakie c0d5c36 ND-ports dfc6663 GraphMakie-ports 498be7c ndport a1b82aa | 27 digests, 40 plot lines, # rc=0 load-after 4.85
+== run-PT-2 vs run-PT-1 (exact)
+compared 39 digests: 0 exact differences, 0 failures
+P lines identical (60)
+== strict-PT-1 vs run-PT-1 (exact)
+compared 39 digests: 0 exact differences, 0 failures
+P lines identical (60)
+== strict-PT-2 vs run-PT-1 (exact)
+compared 39 digests: 0 exact differences, 0 failures
+P lines identical (60)
+== run-PT-1 graphtype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines graphtype = first textually (10)
+== run-PT-1 usertype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines usertype = first textually (10)
+== run-PT-2 graphtype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines graphtype = first textually (10)
+== run-PT-2 usertype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines usertype = first textually (10)
+== strict-PT-1 graphtype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines graphtype = first textually (10)
+== strict-PT-1 usertype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines usertype = first textually (10)
+== strict-PT-2 graphtype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines graphtype = first textually (10)
+== strict-PT-2 usertype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines usertype = first textually (10)
+== the network's type (N lines), per log
+run-PT-1: first 61904268d581489f; again 61904268d581489f; changed 61904268d581489f; graphtype b69b661caf3d37be; usertype 61904268d581489f; 
+run-PT-2: first 61904268d581489f; again 61904268d581489f; changed 61904268d581489f; graphtype b69b661caf3d37be; usertype 61904268d581489f; 
+strict-PT-1: first 89a2c1d166575ae1; again 89a2c1d166575ae1; changed 89a2c1d166575ae1; graphtype a4a4f38f3b8bfd66; usertype 89a2c1d166575ae1; 
+strict-PT-2: first 89a2c1d166575ae1; again 89a2c1d166575ae1; changed 89a2c1d166575ae1; graphtype a4a4f38f3b8bfd66; usertype 89a2c1d166575ae1; 
+== strict mode: refusals, pirates, warnings in the strict logs
+strict-PT-1: STRICT env strict=on; 0 refusal lines, 0 warnings
+strict-PT-2: STRICT env strict=on; 0 refusal lines, 0 warnings
+== U′ today vs R5's U′ (exact)
+compared 27 digests: 0 exact differences, 0 failures
+P lines identical (40)
+== U′ vs PT (tolerance; passes first, again, params, changed: U′ refuses the graph type at b)
+('again', 'c') u: exact field differs: b20802e716eceacb | 7791143c24ef0fa6
+('again', 'c') λmax: within tolerance
+('again', 'd') rsol: exact field differs: c076864e2927a906 | 7f69ebe993a2fca5
+('again', 'd') sol: exact field differs: d0cf11aebce8d072 | a67498d205421621
+('again', 'd') trtrips: within tolerance
+('again', 'd') ttrips: within tolerance
+('again', 'd') ω2: within tolerance
+('again', 'd') ω2r: within tolerance
+('again', 'e') P2: within tolerance
+('again', 'e') P3: within tolerance
+('again', 'e') Pend: within tolerance
+('again', 'e') ωsum: within tolerance
+('again', 'f') colors: within tolerance
+('again', 'f') pixels: exact field differs: 1200x900 | 600x450
+('again', 'g') ωend: within tolerance
+('changed', 'c') u: exact field differs: b20802e716eceacb | 7791143c24ef0fa6
+('changed', 'c') λmax: within tolerance
+('changed', 'd') rsol: exact field differs: 61f613aedf528e94 | 4c1b9a172b0637a8
+('changed', 'd') sol: exact field differs: 1178ae6ad05b042c | f73e556454678ca8
+('changed', 'd') trtrips: within tolerance
+('changed', 'd') ttrips: within tolerance
+('changed', 'd') ω2: within tolerance
+('changed', 'd') ω2r: within tolerance
+('changed', 'e') P2: within tolerance
+('changed', 'e') P3: within tolerance
+('changed', 'e') Pend: within tolerance
+('changed', 'e') ωsum: within tolerance
+('changed', 'f') colors: within tolerance
+('changed', 'f') pixels: exact field differs: 1200x900 | 600x450
+('changed', 'g') ωend: within tolerance
+('first', 'c') u: exact field differs: b20802e716eceacb | 7791143c24ef0fa6
+('first', 'c') λmax: within tolerance
+('first', 'd') rsol: exact field differs: c076864e2927a906 | 7f69ebe993a2fca5
+('first', 'd') sol: exact field differs: d0cf11aebce8d072 | a67498d205421621
+('first', 'd') trtrips: within tolerance
+('first', 'd') ttrips: within tolerance
+('first', 'd') ω2: within tolerance
+('first', 'd') ω2r: within tolerance
+('first', 'e') P2: within tolerance
+('first', 'e') P3: within tolerance
+('first', 'e') Pend: within tolerance
+('first', 'e') ωsum: within tolerance
+('first', 'f') colors: within tolerance
+('first', 'f') pixels: exact field differs: 1200x900 | 600x450
+('first', 'g') ωend: within tolerance
+('params', 'd') ω2: within tolerance
+('params', 'e') P2: within tolerance
+('params', 'e') P3: within tolerance
+('params', 'e') Pend: within tolerance
+('params', 'e') ωsum: within tolerance
+('params', 'f') colors: within tolerance
+('params', 'f') pixels: exact field differs: 1200x900 | 600x450
+('params', 'g') ωend: within tolerance
+compared 25 digests: 13 exact differences, 0 failures
+== plots U′ vs PT
+largest differences by kind: {}
+compared 40 plot lines: 0 failures
+== U′'s graphtype pass
+D graphtype a vdim=2 vpdim=3 edim=0 epdim=2
+D graphtype b error=MethodError
+== E-248's PT (logs/w96/run-PT-1, TDE w96 5862baa) vs run-PT-1 (exact, its passes)
+compared 32 digests: 0 exact differences, 0 failures
+P lines identical (50)
+== the census (census-1.log, strict mode on): pirates by package and function in the port's packages
+      1 Graphs typeof(TraitWorld._family_registry)
+      1 MakieCompat typeof(TraitWorld._family_registry)
+      9 NetworkDynamics typeof(TraitWorld._family_registry)
+      1 NetworkDynamics typeof(TraitWorld._member_record)
+     26 ODECore typeof(TraitWorld._family_registry)
+      1 TraitArrayTools typeof(TraitWorld._family_registry)
+     12 TraitDifferentialEquations typeof(TraitWorld._member_record)
+      2 TraitMakie typeof(TraitWorld._family_registry)
+      8 TraitNonlinearSolve typeof(TraitWorld._family_registry)
+      1 TraitNonlinearSolve typeof(TraitWorld._member_record)
+      4 TraitRodas typeof(TraitWorld._family_registry)

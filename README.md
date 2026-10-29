@@ -28,6 +28,7 @@ The workload is part P1 of the meta plan ([`../writeup/plans/2026-10-21-ndport-w
 - From 2026-10-29 (R5, E-245, E-246): `env_r5`: `env_ports` with GraphMakie's branch `ports`, MakieCompat and TraitMakie (setting PT for the whole workload; depot `depot-ports`, `depot-ports-strict` with strict mode). The workload's variant for the ports: `NDW_API=ports` (Rodas5 for Rodas5P, the values at `TIMES` by `saveat`, `getu` for `SII.getu`, the network's type per pass as `N` lines, the fixed point's angles centred (`δc`), the graph plots' digests of E-240 as `P` lines), on either stack (`NDW_STACK=ports` or upstream's); `NDW_TIGHT=1` (tolerances 1e-12), `NDW_TSTOPS=1` (the steps end at `TIMES`). `scripts/r5_workload.sh <name> <PT|UP> [runs]` (UP: U′, `env_upstream`); `scripts/r5_compare_plots.py`, `scripts/r5_nearer.py` (the tie-break); `scripts/r5_run.sh`, `scripts/r5_check.jl` (open issue 118's check), `scripts/r5_probe_tsit5.jl`.
 - From 2026-10-29 (R6, E-247): the pass `usertype` (`NDW_PASSES` names it; setting PT only): steps a–g with a user's own types `Swing` and `Line` (`scripts/workload_types.jl`, in `NDW`), implementing `VertexDynamics` and `EdgeDynamics` and passed by `VertexModel(dynamics = x)`, `EdgeModel(dynamics = x)`; a step that throws prints `D usertype <step> error=<type>`. `scripts/r6_check.jl` (the records, the adaptors, the execution styles, linearization, initialization, the refusals; run by `r5_run.sh`), `scripts/r6_pc.sh <name>` (precompiles PT; `NDW_STRICT=1`). `r5_run.sh` and `r5_workload.sh` take `NDW_LOGDIR` and `NDW_JLNAME` (R6: `logs/r6`, `ndr6`, `ndr6s` strict).
 - From 2026-10-29 (W-96, E-248): `env_w96`: `env_r5` with TDE's packages from its branch `w96` (the worktree `../TraitDifferentialEquations-w96`), over `depot-ports` (`depot-ports-strict`) below the slot's own depot `w96` (`w96s`). `scripts/w96_pc.sh <name>` precompiles it; `scripts/r5_workload.sh` runs it with `NDW_ENV=env_w96 NDW_TDE=TraitDifferentialEquations-w96 NDW_LOGDIR=logs/w96 NDW_JLNAME=w96`; `scripts/w96_deltas.py <U′ log> <PT log> <R5's PT log>`: the largest difference from U′ per field of steps d and e.
+- From 2026-10-29 (R7, E-249, E-250): `scripts/r7_pc.sh <PT|PTs|U|M|S>` precompiles a setting into its slot depot (`ndr7`, `ndr7s`, `ndr7u`, `ndr7m`, `ndr7S`; on 2026-10-29 under `/tmp/claude-1000/depots`, which `r7_time.sh` names). The finish round: `NDW_PASSES=first,again,params,changed,graphtype,usertype NDW_LOGDIR=logs/r7 scripts/r5_workload.sh <name> <PT|UP> [runs]` (`NDW_JLNAME=ndr7`, `ndr7s` with `NDW_STRICT=1`, `ndr7u` for U′), `scripts/r7_compare.sh` (writes `logs/r7/compare-run.txt`), `scripts/r7_census.jl` (pirates per package after the `first` and `usertype` passes; `R1_STRICT=1 … scripts/r5_run.sh census-1 scripts/r7_census.jl`), the test subset by `scripts/r5_run.sh ndtest-1 scripts/r3_nd_tests.jl`. The measured sessions: `scripts/r7_time.sh <PT|UP|U|S|M> [runs]` (fresh sessions under `jl --exclusive`, the session timed by `/usr/bin/time`, run 0 a warm-up), `scripts/r7_summary.py logs/r7/time/*.log`. `scripts/r7_probe_d.jl` splits step d's steady state (`NDW_STACK=ports` for PT).
 - From 2026-10-29 (R2, E-240): `env_r2plot`: GraphMakie's branch `ports` (`pkgs/GraphMakie-ports`, a worktree; upstream 0.6.6 with `Makie` read as MakieCompat, lines marked `# ports`) over MakieCompat and TraitMakie. `scripts/r2_plot_digest.jl <M|PT> <out dir>` draws steps f and g's graph plots with fixed inputs and prints digests (positions, colours as handed to the drawing, line data), in `env_merged` (setting M) or `env_r2plot`; `scripts/r2_leaves_probe.jl` tries GraphMakie's other features.
 - `NDW_ORDER=simfirst`: the plotting packages load after the first simulation (P3's order B), with the CodeInstances the load discards counted (`G` line). `NDW_STRICT=1`: strict mode. `NDW_SCRIPT=<path>`: another script in the harness (`p3_census.jl`, `p3_pirate.jl`).
 
@@ -307,4 +308,45 @@ TDE's Tsit5 reads between its steps by its own interpolant (the free fourth-orde
 | the saved states (`nsteps`, `rnsteps`) | **38** in `first` and `again`, 36 in `changed`, as U′ (R5: 7) |
 | the graph plots from the simulation, PT against U′ | **within tolerance** (40 plot lines; no colour differs now, R5: by 1 of 255) |
 | the tie-break (`nearer-run.txt`): distance from the tight U′ run | PT 1e-9–1.2e-7, U′ 3e-9–9.7e-8 (`ωsum` and `λmax` 1e-14 both); U′ nearer on most of steps d and e, PT on Rodas5's `ω2r`, `ωend` and `params`' flows (R5: PT up to 7.6e-6) |
+
+### 2026-10-29: the finish round on the ports (E-249, step R7)
+
+julia-1.13 bfca89decc, TraitWorld main 4961de8, TDE `w34` e9e07ed (W-96 merged), TraitMakie c0d5c36, NetworkDynamics `ports` dfc6663, GraphMakie `ports` 498be7c, ndport a1b82aa (the runs' scripts); setting PT (`env_r5`); product setting; one thread; slots of 4 cores, the machine shared (load 1–11); `logs/r7/`. Not a measurement. The finish line: [the reactivation plan](../writeup/plans/2026-10-29-ndport-reactivated.md) §5.
+
+| Criterion | Result |
+|---|---|
+| tier S in PT, the six passes, fresh sessions, strict mode off (`run-PT-1`, `-2`) and on (`strict-PT-1`, `-2`) | every step runs: 39 digests and 60 plot lines per run |
+| PT against U′ (`run-UP-1`; states `rtol = 1e-5`, `atol = 1e-7`, trips as groups; `compare-run.txt`) | **0 failures** in 25 digests and 40 plot lines; the 13 exact differences E-248's (the solutions' and the fixed point's hashes, the PNG's size) |
+| U′ today against R5's U′ (`logs/r5/run-UP-1`) | exactly equal (27 digests, 40 plot lines) |
+| PT's runs against each other; strict mode on against off | **exactly equal** (39 digests, 60 plot lines) |
+| `graphtype` and `usertype` against `first`, each of the 4 runs | **exactly equal** (7 digests, 10 plot lines each) |
+| PT against E-248's PT run (`logs/w96/run-PT-1`, its 5 passes) | exactly equal (32 digests, 50 plot lines) |
+| the network's type (`N` lines) | **one type** in each session for `swing!`, `swing2!` and `Swing`/`Line`; `graphtype`'s its own (its graph type) |
+| strict mode | refuses nothing; no warnings |
+| the census (`census-1.log`, strict mode on, after the `first` pass and `usertype`'s a–e) | NetworkDynamics 10 pirates by the letter: 9 family registry methods (`_family_registry`, lowering L-38) and 1 member record (`_member_record` for `GraphInterface` on `SimpleGraph{Int64}`, lowering L-45), all TraitWorld's generated methods. The ports' other packages the same kinds only (ODECore 26, TraitNonlinearSolve 9, TraitRodas 4, TraitDifferentialEquations 12, TraitArrayTools, TraitMakie, MakieCompat, Graphs) |
+| reads of TraitWorld's internals (a grep for `TraitWorld._`, `TraitWorld.CompiledFor`, `WithDynamic`, imports of `_` names) | **none** in NetworkDynamics `ports`, TDE `w34`, GraphMakie `ports`; the names used are exported (`Kept`, `compiled_for`, `conforms`, `@trait_module`, `@workload`, `Callable`, `Compiled`, `Dynamic`, `ImplementError`, `solve!`) |
+| NetworkDynamics' test subset (`ndtest-1.log`) | massmatrix 6 pass; doctor 26 pass; diffusion 108 pass, 1 fail, 1 error, 24 broken; inhomogeneous 39 pass, 1 error, 12 broken. Each traced below |
+
+The test subset's failures, by gap:
+
+| Test | Gap | Recorded |
+|---|---|---|
+| diffusion `:111` fails | an allocation assertion: a crossing into a family member allocates (as since E-152) | pushback P4-1; the traits plan's PB-4 |
+| diffusion, inhomogeneous: one error each, the file stops | a DAE network (a mass matrix other than the identity): TDE refuses it, having no solver that takes mass matrices | the plan §4 S10; pushback W34-9; open issue 119 (the refusal) |
+| `Rodas4` in the tests | read as `Rodas5` (a stand-in, `R1T STANDIN`): TDE has no `Rodas4` | [the census](../writeup/plans/2026-10-29-ndport-r1-census.md) item 17 |
+
+### 2026-10-29: the measured sessions (E-250, step R7)
+
+The builds of E-249; one at a time under `experiments/tools/jl --exclusive` (all 16 cores, nice 19, one Julia thread), offline, never precompiling; P1's load order; strict mode off; the passes `first`, `again`, `params`, `changed`; a warm-up and 2 runs per setting (the range of the 2); load 1.0–2.4; `logs/r7/time/` (`summary.md`, `compare.txt`). Every timed session's digests exactly equal its reference: PT and U′ E-249's runs, U, S and M E-151's U. PT and U′ run the ported workload (`NDW_API=ports`: Rodas5, `saveat`); U, S and M P1's (Rodas5P). NetworkDynamics' workload has no Python reference. Interop where NetworkDynamics' bounded functions call the user's plain component functions; idiomatic trait code from the batches down into TDE's core.
+
+| Setting | session | loads | first a–e | first f | first g | changed b–e (compiling) | again d (steady state) | again a–g |
+|---|---|---|---|---|---|---|---|---|
+| PT (the ports) | **31.0–31.5 s** | 2.75–2.83 s | 14.5–14.7 s | 2.9–3.0 s | 1.2–1.3 s | **1.10–1.11 s** (0.32–0.33) | **776–780 ms** | 1,234–1,242 ms |
+| U′ (upstream, ported workload) | 79.3–80.7 s | 5.59–5.67 s | 23.7–24.1 s | 15.3–15.5 s | 4.9 s | 15.65–16.00 s (15.58–15.93) | 22.3–22.6 ms | 232–252 ms |
+| U (upstream, patched build) | 72.8–73.9 s | 5.49–5.79 s | 23.6–24.1 s | 15.0–15.1 s | 2.6–2.8 s | 15.25–15.29 s (15.18–15.23) | 20.1–20.5 ms | 204–228 ms |
+| S (stock 1.13.2) | 70.8–71.3 s | 5.58–5.70 s | 22.6–22.8 s | 14.4 s | 2.5 s | 15.20–15.63 s (15.14–15.57) | 19.5–20.1 ms | 223–224 ms |
+| M (the control) | 58.9–59.5 s | 5.55–5.67 s | 25.4–26.0 s | 14.7–14.9 s | 2.4–2.6 s | 0.47 s (0.43) | 29.1–30.8 ms | 245–260 ms |
+
+- The session in PT is 2.5 times shorter than U′'s; the first plot 5 times (TraitMakie's drawing against CairoMakie's); new equations 14 times (the network's type stays; TDE's code is not compiled again).
+- **The steady state is 35 times U′'s** (step d, a Tsit5 and a Rodas5 solve with the cascade). `probe-d-PT.log`, `probe-d-UP.log` (`scripts/r7_probe_d.jl`, one session each in a slot, the minimum of 3): without callbacks PT's solves are U′'s (Tsit5 0.06 against 0.02 ms, Rodas5 0.43 against 0.55 ms); with the workload's 40 continuous component callbacks Tsit5 takes 377 ms and allocates 200 MB in 159 steps (U′: 2.3 ms, 0.17 MB, 162 steps), Rodas5 469 ms and 241 MB in 196 steps (U′: 20.7 ms, 1.4 MB, 164 steps). The cost is in the events: one TDE `EventCallback` per component callback (R1's form), about 1.25 MB per step. Reported, not optimised.
 
