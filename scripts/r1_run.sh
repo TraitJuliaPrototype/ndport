@@ -7,9 +7,10 @@ cd "$(dirname "$0")/.."
 name=$1; script=$2; envd=${3:-env_ports}
 export JULIA_PKG_OFFLINE=true JULIA_NUM_PRECOMPILE_TASKS=4 JULIA_PKG_PRECOMPILE_AUTO=0 OPENBLAS_NUM_THREADS=1 JULIA_DEPOT_PATH=$PWD/depot-ports:$HOME/.julia:
 unset JULIA_TW_STRICT JULIA_COMPILE_BY_FACTS
+if [ "${R1_STRICT:-0}" = 1 ]; then export JULIA_TW_STRICT=1 JULIA_DEPOT_PATH=$PWD/depot-ports-strict:$HOME/.julia:; fi   # strict mode on, its own depot
 f=logs/r1/$name.log
 dirty() { [ -z "$(git -C $1 status --porcelain --untracked-files=no)" ] || echo '*'; }
-echo "# $(date -Is) script=$script env=$envd julia-1.13 $(git -C ../julia-1.13 log -1 --format=%h) TraitWorld $(git -C ../TraitWorld log -1 --format=%h)$(dirty ../TraitWorld) TDE $(git -C ../TraitDifferentialEquations log -1 --format=%h)$(dirty ../TraitDifferentialEquations) TraitMakie $(git -C ../TraitMakie log -1 --format=%h)$(dirty ../TraitMakie) ND-ports $(git -C pkgs/NetworkDynamics-ports log -1 --format=%h)$(dirty pkgs/NetworkDynamics-ports) GraphMakie $(git -C pkgs/GraphMakie.jl log -1 --format=%h)$(dirty pkgs/GraphMakie.jl) load $(cut -d' ' -f1 /proc/loadavg)" > $f
+echo "# strict=${R1_STRICT:-0} $(date -Is) script=$script env=$envd julia-1.13 $(git -C ../julia-1.13 log -1 --format=%h) TraitWorld $(git -C ../TraitWorld log -1 --format=%h)$(dirty ../TraitWorld) TDE $(git -C ../TraitDifferentialEquations log -1 --format=%h)$(dirty ../TraitDifferentialEquations) TraitMakie $(git -C ../TraitMakie log -1 --format=%h)$(dirty ../TraitMakie) ND-ports $(git -C pkgs/NetworkDynamics-ports log -1 --format=%h)$(dirty pkgs/NetworkDynamics-ports) GraphMakie $(git -C pkgs/GraphMakie.jl log -1 --format=%h)$(dirty pkgs/GraphMakie.jl) load $(cut -d' ' -f1 /proc/loadavg)" > $f
 flock /tmp/claude-1000/julia-review.lock nice -n 19 timeout -s KILL 1200 ../julia-1.13/julia --startup-file=no ${R1_JFLAGS:-} --project=$envd "$script" >> $f 2>&1
 echo "# rc=$?" >> $f
 grep -c Precompiling $f >/dev/null && grep -q Precompiling $f && echo "# NOTE: the run precompiled" >> $f

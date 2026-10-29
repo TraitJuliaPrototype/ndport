@@ -1,0 +1,56 @@
+# 2026-10-29T12:04:57+01:00 env=env_r1plot julia-1.13 bfca89decc TraitWorld ca92f22 TDE 3a51d95 TraitMakie 2c70583 ND-ports 5fc02b4
+Precompiling packages...
+ERROR: LoadError: MethodError: no method matching String(::Expr)
+The type `String` exists, but no method is defined for this combination of argument types when trying to construct it.
+
+Closest candidates are:
+  String(!Matched::String)
+   @ Core boot.jl:480
+  String(!Matched::Vector{UInt8})
+   @ Base strings/string.jl:66
+  String(!Matched::Base.AnnotatedString{String})
+   @ Base strings/annotated.jl:125
+  ...
+
+Stacktrace:
+  [1] _recipe(name::Expr, names::Tuple{Symbol}, block::Symbol)
+    @ MakieCompat ~/Repos/julia-trait-bound/TraitMakie/compat/MakieCompat/src/MakieCompat.jl:233
+  [2] var"@recipe"(__source__::LineNumberNode, __module__::Module, name::Any, args::Any, block::Any)
+    @ MakieCompat ~/Repos/julia-trait-bound/TraitMakie/compat/MakieCompat/src/MakieCompat.jl:230
+  [3] #macroexpand#22
+    @ ./expr.jl:206 [inlined]
+  [4] macroexpand
+    @ ./expr.jl:205 [inlined]
+  [5] docm
+    @ ./docs/Docs.jl:692 [inlined]
+  [6] docm(source::LineNumberNode, mod::Module, meta::Any, ex::Any)
+    @ Base.Docs ./docs/Docs.jl:692
+  [7] var"@doc"(__source__::LineNumberNode, __module__::Module, x::Vararg{Any})
+    @ Core ./boot.jl:768
+  [8] fl_lower(ex::Expr, mod::Module, filename::String, lineno::UInt64, world::UInt64, warn::Bool)
+    @ Base ./flfrontend.jl:24
+  [9] include(mapexpr::Function, mod::Module, _path::String)
+    @ Base ./Base.jl:311
+ [10] top-level scope
+    @ ~/Repos/julia-trait-bound/ndport/pkgs/GraphMakie-r1/src/GraphMakie.jl:21
+ [11] include(mod::Module, _path::String)
+    @ Base ./Base.jl:310
+ [12] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt128}}, source::Nothing, preresolved::Vector{Pair{Base.PkgId, String}})
+    @ Base ./loading.jl:3210
+ [13] top-level scope
+    @ stdin:5
+ [14] eval(m::Module, e::Any)
+    @ Core ./boot.jl:489
+ [15] include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+    @ Base ./loading.jl:3045
+ [16] include_string
+    @ ./loading.jl:3055 [inlined]
+ [17] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:342
+ [18] _start()
+    @ Base ./client.jl:577
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/GraphMakie-r1/src/recipes.jl:7
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/GraphMakie-r1/src/recipes.jl:7
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/GraphMakie-r1/src/GraphMakie.jl:1
+in expression starting at stdin:5
+# rc=0

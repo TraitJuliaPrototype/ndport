@@ -1,0 +1,76 @@
+# strict=1 2026-10-29T12:06:09+01:00 env=env_ports julia-1.13 bfca89decc TraitWorld ca92f22 TDE 3a51d95 TraitMakie 2c70583 ND-ports 5fc02b4
+Precompiling packages...
+   0.2 s  ✓ IfElse
+   0.3 s  ✓ ArgCheck
+   0.3 s  ✓ ManualMemory
+   0.3 s  ✓ ExprTools
+   0.4 s  ✓ BFloat16s
+   0.4 s  ✓ GPUArraysCore
+   0.3 s  ✓ HashArrayMappedTries
+   0.2 s  ✓ FastClosures
+   0.3 s  ✓ Mixers
+   0.2 s  ✓ SIMDTypes
+   0.4 s  ✓ ArrayInterface
+   1.3 s  ✓ ExproniconLite
+   0.4 s  ✓ Hungarian
+   0.5 s  ✓ SciMLPublic
+   0.5 s  ✓ CommonWorldInvalidations
+   0.8 s  ✓ ADTypes
+   0.8 s  ✓ CpuId
+   0.7 s  ✓ LLVMExtra_jll
+   0.6 s  ✓ ThreadingUtilities
+   0.3 s  ✓ ScopedValues
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceChainRulesCoreExt
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceFillArraysExt
+   1.3 s  ✓ RuntimeGeneratedFunctions
+   0.2 s  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+   0.2 s  ✓ ArrayInterface → ArrayInterfaceStaticArraysCoreExt
+   0.4 s  ✓ ArrayInterface → ArrayInterfaceSparseArraysExt
+   1.0 s  ✓ Jieko
+   1.1 s  ✓ PreallocationTools
+   3.3 s  ✓ TimerOutputs
+   4.0 s  ✓ Graphs
+   0.3 s  ✓ ADTypes → ADTypesConstructionBaseExt
+   0.3 s  ✓ ADTypes → ADTypesChainRulesCoreExt
+   0.8 s  ✓ DifferentiationInterface
+   2.8 s  ✓ SparseConnectivityTracer
+   1.2 s  ✓ SymbolicIndexingInterface
+   4.3 s  ✓ SparseMatrixColorings
+   1.0 s  ✓ PreallocationTools → PreallocationToolsForwardDiffExt
+   0.9 s  ✓ DifferentiationInterface → DifferentiationInterfaceForwardDiffExt
+   0.6 s  ✓ DifferentiationInterface → DifferentiationInterfaceGPUArraysCoreExt
+   0.7 s  ✓ DifferentiationInterface → DifferentiationInterfaceStaticArraysExt
+   0.6 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseArraysExt
+   0.4 s  ✓ DifferentiationInterface → DifferentiationInterfaceChainRulesCoreExt
+   9.3 s  ✓ Static
+   0.7 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerChainRulesCoreExt
+   0.9 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNaNMathExt
+   0.9 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerLogExpFunctionsExt
+   6.8 s  ✓ Moshi
+   1.2 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerSpecialFunctionsExt
+   0.7 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseConnectivityTracerExt
+   0.5 s  ✓ SymbolicIndexingInterface → SymbolicIndexingInterfacePrettyTablesExt
+   0.4 s  ✓ BitTwiddlingConvenienceFunctions
+   0.7 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseMatrixColoringsExt
+   0.9 s  ✓ CPUSummary
+   0.5 s  ✓ PolyesterWeave
+   1.8 s  ✓ StaticArrayInterface
+   0.4 s  ✓ CloseOpenIntervals
+   0.5 s  ✓ LayoutPointers
+   0.5 s  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+   0.6 s  ✓ StrideArraysCore
+   0.5 s  ✓ Polyester
+  14.0 s  ✓ LLVM
+   0.5 s  ✓ LLVM → BFloat16sExt
+   1.3 s  ✓ UnsafeAtomics
+   0.6 s  ✓ Atomix
+   2.1 s  ✓ KernelAbstractions
+   0.7 s  ✓ KernelAbstractions → LinearAlgebraExt
+   0.9 s  ✓ KernelAbstractions → SparseArraysExt
+   3.7 s  ✓ NNlib
+   0.8 s  ✓ NNlib → NNlibSpecialFunctionsExt
+   0.8 s  ✓ NNlib → NNlibForwardDiffExt
+   1.3 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNNlibExt
+  17.5 s  ✓ NetworkDynamics
+  72 dependencies successfully precompiled in 49 seconds. 85 already precompiled.
+# rc=0

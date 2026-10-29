@@ -1,0 +1,21 @@
+R1 plot Spring(seed = 1)(g) (NetworkLayout) ok
+R1 plot info layout eltype GeometryBasics.Point{2, Float64}
+R1 plot Figure() ok
+R1 plot Axis(fig[1, 1]) ok
+R1 plot scatter!(ax, GeometryBasics points) FAIL MethodError: MethodError: no method matching add_scatter!(::Axis, ::Vector{GeometryBasics.Point{2, Float64}}, ::NTuple{4, Float64}, ::Float64, ::TraitMakie.PlotCore.MarkerName)
+R1 plot scatter!(ax, xs, ys) ok
+R1 plot scatter!(ax, xs, ys; color = numbers, colormap = :balance, colorrange) FAIL MethodError: MethodError: no method matching scatter!(::Axis, ::Matrix{Float64}; color::Vector{Float64}, colormap::Symbol, colorrange::Tuple{Float64, Float64}, markersize::Int64)
+R1 plot lines!(ax, points with NaN breaks) ok
+R1 plot lines!(ax, …; color = a vector per point) FAIL MethodError: MethodError: no method matching add_lines!(::Axis, ::Matrix{Float64}, ::Vector{Float64}, ::Float64)
+R1 plot linesegments!(ax, …) FAIL UndefVarError: UndefVarError: `linesegments!` not defined in `TraitMakie`
+R1 plot hidedecorations!(ax) FAIL UndefVarError: UndefVarError: `hidedecorations!` not defined in `TraitMakie`
+R1 plot save(png, fig) ok
+R1 plot Figure(size = (900, 400)) ok
+R1 plot Axis(fig[1, 2]; xlabel, ylabel) ok
+R1 plot limits!(ax2, 0, 6, -4, 4) FAIL UndefVarError: UndefVarError: `limits!` not defined in `TraitMakie`
+R1 plot lift(f, obs...) FAIL UndefVarError: UndefVarError: `lift` not defined in `TraitMakie`
+R1 plot lines!(ax2, Observable{Vector{Point2f}}) FAIL MethodError: MethodError: no method matching add_lines!(::Axis, ::Observable{Vector{GeometryBasics.Point{2, Float32}}}, ::NTuple{4, Float64}, ::Float64)
+R1 plot scatter!(ax, …; color = Observable) FAIL MethodError: MethodError: no method matching scatter!(::Axis, ::Matrix{Float64}; color::Observable{Vector{Float64}}, colormap::Symbol, colorrange::Tuple{Float64, Float64})
+R1 plot on(f, obs) ok
+R1 plot obs[] = v; save (the figure follows) ok
+R1 plot graphplot (TraitMakie) FAIL UndefVarError: UndefVarError: `graphplot` not defined in `TraitMakie`

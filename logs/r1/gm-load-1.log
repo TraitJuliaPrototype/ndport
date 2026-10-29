@@ -1,0 +1,90 @@
+# 2026-10-29T12:03:36+01:00 env=env_r1plot julia-1.13 bfca89decc TraitWorld ca92f22 TDE 3a51d95 TraitMakie 2c70583 ND-ports 5fc02b4
+┌ Warning: could not download https://pkg.julialang.org/registries
+│   exception = RequestError: HTTP/1.1 403 not in this command's allowed_domains ? re-run the command with this host listed if it needs it (CONNECT tunnel failed, response 403) while requesting https://pkg.julialang.org/registries
+└ @ Pkg.Registry ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/Registry/Registry.jl:121
+    Updating `~/Repos/julia-trait-bound/ndport/env_r1plot/Project.toml`
+  [1ecd5474] + GraphMakie v0.6.6 `../pkgs/GraphMakie-r1`
+  [86223c79] + Graphs v1.15.0 `../pkgs/Graphs-p4`
+  [46757867] + NetworkLayout v0.4.11 `../pkgs/NetworkLayout.jl`
+    Updating `~/Repos/julia-trait-bound/ndport/env_r1plot/Manifest.toml`
+  [ec485272] + ArnoldiMethod v0.4.0
+  [864edb3b] + DataStructures v0.19.6
+  [5c1252a2] + GeometryBasics v0.5.13
+  [1ecd5474] + GraphMakie v0.6.6 `../pkgs/GraphMakie-r1`
+  [86223c79] + Graphs v1.15.0 `../pkgs/Graphs-p4`
+  [d25df0c9] + Inflate v0.1.5
+  [1914dd2f] + MacroTools v0.5.16
+  [46757867] + NetworkLayout v0.4.11 `../pkgs/NetworkLayout.jl`
+  [bac558e1] + OrderedCollections v2.0.3
+  [3a141323] + PolynomialRoots v1.1.0
+  [ae029012] + Requires v1.3.1
+  [699a6c99] + SimpleTraits v0.9.6
+⌃ [90137ffa] + StaticArrays v1.9.23
+  [1e83bf80] + StaticArraysCore v1.4.4
+⌅ [5ae413db] + EarCut_jll v2.2.4+0
+  [0dad84c5] + ArgTools v1.1.2
+  [2a0f44e3] + Base64 v1.11.0
+  [f43a241f] + Downloads v1.7.0
+  [7b1f6079] + FileWatching v1.11.0
+  [b77e0a4c] + InteractiveUtils v1.11.0
+  [ac6e5ff7] + JuliaSyntaxHighlighting v1.12.0
+  [b27032c2] + LibCURL v1.0.0
+  [76f85450] + LibGit2 v1.11.0
+  [56ddb016] + Logging v1.11.0
+  [d6f4376e] + Markdown v1.11.0
+  [ca575930] + NetworkOptions v1.3.0
+  [44cfe95a] + Pkg v1.13.0
+  [2f01184e] + SparseArrays v1.13.0
+  [f489334b] + StyledStrings v1.11.0
+  [a4e569a6] + Tar v1.10.0
+  [cf7118a7] + UUIDs v1.11.0
+  [deac9b47] + LibCURL_jll v8.22.0+0
+  [e37daf67] + LibGit2_jll v1.9.7+0
+  [29816b5a] + LibSSH2_jll v1.11.104+0
+  [14a3606d] + MozillaCACerts_jll v2026.8.13
+  [458c3c95] + OpenSSL_jll v3.5.8+0
+  [bea87d4a] + SuiteSparse_jll v7.10.1+0
+  [3161d3a3] + Zstd_jll v1.5.7+1
+  [8e850ede] + nghttp2_jll v1.70.0+0
+  [3f19e933] + p7zip_jll v17.8.3+0
+        Info Packages marked with ⌃ and ⌅ have new versions available. Those with ⌃ may be upgradable, but those with ⌅ are restricted by compatibility constraints from upgrading. To see why use `status --outdated -m`
+Precompiling packages...
+   0.9 s  ✓ NetworkLayout
+   3.3 s  ✓ Graphs
+   1.0 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+WARNING: Imported binding MakieCompat.add_input! was undeclared at import time during import to GraphMakie.
+WARNING: Imported binding MakieCompat.add_constant! was undeclared at import time during import to GraphMakie.
+WARNING: Imported binding MakieCompat.DocThemer was undeclared at import time during import to GraphMakie.
+WARNING: Imported binding MakieCompat.ATTRIBUTES was undeclared at import time during import to GraphMakie.
+WARNING: Imported binding MakieCompat.project was undeclared at import time during import to GraphMakie.
+ERROR: LoadError: UndefVarError: `Point2` not defined in `GraphMakie`
+Hint: It looks like two or more modules export different bindings with this name, resulting in ambiguity. Try explicitly importing it from a particular module, or qualifying the name with the module it should come from.
+Hint: a global variable of this name also exists in GeometryBasics.
+Hint: a global variable of this name also exists in MakieCompat.
+Stacktrace:
+  [1] top-level scope
+    @ ~/Repos/julia-trait-bound/ndport/pkgs/GraphMakie-r1/src/beziercurves.jl:75
+  [2] include(mapexpr::Function, mod::Module, _path::String)
+    @ Base ./Base.jl:311
+  [3] top-level scope
+    @ ~/Repos/julia-trait-bound/ndport/pkgs/GraphMakie-r1/src/GraphMakie.jl:14
+  [4] include(mod::Module, _path::String)
+    @ Base ./Base.jl:310
+  [5] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt128}}, source::Nothing, preresolved::Vector{Pair{Base.PkgId, String}})
+    @ Base ./loading.jl:3210
+  [6] top-level scope
+    @ stdin:5
+  [7] eval(m::Module, e::Any)
+    @ Core ./boot.jl:489
+  [8] include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+    @ Base ./loading.jl:3045
+  [9] include_string
+    @ ./loading.jl:3055 [inlined]
+ [10] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:342
+ [11] _start()
+    @ Base ./client.jl:577
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/GraphMakie-r1/src/beziercurves.jl:75
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/GraphMakie-r1/src/GraphMakie.jl:1
+in expression starting at stdin:5
+# rc=0
