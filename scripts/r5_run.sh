@@ -2,16 +2,18 @@
 # R5 (E-245, E-246): run a script in setting PT (env_r5: env_ports with GraphMakie `ports`, MakieCompat, TraitMakie; depot-ports), product setting, strict mode off,
 # through the shared lock, niced; never precompiling. Log: logs/r5/<name>.log
 #     scripts/r5_run.sh <name> <script> [env]
+# NDW_LOGDIR (default logs/r5) and NDW_JLNAME (the slot depot's name, default ndr5): R6 (E-247) uses logs/r6, ndr6.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 name=$1; script=$2; envd=${3:-env_r5}
 export JULIA_PKG_OFFLINE=true JULIA_NUM_PRECOMPILE_TASKS=4 JULIA_PKG_PRECOMPILE_AUTO=0 OPENBLAS_NUM_THREADS=1 JULIA_DEPOT_PATH=$PWD/depot-ports:$HOME/.julia:
 unset JULIA_TW_STRICT JULIA_COMPILE_BY_FACTS
 if [ "${R1_STRICT:-0}" = 1 ]; then export JULIA_TW_STRICT=1 JULIA_DEPOT_PATH=$PWD/depot-ports-strict:$HOME/.julia:; fi   # strict mode on, its own depot
-mkdir -p logs/r5; f=logs/r5/$name.log
+LOGDIR=${NDW_LOGDIR:-logs/r5}; JLN=${NDW_JLNAME:-ndr5}
+mkdir -p $LOGDIR; f=$LOGDIR/$name.log
 dirty() { [ -z "$(git -C $1 status --porcelain --untracked-files=no)" ] || echo '*'; }
 echo "# strict=${R1_STRICT:-0} $(date -Is) script=$script env=$envd julia-1.13 $(git -C ../julia-1.13 log -1 --format=%h) TraitWorld $(git -C ../TraitWorld log -1 --format=%h)$(dirty ../TraitWorld) TDE $(git -C ../TraitDifferentialEquations log -1 --format=%h)$(dirty ../TraitDifferentialEquations) TraitMakie $(git -C ../TraitMakie log -1 --format=%h)$(dirty ../TraitMakie) ND-ports $(git -C pkgs/NetworkDynamics-ports log -1 --format=%h)$(dirty pkgs/NetworkDynamics-ports) GraphMakie $(git -C pkgs/GraphMakie-ports log -1 --format=%h)$(dirty pkgs/GraphMakie-ports) load $(cut -d' ' -f1 /proc/loadavg)" > $f
-../experiments/tools/jl --name ndr5 timeout -s KILL 1200 ../julia-1.13/julia --startup-file=no ${R1_JFLAGS:-} --project=$envd "$script" >> $f 2>&1
+../experiments/tools/jl --name $JLN timeout -s KILL 1200 ../julia-1.13/julia --startup-file=no ${R1_JFLAGS:-} --project=$envd "$script" >> $f 2>&1
 echo "# rc=$?" >> $f
 grep -c Precompiling $f >/dev/null && grep -q Precompiling $f && echo "# NOTE: the run precompiled" >> $f
 grep -E '^(R1|# rc|ERROR)' $f | cut -c1-330

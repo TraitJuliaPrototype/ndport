@@ -58,11 +58,15 @@ end
 line!(e, v_s, v_d, (K,), t) = (e[1] = K * sin(v_s[1] - v_d[1]); nothing)
 
 function step_a(model::Symbol)
+    model === :swing_type && return usertype_models()    # the `usertype` pass (workload_types.jl, the ports only)
     vertex = model === :swing ?
         VertexModel(f = swing!, g = 1, sym = [:δ, :ω], psym = [:P_ref, :I => 1, :γ => 0.1]) :
         VertexModel(f = swing2!, g = 1, sym = [:δ, :ω], psym = [:P_ref, :I => 1, :γ => 0.1, :κ => 0.5])
     edge = EdgeModel(g = AntiSymmetric(line!), outsym = :P, psym = [:K => 6.0, :limit => 1.0])
     (; vertex, edge)
+end
+@static if ON_PORTS
+    include(joinpath(@__DIR__, "workload_types.jl"))   # R6 (E-247): a user's own component types
 end
 digest_a(r) = digest("a", :vdim => dim(r.vertex), :vpdim => pdim(r.vertex), :edim => dim(r.edge), :epdim => pdim(r.edge))
 

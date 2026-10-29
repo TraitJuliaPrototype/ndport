@@ -6,6 +6,8 @@
 #   graphtype (a–g, swing!, the network on a Graphs.Test.GenericGraph; only when NDW_PASSES names it):
 #                                         a graph type upstream refuses (the graph plan's G7, E-154). A step
 #                                         that throws prints `D graphtype <step> error=<type>` and ends the pass.
+#   usertype (a–g, a user's own types `Swing` and `Line` implementing VertexDynamics and EdgeDynamics, passed by
+#             `dynamics = x`; the ports only, when NDW_PASSES names it; R6, E-247): the same digests as `first`.
 # Each step's first call is timed whole (as TraitDifferentialEquations' rows.jl `@first`).
 # Prints `L <group> <s>`, `T <pass> <step> <ms> compile <ms> recompile <ms> gc <ms>`, and the digests.
 #     julia --project=env_upstream scripts/workload.jl            (from ndport/)
@@ -84,6 +86,16 @@ if "graphtype" in PASSES
         NDW.run_pass(gt_timer, "graphtype", :swing; graph = Val(:generic))
     catch err
         println("D graphtype ", gt_step[], " error=", nameof(typeof(err))); flush(stdout)
+    end
+end
+if "usertype" in PASSES      # R6 (E-247): a user's own types `Swing`, `Line` (workload_types.jl), the same digests as `first`
+    ut_step = Ref("a")
+    ut_timer(name, f) = (ut_step[] = name; step_timer(name, f))
+    try
+        NDW.run_pass(ut_timer, "usertype", :swing_type)
+    catch err
+        println("D usertype ", ut_step[], " error=", nameof(typeof(err))); flush(stdout)
+        showerror(stdout, err, catch_backtrace()); println(); flush(stdout)
     end
 end
 println("W total ", round((time_ns() - T0) / 1e9; digits = 1))
