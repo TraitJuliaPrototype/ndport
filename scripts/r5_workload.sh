@@ -5,7 +5,7 @@
 #     (depot-ports-strict with NDW_STRICT=1). UP (U′): env_upstream (upstream NetworkDynamics, SciML, GraphMakie,
 #     CairoMakie), the default depot. Both: product setting, one thread, offline, never precompiling; through the
 #     machine's slots (experiments/tools/jl, its own depot stacked first). NDW_TIGHT=1: the solver tolerances 1e-12
-#     (the tie-break run of the plan §5). Not a measurement: the times are printed, not compared.
+#     (the tie-break run of the plan §5). NDW_TSTOPS=1: the steps end at TIMES too (no interpolation for the saved values). Not a measurement: the times are printed, not compared.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 ND=$PWD; R=$(cd .. && pwd)
@@ -26,7 +26,7 @@ dirty() { [ -z "$(git -C $1 status --porcelain --untracked-files=no)" ] || echo 
 for i in $(seq 1 "$runs"); do
   f=logs/r5/$name-$setting-$i.log
   {
-    echo "# setting=$setting api=ports stack=$STACK env=$ENVD depot=$DEPOT strict=$STRICT tight=${NDW_TIGHT:-0} passes=$NDW_PASSES"
+    echo "# setting=$setting api=ports stack=$STACK env=$ENVD depot=$DEPOT strict=$STRICT tight=${NDW_TIGHT:-0} tstops=${NDW_TSTOPS:-0} passes=$NDW_PASSES"
     echo "# julia-1.13 $(git -C $R/julia-1.13 log -1 --format=%h) TraitWorld $(git -C $R/TraitWorld log -1 --format=%h)$(dirty $R/TraitWorld) TDE $(git -C $R/TraitDifferentialEquations log -1 --format=%h)$(dirty $R/TraitDifferentialEquations) TraitMakie $(git -C $R/TraitMakie log -1 --format=%h)$(dirty $R/TraitMakie) ND-ports $(git -C pkgs/NetworkDynamics-ports log -1 --format=%h)$(dirty pkgs/NetworkDynamics-ports) GraphMakie-ports $(git -C pkgs/GraphMakie-ports log -1 --format=%h)$(dirty pkgs/GraphMakie-ports) ndport $(git log -1 --format=%h)$(dirty .)"
     echo "# date $(date -Is) load-before $(cut -d' ' -f1 /proc/loadavg)"
   } > "$f"

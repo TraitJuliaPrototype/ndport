@@ -31,7 +31,8 @@ const OUT = joinpath(@__DIR__, "..", "out")
 const PASS = Ref("first")
 const SOLVE_KW = get(ENV, "NDW_TIGHT", "0") == "1" ? (; abstol = 1e-12, reltol = 1e-12) : (; abstol = 1e-8, reltol = 1e-6)   # NDW_TIGHT=1: the tie-break run (R5)
 const TIMES = [0.5, 1.0, 1.5, 2.0, 3.0, 4.5, 6.0]
-const SAVE_KW = API == "ports" ? (; saveat = TIMES) : (;)
+const SAVE_KW = API != "ports" ? (;) : get(ENV, "NDW_TSTOPS", "0") == "1" ? (; saveat = TIMES, tstops = TIMES) : (; saveat = TIMES)
+# NDW_TSTOPS=1 (R5's supplement): the steps end at TIMES too, so the saved values are steps' ends, not interpolated
 "The values of `sol(ts; idxs)`: a `DiffEqArray`'s upstream, a `Vector` on the ports."
 vals(x) = x isa Vector ? x : x.u
 
