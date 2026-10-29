@@ -1,0 +1,11 @@
+# strict=0 2026-10-29T13:10:40+01:00 env=env_ports julia-1.13 bfca89decc TraitWorld ca92f22 TDE ede32e3 TraitMakie c0d5c36 ND-ports 756c09e
+jl: slot 2 (cores 4-7), depot /tmp/claude-1000/depots/r2-tde
+Precompiling packages...
+    ODECore Being precompiled by another process (pid: 44, pidfile: /tmp/claude-1000/depots/r2-tde/compiled/v1.13/ODECore/gByfT_MO759.ji.pidfile)
+  18.6 s  ✓ ODECore
+   2.1 s  ✓ TraitRodas
+    TraitDifferentialEquations Being precompiled by another process (pid: 44, pidfile: /tmp/claude-1000/depots/r2-tde/compiled/v1.13/TraitDifferentialEquations/a1Gji_MO759.ji.pidfile)
+  18.8 s  ✓ TraitDifferentialEquations
+  24.0 s  ✓ NetworkDynamics
+  4 dependencies successfully precompiled in 43 seconds. 153 already precompiled.
+# rc=0

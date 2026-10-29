@@ -208,3 +208,19 @@ julia-1.13 bfca89decc, TraitWorld main ca92f22, TraitMakie b68d97a, GraphMakie `
 | step g: an `Observable` colour vector into `graphplot!`, a `lift`ed line into `lines!`, `limits!`; 10 frames, 4 saved | runs; colours at each saved frame, the line (11 points) and the listeners (10) equal M's |
 | the PNGs | the same figures, not the same pixels (TraitMakie's axis layout and fonts; a `:circle` of markersize 14 is 14 px wide, CairoMakie's about 10) |
 | other features (`leaves-probe-1.log`) | node and edge labels, per-edge widths, named markers, a layout as points, attributes changed after the plot, curved edges: draw. Not on the ports: inner labels (text bounding boxes), directed graphs (arrow markers are rotated glyphs), dashed edges |
+
+
+### 2026-10-29: NetworkDynamics on TDE's R2 items (E-239, step R2, the SciML side)
+
+julia-1.13 bfca89decc, TraitWorld main ca92f22, TDE `w34` f0a79ae, NetworkDynamics `ports` 756c09e; setting PT; product setting, strict mode off; `logs/r2-tde/` (`run-2.log`, `ndtest-2.log`; `r1run-1.log` is R1's script as it is, whose stand-ins call helpers R2 removed). Scripts `scripts/r2_workload.jl`, `r2_nd_tests.jl`, `r2_run.sh`, `r2_pc.sh`. Not a measurement. The items: [the census](../writeup/plans/2026-10-29-ndport-r1-census.md) §3, column R2.
+
+| | PT |
+|---|---|
+| stubs left | 15 upstream names (the fixed point, `remake`, a DAE's initialization, `ArrayPartition`); 32 in R1 |
+| the problem from a network | TDE's `ODEProblem(nw, s0, tspan)`, keeping the network's callbacks; reused across solves |
+| the cascade, Tsit5 and Rodas5 | both upstream's 16 trips (15 in `changed`), the same order and times to four digits |
+| `NWState(sol, t)`, `extract_nw(sol)`; `K` at t = 3 from the saved parameters | run |
+| step g: `init`, `step!(integ, 0.6, true)`, `NWState(integ)` | run |
+| failures listed (`run-2.log`) | 24 (R1: 52): `find_fixpoint` (item 11), `remake` (S7), the solution's `idxs` forms and `SII.getu` (open issues 117, 118), each in 4 passes |
+| the test subset (`ndtest-2.log`) | massmatrix 6, doctor 26 as before; diffusion 108 pass, 1 fail (`:111`, allocations, as E-166), 1 error; inhomogeneous 39 pass, 1 error. Each error is TDE refusing a DAE network (an algebraic edge; a constraint vertex) that R1 solved as an ODE (open issue 119); the files stop there |
+| a callback's `NWState(ctx.integrator)` | refused with a message: the bounded form is blocked by TraitWorld's encoding (E-239) |

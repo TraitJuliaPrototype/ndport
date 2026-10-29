@@ -1,0 +1,74 @@
+# strict=0 2026-10-29T12:56:46+01:00 script=scripts/r1_workload.jl env=env_ports julia-1.13 bfca89decc TraitWorld ca92f22 TDE ede32e3 TraitMakie 2c70583* ND-ports 5fc02b4* GraphMakie 327f80b load 2.75
+jl: slot 3 (cores 8-11), depot /tmp/claude-1000/depots/r2-tde
+# r1_workload first julia 1.13.2
+R1 first a VertexModel/EdgeModel ok
+R1 first b Network(g, v, e) ok
+R1 first c find_fixpoint(nw) FAIL R1Gap: R1Gap: SteadyStateDiffEq.SSRootfind has no counterpart in the ports (R1 stub) @ _@r1_stubs.jl:26 < SSRootfind@r1_stubs.jl:26 < default_fixpoint_alg@initialization.jl:166 < #find_fixpoint#485@initialization.jl:83
+R1 first c find_fixpoint(nw) STANDIN relax(nw): Rodas5 over (0, 400) from zero
+R1 first c relax(nw) ok
+R1 first c jacobian_eigenvals(s) ok
+R1 first c isfixpoint(s) ok
+R1 first c s.e[:, :P] (observed) ok
+R1 first d ODEProblem(nw, NWState(nw), tspan) ok
+R1 first d remake(prob; p) FAIL R1Gap: R1Gap: SciMLBase.remake has no counterpart in the ports (R1 stub) @ #remake#6@r1_stubs.jl:21 < remake@r1_stubs.jl:20 < #step_d##6@r1_workload.jl:121 < attempt@r1_workload.jl:38
+R1 first d remake(prob; p) STANDIN a new problem per solve (C2)
+R1 first d get_callbacks(nw) ok
+R1 first d ODEProblem(ODEFunction(nw; sys = nw), …) ok
+R1 first d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 first d solve(prob, Rodas5(); the discrete callbacks only) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##21@r1_workload.jl:136 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:136
+R1 first d solve(prob, Tsit5(); callback, saveat) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##25@r1_workload.jl:138 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:138
+R1 first d solve(prob, Rodas5(); callback, saveat) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##27@r1_workload.jl:140 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:140
+R1 again a VertexModel/EdgeModel ok
+R1 again b Network(g, v, e) ok
+R1 again c find_fixpoint(nw) FAIL R1Gap: R1Gap: SteadyStateDiffEq.SSRootfind has no counterpart in the ports (R1 stub) @ _@r1_stubs.jl:26 < SSRootfind@r1_stubs.jl:26 < default_fixpoint_alg@initialization.jl:166 < #find_fixpoint#485@initialization.jl:83
+R1 again c find_fixpoint(nw) STANDIN relax(nw): Rodas5 over (0, 400) from zero
+R1 again c relax(nw) ok
+R1 again c jacobian_eigenvals(s) ok
+R1 again c isfixpoint(s) ok
+R1 again c s.e[:, :P] (observed) ok
+R1 again d ODEProblem(nw, NWState(nw), tspan) ok
+R1 again d remake(prob; p) FAIL R1Gap: R1Gap: SciMLBase.remake has no counterpart in the ports (R1 stub) @ #remake#6@r1_stubs.jl:21 < remake@r1_stubs.jl:20 < #step_d##6@r1_workload.jl:121 < attempt@r1_workload.jl:38
+R1 again d remake(prob; p) STANDIN a new problem per solve (C2)
+R1 again d get_callbacks(nw) ok
+R1 again d ODEProblem(ODEFunction(nw; sys = nw), …) ok
+R1 again d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 again d solve(prob, Rodas5(); the discrete callbacks only) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##21@r1_workload.jl:136 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:136
+R1 again d solve(prob, Tsit5(); callback, saveat) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##25@r1_workload.jl:138 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:138
+R1 again d solve(prob, Rodas5(); callback, saveat) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##27@r1_workload.jl:140 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:140
+R1 changed a VertexModel/EdgeModel ok
+R1 changed b Network(g, v, e) ok
+R1 changed c find_fixpoint(nw) FAIL R1Gap: R1Gap: SteadyStateDiffEq.SSRootfind has no counterpart in the ports (R1 stub) @ _@r1_stubs.jl:26 < SSRootfind@r1_stubs.jl:26 < default_fixpoint_alg@initialization.jl:166 < #find_fixpoint#485@initialization.jl:83
+R1 changed c find_fixpoint(nw) STANDIN relax(nw): Rodas5 over (0, 400) from zero
+R1 changed c relax(nw) ok
+R1 changed c jacobian_eigenvals(s) ok
+R1 changed c isfixpoint(s) ok
+R1 changed c s.e[:, :P] (observed) ok
+R1 changed d ODEProblem(nw, NWState(nw), tspan) ok
+R1 changed d remake(prob; p) FAIL R1Gap: R1Gap: SciMLBase.remake has no counterpart in the ports (R1 stub) @ #remake#6@r1_stubs.jl:21 < remake@r1_stubs.jl:20 < #step_d##6@r1_workload.jl:121 < attempt@r1_workload.jl:38
+R1 changed d remake(prob; p) STANDIN a new problem per solve (C2)
+R1 changed d get_callbacks(nw) ok
+R1 changed d ODEProblem(ODEFunction(nw; sys = nw), …) ok
+R1 changed d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 changed d solve(prob, Rodas5(); the discrete callbacks only) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##21@r1_workload.jl:136 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:136
+R1 changed d solve(prob, Tsit5(); callback, saveat) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##25@r1_workload.jl:138 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:138
+R1 changed d solve(prob, Rodas5(); callback, saveat) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##27@r1_workload.jl:140 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:140
+R1 graphtype a VertexModel/EdgeModel ok
+R1 graphtype b Network(g, v, e) ok
+R1 graphtype c find_fixpoint(nw) FAIL R1Gap: R1Gap: SteadyStateDiffEq.SSRootfind has no counterpart in the ports (R1 stub) @ _@r1_stubs.jl:26 < SSRootfind@r1_stubs.jl:26 < default_fixpoint_alg@initialization.jl:166 < #find_fixpoint#485@initialization.jl:83
+R1 graphtype c find_fixpoint(nw) STANDIN relax(nw): Rodas5 over (0, 400) from zero
+R1 graphtype c relax(nw) ok
+R1 graphtype c jacobian_eigenvals(s) ok
+R1 graphtype c isfixpoint(s) ok
+R1 graphtype c s.e[:, :P] (observed) ok
+R1 graphtype d ODEProblem(nw, NWState(nw), tspan) ok
+R1 graphtype d remake(prob; p) FAIL R1Gap: R1Gap: SciMLBase.remake has no counterpart in the ports (R1 stub) @ #remake#6@r1_stubs.jl:21 < remake@r1_stubs.jl:20 < #step_d##6@r1_workload.jl:121 < attempt@r1_workload.jl:38
+R1 graphtype d remake(prob; p) STANDIN a new problem per solve (C2)
+R1 graphtype d get_callbacks(nw) ok
+R1 graphtype d ODEProblem(ODEFunction(nw; sys = nw), …) ok
+R1 graphtype d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 graphtype d solve(prob, Rodas5(); the discrete callbacks only) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##21@r1_workload.jl:136 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:136
+R1 graphtype d solve(prob, Tsit5(); callback, saveat) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##25@r1_workload.jl:138 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:138
+R1 graphtype d solve(prob, Rodas5(); callback, saveat) FAIL UndefVarError: UndefVarError: `get_callbacks_ports` not defined in `NetworkDynamics` @ #step_d##15@r1_workload.jl:132 < #step_d##27@r1_workload.jl:140 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:140
+R1 usertype - - n/a: the pass is part 3b (R6), not yet in the workload
+R1 failures 20
+# rc=0

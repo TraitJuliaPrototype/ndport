@@ -1,0 +1,6 @@
+# strict=0 2026-10-29T13:13:05+01:00 env=env_ports julia-1.13 bfca89decc TraitWorld ca92f22 TDE f0a79ae TraitMakie c0d5c36 ND-ports 756c09e
+jl: slot 1 (cores 0-3), depot /tmp/claude-1000/depots/r2-tde
+Precompiling packages...
+  20.2 s  ✓ NetworkDynamics
+  1 dependency successfully precompiled in 20 seconds. 156 already precompiled.
+# rc=0
