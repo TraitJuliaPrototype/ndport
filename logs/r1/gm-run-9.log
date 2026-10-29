@@ -1,0 +1,10 @@
+# strict=0 2026-10-29T12:11:08+01:00 script=scripts/r1_gm_run.jl env=env_r1plot julia-1.13 bfca89decc TraitWorld ca92f22 TDE 3a51d95 TraitMakie 2c70583 ND-ports 5fc02b4 GraphMakie 327f80b load 0.47
+R1 gm STANDIN default_theme(scene, T): literals
+R1 gm STANDIN parent_scene(p): a scene with Observables for viewport and projectionview
+R1 gm STANDIN add_input!/add_constant!: a constant node
+R1 gm STANDIN p[:name]: MakieCompat's NodeRef
+R1 gm STANDIN map! with several outputs: a node per output over a tuple node
+R1 gm graphplot(g) FAIL MethodError: MethodError: no method matching scatter!(::TraitMakie.OldAPI.Plot{typeof(graphplot), Tuple{SimpleGraph{Int64}}}, ::MakieCompat.NodeRef; marker::MakieCompat.NodeRef, markersize::MakieCompat.NodeRef, color::MakieCompat.NodeRef, rotation::MakieCompat.NodeRef, str @ plot!@recipes.jl:395 < #_make!#10@MakieCompat.jl:321 < _make!@MakieCompat.jl:303 < #_create!#9@MakieCompat.jl:302 < _create!@MakieCompat.jl:302
+R1 gm graphplot(g; layout, node_color, node_size, edge_color, edge_width, node_attr) (step f) FAIL MethodError: MethodError: no method matching scatter!(::TraitMakie.OldAPI.Plot{typeof(graphplot), Tuple{SimpleGraph{Int64}}}, ::MakieCompat.NodeRef; marker::MakieCompat.NodeRef, markersize::MakieCompat.NodeRef, color::MakieCompat.NodeRef, rotation::MakieCompat.NodeRef, str @ plot!@recipes.jl:395 < #_make!#10@MakieCompat.jl:321 < _make!@MakieCompat.jl:303 < #_create!#9@MakieCompat.jl:302 < _create!@MakieCompat.jl:302
+R1 gm graphplot!(ax, g; node_color = Observable) (step g) FAIL MethodError: MethodError: no method matching scatter!(::TraitMakie.OldAPI.Plot{typeof(graphplot), Tuple{SimpleGraph{Int64}}}, ::MakieCompat.NodeRef; marker::MakieCompat.NodeRef, markersize::MakieCompat.NodeRef, color::MakieCompat.NodeRef, rotation::MakieCompat.NodeRef, str @ plot!@recipes.jl:395 < #_make!#10@MakieCompat.jl:321 < _make!@MakieCompat.jl:303 < #_create!#9@MakieCompat.jl:302 < _create!@MakieCompat.jl:302
+# rc=0

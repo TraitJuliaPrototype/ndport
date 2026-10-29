@@ -1,0 +1,5 @@
+# strict=0 2026-10-29T12:10:22+01:00 env=env_r1plot julia-1.13 bfca89decc TraitWorld ca92f22 TDE 3a51d95 TraitMakie 2c70583 ND-ports 5fc02b4
+Precompiling packages...
+   1.7 s  ✓ GraphMakie
+  1 dependency successfully precompiled in 2 seconds. 91 already precompiled.
+# rc=0

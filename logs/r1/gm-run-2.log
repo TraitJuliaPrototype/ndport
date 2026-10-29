@@ -1,0 +1,6 @@
+# strict=0 2026-10-29T12:09:05+01:00 script=scripts/r1_gm_run.jl env=env_r1plot julia-1.13 bfca89decc TraitWorld ca92f22 TDE 3a51d95 TraitMakie 2c70583 ND-ports 5fc02b4 GraphMakie 327f80b load 0.55
+R1 gm STANDIN default_theme(scene, T): literals
+R1 gm graphplot(g) FAIL MethodError: MethodError: no method matching map!(::GraphMakie.var"#66#67", ::Attributes, ::Vector{Symbol}, ::Symbol) @ plot!@recipes.jl:217 < #_make!#10@MakieCompat.jl:321 < _make!@MakieCompat.jl:303 < #_create!#9@MakieCompat.jl:302 < _create!@MakieCompat.jl:302
+R1 gm graphplot(g; layout, node_color, node_size, edge_color, edge_width, node_attr) (step f) FAIL MethodError: MethodError: no method matching map!(::GraphMakie.var"#66#67", ::Attributes, ::Vector{Symbol}, ::Symbol) @ plot!@recipes.jl:217 < #_make!#10@MakieCompat.jl:321 < _make!@MakieCompat.jl:303 < #_create!#9@MakieCompat.jl:302 < _create!@MakieCompat.jl:302
+R1 gm graphplot!(ax, g; node_color = Observable) (step g) FAIL MethodError: MethodError: no method matching map!(::GraphMakie.var"#66#67", ::Attributes, ::Vector{Symbol}, ::Symbol) @ plot!@recipes.jl:217 < #_make!#10@MakieCompat.jl:321 < _make!@MakieCompat.jl:303 < #_create!#9@MakieCompat.jl:302 < _create!@MakieCompat.jl:302
+# rc=0

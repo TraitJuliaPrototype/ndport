@@ -1,0 +1,5 @@
+# strict=0 2026-10-29T12:08:45+01:00 script=scripts/r1_gm_run.jl env=env_r1plot julia-1.13 bfca89decc TraitWorld ca92f22 TDE 3a51d95 TraitMakie 2c70583 ND-ports 5fc02b4 GraphMakie 327f80b load 0.59
+R1 gm graphplot(g) FAIL R1Gap: R1Gap: Makie.default_theme has no counterpart in MakieCompat/TraitMakie (R1 stub) @ #default_theme#3@r1_stubs.jl:13 < default_theme@r1_stubs.jl:13 < plot!@recipes.jl:213 < #_make!#10@MakieCompat.jl:321 < _make!@MakieCompat.jl:303
+R1 gm graphplot(g; layout, node_color, node_size, edge_color, edge_width, node_attr) (step f) FAIL R1Gap: R1Gap: Makie.default_theme has no counterpart in MakieCompat/TraitMakie (R1 stub) @ #default_theme#3@r1_stubs.jl:13 < default_theme@r1_stubs.jl:13 < plot!@recipes.jl:213 < #_make!#10@MakieCompat.jl:321 < _make!@MakieCompat.jl:303
+R1 gm graphplot!(ax, g; node_color = Observable) (step g) FAIL R1Gap: R1Gap: Makie.default_theme has no counterpart in MakieCompat/TraitMakie (R1 stub) @ #default_theme#3@r1_stubs.jl:13 < default_theme@r1_stubs.jl:13 < plot!@recipes.jl:213 < #_make!#10@MakieCompat.jl:321 < _make!@MakieCompat.jl:303
+# rc=0
