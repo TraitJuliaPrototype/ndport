@@ -224,3 +224,18 @@ julia-1.13 bfca89decc, TraitWorld main ca92f22, TDE `w34` f0a79ae, NetworkDynami
 | failures listed (`run-2.log`) | 24 (R1: 52): `find_fixpoint` (item 11), `remake` (S7), the solution's `idxs` forms and `SII.getu` (open issues 117, 118), each in 4 passes |
 | the test subset (`ndtest-2.log`) | massmatrix 6, doctor 26 as before; diffusion 108 pass, 1 fail (`:111`, allocations, as E-166), 1 error; inhomogeneous 39 pass, 1 error. Each error is TDE refusing a DAE network (an algebraic edge; a constraint vertex) that R1 solved as an ODE (open issue 119); the files stop there |
 | a callback's `NWState(ctx.integrator)` | refused with a message: the bounded form is blocked by TraitWorld's encoding (E-239) |
+
+### 2026-10-29: NetworkDynamics on TDE's R3 items (E-242, steps R3–R5)
+
+julia-1.13 bfca89decc, TraitWorld main d22ec7b, TDE `w34` e4eeed9 and 388cb33, NetworkDynamics `ports` e0f5664; setting PT; product setting, strict mode off; `logs/r3-tde/` (`pc-1.log`, `run-3.log`, `ndtest-1.log` on e4eeed9; `pc-2.log`, `run-4.log`, `ndtest-2.log` on 388cb33, the same lines; `run-1`, `run-2` show a fault in the script's own dense check, fixed in `run-3`). Scripts `scripts/r3_workload.jl`, `r3_nd_tests.jl`, `r3_run.sh`, `r3_pc.sh`. Not a measurement.
+
+| | PT |
+|---|---|
+| stubs left | 10 upstream names (a component's and a DAE's initialization: `solve`, `successful_retcode`, `build_solution`, `BrownFullBasicInit`, NonlinearSolve's 4, `QRFactorization`; `ArrayPartition`); 15 in R2 |
+| `find_fixpoint(nw)` | TraitNonlinearSolve's `SteadyStateProblem` and default polyalgorithm; the network at a fixed time carries `HasSystem` and `HasJacobianPrototype`; the fixed point equals the relaxation's to 8.4e-10–9.6e-10 (line flows and frequencies; the angles are fixed up to a common shift) |
+| `remake(prob; p)` | TDE's; the workload's `fresh()` as upstream's |
+| the cascade, Tsit5 and Rodas5 | as in R2 |
+| `sol(TIMES; idxs = VIndex(2, :ω))`, `vidxs(nw, :, :ω)`, `EIndex(2, :P)` | run, by NetworkDynamics' own indexing (methods on TDE's solution for `SymbolicIndex`); equal to `NWState(sol, t)[idx]` |
+| dense output | the solve without `saveat`, read at `TIMES`: equal to the `saveat` values (difference 0.0) |
+| failures listed (`run-3.log`, `run-4.log`) | 4 (R2: 24): `SII.getu(sol, eidxs(nw, :, :P))` in each pass (open issue 118) |
+| the test subset (`ndtest-1.log`) | as R2's counts, with the `idxs` and `ODEFunction` stand-ins gone: diffusion's in-place function ends with `nothing` at the source (open issue 120, `# ports`); left `:111` (allocations) and TDE refusing the two DAE networks; `Rodas4` still read as `Rodas5` |

@@ -1,0 +1,135 @@
+# strict=0 2026-10-29T13:50:50+01:00 script=scripts/r3_workload.jl env=env_ports julia-1.13 bfca89decc TraitWorld d22ec7b TDE e4eeed9 TraitMakie c0d5c36 ND-ports 756c09e* GraphMakie 327f80b load 1.63
+jl: slot 2 (cores 4-7), depot /tmp/claude-1000/depots/r3-tde
+# r3_workload first julia 1.13.2
+R1 first a VertexModel/EdgeModel ok
+R1 first b Network(g, v, e) ok
+R1 first c find_fixpoint(nw) ok
+R1 first c info |find_fixpoint - relax| (flows, ω) = 9.593652539052755e-10
+R1 first c find_fixpoint(nw) ≈ relax(nw) ok
+R1 first c jacobian_eigenvals(s) ok
+R1 first c isfixpoint(s) ok
+R1 first c s.e[:, :P] (observed) ok
+R1 first d ODEProblem(nw, NWState(nw), tspan) ok
+R1 first d remake(prob; p) ok
+R1 first d get_callbacks(nw) ok
+R1 first d ODEProblem(ODEFunction(nw; sys = nw), …) ok
+R1 first d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 first d solve(prob, Tsit5(); saveat) ok
+R1 first d solve(prob, Rodas5(); saveat) ok
+R1 first d info retcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1.0,1.8091,2.2241,2.4995,2.7564,2.8176,2.8252,3.1129,3.1402,3.2603,3.3557,3.4419,3.4863,3.6494,3.7929,4.048 rretcode=Success rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rttrips=1.0,1.8091,2.2241,2.4995,2.7564,2.8176,2.8252,3.1129,3.1402,3.2603,3.3557,3.4419,3.4863,3.6494,3.7929,4.048
+R1 first d the problem solved again: the same trips ok
+R1 first d sol(TIMES; idxs = VIndex(2, :ω)) ok
+R1 first d info dense-saveat max = 11.828151573916275
+R1 first d dense sol(TIMES) = the saveat values FAIL ErrorException: differs by 11.828151573916275 @ 
+R1 first e sol(TIMES; idxs = vidxs(nw, :, :ω)) ok
+R1 first e sol(TIMES; idxs = EIndex(2, :P)) ok
+R1 first e NWState(sol, 3.0) ok
+R1 first e extract_nw(sol) ok
+R1 first e SII.getu(sol, eidxs(nw, :, :P)) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ 
+R1 first e sol(TIMES; idxs) = NWState(sol, t)[idxs] ok
+R1 first e NWState(sol, t) over the saved times ok
+R1 first e K at t = 3 from the saved parameters ok
+R1 first g init(prob, Tsit5()) ok
+R1 first g step!(integ, 0.6, true) ok
+R1 first g NWState(integ) ok
+R1 first g step!(integ, 0.6, true) again; NWState(integ) at 1.2 ok
+R1 again a VertexModel/EdgeModel ok
+R1 again b Network(g, v, e) ok
+R1 again c find_fixpoint(nw) ok
+R1 again c info |find_fixpoint - relax| (flows, ω) = 9.593652539052755e-10
+R1 again c find_fixpoint(nw) ≈ relax(nw) ok
+R1 again c jacobian_eigenvals(s) ok
+R1 again c isfixpoint(s) ok
+R1 again c s.e[:, :P] (observed) ok
+R1 again d ODEProblem(nw, NWState(nw), tspan) ok
+R1 again d remake(prob; p) ok
+R1 again d get_callbacks(nw) ok
+R1 again d ODEProblem(ODEFunction(nw; sys = nw), …) ok
+R1 again d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 again d solve(prob, Tsit5(); saveat) ok
+R1 again d solve(prob, Rodas5(); saveat) ok
+R1 again d info retcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1.0,1.8091,2.2241,2.4995,2.7564,2.8176,2.8252,3.1129,3.1402,3.2603,3.3557,3.4419,3.4863,3.6494,3.7929,4.048 rretcode=Success rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rttrips=1.0,1.8091,2.2241,2.4995,2.7564,2.8176,2.8252,3.1129,3.1402,3.2603,3.3557,3.4419,3.4863,3.6494,3.7929,4.048
+R1 again d the problem solved again: the same trips ok
+R1 again d sol(TIMES; idxs = VIndex(2, :ω)) ok
+R1 again d info dense-saveat max = 11.828151573916275
+R1 again d dense sol(TIMES) = the saveat values FAIL ErrorException: differs by 11.828151573916275 @ 
+R1 again e sol(TIMES; idxs = vidxs(nw, :, :ω)) ok
+R1 again e sol(TIMES; idxs = EIndex(2, :P)) ok
+R1 again e NWState(sol, 3.0) ok
+R1 again e extract_nw(sol) ok
+R1 again e SII.getu(sol, eidxs(nw, :, :P)) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ 
+R1 again e sol(TIMES; idxs) = NWState(sol, t)[idxs] ok
+R1 again e NWState(sol, t) over the saved times ok
+R1 again e K at t = 3 from the saved parameters ok
+R1 again g init(prob, Tsit5()) ok
+R1 again g step!(integ, 0.6, true) ok
+R1 again g NWState(integ) ok
+R1 again g step!(integ, 0.6, true) again; NWState(integ) at 1.2 ok
+R1 params d NWParameter(nw, p); new problem; solve ok
+R1 changed a VertexModel/EdgeModel ok
+R1 changed b Network(g, v, e) ok
+R1 changed c find_fixpoint(nw) ok
+R1 changed c info |find_fixpoint - relax| (flows, ω) = 8.443750143527495e-10
+R1 changed c find_fixpoint(nw) ≈ relax(nw) ok
+R1 changed c jacobian_eigenvals(s) ok
+R1 changed c isfixpoint(s) ok
+R1 changed c s.e[:, :P] (observed) ok
+R1 changed d ODEProblem(nw, NWState(nw), tspan) ok
+R1 changed d remake(prob; p) ok
+R1 changed d get_callbacks(nw) ok
+R1 changed d ODEProblem(ODEFunction(nw; sys = nw), …) ok
+R1 changed d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 changed d solve(prob, Tsit5(); saveat) ok
+R1 changed d solve(prob, Rodas5(); saveat) ok
+R1 changed d info retcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,6,12,37,11 ttrips=1.0,1.81,2.2268,2.5024,2.7604,2.8239,2.8317,3.1146,3.1513,3.3091,3.3522,3.4589,3.6485,3.8025,4.0247 rretcode=Success rtrips=8,1,4,40,38,39,10,14,9,7,13,6,12,37,11 rttrips=1.0,1.81,2.2268,2.5024,2.7604,2.8239,2.8317,3.1146,3.1513,3.3091,3.3522,3.459,3.6485,3.8025,4.0247
+R1 changed d the problem solved again: the same trips ok
+R1 changed d sol(TIMES; idxs = VIndex(2, :ω)) ok
+R1 changed d info dense-saveat max = 3.982624405767672
+R1 changed d dense sol(TIMES) = the saveat values FAIL ErrorException: differs by 3.982624405767672 @ 
+R1 changed e sol(TIMES; idxs = vidxs(nw, :, :ω)) ok
+R1 changed e sol(TIMES; idxs = EIndex(2, :P)) ok
+R1 changed e NWState(sol, 3.0) ok
+R1 changed e extract_nw(sol) ok
+R1 changed e SII.getu(sol, eidxs(nw, :, :P)) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ 
+R1 changed e sol(TIMES; idxs) = NWState(sol, t)[idxs] ok
+R1 changed e NWState(sol, t) over the saved times ok
+R1 changed e K at t = 3 from the saved parameters ok
+R1 changed g init(prob, Tsit5()) ok
+R1 changed g step!(integ, 0.6, true) ok
+R1 changed g NWState(integ) ok
+R1 changed g step!(integ, 0.6, true) again; NWState(integ) at 1.2 ok
+R1 graphtype a VertexModel/EdgeModel ok
+R1 graphtype b Network(g, v, e) ok
+R1 graphtype c find_fixpoint(nw) ok
+R1 graphtype c info |find_fixpoint - relax| (flows, ω) = 9.593652539052755e-10
+R1 graphtype c find_fixpoint(nw) ≈ relax(nw) ok
+R1 graphtype c jacobian_eigenvals(s) ok
+R1 graphtype c isfixpoint(s) ok
+R1 graphtype c s.e[:, :P] (observed) ok
+R1 graphtype d ODEProblem(nw, NWState(nw), tspan) ok
+R1 graphtype d remake(prob; p) ok
+R1 graphtype d get_callbacks(nw) ok
+R1 graphtype d ODEProblem(ODEFunction(nw; sys = nw), …) ok
+R1 graphtype d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 graphtype d solve(prob, Tsit5(); saveat) ok
+R1 graphtype d solve(prob, Rodas5(); saveat) ok
+R1 graphtype d info retcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1.0,1.8091,2.2241,2.4995,2.7564,2.8176,2.8252,3.1129,3.1402,3.2603,3.3557,3.4419,3.4863,3.6494,3.7929,4.048 rretcode=Success rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rttrips=1.0,1.8091,2.2241,2.4995,2.7564,2.8176,2.8252,3.1129,3.1402,3.2603,3.3557,3.4419,3.4863,3.6494,3.7929,4.048
+R1 graphtype d the problem solved again: the same trips ok
+R1 graphtype d sol(TIMES; idxs = VIndex(2, :ω)) ok
+R1 graphtype d info dense-saveat max = 11.828151573916275
+R1 graphtype d dense sol(TIMES) = the saveat values FAIL ErrorException: differs by 11.828151573916275 @ 
+R1 graphtype e sol(TIMES; idxs = vidxs(nw, :, :ω)) ok
+R1 graphtype e sol(TIMES; idxs = EIndex(2, :P)) ok
+R1 graphtype e NWState(sol, 3.0) ok
+R1 graphtype e extract_nw(sol) ok
+R1 graphtype e SII.getu(sol, eidxs(nw, :, :P)) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ 
+R1 graphtype e sol(TIMES; idxs) = NWState(sol, t)[idxs] ok
+R1 graphtype e NWState(sol, t) over the saved times ok
+R1 graphtype e K at t = 3 from the saved parameters ok
+R1 graphtype g init(prob, Tsit5()) ok
+R1 graphtype g step!(integ, 0.6, true) ok
+R1 graphtype g NWState(integ) ok
+R1 graphtype g step!(integ, 0.6, true) again; NWState(integ) at 1.2 ok
+R1 usertype - - n/a: the pass is part 3b (R6), not yet in the workload
+R1 failures 8
+# rc=0
