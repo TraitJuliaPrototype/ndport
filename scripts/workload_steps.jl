@@ -6,16 +6,34 @@
 # integers, values to 10 digits) is printed by `digest_<step>`, outside the timed window.
 # Loaded by workload.jl after the packages; the plotting steps f and g are in workload_plot.jl, included
 # into this module once Makie is loaded (so that the plotting packages can load after the simulation).
+# NDW_API=ports (R5, E-246): the variant for the trait ports, the same in PT and in its reference U′: Rodas5 for
+# Rodas5P, the values at TIMES by `saveat` (both solves), `getu` for `SII.getu`; the network's type printed per pass
+# (`N` lines). NDW_STACK=ports: NetworkDynamics on the trait ports (TraitDifferentialEquations, and GraphMakie over
+# MakieCompat in workload_plot.jl); else upstream's packages.
 module NDW
 
-using NetworkDynamics, Graphs, OrdinaryDiffEqTsit5, OrdinaryDiffEqRosenbrock
+const API = get(ENV, "NDW_API", "upstream")
+const ON_PORTS = get(ENV, "NDW_STACK", "upstream") == "ports"
+@static if ON_PORTS
+    using NetworkDynamics, Graphs, TraitDifferentialEquations
+    const GETU = TraitDifferentialEquations.getu
+else
+    using NetworkDynamics, Graphs, OrdinaryDiffEqTsit5, OrdinaryDiffEqRosenbrock
+end
 import SymbolicIndexingInterface as SII
 using Printf
+@static if !ON_PORTS
+    const GETU = SII.getu
+end
+const STIFF = API == "ports" ? Rodas5 : Rodas5P
 
 const OUT = joinpath(@__DIR__, "..", "out")
 const PASS = Ref("first")
-const SOLVE_KW = (; abstol = 1e-8, reltol = 1e-6)
+const SOLVE_KW = get(ENV, "NDW_TIGHT", "0") == "1" ? (; abstol = 1e-12, reltol = 1e-12) : (; abstol = 1e-8, reltol = 1e-6)   # NDW_TIGHT=1: the tie-break run (R5)
 const TIMES = [0.5, 1.0, 1.5, 2.0, 3.0, 4.5, 6.0]
+const SAVE_KW = API == "ports" ? (; saveat = TIMES) : (;)
+"The values of `sol(ts; idxs)`: a `DiffEqArray`'s upstream, a `Vector` on the ports."
+vals(x) = x isa Vector ? x : x.u
 
 # ---- digests ----------------------------------------------------------------------------------
 bits(x) = string(hash(reinterpret(UInt64, collect(Float64, x))); base = 16)
@@ -75,7 +93,10 @@ function step_c(nw; γ = 0.1)
     λ = jacobian_eigenvals(s)
     (; s, fix = isfixpoint(s), λmax = maximum(real, λ))
 end
-digest_c(r) = digest("c", :u => bits(uflat(r.s)), :p => bits(pflat(r.s)), :δ => num(r.s.v[1:5, :δ]),
+# the ports' variant (R5): the angles centred on their mean, `δc`: a fixed point of the swing equations is fixed only up to
+# a common shift of the angles, which the nonlinear solver's path chooses
+digest_c(r) = digest("c", :u => bits(uflat(r.s)), :p => bits(pflat(r.s)),
+                     (API == "ports" ? (:δc => num(r.s.v[1:5, :δ] .- sum(r.s.v[:, :δ]) / length(r.s.v[:, :δ])),) : (:δ => num(r.s.v[1:5, :δ]),))...,
                      :Pmax => num(maximum(abs, r.s.e[:, :P])), :fix => r.fix, :λmax => num(r.λmax))
 
 # ---- d. solve, with a cascade of line trips -----------------------------------------------------
@@ -95,14 +116,14 @@ function step_d(nw, s)
     add_callback!(nw[EIndex(first_trip)], PresetTimeComponentCallback(1.0, affect))
     prob = ODEProblem(nw, NWState(nw), (0.0, 6.0))
     fresh() = remake(prob; p = copy(prob.p))           # the callbacks write K = 0 into the parameters
-    sol = solve(fresh(), Tsit5(); SOLVE_KW...)
+    sol = solve(fresh(), Tsit5(); SOLVE_KW..., SAVE_KW...)
     ttrips = copy(trips); empty!(trips)
-    rsol = solve(fresh(), Rodas5P(); SOLVE_KW...)
+    rsol = solve(fresh(), STIFF(); SOLVE_KW..., SAVE_KW...)
     (; prob, sol, rsol, ttrips, rtrips = copy(trips))
 end
 function digest_d(r)
-    ω = r.sol(TIMES; idxs = VIndex(2, :ω)).u
-    ωr = r.rsol(TIMES; idxs = VIndex(2, :ω)).u
+    ω = vals(r.sol(TIMES; idxs = VIndex(2, :ω)))
+    ωr = vals(r.rsol(TIMES; idxs = VIndex(2, :ω)))
     digest("d", :retcode => r.sol.retcode, :rretcode => r.rsol.retcode, :trips => join(first.(r.ttrips), ","),
            :rtrips => join(first.(r.rtrips), ","), :ttrips => num(last.(r.ttrips)), :trtrips => num(last.(r.rtrips)),
            :ω2 => num(ω), :ω2r => num(ωr), :sol => bits(reduce(vcat, r.sol.u)), :rsol => bits(reduce(vcat, r.rsol.u)),
@@ -114,8 +135,8 @@ function step_e(nw, sol)
     ωall = sol(TIMES; idxs = vidxs(nw, :, :ω))
     P2 = sol(TIMES; idxs = EIndex(2, :P))
     s3 = NWState(sol, 3.0)
-    getP = SII.getu(sol, eidxs(nw, :, :P))
-    (; ωsum = [sum(u) for u in ωall.u], P2 = P2.u, P3 = s3.e[1:6, :P], K3 = s3.p.e[1:6, :K], Pend = getP(sol)[end][1:6])
+    getP = GETU(sol, eidxs(nw, :, :P))
+    (; ωsum = [sum(u) for u in vals(ωall)], P2 = vals(P2), P3 = s3.e[1:6, :P], K3 = s3.p.e[1:6, :K], Pend = getP(sol)[end][1:6])
 end
 digest_e(r) = digest("e", :ωsum => num(r.ωsum), :P2 => num(r.P2), :P3 => num(r.P3), :K3 => num(r.K3), :Pend => num(r.Pend))
 
@@ -125,6 +146,7 @@ function run_sim(timed, pass, model; γ = 0.1, graph = Val(:simple))
     PASS[] = pass
     a = timed("a", () -> step_a(model)); digest_a(a)
     nw = timed("b", () -> step_b(a, graph)); digest_b(nw)
+    API == "ports" && println("N ", pass, " nwtype ", string(hash(typeof(nw)); base = 16), " ", nameof(typeof(nw)), "{", length(typeof(nw).parameters), " parameters}")
     c = timed("c", () -> step_c(nw; γ)); digest_c(c)
     d = timed("d", () -> step_d(nw, c.s)); digest_d(d)
     e = timed("e", () -> step_e(nw, d.sol)); digest_e(e)
@@ -145,9 +167,9 @@ function run_params(timed, nw, prob)
     d = timed("d", () -> begin
         p = copy(prob.p); s = NWParameter(nw, p); s.v[:, :γ] .= 0.2
         prob2 = remake(prob; p = pflat(s))
-        (; prob = prob2, sol = solve(prob2, Tsit5(); SOLVE_KW...))
+        (; prob = prob2, sol = solve(prob2, Tsit5(); SOLVE_KW..., SAVE_KW...))
     end)
-    digest("d", :retcode => d.sol.retcode, :ω2 => num(d.sol(TIMES; idxs = VIndex(2, :ω)).u))
+    digest("d", :retcode => d.sol.retcode, :ω2 => num(vals(d.sol(TIMES; idxs = VIndex(2, :ω)))))
     e = timed("e", () -> step_e(nw, d.sol)); digest_e(e)
     f = timed("f", () -> step_f(nw, d.sol, :params)); digest_f(f)
     g = timed("g", () -> step_g(nw, d.prob, :params)); digest_g(g)

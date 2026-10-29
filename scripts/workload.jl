@@ -10,6 +10,7 @@
 # Prints `L <group> <s>`, `T <pass> <step> <ms> compile <ms> recompile <ms> gc <ms>`, and the digests.
 #     julia --project=env_upstream scripts/workload.jl            (from ndport/)
 # NDW_ORDER=simfirst: the plotting packages load after the first pass's simulation (steps a–e).
+# NDW_API=ports, NDW_STACK=ports: the variant for the trait ports and the stack it runs on (workload_steps.jl; R5, E-246).
 # NDW_PASSES=first,params,changed (default: first,again,params,changed; `again` always runs; `graphtype` added on request). NDW_DIAG=1: the attribution run
 # (scripts/diag.jl; new CodeInstances per step by module and owner; its times are not measurements).
 const T0 = time_ns()
@@ -23,10 +24,17 @@ end
 const ORDER = get(ENV, "NDW_ORDER", "default")   # `simfirst`: the plotting packages load after the first simulation (P3's order B)
 WITH_TW && @load "TraitWorld" (@eval using TraitWorld)
 @load "Graphs,NetworkDynamics" (@eval using Graphs, NetworkDynamics)
+const ON_PORTS = get(ENV, "NDW_STACK", "upstream") == "ports"   # R5 (E-246): NetworkDynamics on the trait ports
+if ON_PORTS
+    @load "solvers" (@eval using TraitDifferentialEquations, SymbolicIndexingInterface)
+    load_plotting() = (@load "MakieCompat,GraphMakie,Observables" (@eval using MakieCompat, GraphMakie, Observables);
+                       @load "plot steps" Base.include(NDW, joinpath(@__DIR__, "workload_plot.jl")))
+else
 @load "solvers" (@eval using OrdinaryDiffEqTsit5, OrdinaryDiffEqRosenbrock, DiffEqCallbacks, SymbolicIndexingInterface)
 load_plotting() = (@load "CairoMakie,GraphMakie,Observables" (@eval using CairoMakie, GraphMakie, Observables);
                    @load "plot steps" Base.include(NDW, joinpath(@__DIR__, "workload_plot.jl"));
                    @eval CairoMakie.activate!(type = "png"))
+end
 const AS_TRAIT_MODULE = get(ENV, "NDW_W", "0") == "1"      # setting W: the workload's own module is a trait module
 if AS_TRAIT_MODULE
     @load "steps" Core.eval(Main, let ex = Meta.parseall(read(joinpath(@__DIR__, "workload_steps.jl"), String))
