@@ -24,6 +24,7 @@ The workload is part P1 of the meta plan ([`../writeup/plans/2026-10-21-ndport-w
 - `scripts/run_workload.sh <tag> <U|P0|A0|S> [runs]`: fresh sessions through the lock; refuses to run where a dependency is not precompiled; marks a run that precompiled INVALID. `NDW_DIAG=1` adds the attribution (`scripts/diag.jl`: new CodeInstances per step by module; its times are not measurements).
 - `scripts/compare_digests.py <ref.log> <log> [--exact]`, `scripts/summarize.py <logs>`, `scripts/check_env.py`.
 - The settings: U (`env_upstream`, patched build), P0 (`env_port`, TraitWorld loaded, product setting), A0 (`env_port` under `all`, depot `depot-facts/`), S (stock 1.13.2, depot `depot-stock/`); N (NetworkDynamics wrapped whole, `pkgs/NetworkDynamics-p3wrap`, `env_p3`, `depot-p3`), W (N plus the workload's own module a trait module), P4 (the port, `pkgs/NetworkDynamics-p4`, `env_p4`, `depot-p4`), I (P6, E-155: the SciML core wrapped inside out, `pkgs/*-p6`, `env_p6`, `depot-p6`, NetworkDynamics as in N; its default script `p6_workload.jl` prints strict mode's state). From E-165: P4P (`env_p4_pin`, `depot-p4pin`), IP (`env_p6_pin`, `depot-p6pin`): the tracks' last steps on TraitWorld c655dde (the worktree `TraitWorld-port`); M (`env_merged`, `depot-merged`): the merge, the trees on branches `port` (`logs/merge/NOTES.md`). Since 2026-10-22 13:34 every run is on two cores (`taskset -c 0-1`), idle I/O class, one precompile task; the header says so.
+- From 2026-10-29 (R1, E-236): PT (`env_ports`, `depot-ports`; strict mode on in `depot-ports-strict`): NetworkDynamics from the worktree `pkgs/NetworkDynamics-ports` (branch `ports`) on TraitDifferentialEquations `w34`'s packages, upstream SciML stubbed (`src/r1_stubs.jl`, places marked `# R1:`); `env_r1plot`: the scratch GraphMakie (`pkgs/GraphMakie-r1`, branch `r1-scratch`) over MakieCompat and TraitMakie. Scripts `scripts/r1_*` (`r1_pc.sh <log> [env]` precompiles, `r1_run.sh <log> <script> [env]` runs; `R1_STRICT=1`).
 - `NDW_ORDER=simfirst`: the plotting packages load after the first simulation (P3's order B), with the CodeInstances the load discards counted (`G` line). `NDW_STRICT=1`: strict mode. `NDW_SCRIPT=<path>`: another script in the harness (`p3_census.jl`, `p3_pirate.jl`).
 
 ## Results
@@ -179,3 +180,17 @@ julia-1.13 bfca89decc, TraitWorld main ca92f22 (before: julia-1.13 2943086604, T
 - Step d is back at E-166's 29 ms: E-162's 267.7 ms (julia-1.13 0c589fd385, open issue 66) does not recur on bfca89decc (W-57's part 1).
 - The strict-mode refusal of OffsetArrays' `reshape` (pushback P6-2) no longer occurs; not attributed.
 - From 2026-10-29 setting M loads TraitWorld from main (`../TraitWorld`); `TraitWorld-port` stays at `w49` for P4P and IP.
+
+### 2026-10-29: the census of the ports' gaps (E-236, E-237, step R1)
+
+julia-1.13 bfca89decc, TraitWorld main ca92f22, TDE `w34` 3a51d95, TraitMakie 2c70583; settings PT and `env_r1plot`; strict mode off (one workload run also on: the same lines, no refusals); `logs/r1/`. Not a measurement. The items and their order: [the census](../writeup/plans/2026-10-29-ndport-r1-census.md).
+
+| | PT |
+|---|---|
+| NetworkDynamics loads on TDE's packages | yes, with stubs for 32 upstream names |
+| steps a–e, passes `first`, `again`, `params`, `changed`, `graphtype` | run, with marked stand-ins (`run-4.log`: 52 failures listed) |
+| the cascade (Tsit5, one TDE callback per component callback) | upstream's 16 trips, same order, times equal to four digits |
+| `find_fixpoint`; Rodas5 with continuous callbacks; `sol(t; idxs)`, `NWState(sol, t)`; `init`/`step!` | not on the ports |
+| the test subset (`ndtest-4.log`, stand-ins on) | as E-166's, except diffusion `:129` (a mass matrix ignored) |
+| GraphMakie over MakieCompat (`gm-run-9.log`) | loads with stand-ins; `graphplot` stops at its first old-API `scatter!` leaf |
+
