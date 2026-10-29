@@ -1,0 +1,22 @@
+# strict=0 2026-10-29T15:36:48+01:00 script=scripts/r6_check.jl env=env_r5 julia-1.13 bfca89decc TraitWorld f270262 TDE 282edb3 TraitMakie c0d5c36 ND-ports ddf7259* GraphMakie 498be7c load 2.28
+jl: slot 1 (cores 0-3), depot /tmp/claude-1000/depots/ndr6
+R6 record-vertex f=NetworkDynamics.VertexF{Main.NDW.Swing} g=NetworkDynamics.VertexG{Main.NDW.Swing, PureStateMap} name=VertexM (VertexM)
+R6 record-edge f=Nothing g=NetworkDynamics.EdgeG{Main.NDW.Line, PureFeedForward} name=StaticEdgeM (StaticEdgeM)
+R6 compfg-vertex equal 690b7ed8e10e3bfe
+R6 doctor-vertex ran
+R6 compfg-edge equal 3aaecca530277957
+R6 doctor-edge ran
+R6 rhs-SequentialExecution equal f1f86727328e70dd sametype=true
+R6 rhs-ThreadedExecution equal f1f86727328e70dd sametype=true
+R6 rhs-PolyesterExecution equal f1f86727328e70dd sametype=false
+R6 linearize-swing A=551e5f49b486552 B=a021c1f68a3f1435 C=eb2fabd211caf43e D=e9502223e4e711ff
+R6 initialize-swing ERROR R1Gap: LinearSolve.QRFactorization has no counterpart in the ports (R1 stub)
+R6 linearize-swing_type A=551e5f49b486552 B=a021c1f68a3f1435 C=eb2fabd211caf43e D=e9502223e4e711ff
+R6 initialize-swing_type ERROR R1Gap: LinearSolve.QRFactorization has no counterpart in the ports (R1 stub)
+R6 refuse-kind ERROR ArgumentError: dynamics = Main.NDW.Line(): Main.NDW.Line does not implement VertexDynamics, which a VertexModel needs.
+R6 refuse-pdim ERROR ArgumentError: The dynamics' pdim 3 does not match the 1 parameters of psym [:P].
+R6 refuse-f ERROR ArgumentError: Cannot provide `f` with `dynamics`: the record's f, g and ff are the dynamics'.
+R6 refuse-plain ERROR ArgumentError: dynamics = 1.0: Float64 does not implement VertexDynamics, which a VertexModel needs.
+R6 reconstruct from-function g=NetworkDynamics.VertexG{Main.NDW.Swing, PureStateMap} from-user g=NetworkDynamics.VertexG{Main.NDW.Swing, PureStateMap} I=2
+R6 done 
+# rc=0

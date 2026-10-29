@@ -1,0 +1,20 @@
+# strict=1 2026-10-29T15:39:05+01:00 env=env_r5 julia-1.13 bfca89decc TraitWorld f270262 TDE 282edb3 TraitMakie c0d5c36 ND-ports ddf7259* GraphMakie-ports 498be7c
+jl: slot 4 (cores 12-15), depot /tmp/claude-1000/depots/ndr6s
+Precompiling packages...
+   1.2 s  ✓ NetworkLayout
+   1.4 s  ✓ SparseMatrixColorings → SparseMatrixColoringsColorsExt
+  44.0 s  ✓ TraitWorld
+   2.8 s  ✓ TraitArrayTools
+   3.8 s  ✓ TraitIndexing
+   5.0 s  ✓ Graphs
+   1.5 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+  13.1 s  ✓ ODECore
+   2.9 s  ✓ TraitRodas
+  19.8 s  ✓ TraitMakie
+   6.0 s  ✓ MakieCompat
+  10.0 s  ✓ TraitNonlinearSolve
+   2.6 s  ✓ GraphMakie
+  14.0 s  ✓ TraitDifferentialEquations
+  25.5 s  ✓ NetworkDynamics
+  15 dependencies successfully precompiled in 97 seconds. 202 already precompiled.
+# rc=0

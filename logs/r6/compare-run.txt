@@ -1,0 +1,38 @@
+== run2-PT-1 vs run-PT-1 (exact)
+compared 39 digests: 0 exact differences, 0 failures
+run2-PT-1 P lines identical to run-PT-1 (60)
+first 69f1aae50b73c13f;again 69f1aae50b73c13f;changed 69f1aae50b73c13f;graphtype 5dca5abe54d85268;usertype 69f1aae50b73c13f;
+== strict-PT-1 vs run-PT-1 (exact)
+compared 39 digests: 0 exact differences, 0 failures
+strict-PT-1 P lines identical to run-PT-1 (60)
+1,5c1,5
+< first 69f1aae50b73c13f
+< again 69f1aae50b73c13f
+< changed 69f1aae50b73c13f
+< graphtype 5dca5abe54d85268
+< usertype 69f1aae50b73c13f
+---
+> first ce6fbbfd64fe2cb2
+> again ce6fbbfd64fe2cb2
+> changed ce6fbbfd64fe2cb2
+> graphtype 464131e3e52850ac
+> usertype ce6fbbfd64fe2cb2
+first ce6fbbfd64fe2cb2;again ce6fbbfd64fe2cb2;changed ce6fbbfd64fe2cb2;graphtype 464131e3e52850ac;usertype ce6fbbfd64fe2cb2;
+== run-PT-1 usertype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines usertype = first textually (10)
+== run2-PT-1 usertype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines usertype = first textually (10)
+== strict-PT-1 usertype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines usertype = first textually (10)
+== R5 run-PT-1 vs run-PT-1 (common passes, exact)
+compared 32 digests: 0 exact differences, 0 failures
+== run3-PT-1 (ND dfc6663, clean) vs run-PT-1 (exact)
+compared 39 digests: 0 exact differences, 0 failures
+run3-PT-1 P lines identical to run-PT-1
+== run3-PT-1 usertype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+P lines usertype = first textually
+first 69f1aae50b73c13f;again 69f1aae50b73c13f;changed 69f1aae50b73c13f;graphtype 5dca5abe54d85268;usertype 69f1aae50b73c13f;
