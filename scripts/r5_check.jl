@@ -1,4 +1,4 @@
-# W-32, open issue 118 (E-245): r3_workload.jl with the workload's `SII.getu(sol, …)` read by TDE's `getu` (the trait
+# W-32, open issue 118 (E-245): r3_workload.jl with the workload's `SII.getu(sol, …)` read by TDE's `getu` instead (the trait
 # protocol: the network an `IndexProvider{I}` of its own indices), checked exactly against NetworkDynamics' own
 # reading over `NWState` at the saved times; a callback's view and the integrator read by `getu` too.
 #     scripts/r5_run.sh <name> scripts/r5_check.jl
@@ -179,7 +179,7 @@ function step_e(nw, sol)
     attempt("e", "sol(TIMES; idxs = EIndex(2, :P))", () -> sol(TIMES; idxs = EIndex(2, :P)))
     attempt("e", "NWState(sol, 3.0)", () -> NWState(sol, 3.0))
     attempt("e", "extract_nw(sol)", () -> NetworkDynamics.extract_nw(sol))
-    attempt("e", "SII.getu(sol, eidxs(nw, :, :P))", () -> SII.getu(sol, eidxs(nw, :, :P))(sol))
+    # 118: `SII.getu(sol, …)` read by TDE's getu (SymbolicIndexingInterface interop is not taken: open issue 118's decision)
     # 118: TDE's getu by the network's own indices, against NetworkDynamics' own reading over NWState
     attempt("e", "getu(sol, eidxs(nw, :, :P))(sol) = NWState(sol, t).e[:, :P]", () -> begin
         v = getu(sol, eidxs(nw, :, :P))(sol)
