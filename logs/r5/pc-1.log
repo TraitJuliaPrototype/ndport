@@ -1,0 +1,37 @@
+jl: slot 1 (cores 0-3), depot /tmp/claude-1000/depots/ndr5
+Precompiling packages...
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceChainRulesCoreExt
+   0.4 s  ✓ GPUArraysCore
+   0.4 s  ✓ ADTypes → ADTypesChainRulesCoreExt
+   1.1 s  ✓ PreallocationTools
+   0.6 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerChainRulesCoreExt
+   0.4 s  ✓ DifferentiationInterface → DifferentiationInterfaceChainRulesCoreExt
+   0.8 s  ✓ SparseMatrixColorings → SparseMatrixColoringsColorsExt
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+   0.4 s  ✓ DifferentiationInterface → DifferentiationInterfaceGPUArraysCoreExt
+   0.9 s  ✓ PreallocationTools → PreallocationToolsForwardDiffExt
+  14.9 s  ✓ LLVM
+   0.6 s  ✓ LLVM → BFloat16sExt
+   1.6 s  ✓ UnsafeAtomics
+   0.6 s  ✓ Atomix
+   2.6 s  ✓ KernelAbstractions
+   0.8 s  ✓ KernelAbstractions → LinearAlgebraExt
+   1.0 s  ✓ KernelAbstractions → SparseArraysExt
+   4.1 s  ✓ NNlib
+   1.0 s  ✓ NNlib → NNlibSpecialFunctionsExt
+   1.2 s  ✓ NNlib → NNlibForwardDiffExt
+   1.6 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNNlibExt
+  38.2 s  ✓ TraitWorld
+   1.6 s  ✓ TraitArrayTools
+   2.3 s  ✓ TraitIndexing
+   4.1 s  ✓ Graphs
+   1.2 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+  10.7 s  ✓ ODECore
+   2.5 s  ✓ TraitRodas
+  15.7 s  ✓ TraitMakie
+   4.1 s  ✓ MakieCompat
+   8.7 s  ✓ TraitNonlinearSolve
+   2.0 s  ✓ GraphMakie
+  12.9 s  ✓ TraitDifferentialEquations
+  21.7 s  ✓ NetworkDynamics
+  34 dependencies successfully precompiled in 82 seconds. 183 already precompiled.

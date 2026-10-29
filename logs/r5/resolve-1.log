@@ -1,0 +1,84 @@
+jl: slot 2 (cores 4-7), depot /tmp/claude-1000/depots/ndr5
+┌ Warning: could not download https://pkg.julialang.org/registries
+│   exception = RequestError: HTTP/1.1 403 not in this command's allowed_domains ? re-run the command with this host listed if it needs it (CONNECT tunnel failed, response 403) while requesting https://pkg.julialang.org/registries
+└ @ Pkg.Registry ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Pkg/src/Registry/Registry.jl:121
+    Updating `~/Repos/julia-trait-bound/ndport/env_r5/Project.toml`
+  [1ecd5474] + GraphMakie v0.6.6 `../pkgs/GraphMakie-ports`
+  [5b0f4c2e] + MakieCompat v0.0.1 `../../TraitMakie/compat/MakieCompat`
+  [46757867] + NetworkLayout v0.4.11 `../pkgs/NetworkLayout.jl`
+  [510215fc] + Observables v0.5.5
+  [46a11cac] + TraitMakie v0.0.1 `../../TraitMakie`
+    Updating `~/Repos/julia-trait-bound/ndport/env_r5/Manifest.toml`
+  [159f3aea] + Cairo v1.1.1
+⌃ [3da002f7] + ColorTypes v0.12.4
+⌃ [5ae59095] + Colors v0.13.3
+⌅ [53c48c17] + FixedPointNumbers v0.8.6
+  [5c1252a2] + GeometryBasics v0.5.13
+  [1ecd5474] + GraphMakie v0.6.6 `../pkgs/GraphMakie-ports`
+  [a2bd30eb] + Graphics v1.1.3
+  [5b0f4c2e] + MakieCompat v0.0.1 `../../TraitMakie/compat/MakieCompat`
+  [46757867] + NetworkLayout v0.4.11 `../pkgs/NetworkLayout.jl`
+  [510215fc] + Observables v0.5.5
+  [3a141323] + PolynomialRoots v1.1.0
+  [46a11cac] + TraitMakie v0.0.1 `../../TraitMakie`
+  [6e34b625] + Bzip2_jll v1.0.9+0
+  [83423d85] + Cairo_jll v1.18.8+1
+⌅ [5ae413db] + EarCut_jll v2.2.4+0
+  [2e619515] + Expat_jll v2.9.0+0
+⌃ [a3f928ae] + Fontconfig_jll v2.17.1+0
+  [d7e528f0] + FreeType2_jll v2.15.0+0
+  [559328eb] + FriBidi_jll v1.0.18+0
+⌅ [b0724c58] + GettextRuntime_jll v0.22.4+0
+  [7746bdde] + Glib_jll v2.90.1+0
+  [3b182d85] + Graphite2_jll v1.3.16+0
+⌃ [2e76f6c2] + HarfBuzz_jll v100.14006.0+0
+  [1d63c593] + LLVMOpenMP_jll v23.1.1+0
+⌅ [e9f186c6] + Libffi_jll v3.4.7+0
+  [94ce4f54] + Libiconv_jll v1.18.0+0
+  [4b2f31a3] + Libmount_jll v2.42.4+0
+  [38a345b3] + Libuuid_jll v2.42.4+0
+  [36c8627f] + Pango_jll v1.58.2+0
+  [30392449] + Pixman_jll v0.46.4+0
+  [4f6342f7] + Xorg_libX11_jll v1.8.14+0
+  [0c0b7dd1] + Xorg_libXau_jll v1.0.13+0
+  [a3789734] + Xorg_libXdmcp_jll v1.1.6+0
+  [1082639a] + Xorg_libXext_jll v1.3.8+0
+  [ea2f1a96] + Xorg_libXrender_jll v0.9.13+0
+  [c7cfdc94] + Xorg_libxcb_jll v1.17.1+0
+  [c5fb5394] + Xorg_xtrans_jll v1.6.0+0
+  [b53b4c65] + libpng_jll v1.6.59+1
+  [0dad84c5] + ArgTools v1.1.2
+  [f43a241f] + Downloads v1.7.0
+  [b27032c2] + LibCURL v1.0.0
+  [76f85450] + LibGit2 v1.11.0
+  [ca575930] + NetworkOptions v1.3.0
+  [44cfe95a] + Pkg v1.13.0
+  [a4e569a6] + Tar v1.10.0
+  [deac9b47] + LibCURL_jll v8.22.0+0
+  [e37daf67] + LibGit2_jll v1.9.7+0
+  [29816b5a] + LibSSH2_jll v1.11.104+0
+  [14a3606d] + MozillaCACerts_jll v2026.8.13
+  [458c3c95] + OpenSSL_jll v3.5.8+0
+  [efcefdf7] + PCRE2_jll v10.46.0+0
+  [83775a58] + Zlib_jll v1.3.2+0
+  [3161d3a3] + Zstd_jll v1.5.7+1
+  [8e850ede] + nghttp2_jll v1.70.0+0
+  [3f19e933] + p7zip_jll v17.8.3+0
+        Info Packages marked with ⌃ and ⌅ have new versions available. Those with ⌃ may be upgradable, but those with ⌅ are restricted by compatibility constraints from upgrading. To see why use `status --outdated -m`
+Status `~/Repos/julia-trait-bound/ndport/env_r5/Project.toml`
+  [1ecd5474] GraphMakie v0.6.6 `../pkgs/GraphMakie-ports`
+  [86223c79] Graphs v1.15.0 `../pkgs/Graphs-p4`
+  [5b0f4c2e] MakieCompat v0.0.1 `../../TraitMakie/compat/MakieCompat`
+  [22e9dc34] NetworkDynamics v1.3.0 `../pkgs/NetworkDynamics-ports`
+  [46757867] NetworkLayout v0.4.11 `../pkgs/NetworkLayout.jl`
+  [dde65c3d] ODECore v0.0.1 `../../TraitDifferentialEquations/lib/ODECore`
+  [510215fc] Observables v0.5.5
+  [aedffcd0] Static v1.4.6 `../pkgs/Static.jl`
+  [2efcf032] SymbolicIndexingInterface v0.3.55
+  [1b9b79cd] TraitArrayTools v0.0.1 `../../TraitDifferentialEquations/lib/TraitArrayTools`
+  [fc9886c1] TraitDifferentialEquations v0.0.1 `../../TraitDifferentialEquations`
+  [33517989] TraitIndexing v0.0.1 `../../TraitDifferentialEquations/lib/TraitIndexing`
+  [46a11cac] TraitMakie v0.0.1 `../../TraitMakie`
+  [86edfd3c] TraitNonlinearSolve v0.0.1 `../../TraitDifferentialEquations/lib/TraitNonlinearSolve`
+  [bf920f43] TraitRodas v0.0.1 `../../TraitDifferentialEquations/lib/TraitRodas`
+  [7a3c1e52] TraitWorld v0.1.0 `../../TraitWorld`

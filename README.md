@@ -25,6 +25,7 @@ The workload is part P1 of the meta plan ([`../writeup/plans/2026-10-21-ndport-w
 - `scripts/compare_digests.py <ref.log> <log> [--exact]`, `scripts/summarize.py <logs>`, `scripts/check_env.py`.
 - The settings: U (`env_upstream`, patched build), P0 (`env_port`, TraitWorld loaded, product setting), A0 (`env_port` under `all`, depot `depot-facts/`), S (stock 1.13.2, depot `depot-stock/`); N (NetworkDynamics wrapped whole, `pkgs/NetworkDynamics-p3wrap`, `env_p3`, `depot-p3`), W (N plus the workload's own module a trait module), P4 (the port, `pkgs/NetworkDynamics-p4`, `env_p4`, `depot-p4`), I (P6, E-155: the SciML core wrapped inside out, `pkgs/*-p6`, `env_p6`, `depot-p6`, NetworkDynamics as in N; its default script `p6_workload.jl` prints strict mode's state). From E-165: P4P (`env_p4_pin`, `depot-p4pin`), IP (`env_p6_pin`, `depot-p6pin`): the tracks' last steps on TraitWorld c655dde (the worktree `TraitWorld-port`); M (`env_merged`, `depot-merged`): the merge, the trees on branches `port` (`logs/merge/NOTES.md`). Since 2026-10-22 13:34 every run is on two cores (`taskset -c 0-1`), idle I/O class, one precompile task; the header says so.
 - From 2026-10-29 (R1, E-236): PT (`env_ports`, `depot-ports`; strict mode on in `depot-ports-strict`): NetworkDynamics from the worktree `pkgs/NetworkDynamics-ports` (branch `ports`) on TraitDifferentialEquations `w34`'s packages, upstream SciML stubbed (`src/r1_stubs.jl`, places marked `# R1:`); `env_r1plot`: the scratch GraphMakie (`pkgs/GraphMakie-r1`, branch `r1-scratch`) over MakieCompat and TraitMakie. Scripts `scripts/r1_*` (`r1_pc.sh <log> [env]` precompiles, `r1_run.sh <log> <script> [env]` runs; `R1_STRICT=1`).
+- From 2026-10-29 (R5, E-245, E-246): `env_r5`: `env_ports` with GraphMakie's branch `ports`, MakieCompat and TraitMakie (setting PT for the whole workload; depot `depot-ports`, `depot-ports-strict` with strict mode). The workload's variant for the ports: `NDW_API=ports` (Rodas5 for Rodas5P, the values at `TIMES` by `saveat`, `getu` for `SII.getu`, the network's type per pass as `N` lines, the fixed point's angles centred (`δc`), the graph plots' digests of E-240 as `P` lines), on either stack (`NDW_STACK=ports` or upstream's); `NDW_TIGHT=1` (tolerances 1e-12), `NDW_TSTOPS=1` (the steps end at `TIMES`). `scripts/r5_workload.sh <name> <PT|UP> [runs]` (UP: U′, `env_upstream`); `scripts/r5_compare_plots.py`, `scripts/r5_nearer.py` (the tie-break); `scripts/r5_run.sh`, `scripts/r5_check.jl` (open issue 118's check), `scripts/r5_probe_tsit5.jl`.
 - From 2026-10-29 (R2, E-240): `env_r2plot`: GraphMakie's branch `ports` (`pkgs/GraphMakie-ports`, a worktree; upstream 0.6.6 with `Makie` read as MakieCompat, lines marked `# ports`) over MakieCompat and TraitMakie. `scripts/r2_plot_digest.jl <M|PT> <out dir>` draws steps f and g's graph plots with fixed inputs and prints digests (positions, colours as handed to the drawing, line data), in `env_merged` (setting M) or `env_r2plot`; `scripts/r2_leaves_probe.jl` tries GraphMakie's other features.
 - `NDW_ORDER=simfirst`: the plotting packages load after the first simulation (P3's order B), with the CodeInstances the load discards counted (`G` line). `NDW_STRICT=1`: strict mode. `NDW_SCRIPT=<path>`: another script in the harness (`p3_census.jl`, `p3_pirate.jl`).
 
@@ -239,3 +240,30 @@ julia-1.13 bfca89decc, TraitWorld main d22ec7b, TDE `w34` e4eeed9 and 388cb33, N
 | dense output | the solve without `saveat`, read at `TIMES`: equal to the `saveat` values (difference 0.0) |
 | failures listed (`run-3.log`, `run-4.log`) | 4 (R2: 24): `SII.getu(sol, eidxs(nw, :, :P))` in each pass (open issue 118) |
 | the test subset (`ndtest-1.log`) | as R2's counts, with the `idxs` and `ODEFunction` stand-ins gone: diffusion's in-place function ends with `nothing` at the source (open issue 120, `# ports`); left `:111` (allocations) and TDE refusing the two DAE networks; `Rodas4` still read as `Rodas5` |
+
+### 2026-10-29: open issue 118 and the ported workload against U′ (E-245, E-246, steps R3–R5)
+
+julia-1.13 bfca89decc, TraitWorld main 4579236, TDE `w34` 282edb3, TraitMakie c0d5c36, NetworkDynamics `ports` ddf7259, GraphMakie `ports` 498be7c, ndport 38692c1 (the runs); product setting; one thread; `logs/r5/`. Not a measurement: the times are printed, not compared (the runs shared the machine).
+
+Open issue 118 (E-245; TDE's side: `../experiments/w34-sciml/README.md`, section E-245): the network implements TraitIndexing's `IndexProvider{NWIndex}`; TDE's solution, integrator and a callback's view read its indices through `getu`.
+
+| | PT |
+|---|---|
+| the R3 script with `getu` for `SII.getu` (`check-3.log`) | 0 failures (E-242: 4); `getu(sol, eidxs(nw, :, :P))(sol)` and three more index forms exactly NetworkDynamics' own reading over `NWState`; from a callback's view and the integrator too |
+| the test subset (`ndtest-1.log`) | as E-242's: massmatrix 6, doctor 26, diffusion 108 pass, `:111` fails (allocations), a DAE refused; inhomogeneous 39 pass, a DAE refused |
+
+The ported workload (E-246), passes `first`, `again`, `params`, `changed`, `graphtype`; PT 2 runs (`run-PT-1`, `-2`), 1 run with strict mode on (`strict-PT-1`); U′ 2 runs (`run-UP-1`, `-2`); the tie-break at tolerances 1e-12 (`tight-*`); the supplement with the steps ending at `TIMES` (`tstops-*`). Comparisons: `compare-run.txt`, `nearer-run.txt`, `compare-tstops.txt`.
+
+| Check | Result |
+|---|---|
+| PT runs: all passes, every step | 32 digests and 50 plot lines per run |
+| PT's runs against each other; strict mode on against off | **exactly equal** (32 digests, 50 plot lines); strict mode refuses nothing |
+| `graphtype` against `first` (PT) | **exactly equal** (7 digests, 10 plot lines); upstream refuses the graph type at b |
+| the network's type, swing and swing2 | **the same** in PT (`N` lines); two types upstream |
+| U′'s runs against each other | exactly equal |
+| PT against U′, by tolerance (states `rtol = 1e-5`, `atol = 1e-7`, trips as groups) | a–d and f, g within tolerance (the cascade's lines and order equal; ω, the trips' times, `λmax`, the centred angles); **11 failures, all step e's line flows** (`P2`, `P3`, `Pend`), by up to 7.6e-6 |
+| the tie-break: which is nearer the run at 1e-12 (PT's and U′'s tight runs agree within tolerance) | **U′** for every Tsit5 value (U′ 1e-8–1e-7 from it, PT 1e-6–8e-6); PT for Rodas5's (`ω2r`) |
+| why | TDE's Tsit5 takes the same steps as upstream's (160 accepted, 0 rejected; `probe-tsit5-*.log`) but reads values between steps by a cubic Hermite polynomial: at `TIMES` 1.8e-6 from the tight run, upstream's own interpolant 1.3e-7; with the steps ending at `TIMES` both 9.7e-8. Events are located on the same interpolant, so the trips' times are 5e-7–2.5e-6 off in PT (U′: 4e-8), and the flows after them differ; with `tstops` (`compare-tstops.txt`) step d is within tolerance and step e's flows still are not |
+| the graph plots from the simulation (positions, colours as drawn, line data), PT against U′ | **within tolerance** (40 plot lines: positions equal to 4 digits, colours within 1 of 255 per channel) |
+| reported, not compared | the solutions' hashes; the fixed point's hash (the angles 1.3e-4 apart by a common shift); the PNG's size (CairoMakie 1200 × 900, TraitMakie 600 × 450); saved states (U′ 38: `TIMES` and before and after each event; PT 7: `TIMES`) |
+

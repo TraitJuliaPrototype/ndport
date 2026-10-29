@@ -1,0 +1,4 @@
+jl: slot 1 (cores 0-3), depot /tmp/claude-1000/depots/ndr5
+PROBE stack=upstream saveat err=1.2609945090891195e-7 steps=(160, 0)
+PROBE stack=upstream saveat+tstops err=9.794476382718464e-8 steps=(170, 0)
+PROBE stack=upstream dense err=1.2609945090891195e-7 steps=(160, 0)

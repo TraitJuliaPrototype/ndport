@@ -1,0 +1,18 @@
+jl: slot 1 (cores 0-3), depot /tmp/claude-1000/depots/ndr5s
+Precompiling packages...
+   0.7 s  ✓ SparseMatrixColorings → SparseMatrixColoringsColorsExt
+   0.9 s  ✓ NetworkLayout
+  35.1 s  ✓ TraitWorld
+   1.7 s  ✓ TraitArrayTools
+   2.4 s  ✓ TraitIndexing
+   4.3 s  ✓ Graphs
+   1.4 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+  11.3 s  ✓ ODECore
+   2.8 s  ✓ TraitRodas
+  16.6 s  ✓ TraitMakie
+   5.1 s  ✓ MakieCompat
+   9.4 s  ✓ TraitNonlinearSolve
+   2.4 s  ✓ GraphMakie
+  14.1 s  ✓ TraitDifferentialEquations
+  24.7 s  ✓ NetworkDynamics
+  15 dependencies successfully precompiled in 83 seconds. 202 already precompiled.

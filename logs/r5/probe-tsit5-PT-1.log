@@ -1,0 +1,4 @@
+jl: slot 2 (cores 4-7), depot /tmp/claude-1000/depots/ndr5
+PROBE stack=ports saveat err=1.8279711606339344e-6 steps=(160, 0)
+PROBE stack=ports saveat+tstops err=9.73667854675675e-8 steps=(170, 0)
+PROBE stack=ports dense err=1.8279711606339344e-6 steps=(160, 0)

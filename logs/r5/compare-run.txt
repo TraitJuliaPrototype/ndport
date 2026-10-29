@@ -1,0 +1,45 @@
+== PT-1 vs PT-2 (exact)
+compared 32 digests: 0 exact differences, 0 failures
+== PT strict vs PT-1 (exact)
+compared 32 digests: 0 exact differences, 0 failures
+== PT graphtype vs first (exact)
+compared 7 digests: 0 exact differences, 0 failures
+== UP-1 vs UP-2 (exact)
+compared 27 digests: 0 exact differences, 0 failures
+== plots PT-1 vs PT-2, strict
+compared 50 plot lines: 0 failures
+compared 50 plot lines: 0 failures
+run-PT-1 P lines identical to run-PT-1
+run-PT-2 P lines identical to run-PT-1
+strict-PT-1 P lines identical to run-PT-1
+== plots graphtype vs first
+largest differences by kind: {}
+compared 10 plot lines: 0 failures
+== U′ vs PT (tolerance)
+('again', 'e') P2: OUT OF TOLERANCE: -0.1280424121,-0.1280424121,-0.4598860489,-0.3909288835,0.6156849161,-0.03886958238,-0.2563265503 | -0.1280424121,-0.1280424121,-0.4598859375,-0.3909300184,0.6156864114,-0.03887432535,-0.2563284965
+('again', 'e') P3: OUT OF TOLERANCE: 0,0.6156849161,0.2161449076,0,-0.04493877656,-0.3568719863 | 0,0.6156864114,0.2161493997,0,-0.04493868038,-0.3568713488
+('again', 'e') Pend: OUT OF TOLERANCE: 0,-0.2563265503,-0,-0,-0.341324321,-0 | 0,-0.2563284965,-0,-0,-0.3413319774,-0
+('changed', 'e') P2: OUT OF TOLERANCE: -0.1280424121,-0.1280424121,-0.4593457967,-0.3914848699,0.6121062079,0.0477898004,0.06462736114 | -0.1280424121,-0.1280424121,-0.4593456844,-0.391485942,0.6121076699,0.04779090697,0.06462725463
+('changed', 'e') P3: OUT OF TOLERANCE: 0,0.6121062079,0.232214062,0,-0.04251490102,-0.3536818554 | 0,0.6121076699,0.2322183861,0,-0.04251469553,-0.35368115
+('changed', 'e') Pend: OUT OF TOLERANCE: -0,0.06462736114,0.006299508371,0,-0.1273872145,-0 | -0,0.06462725463,0.00629962569,0,-0.1273891872,-0
+('first', 'e') P2: OUT OF TOLERANCE: -0.1280424121,-0.1280424121,-0.4598860489,-0.3909288835,0.6156849161,-0.03886958238,-0.2563265503 | -0.1280424121,-0.1280424121,-0.4598859375,-0.3909300184,0.6156864114,-0.03887432535,-0.2563284965
+('first', 'e') P3: OUT OF TOLERANCE: 0,0.6156849161,0.2161449076,0,-0.04493877656,-0.3568719863 | 0,0.6156864114,0.2161493997,0,-0.04493868038,-0.3568713488
+('first', 'e') Pend: OUT OF TOLERANCE: 0,-0.2563265503,-0,-0,-0.341324321,-0 | 0,-0.2563284965,-0,-0,-0.3413319774,-0
+('params', 'e') P2: OUT OF TOLERANCE: -0.1280424121,-0.1280424121,-0.4551065301,-0.4016464528,0.6239886875,-0.1714363442,-0.2271283289 | -0.1280424121,-0.1280424121,-0.4551064969,-0.4016467797,0.6239896894,-0.1714412742,-0.2271269846
+('params', 'e') P3: OUT OF TOLERANCE: 0,0.6239886875,0.3200752051,0,-0.03046343673,-0.3363519472 | 0,0.6239896894,0.3200778385,0,-0.03046434665,-0.3363523794
+compared 25 digests: 13 exact differences, 11 failures
+      4 pixels:
+      3 rsol:
+      3 sol:
+      3 u:
+== plots U′ vs PT
+largest differences by kind: {'edgecolors': 1.0}
+compared 40 plot lines: 0 failures
+== N lines
+N first nwtype 7debe3c91858525d Network{9 parameters}
+N again nwtype 7debe3c91858525d Network{9 parameters}
+N changed nwtype 7debe3c91858525d Network{9 parameters}
+N graphtype nwtype b763c4a10fb33bad Network{9 parameters}
+N first nwtype eb96eae963dce84d Network{9 parameters}
+N again nwtype eb96eae963dce84d Network{9 parameters}
+N changed nwtype 9527098ec12c98df Network{9 parameters}
