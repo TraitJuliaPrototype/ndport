@@ -25,6 +25,7 @@ The workload is part P1 of the meta plan ([`../writeup/plans/2026-10-21-ndport-w
 - `scripts/compare_digests.py <ref.log> <log> [--exact]`, `scripts/summarize.py <logs>`, `scripts/check_env.py`.
 - The settings: U (`env_upstream`, patched build), P0 (`env_port`, TraitWorld loaded, product setting), A0 (`env_port` under `all`, depot `depot-facts/`), S (stock 1.13.2, depot `depot-stock/`); N (NetworkDynamics wrapped whole, `pkgs/NetworkDynamics-p3wrap`, `env_p3`, `depot-p3`), W (N plus the workload's own module a trait module), P4 (the port, `pkgs/NetworkDynamics-p4`, `env_p4`, `depot-p4`), I (P6, E-155: the SciML core wrapped inside out, `pkgs/*-p6`, `env_p6`, `depot-p6`, NetworkDynamics as in N; its default script `p6_workload.jl` prints strict mode's state). From E-165: P4P (`env_p4_pin`, `depot-p4pin`), IP (`env_p6_pin`, `depot-p6pin`): the tracks' last steps on TraitWorld c655dde (the worktree `TraitWorld-port`); M (`env_merged`, `depot-merged`): the merge, the trees on branches `port` (`logs/merge/NOTES.md`). Since 2026-10-22 13:34 every run is on two cores (`taskset -c 0-1`), idle I/O class, one precompile task; the header says so.
 - From 2026-10-29 (R1, E-236): PT (`env_ports`, `depot-ports`; strict mode on in `depot-ports-strict`): NetworkDynamics from the worktree `pkgs/NetworkDynamics-ports` (branch `ports`) on TraitDifferentialEquations `w34`'s packages, upstream SciML stubbed (`src/r1_stubs.jl`, places marked `# R1:`); `env_r1plot`: the scratch GraphMakie (`pkgs/GraphMakie-r1`, branch `r1-scratch`) over MakieCompat and TraitMakie. Scripts `scripts/r1_*` (`r1_pc.sh <log> [env]` precompiles, `r1_run.sh <log> <script> [env]` runs; `R1_STRICT=1`).
+- From 2026-10-29 (R2, E-240): `env_r2plot`: GraphMakie's branch `ports` (`pkgs/GraphMakie-ports`, a worktree; upstream 0.6.6 with `Makie` read as MakieCompat, lines marked `# ports`) over MakieCompat and TraitMakie. `scripts/r2_plot_digest.jl <M|PT> <out dir>` draws steps f and g's graph plots with fixed inputs and prints digests (positions, colours as handed to the drawing, line data), in `env_merged` (setting M) or `env_r2plot`; `scripts/r2_leaves_probe.jl` tries GraphMakie's other features.
 - `NDW_ORDER=simfirst`: the plotting packages load after the first simulation (P3's order B), with the CodeInstances the load discards counted (`G` line). `NDW_STRICT=1`: strict mode. `NDW_SCRIPT=<path>`: another script in the harness (`p3_census.jl`, `p3_pirate.jl`).
 
 ## Results
@@ -194,3 +195,16 @@ julia-1.13 bfca89decc, TraitWorld main ca92f22, TDE `w34` 3a51d95, TraitMakie 2c
 | the test subset (`ndtest-4.log`, stand-ins on) | as E-166's, except diffusion `:129` (a mass matrix ignored) |
 | GraphMakie over MakieCompat (`gm-run-9.log`) | loads with stand-ins; `graphplot` stops at its first old-API `scatter!` leaf |
 
+### 2026-10-29: GraphMakie's plots on the ports (E-240, step R2, the Makie side)
+
+julia-1.13 bfca89decc, TraitWorld main ca92f22, TraitMakie b68d97a, GraphMakie `ports` 498be7c; `env_r2plot` against setting M (`env_merged`, depot `depot-merged`); product setting, strict mode off; `logs/r2-makie/`. Not a measurement. Steps f and g's plots drawn with the same fixed inputs (not the simulation's: the plots are compared, not the solver).
+
+| | PT (`env_r2plot`) against M |
+|---|---|
+| GraphMakie on the ports | upstream's 0.6.6, its imports only changed (6 lines, marked); R1's stand-ins gone |
+| step f: `fig, ax, p = graphplot(…)`, `hidedecorations!`, `save` | runs; the 13 digest lines equal M's (`digest-M-1.log`, `digest-PT-1.log`) |
+| node positions (20), edge line data (120 points, 40 NaN breaks) | equal to 4 digits |
+| node colours (`:balance`, range −3..3), edge colours (`:viridis`, automatic range) | equal as RGBA × 255 |
+| step g: an `Observable` colour vector into `graphplot!`, a `lift`ed line into `lines!`, `limits!`; 10 frames, 4 saved | runs; colours at each saved frame, the line (11 points) and the listeners (10) equal M's |
+| the PNGs | the same figures, not the same pixels (TraitMakie's axis layout and fonts; a `:circle` of markersize 14 is 14 px wide, CairoMakie's about 10) |
+| other features (`leaves-probe-1.log`) | node and edge labels, per-edge widths, named markers, a layout as points, attributes changed after the plot, curved edges: draw. Not on the ports: inner labels (text bounding boxes), directed graphs (arrow markers are rotated glyphs), dashed edges |

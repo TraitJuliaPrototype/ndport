@@ -1,0 +1,16 @@
+[deps]
+GraphMakie = "1ecd5474-83a3-4783-bb4f-06765db800d2"
+Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
+NetworkLayout = "46757867-2c16-5918-afeb-47bfcb05e46a"
+MakieCompat = "5b0f4c2e-8a51-4d3e-9c77-2f6a1e0b8d43"
+Observables = "510215fc-4207-5dde-b226-833fc4488ee2"
+TraitMakie = "46a11cac-d2c9-498a-a901-1fb9b8611426"
+TraitWorld = "7a3c1e52-9b4d-4f6e-8a21-5d0c3b9e7f14"
+
+[sources]
+GraphMakie = {path = "../pkgs/GraphMakie-ports"}
+Graphs = {path = "../pkgs/Graphs-p4"}
+NetworkLayout = {path = "../pkgs/NetworkLayout.jl"}
+MakieCompat = {path = "../../TraitMakie/compat/MakieCompat"}
+TraitMakie = {path = "../../TraitMakie"}
+TraitWorld = {path = "../../TraitWorld"}

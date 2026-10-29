@@ -1,0 +1,12 @@
+# E-240 2026-10-29T12:56:54+01:00 env_r2plot (GraphMakie ports, MakieCompat, TraitMakie with R2's changes), julia-1.13 bfca89decc, TraitWorld ca92f22
+R2 probe node labels (text! leaf) ok
+R2 probe edge labels (text! leaf, to_px) ok
+R2 probe per-edge widths and colours by name ok
+R2 probe node markers by name ok
+R2 probe a layout given as points ok
+R2 probe attributes changed after the plot (p.node_color, p.layout) ok
+R2 probe linesegments! (user API) ok
+R2 probe inner labels (ilabels: text bounding boxes) FAIL MethodError: MethodError: no method matching fast_string_boundingboxes(::MakieCompat.Child)
+R2 probe a directed graph (arrows: a Char marker, rotated) FAIL ArgumentError: ArgumentError: marker '➤': the core draws its named markers (circle, cross, diamond, rect, utriangle) only
+R2 probe curved edges (Bézier paths) ok
+R2 probe a dashed edge style FAIL ArgumentError: ArgumentError: linestyle :dash: the core draws solid lines only
