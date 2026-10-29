@@ -168,7 +168,6 @@ julia-1.13 bfca89decc, TraitWorld main ca92f22 (before: julia-1.13 2943086604, T
 |---|---|---|---|---|
 | digests against U (E-151) and E-166, exact | 0 differences | 0, 0 | 0 | 0, 0 |
 | refusals under strict mode | — | — | OffsetArrays' `reshape` | **none** |
-| extension warnings (precompile) | 69 | — | — | 59 (new: LinearSolveForwardDiffExt, NonlinearSolveBaseForwardDiffExt) |
 | first a–e | 30.8–31.4 s | 26.0 s | 33.0 s | 25.4 s |
 | first plot (f) | 15.3–15.4 s | 15.0 s | 20.7 s | 14.8 s |
 | changed b–e | 0.55–0.56 s | 0.47 s | 1.02 s | 0.47 s |
@@ -176,7 +175,7 @@ julia-1.13 bfca89decc, TraitWorld main ca92f22 (before: julia-1.13 2943086604, T
 | load Graphs+ND | 2.89–2.95 s | 2.55 s | 7.8 s | 5.31 s |
 | session | 65.2–66.1 s | 59.6 s | 83.8 s | 62.0 s |
 
-- Nothing broke: the stack precompiles (370 packages rebuilt, 388 s) and runs; no `OwnershipError`, no `PirateError`.
+- Nothing broke: the stack precompiles (370 packages rebuilt, 388 s) and runs; no `OwnershipError`, no `PirateError`. The precompile log's extension warnings: 59 (E-166's rebuild: 69); new among them LinearSolveForwardDiffExt and NonlinearSolveBaseForwardDiffExt.
 - Step d is back at E-166's 29 ms: E-162's 267.7 ms (julia-1.13 0c589fd385, open issue 66) does not recur on bfca89decc (W-57's part 1).
 - The strict-mode refusal of OffsetArrays' `reshape` (pushback P6-2) no longer occurs; not attributed.
 - From 2026-10-29 setting M loads TraitWorld from main (`../TraitWorld`); `TraitWorld-port` stays at `w49` for P4P and IP.
