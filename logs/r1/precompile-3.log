@@ -1,0 +1,5 @@
+# 2026-10-29T11:51:30+01:00 env=env_ports julia-1.13 bfca89decc TraitWorld ca92f22 TDE 3a51d95 TraitMakie 2c70583 ND-ports 068dcc9*
+Precompiling packages...
+  15.6 s  ✓ NetworkDynamics
+  1 dependency successfully precompiled in 16 seconds. 156 already precompiled.
+# rc=0

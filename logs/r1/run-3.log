@@ -1,0 +1,126 @@
+# 2026-10-29T11:57:50+01:00 script=scripts/r1_workload.jl env=env_ports julia-1.13 bfca89decc TraitWorld ca92f22 TDE 3a51d95 TraitMakie 2c70583 ND-ports 068dcc9* GraphMakie 327f80b load 0.68
+# r1_workload first julia 1.13.2
+R1 first a VertexModel/EdgeModel ok
+R1 first b Network(g, v, e) ok
+R1 first c find_fixpoint(nw) FAIL R1Gap: R1Gap: SteadyStateDiffEq.SSRootfind has no counterpart in the ports (R1 stub) @ _@r1_stubs.jl:26 < SSRootfind@r1_stubs.jl:26 < default_fixpoint_alg@initialization.jl:166 < #find_fixpoint#481@initialization.jl:83
+R1 first c find_fixpoint(nw) STANDIN relax(nw): Rodas5 over (0, 400) from zero
+R1 first c relax(nw) ok
+R1 first c jacobian_eigenvals(s) ok
+R1 first c isfixpoint(s) ok
+R1 first c s.e[:, :P] (observed) ok
+R1 first d ODEProblem(nw, NWState(nw), tspan) ok
+R1 first d remake(prob; p) FAIL R1Gap: R1Gap: SciMLBase.remake has no counterpart in the ports (R1 stub) @ #remake#17@r1_stubs.jl:21 < remake@r1_stubs.jl:20 < #step_d##6@r1_workload.jl:121 < attempt@r1_workload.jl:38
+R1 first d remake(prob; p) STANDIN a new problem per solve (C2)
+R1 first d get_callbacks(nw) FAIL R1Gap: R1Gap: SciMLBase.VectorContinuousCallback has no counterpart in the ports (R1 stub) @ #VectorContinuousCallback#15@r1_stubs.jl:21 < VectorContinuousCallback@r1_stubs.jl:20 < to_callback@callbacks.jl:462 < get_callbacks@callbacks.jl:260
+R1 first d get_callbacks(nw) STANDIN NetworkDynamics.get_callbacks_ports(nw): TDE's callbacks, one per output (R1 in the ND worktree)
+R1 first d get_callbacks_ports(nw) ok
+R1 first d ODEProblem(ODEFunction(nw; sys = nw), …) FAIL TraitBoundError: TraitBoundError: a Network{SequentialExecution{true}, SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{SimpleGraph{Int64}, Vector{NetworkDynamics.ComponentBatch{EdgeModel, Any, Any, FeedForwardType, Int64, Int64, @NamedTuple{src::Int64, dst::Int64}, @NamedTuple{src::Int64, dst::Int64}, Int64, Vector @ _dyn_nonconforming@core.jl:596 < Dynamic@core.jl:502 < _problem@frontend.jl:58 < ODEProblem@frontend.jl:0
+R1 first d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 first d solve(prob, Rodas5(); the discrete callbacks only) ok
+R1 first d solve(prob, Tsit5(); callback, saveat) ok
+R1 first d solve(prob, Rodas5(); callback, saveat) FAIL ArgumentError: ArgumentError: continuous callbacks: Tsit5 only @ rodas5_run@rodas5.jl:222 < rodas5_solve@rodas5.jl:207 < solve_core@rodas5.jl:195 < _dispatch@core.jl:1263
+R1 first d info retcode=Success trips= ttrips=
+R1 first d sol(TIMES; idxs = VIndex(2, :ω)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::VIndex{Int64, Symbol}) @ #step_d##25@r1_workload.jl:140 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:140 < #run_pass#43@r1_workload.jl:172
+R1 first e sol(TIMES; idxs = vidxs(nw, :, :ω)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::Vector{NetworkDynamics.SymbolicIndex}) @ #step_e##0@r1_workload.jl:146 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:146 < #run_pass#43@r1_workload.jl:173
+R1 first e sol(TIMES; idxs = EIndex(2, :P)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::EIndex{Int64, Symbol}) @ #step_e##2@r1_workload.jl:147 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:147 < #run_pass#43@r1_workload.jl:173
+R1 first e NWState(sol, 3.0) FAIL MethodError: MethodError: no method matching NWState(::ODESolution{Float64, Vector{Float64}}, ::Float64) @ #step_e##4@r1_workload.jl:148 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:148 < #run_pass#43@r1_workload.jl:173
+R1 first e extract_nw(sol) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ extract_nw@symbolicindexing.jl:1024 < #step_e##6@r1_workload.jl:149 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:149
+R1 first e SII.getu(sol, eidxs(nw, :, :P)) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ #step_e##8@r1_workload.jl:150 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:150 < #run_pass#43@r1_workload.jl:173
+R1 first e the solution's indexed forms STANDIN NWState(nw, sol.u[k], sol.prob.p, sol.t[k]) at the saveat times (C3, C7)
+R1 first e NWState(nw, u_k, p, t_k) over the saved times ok
+R1 first g init(prob, Tsit5()) FAIL R1Gap: R1Gap: SciMLBase.init has no counterpart in the ports (R1 stub) @ #init#18@r1_stubs.jl:21 < init@r1_stubs.jl:20 < #step_g##0@r1_workload.jl:160 < attempt@r1_workload.jl:38
+R1 first g TraitDifferentialEquations.init FAIL UndefVarError: UndefVarError: `init` not defined in `TraitDifferentialEquations` @ #step_g##2@r1_workload.jl:161 < attempt@r1_workload.jl:38 < step_g@r1_workload.jl:161 < #run_pass#43@r1_workload.jl:174
+R1 again a VertexModel/EdgeModel ok
+R1 again b Network(g, v, e) ok
+R1 again c find_fixpoint(nw) FAIL R1Gap: R1Gap: SteadyStateDiffEq.SSRootfind has no counterpart in the ports (R1 stub) @ _@r1_stubs.jl:26 < SSRootfind@r1_stubs.jl:26 < default_fixpoint_alg@initialization.jl:166 < #find_fixpoint#481@initialization.jl:83
+R1 again c find_fixpoint(nw) STANDIN relax(nw): Rodas5 over (0, 400) from zero
+R1 again c relax(nw) ok
+R1 again c jacobian_eigenvals(s) ok
+R1 again c isfixpoint(s) ok
+R1 again c s.e[:, :P] (observed) ok
+R1 again d ODEProblem(nw, NWState(nw), tspan) ok
+R1 again d remake(prob; p) FAIL R1Gap: R1Gap: SciMLBase.remake has no counterpart in the ports (R1 stub) @ #remake#17@r1_stubs.jl:21 < remake@r1_stubs.jl:20 < #step_d##6@r1_workload.jl:121 < attempt@r1_workload.jl:38
+R1 again d remake(prob; p) STANDIN a new problem per solve (C2)
+R1 again d get_callbacks(nw) FAIL R1Gap: R1Gap: SciMLBase.VectorContinuousCallback has no counterpart in the ports (R1 stub) @ #VectorContinuousCallback#15@r1_stubs.jl:21 < VectorContinuousCallback@r1_stubs.jl:20 < to_callback@callbacks.jl:462 < get_callbacks@callbacks.jl:260
+R1 again d get_callbacks(nw) STANDIN NetworkDynamics.get_callbacks_ports(nw): TDE's callbacks, one per output (R1 in the ND worktree)
+R1 again d get_callbacks_ports(nw) ok
+R1 again d ODEProblem(ODEFunction(nw; sys = nw), …) FAIL TraitBoundError: TraitBoundError: a Network{SequentialExecution{true}, SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{SimpleGraph{Int64}, Vector{NetworkDynamics.ComponentBatch{EdgeModel, Any, Any, FeedForwardType, Int64, Int64, @NamedTuple{src::Int64, dst::Int64}, @NamedTuple{src::Int64, dst::Int64}, Int64, Vector @ _dyn_nonconforming@core.jl:596 < Dynamic@core.jl:502 < _problem@frontend.jl:58 < ODEProblem@frontend.jl:0
+R1 again d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 again d solve(prob, Rodas5(); the discrete callbacks only) ok
+R1 again d solve(prob, Tsit5(); callback, saveat) ok
+R1 again d solve(prob, Rodas5(); callback, saveat) FAIL ArgumentError: ArgumentError: continuous callbacks: Tsit5 only @ rodas5_run@rodas5.jl:222 < rodas5_solve@rodas5.jl:207 < solve_core@rodas5.jl:195 < _dispatch@core.jl:1263
+R1 again d info retcode=Success trips= ttrips=
+R1 again d sol(TIMES; idxs = VIndex(2, :ω)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::VIndex{Int64, Symbol}) @ #step_d##25@r1_workload.jl:140 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:140 < #run_pass#43@r1_workload.jl:172
+R1 again e sol(TIMES; idxs = vidxs(nw, :, :ω)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::Vector{NetworkDynamics.SymbolicIndex}) @ #step_e##0@r1_workload.jl:146 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:146 < #run_pass#43@r1_workload.jl:173
+R1 again e sol(TIMES; idxs = EIndex(2, :P)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::EIndex{Int64, Symbol}) @ #step_e##2@r1_workload.jl:147 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:147 < #run_pass#43@r1_workload.jl:173
+R1 again e NWState(sol, 3.0) FAIL MethodError: MethodError: no method matching NWState(::ODESolution{Float64, Vector{Float64}}, ::Float64) @ #step_e##4@r1_workload.jl:148 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:148 < #run_pass#43@r1_workload.jl:173
+R1 again e extract_nw(sol) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ extract_nw@symbolicindexing.jl:1024 < #step_e##6@r1_workload.jl:149 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:149
+R1 again e SII.getu(sol, eidxs(nw, :, :P)) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ #step_e##8@r1_workload.jl:150 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:150 < #run_pass#43@r1_workload.jl:173
+R1 again e the solution's indexed forms STANDIN NWState(nw, sol.u[k], sol.prob.p, sol.t[k]) at the saveat times (C3, C7)
+R1 again e NWState(nw, u_k, p, t_k) over the saved times ok
+R1 again g init(prob, Tsit5()) FAIL R1Gap: R1Gap: SciMLBase.init has no counterpart in the ports (R1 stub) @ #init#18@r1_stubs.jl:21 < init@r1_stubs.jl:20 < #step_g##0@r1_workload.jl:160 < attempt@r1_workload.jl:38
+R1 again g TraitDifferentialEquations.init FAIL UndefVarError: UndefVarError: `init` not defined in `TraitDifferentialEquations` @ #step_g##2@r1_workload.jl:161 < attempt@r1_workload.jl:38 < step_g@r1_workload.jl:161 < #run_pass#43@r1_workload.jl:174
+R1 params d NWParameter(nw, p); new problem; solve ok
+R1 changed a VertexModel/EdgeModel ok
+R1 changed b Network(g, v, e) ok
+R1 changed c find_fixpoint(nw) FAIL R1Gap: R1Gap: SteadyStateDiffEq.SSRootfind has no counterpart in the ports (R1 stub) @ _@r1_stubs.jl:26 < SSRootfind@r1_stubs.jl:26 < default_fixpoint_alg@initialization.jl:166 < #find_fixpoint#481@initialization.jl:83
+R1 changed c find_fixpoint(nw) STANDIN relax(nw): Rodas5 over (0, 400) from zero
+R1 changed c relax(nw) ok
+R1 changed c jacobian_eigenvals(s) ok
+R1 changed c isfixpoint(s) ok
+R1 changed c s.e[:, :P] (observed) ok
+R1 changed d ODEProblem(nw, NWState(nw), tspan) ok
+R1 changed d remake(prob; p) FAIL R1Gap: R1Gap: SciMLBase.remake has no counterpart in the ports (R1 stub) @ #remake#17@r1_stubs.jl:21 < remake@r1_stubs.jl:20 < #step_d##6@r1_workload.jl:121 < attempt@r1_workload.jl:38
+R1 changed d remake(prob; p) STANDIN a new problem per solve (C2)
+R1 changed d get_callbacks(nw) FAIL R1Gap: R1Gap: SciMLBase.VectorContinuousCallback has no counterpart in the ports (R1 stub) @ #VectorContinuousCallback#15@r1_stubs.jl:21 < VectorContinuousCallback@r1_stubs.jl:20 < to_callback@callbacks.jl:462 < get_callbacks@callbacks.jl:260
+R1 changed d get_callbacks(nw) STANDIN NetworkDynamics.get_callbacks_ports(nw): TDE's callbacks, one per output (R1 in the ND worktree)
+R1 changed d get_callbacks_ports(nw) ok
+R1 changed d ODEProblem(ODEFunction(nw; sys = nw), …) FAIL TraitBoundError: TraitBoundError: a Network{SequentialExecution{true}, SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{SimpleGraph{Int64}, Vector{NetworkDynamics.ComponentBatch{EdgeModel, Any, Any, FeedForwardType, Int64, Int64, @NamedTuple{src::Int64, dst::Int64}, @NamedTuple{src::Int64, dst::Int64}, Int64, Vector @ _dyn_nonconforming@core.jl:596 < Dynamic@core.jl:502 < _problem@frontend.jl:58 < ODEProblem@frontend.jl:0
+R1 changed d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 changed d solve(prob, Rodas5(); the discrete callbacks only) ok
+R1 changed d solve(prob, Tsit5(); callback, saveat) ok
+R1 changed d solve(prob, Rodas5(); callback, saveat) FAIL ArgumentError: ArgumentError: continuous callbacks: Tsit5 only @ rodas5_run@rodas5.jl:222 < rodas5_solve@rodas5.jl:207 < solve_core@rodas5.jl:195 < _dispatch@core.jl:1263
+R1 changed d info retcode=Success trips= ttrips=
+R1 changed d sol(TIMES; idxs = VIndex(2, :ω)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::VIndex{Int64, Symbol}) @ #step_d##25@r1_workload.jl:140 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:140 < #run_pass#43@r1_workload.jl:172
+R1 changed e sol(TIMES; idxs = vidxs(nw, :, :ω)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::Vector{NetworkDynamics.SymbolicIndex}) @ #step_e##0@r1_workload.jl:146 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:146 < #run_pass#43@r1_workload.jl:173
+R1 changed e sol(TIMES; idxs = EIndex(2, :P)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::EIndex{Int64, Symbol}) @ #step_e##2@r1_workload.jl:147 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:147 < #run_pass#43@r1_workload.jl:173
+R1 changed e NWState(sol, 3.0) FAIL MethodError: MethodError: no method matching NWState(::ODESolution{Float64, Vector{Float64}}, ::Float64) @ #step_e##4@r1_workload.jl:148 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:148 < #run_pass#43@r1_workload.jl:173
+R1 changed e extract_nw(sol) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ extract_nw@symbolicindexing.jl:1024 < #step_e##6@r1_workload.jl:149 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:149
+R1 changed e SII.getu(sol, eidxs(nw, :, :P)) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ #step_e##8@r1_workload.jl:150 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:150 < #run_pass#43@r1_workload.jl:173
+R1 changed e the solution's indexed forms STANDIN NWState(nw, sol.u[k], sol.prob.p, sol.t[k]) at the saveat times (C3, C7)
+R1 changed e NWState(nw, u_k, p, t_k) over the saved times ok
+R1 changed g init(prob, Tsit5()) FAIL R1Gap: R1Gap: SciMLBase.init has no counterpart in the ports (R1 stub) @ #init#18@r1_stubs.jl:21 < init@r1_stubs.jl:20 < #step_g##0@r1_workload.jl:160 < attempt@r1_workload.jl:38
+R1 changed g TraitDifferentialEquations.init FAIL UndefVarError: UndefVarError: `init` not defined in `TraitDifferentialEquations` @ #step_g##2@r1_workload.jl:161 < attempt@r1_workload.jl:38 < step_g@r1_workload.jl:161 < #run_pass#43@r1_workload.jl:174
+R1 graphtype a VertexModel/EdgeModel ok
+R1 graphtype b Network(g, v, e) ok
+R1 graphtype c find_fixpoint(nw) FAIL R1Gap: R1Gap: SteadyStateDiffEq.SSRootfind has no counterpart in the ports (R1 stub) @ _@r1_stubs.jl:26 < SSRootfind@r1_stubs.jl:26 < default_fixpoint_alg@initialization.jl:166 < #find_fixpoint#481@initialization.jl:83
+R1 graphtype c find_fixpoint(nw) STANDIN relax(nw): Rodas5 over (0, 400) from zero
+R1 graphtype c relax(nw) ok
+R1 graphtype c jacobian_eigenvals(s) ok
+R1 graphtype c isfixpoint(s) ok
+R1 graphtype c s.e[:, :P] (observed) ok
+R1 graphtype d ODEProblem(nw, NWState(nw), tspan) ok
+R1 graphtype d remake(prob; p) FAIL R1Gap: R1Gap: SciMLBase.remake has no counterpart in the ports (R1 stub) @ #remake#17@r1_stubs.jl:21 < remake@r1_stubs.jl:20 < #step_d##6@r1_workload.jl:121 < attempt@r1_workload.jl:38
+R1 graphtype d remake(prob; p) STANDIN a new problem per solve (C2)
+R1 graphtype d get_callbacks(nw) FAIL R1Gap: R1Gap: SciMLBase.VectorContinuousCallback has no counterpart in the ports (R1 stub) @ #VectorContinuousCallback#15@r1_stubs.jl:21 < VectorContinuousCallback@r1_stubs.jl:20 < to_callback@callbacks.jl:462 < get_callbacks@callbacks.jl:260
+R1 graphtype d get_callbacks(nw) STANDIN NetworkDynamics.get_callbacks_ports(nw): TDE's callbacks, one per output (R1 in the ND worktree)
+R1 graphtype d get_callbacks_ports(nw) ok
+R1 graphtype d ODEProblem(ODEFunction(nw; sys = nw), …) FAIL TraitBoundError: TraitBoundError: a Network{SequentialExecution{true}, Graphs.Test.GenericGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.Test.GenericGraph{Int64}, Vector{NetworkDynamics.ComponentBatch{EdgeModel, Any, Any, FeedForwardType, Int64, Int64, @NamedTuple{src::Int64, dst::Int64}, @NamedTuple{src::Int64,  @ _dyn_nonconforming@core.jl:596 < Dynamic@core.jl:502 < _problem@frontend.jl:58 < ODEProblem@frontend.jl:0
+R1 graphtype d ODEProblem(ODEFunction(nw; mass_matrix = nw.mass_matrix), …) ok
+R1 graphtype d solve(prob, Rodas5(); the discrete callbacks only) ok
+R1 graphtype d solve(prob, Tsit5(); callback, saveat) ok
+R1 graphtype d solve(prob, Rodas5(); callback, saveat) FAIL ArgumentError: ArgumentError: continuous callbacks: Tsit5 only @ rodas5_run@rodas5.jl:222 < rodas5_solve@rodas5.jl:207 < solve_core@rodas5.jl:195 < _dispatch@core.jl:1263
+R1 graphtype d info retcode=Success trips= ttrips=
+R1 graphtype d sol(TIMES; idxs = VIndex(2, :ω)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::VIndex{Int64, Symbol}) @ #step_d##25@r1_workload.jl:140 < attempt@r1_workload.jl:38 < step_d@r1_workload.jl:140 < #run_pass#43@r1_workload.jl:172
+R1 graphtype e sol(TIMES; idxs = vidxs(nw, :, :ω)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::Vector{NetworkDynamics.SymbolicIndex}) @ #step_e##0@r1_workload.jl:146 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:146 < #run_pass#43@r1_workload.jl:173
+R1 graphtype e sol(TIMES; idxs = EIndex(2, :P)) FAIL MethodError: MethodError: no method matching (::ODESolution{Float64, Vector{Float64}})(::Vector{Float64}; idxs::EIndex{Int64, Symbol}) @ #step_e##2@r1_workload.jl:147 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:147 < #run_pass#43@r1_workload.jl:173
+R1 graphtype e NWState(sol, 3.0) FAIL MethodError: MethodError: no method matching NWState(::ODESolution{Float64, Vector{Float64}}, ::Float64) @ #step_e##4@r1_workload.jl:148 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:148 < #run_pass#43@r1_workload.jl:173
+R1 graphtype e extract_nw(sol) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ extract_nw@symbolicindexing.jl:1024 < #step_e##6@r1_workload.jl:149 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:149
+R1 graphtype e SII.getu(sol, eidxs(nw, :, :P)) FAIL MethodError: MethodError: no method matching symbolic_container(::ODESolution{Float64, Vector{Float64}}) @ #step_e##8@r1_workload.jl:150 < attempt@r1_workload.jl:38 < step_e@r1_workload.jl:150 < #run_pass#43@r1_workload.jl:173
+R1 graphtype e the solution's indexed forms STANDIN NWState(nw, sol.u[k], sol.prob.p, sol.t[k]) at the saveat times (C3, C7)
+R1 graphtype e NWState(nw, u_k, p, t_k) over the saved times ok
+R1 graphtype g init(prob, Tsit5()) FAIL R1Gap: R1Gap: SciMLBase.init has no counterpart in the ports (R1 stub) @ #init#18@r1_stubs.jl:21 < init@r1_stubs.jl:20 < #step_g##0@r1_workload.jl:160 < attempt@r1_workload.jl:38
+R1 graphtype g TraitDifferentialEquations.init FAIL UndefVarError: UndefVarError: `init` not defined in `TraitDifferentialEquations` @ #step_g##2@r1_workload.jl:161 < attempt@r1_workload.jl:38 < step_g@r1_workload.jl:161 < #run_pass#43@r1_workload.jl:174
+R1 usertype - - n/a: the pass is part 3b (R6), not yet in the workload
+R1 failures 52
+# rc=0

@@ -1,0 +1,94 @@
+# 2026-10-29T11:53:06+01:00 script=scripts/r1_nd_tests.jl env=env_ports julia-1.13 bfca89decc TraitWorld ca92f22 TDE 3a51d95 TraitMakie 2c70583 ND-ports 068dcc9* GraphMakie 327f80b load 0.51
+# nd_tests threads=2 nd=/home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-ports
+# massmatrix_test.jl s=5.6
+# doctor_test.jl s=0.9
+--- Diffusion dynamics --- 
+
+diffusion_test.jl: Error During Test at /home/hellmann/Repos/julia-trait-bound/ndport/scripts/r1_nd_tests.jl:52
+  Got exception outside of a @test
+  LoadError: TypeError: in typeassert, expected Nothing, got a value of type Vector{Float64}
+  Stacktrace:
+    [1] (::TraitWorld._CallWrap{Nothing})(::ODECore.PartialFn{Main.diffusion_test.var"#2#3", Nothing}, ::Vector{Float64}, ::Vector{Float64}, ::Float64)
+      @ TraitWorld ~/Repos/julia-trait-bound/TraitWorld/src/core.jl:1305
+    [2] core_rhs!
+      @ ~/Repos/julia-trait-bound/TraitDifferentialEquations/lib/ODECore/src/core.jl:305 [inlined]
+    [3] tsit5_init(m::ODECore.CoreProblem{Float64, TraitWorld.Dynamic{TraitWorld.Callable{Tuple{Vector{Float64}, Vector{Float64}, Float64}, Nothing}}, typeof(ODECore.core_no_jacobian)}, u0::Vector{Float64}, tspan::Tuple{Float64, Float64}, callbacks::Vector{Any})
+      @ ODECore ~/Repos/julia-trait-bound/TraitDifferentialEquations/lib/ODECore/src/core.jl:861
+    [4] tsit5_solve
+      @ ~/Repos/julia-trait-bound/TraitDifferentialEquations/lib/ODECore/src/core.jl:844 [inlined]
+    [5] solve_core
+      @ ~/Repos/julia-trait-bound/TraitDifferentialEquations/lib/ODECore/src/core.jl:838 [inlined]
+    [6] solve_core(::ODEAlgorithm at Tsit5, ::ODECore.CoreProblem{Float64, TraitWorld.Dynamic{TraitWorld.Callable{Tuple{Vector{Float64}, Vector{Float64}, Float64}, Nothing}}, typeof(ODECore.core_no_jacobian)}, ::Vector{Any}, ::ODECore.SolverOptions)
+      @ ODECore ./none:-1
+    [7] solve_ode(prob::Any, alg::ODEAlgorithm at Tsit5, callbacks::Vector{Any}, opts::ODECore.SolverOptions)
+      @ ODECore ~/Repos/julia-trait-bound/TraitDifferentialEquations/lib/ODECore/src/core.jl:827
+    [8] _solve(prob::ODEProblem{Float64, Nothing, TraitWorld.Dynamic{TraitWorld.Callable{Tuple{Vector{Float64}, Vector{Float64}, Float64}, Nothing}}, typeof(ODECore.core_no_jacobian)}, alg::Tsit5, cbs::Vector{Any}, opts::ODECore.SolverOptions)
+      @ TraitDifferentialEquations ~/Repos/julia-trait-bound/TraitDifferentialEquations/src/TraitDifferentialEquations.jl:52
+    [9] solve(prob::Any, alg::Any; callback::Any, kw::@Kwargs{})
+      @ TraitDifferentialEquations ~/Repos/julia-trait-bound/TraitDifferentialEquations/src/TraitDifferentialEquations.jl:50
+   [10] top-level scope
+      @ ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-ports/test/diffusion_test.jl:40
+   [11] include(mapexpr::Function, mod::Module, _path::String)
+      @ Base ./Base.jl:311
+   [12] top-level scope
+      @ ~/Repos/julia-trait-bound/ndport/scripts/r1_nd_tests.jl:45
+   [13] macro expansion
+      @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [14] macro expansion
+      @ ~/Repos/julia-trait-bound/ndport/scripts/r1_nd_tests.jl:53 [inlined]
+   [15] macro expansion
+      @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [16] macro expansion
+      @ ~/Repos/julia-trait-bound/ndport/scripts/r1_nd_tests.jl:53 [inlined]
+   [17] include(mod::Module, _path::String)
+      @ Base ./Base.jl:310
+   [18] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:344
+   [19] _start()
+      @ Base ./client.jl:577
+  in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-ports/test/diffusion_test.jl:40
+# diffusion_test.jl s=2.0
+--- Network dynamics with a static vertex ---
+
+inhomogeneous_test.jl: Error During Test at /home/hellmann/Repos/julia-trait-bound/ndport/scripts/r1_nd_tests.jl:52
+  Got exception outside of a @test
+  LoadError: MethodError: no method matching copy(::Nothing)
+  The function `copy` exists, but no method is defined for this combination of argument types.
+  Closest candidates are:
+    copy(!Matched::Base.JuliaSyntax.SyntaxData)
+     @ Base ~/Repos/julia-trait-bound/julia-1.13/base/JuliaSyntax/src/porcelain/syntax_tree.jl:305
+    copy(!Matched::Core.PhiNode)
+     @ Base expr.jl:42
+    copy(!Matched::Compiler.DebugInfoStream)
+     @ Base ../usr/share/julia/Compiler/src/ssair/ir.jl:204
+    ...
+  Stacktrace:
+    [1] test_execution_styles(prob::ODEProblem{Float64, Nothing, TraitWorld.Dynamic{TraitWorld.Callable{Tuple{Vector{Float64}, Vector{Float64}, Float64}, Nothing}}, typeof(ODECore.core_no_jacobian)})
+      @ Main ~/Repos/julia-trait-bound/ndport/scripts/nd_testutils.jl:39
+    [2] top-level scope
+      @ ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-ports/test/inhomogeneous_test.jl:50
+    [3] include(mapexpr::Function, mod::Module, _path::String)
+      @ Base ./Base.jl:311
+    [4] top-level scope
+      @ ~/Repos/julia-trait-bound/ndport/scripts/r1_nd_tests.jl:45
+    [5] macro expansion
+      @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+    [6] macro expansion
+      @ ~/Repos/julia-trait-bound/ndport/scripts/r1_nd_tests.jl:53 [inlined]
+    [7] macro expansion
+      @ ~/Repos/julia-trait-bound/julia-1.13/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+    [8] macro expansion
+      @ ~/Repos/julia-trait-bound/ndport/scripts/r1_nd_tests.jl:53 [inlined]
+    [9] include(mod::Module, _path::String)
+      @ Base ./Base.jl:310
+   [10] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:344
+   [11] _start()
+      @ Base ./client.jl:577
+  in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-ports/test/inhomogeneous_test.jl:50
+# inhomogeneous_test.jl s=2.3
+TEST massmatrix_test.jl pass=6 fail=0 error=0 broken=0
+TEST doctor_test.jl pass=26 fail=0 error=0 broken=0
+TEST diffusion_test.jl pass=0 fail=0 error=1 broken=0
+TEST inhomogeneous_test.jl pass=0 fail=0 error=1 broken=0
+# rc=0

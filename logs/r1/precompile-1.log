@@ -1,0 +1,115 @@
+Precompiling packages...
+   0.3 s  ✓ ArgCheck
+   0.3 s  ✓ CEnum
+   0.3 s  ✓ Inflate
+   0.2 s  ✓ IfElse
+   0.3 s  ✓ ManualMemory
+   0.3 s  ✓ Adapt
+   0.9 s  ✓ ChainRulesCore
+   0.3 s  ✓ ExprTools
+   0.4 s  ✓ BFloat16s
+   0.2 s  ✓ FastClosures
+   0.3 s  ✓ HashArrayMappedTries
+   0.3 s  ✓ Mixers
+   0.2 s  ✓ SIMDTypes
+   0.3 s  ✓ LogExpFunctions → LogExpFunctionsInverseFunctionsExt
+   0.5 s  ✓ SimpleTraits
+   0.5 s  ✓ Hungarian
+   1.4 s  ✓ ExproniconLite
+   0.6 s  ✓ SciMLPublic
+   0.5 s  ✓ CommonWorldInvalidations
+   0.8 s  ✓ ADTypes
+   0.7 s  ✓ LLVMExtra_jll
+   0.8 s  ✓ CpuId
+   0.5 s  ✓ ConstructionBase → ConstructionBaseStaticArraysExt
+   0.8 s  ✓ ArnoldiMethod
+   0.5 s  ✓ Accessors → StaticArraysExt
+   0.6 s  ✓ FillArrays → FillArraysStaticArraysExt
+   0.4 s  ✓ ArrayInterface
+   0.4 s  ✓ Adapt → AdaptSparseArraysExt
+   0.6 s  ✓ ThreadingUtilities
+   0.4 s  ✓ Adapt → AdaptStaticArraysExt
+   0.4 s  ✓ GPUArraysCore
+   0.4 s  ✓ ChainRulesCore → ChainRulesCoreSparseArraysExt
+   0.5 s  ✓ StaticArrays → StaticArraysChainRulesCoreExt
+   0.8 s  ✓ LogExpFunctions → LogExpFunctionsChainRulesCoreExt
+   0.3 s  ✓ ScopedValues
+   1.1 s  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt
+   1.3 s  ✓ RuntimeGeneratedFunctions
+   1.0 s  ✓ Jieko
+   3.4 s  ✓ TimerOutputs
+   0.4 s  ✓ ADTypes → ADTypesConstructionBaseExt
+   0.4 s  ✓ ADTypes → ADTypesChainRulesCoreExt
+   3.1 s  ✓ SparseConnectivityTracer
+   0.9 s  ✓ DifferentiationInterface
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceChainRulesCoreExt
+   0.4 s  ✓ ArrayInterface → ArrayInterfaceFillArraysExt
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceStaticArraysCoreExt
+   4.6 s  ✓ SparseMatrixColorings
+   0.4 s  ✓ ArrayInterface → ArrayInterfaceSparseArraysExt
+   0.3 s  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+   1.2 s  ✓ PreallocationTools
+   4.4 s  ✓ Graphs
+   0.8 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerChainRulesCoreExt
+   1.2 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNaNMathExt
+  10.2 s  ✓ Static
+   0.8 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerLogExpFunctionsExt
+   0.5 s  ✓ DifferentiationInterface → DifferentiationInterfaceForwardDiffExt
+   1.0 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerSpecialFunctionsExt
+   0.4 s  ✓ DifferentiationInterface → DifferentiationInterfaceGPUArraysCoreExt
+   0.5 s  ✓ DifferentiationInterface → DifferentiationInterfaceStaticArraysExt
+   0.7 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseConnectivityTracerExt
+   0.6 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseArraysExt
+   0.4 s  ✓ DifferentiationInterface → DifferentiationInterfaceChainRulesCoreExt
+   0.8 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseMatrixColoringsExt
+   1.3 s  ✓ SymbolicIndexingInterface
+   7.2 s  ✓ Moshi
+   0.4 s  ✓ BitTwiddlingConvenienceFunctions
+   0.9 s  ✓ PreallocationTools → PreallocationToolsForwardDiffExt
+   0.9 s  ✓ CPUSummary
+   0.6 s  ✓ SymbolicIndexingInterface → SymbolicIndexingInterfacePrettyTablesExt
+   0.6 s  ✓ PolyesterWeave
+   1.8 s  ✓ StaticArrayInterface
+   0.5 s  ✓ CloseOpenIntervals
+   0.5 s  ✓ LayoutPointers
+   0.6 s  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+   0.7 s  ✓ StrideArraysCore
+   0.6 s  ✓ Polyester
+  14.6 s  ✓ LLVM
+   0.5 s  ✓ LLVM → BFloat16sExt
+   1.4 s  ✓ UnsafeAtomics
+   0.6 s  ✓ Atomix
+   2.2 s  ✓ KernelAbstractions
+   0.7 s  ✓ KernelAbstractions → LinearAlgebraExt
+   0.9 s  ✓ KernelAbstractions → SparseArraysExt
+   3.8 s  ✓ NNlib
+   0.8 s  ✓ NNlib → NNlibSpecialFunctionsExt
+   0.9 s  ✓ NNlib → NNlibForwardDiffExt
+   1.4 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNNlibExt
+ERROR: LoadError: ArgumentError: invalid type for argument prob in method definition for extract_nw at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-ports/src/symbolicindexing.jl:1032
+Stacktrace:
+  [1] top-level scope
+    @ ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-ports/src/symbolicindexing.jl:1032
+  [2] include(mapexpr::Function, mod::Module, _path::String)
+    @ Base ./Base.jl:311
+  [3] top-level scope
+    @ ~/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-ports/src/NetworkDynamics.jl:93
+  [4] include(mod::Module, _path::String)
+    @ Base ./Base.jl:310
+  [5] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt128}}, source::Nothing, preresolved::Vector{Pair{Base.PkgId, String}})
+    @ Base ./loading.jl:3210
+  [6] top-level scope
+    @ stdin:5
+  [7] eval(m::Module, e::Any)
+    @ Core ./boot.jl:489
+  [8] include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+    @ Base ./loading.jl:3045
+  [9] include_string
+    @ ./loading.jl:3055 [inlined]
+ [10] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:342
+ [11] _start()
+    @ Base ./client.jl:577
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-ports/src/symbolicindexing.jl:1032
+in expression starting at /home/hellmann/Repos/julia-trait-bound/ndport/pkgs/NetworkDynamics-ports/src/NetworkDynamics.jl:1
+in expression starting at stdin:5
