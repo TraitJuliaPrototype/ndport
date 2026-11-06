@@ -127,7 +127,7 @@ Commit: `SciMLBase-p6` b50f4684 (tag `p6-s2`): the wrap with
   (`scimlfunctions.jl:6190`), each a `sym === :x ? … : getfield(A, sym)` switch. Plain packages' concrete types inherit
   them (`ODEIntegrator <: DEIntegrator`, `ODESolution`, `ODEProblem`, `ODEFunction`). With SciMLBase a trait module
   these are facts methods. A plain caller infers a facts method in an inference of its own, and **no constant
-  propagation crosses the modes** ([facts §6.3](../../../writeup/reference/facts.md#calls-between-the-modes); inlining
+  propagation crosses the modes** ([facts §6.3](../../../attic/writeup/reference/facts.md#calls-between-the-modes); inlining
   crosses, but "the inlined code is not inferred again"). So `integrator.sol`, `sol.stats`, `prob.p`, `f.f` in plain
   code infer to the union of all the struct's field types (the probe: every field of `ODEIntegrator`, `ODESolution`,
   `ODEProblem`, `ODEFunction` WIDER than `getfield`), and everything after them dispatches at run time. Plain Julia
@@ -173,7 +173,7 @@ blocks the track).
   LinearSolve.
 - *The idiomatic form:* an interface package overloads `getproperty` on its abstract types with a `Symbol` switch;
   implementers' concrete subtypes inherit it; callers write `x.field` and get the field's type by constant propagation.
-- *The reference:* [facts §6.3](../../../writeup/reference/facts.md#calls-between-the-modes): "No constant propagation
+- *The reference:* [facts §6.3](../../../attic/writeup/reference/facts.md#calls-between-the-modes): "No constant propagation
   crosses the modes." (and §6.2: a facts method reached from the default owner is still compiled by facts).
 - *What it costs:* results bit for bit the same; every such field read in plain code infers to the union of the
   struct's field types; the steady-state solve (step d) 29.2 against 15.0 ms; the first simulation's step d 30.9
@@ -186,7 +186,7 @@ blocks the track).
   loaded by Makie; Base's `reshape(::Vector{Dict{Symbol,Any}}, ::Val)` holds the fact
   `reshape(…, ::Tuple{Vararg{OneTo{Int}}})`.
 - *The idiomatic form:* a package that extends Base's array API for all arrays (a pirate by the letter, long accepted).
-- *The reference:* [facts §10.2](../../../writeup/reference/facts.md#strict-mode), [traits §10.3](../../../writeup/reference/traits.md#103-strict-mode);
+- *The reference:* [facts §10.2](../../../attic/writeup/reference/facts.md#strict-mode), [traits §10.3](../../../attic/writeup/reference/traits.md#103-strict-mode);
   TraitWorld's `is_trait_world(Base) = true`, so Base's compiled code is protected.
 - *What it costs:* the method stays inactive in strict sessions that load Makie; digests unchanged. Every strict run
   of the full workload logs the refusal.
@@ -196,8 +196,8 @@ blocks the track).
 - *The code:* `PreallocationToolsForwardDiffExt`'s `forwarddiff_compat_chunk_size(::Int)` wins at a fact of
   SciMLBase's keyword body; `SciMLBaseForwardDiffExt`'s `anyeltypedual` methods win at facts of `promote_u0`.
 - *The idiomatic form:* extensions that refine a function for a trigger's types, loaded whenever the trigger is.
-- *The reference:* [traits §10.3](../../../writeup/reference/traits.md#103-strict-mode) (the extension's warning: a
-  stakeholder's change, followed); [facts §2.2](../../../writeup/reference/facts.md#g2) (the exception).
+- *The reference:* [traits §10.3](../../../attic/writeup/reference/traits.md#103-strict-mode) (the extension's warning: a
+  stakeholder's change, followed); [facts §2.2](../../../attic/writeup/reference/facts.md#g2) (the exception).
 - *What it costs:* the warnings at every load; SciMLBase's facts code at those sites compiles again; plausibly part of
   the solvers' load rising from 0.33 to 4.3 s at S2 (not attributed; J was due at S4).
 - *Blocks:* no. The plan's expected P6-7, met earlier than order B.
