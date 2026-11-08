@@ -49,7 +49,13 @@ end
 mkpath(NDW.OUT)
 ORDER == "simfirst" || load_plotting()
 
+# NDW_MARK=1: each step first compiles `ndw_mark` at its own name, so a compile trace (`--trace-compile`)
+# shows where each step begins (scripts/trace_by_step.jl).
+const NDW_MARKS = Ref{Any}(nothing)
+@noinline ndw_mark(::Val{N}) where {N} = (NDW_MARKS[] = N; nothing)
+const MARK = get(ENV, "NDW_MARK", "0") == "1"
 function timed(name, f)
+    MARK && Base.invokelatest(ndw_mark, Val(Symbol(NDW.PASS[], " ", name)))
     c0 = Base.cumulative_compile_time_ns(); g0 = Base.gc_num(); t0 = time_ns()
     r = Base.invokelatest(f)
     t = (time_ns() - t0) / 1e6

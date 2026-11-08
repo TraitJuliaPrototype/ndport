@@ -1,0 +1,187 @@
+load                     3242.8 ms in 66 compiles (2698.0 ms recompiled)
+first a                   286.3 ms in 15 compiles (28.7 ms recompiled)
+first b                  1180.6 ms in 55 compiles (54.3 ms recompiled)
+first c                 12328.4 ms in 225 compiles (2667.8 ms recompiled)
+first d                  4691.6 ms in 174 compiles (534.9 ms recompiled)
+first e                  2103.1 ms in 57 compiles (379.4 ms recompiled)
+first f                  7027.3 ms in 180 compiles (1036.3 ms recompiled)
+first g                   830.7 ms in 40 compiles (8.9 ms recompiled)
+again a                     0.0 ms in 0 compiles (0.0 ms recompiled)
+again b                     0.0 ms in 0 compiles (0.0 ms recompiled)
+again c                     0.0 ms in 0 compiles (0.0 ms recompiled)
+again d                     0.0 ms in 0 compiles (0.0 ms recompiled)
+again e                     0.0 ms in 0 compiles (0.0 ms recompiled)
+again f                     0.0 ms in 0 compiles (0.0 ms recompiled)
+again g                    90.7 ms in 4 compiles (0.0 ms recompiled)
+params d                  530.7 ms in 21 compiles (42.2 ms recompiled)
+params e                    4.5 ms in 1 compiles (0.0 ms recompiled)
+params f                    4.5 ms in 1 compiles (0.0 ms recompiled)
+params g                    4.6 ms in 1 compiles (0.0 ms recompiled)
+changed a                  84.1 ms in 4 compiles (35.9 ms recompiled)
+changed b                  96.1 ms in 11 compiles (0.0 ms recompiled)
+changed c                4725.7 ms in 82 compiles (1592.8 ms recompiled)
+changed d                 915.3 ms in 42 compiles (40.7 ms recompiled)
+changed e                1486.2 ms in 41 compiles (499.3 ms recompiled)
+changed f                 258.7 ms in 13 compiles (0.0 ms recompiled)
+changed g                  75.3 ms in 3 compiles (0.0 ms recompiled)
+graphtype a                 0.0 ms in 0 compiles (0.0 ms recompiled)
+graphtype b               988.8 ms in 22 compiles (116.9 ms recompiled)
+graphtype c              4218.3 ms in 72 compiles (1528.9 ms recompiled)
+graphtype d               877.8 ms in 41 compiles (40.1 ms recompiled)
+graphtype e              1498.1 ms in 41 compiles (493.4 ms recompiled)
+graphtype f              1192.4 ms in 36 compiles (0.0 ms recompiled)
+graphtype g               176.3 ms in 8 compiles (35.9 ms recompiled)
+
+== changed b: by function
+     33.2 ms    1  NetworkDynamics.var"#_#69#70"
+     14.1 ms    1  typeof(Base.collect_to_with_first!)
+     13.2 ms    1  typeof(NDW.digest_b)
+      9.2 ms    1  Type{NetworkDynamics.Network{EX, G, NL, VTup, MM, CT, GBT, LM, EM}
+      5.8 ms    1  typeof(Core.kwcall)
+      5.2 ms    1  Type{Array{NetworkDynamics.ComponentBatch{NetworkDynamics.VertexModel, Any, Any, NetworkDynamics.FeedForwardType, Int64, Int64, Int64, Int64, Int64, Array{Int64
+      4.0 ms    1  Type{NetworkDynamics.FunctionDynamics{typeof(NDW.swing2!), NetworkDynamics.StateMask{1, StaticArraysCore.SArray{Tuple{1}
+      3.8 ms    1  typeof(Base.getproperty)
+      3.0 ms    1  Type{NamedTuple{(:state, :p, :in, :out, :ext), T}
+      2.5 ms    1  Type{NetworkDynamics.BatchStride{T}
+      2.1 ms    1  typeof(NetworkDynamics._kept_model)
+== changed b: largest
+     33.2 ms   Tuple{NetworkDynamics.var"#_#69#70", Bool, Bool, Type{NetworkDynamics.ComponentBatch{T, F, G, FFT, DIM, PDIM, INDIMS, OUTDIMS, EXTDIM, IV, M} where M where IV where EXTDIM where OUTDIMS where INDIMS where PDIM where DIM where FFT where G where F where T}, Type
+     14.1 ms   Tuple{typeof(Base.collect_to_with_first!), Array{NetworkDynamics.ComponentBatch{NetworkDynamics.VertexModel, Any, Any, NetworkDynamics.FeedForwardType, Int64, Int64, Int64, Int64, Int64, Array{Int64, 1}, NetworkDynamics.FunctionDynamics{typeof(NDW.swing2!), Ne
+     13.2 ms   Tuple{typeof(NDW.digest_b), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{NetworkDynamics.ComponentBatch{NetworkDynamics.Edg
+      9.2 ms   Tuple{Type{NetworkDynamics.Network{EX, G, NL, VTup, MM, CT, GBT, LM, EM} where EM where LM where GBT where CT where MM where VTup where NL where G where EX<:(NetworkDynamics.ExecutionStyle{buffered} where buffered)}, Type, Array{NetworkDynamics.ComponentBatch{
+      5.8 ms   Tuple{typeof(Core.kwcall), NamedTuple{(:kept, :erased), Tuple{Bool, Bool}}, Type{NetworkDynamics.ComponentBatch{T, F, G, FFT, DIM, PDIM, INDIMS, OUTDIMS, EXTDIM, IV, M} where M where IV where EXTDIM where OUTDIMS where INDIMS where PDIM where DIM where FFT whe
+      5.2 ms   Tuple{Type{Array{NetworkDynamics.ComponentBatch{NetworkDynamics.VertexModel, Any, Any, NetworkDynamics.FeedForwardType, Int64, Int64, Int64, Int64, Int64, Array{Int64, 1}, NetworkDynamics.FunctionDynamics{typeof(NDW.swing2!), NetworkDynamics.StateMask{1, Stati
+      4.0 ms   Tuple{Type{NetworkDynamics.FunctionDynamics{typeof(NDW.swing2!), NetworkDynamics.StateMask{1, StaticArraysCore.SArray{Tuple{1}, Int64, 1, 1}}, NetworkDynamics.PureStateMap, 4, 0}}, Function, NetworkDynamics.StateMask{1, StaticArraysCore.SArray{Tuple{1}, Int64,
+      3.8 ms   Tuple{typeof(Base.getproperty), NamedTuple{(:state, :p, :in, :out, :ext), Tuple{NetworkDynamics.BatchStride{Static.StaticInt{2}}, NetworkDynamics.BatchStride{Static.StaticInt{4}}, NetworkDynamics.BatchStride{Static.StaticInt{1}}, NetworkDynamics.BatchStride{St
+      3.0 ms   Tuple{Type{NamedTuple{(:state, :p, :in, :out, :ext), T} where T<:Tuple}, Tuple{NetworkDynamics.BatchStride{Static.StaticInt{2}}, NetworkDynamics.BatchStride{Static.StaticInt{4}}, NetworkDynamics.BatchStride{Static.StaticInt{1}}, NetworkDynamics.BatchStride{Sta
+      2.5 ms   Tuple{Type{NetworkDynamics.BatchStride{T} where T}, Int64, Static.StaticInt{4}}
+      2.1 ms   Tuple{typeof(NetworkDynamics._kept_model), Type{NetworkDynamics.VertexModel}, NetworkDynamics.FunctionDynamics{typeof(NDW.swing2!), NetworkDynamics.StateMask{1, StaticArraysCore.SArray{Tuple{1}, Int64, 1, 1}}, NetworkDynamics.PureStateMap, 4, 0}}
+
+== changed c: by function
+    679.6 ms    1  NDW.var"#17#18"{Float64, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}
+    638.9 ms    1  typeof(ForwardDiff.jacobian)
+    452.0 ms    1  typeof(SymbolicIndexingInterface._getsym)
+    433.0 ms    6  typeof(Base.getindex)
+    258.3 ms    1  NetworkDynamics.var"##find_fixpoint#485"
+    247.2 ms   10  typeof(NetworkDynamics._run_batch!)
+    217.7 ms    2  NetworkDynamics.var"##NWState#256"
+    204.0 ms    1  typeof(NDW.digest_c)
+    182.6 ms    1  NetworkDynamics.var"##_#196"
+    130.5 ms    1  NetworkDynamics.var"##isfixpoint#825"
+    119.7 ms    2  TraitNonlinearSolve.AtTime{NetworkDynamics.NetworkFixedT{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}
+     96.6 ms    1  NetworkDynamics.var"#241#242"{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}
+     96.2 ms    2  typeof(Base.setindex!)
+     88.0 ms    3  typeof(Core.kwcall)
+     82.8 ms    1  SymbolicIndexingInterface.TimeDependentObservedFunction{Array{Union{SymbolicIndexingInterface.ContinuousTimeseries, Int64}
+     81.0 ms    4  typeof(NDW.swing2!)
+     77.3 ms    2  typeof(SymbolicIndexingInterface._setsym)
+     70.6 ms    2  Base.Fix{1, typeof(SymbolicIndexingInterface.get_all_timeseries_indexes), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}
+     66.2 ms    1  typeof(SymbolicIndexingInterface.getsym)
+     53.5 ms    1  typeof(Base.Broadcast.copyto_nonleaf!)
+== changed c: largest
+    679.6 ms   Tuple{NDW.var"#17#18"{Float64, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{NetworkDynamics.ComponentBatch{NetworkDynamics.
+    638.9 ms   Tuple{typeof(ForwardDiff.jacobian), NetworkDynamics.var"#h!#833"{Nothing, Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph
+    452.0 ms R Tuple{typeof(SymbolicIndexingInterface._getsym), NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamic
+    258.3 ms R Tuple{NetworkDynamics.var"##find_fixpoint#485", Nothing, Float64, Float64, Base.Pairs{Symbol, Union{}, Nothing, NamedTuple{(), Tuple{}}}, typeof(NetworkDynamics.find_fixpoint), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGra
+    204.0 ms   Tuple{typeof(NDW.digest_c), NamedTuple{(:s, :fix, :λmax), Tuple{NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}
+    182.6 ms R Tuple{NetworkDynamics.var"##_#196", Nothing, Nothing, Base.Val{:du}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{NetworkDy
+    165.0 ms R Tuple{NetworkDynamics.var"##NWState#256", Type, Int64, Type, Float64, Bool, Bool, Bool, Bool, Type{NetworkDynamics.NWState{U, P, T, NW} where NW<:(NetworkDynamics.Network{EX, G, NL, VTup, MM, CT, GBT, LM, EM} where EM where LM where GBT where CT where MM where
+    148.4 ms   Tuple{typeof(Base.getindex), NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graph
+    130.5 ms R Tuple{NetworkDynamics.var"##isfixpoint#825", Float64, typeof(NetworkDynamics.isfixpoint), NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.Simple
+    116.0 ms   Tuple{TraitNonlinearSolve.AtTime{NetworkDynamics.NetworkFixedT{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{NetworkDynamics
+    102.3 ms   Tuple{typeof(Base.getindex), NetworkDynamics.FilteringProxy{NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, Net
+     96.6 ms R Tuple{NetworkDynamics.var"#241#242"{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{NetworkDynamics.ComponentBatch{NetworkDyna
+     82.8 ms   Tuple{SymbolicIndexingInterface.TimeDependentObservedFunction{Array{Union{SymbolicIndexingInterface.ContinuousTimeseries, Int64}, 1}, NetworkDynamics.var"#239#240"{Array{NetworkDynamics.SymbolicIndex{C, S} where S where C, 1}, NetworkDynamics.var"#241#242"{Net
+     78.7 ms   Tuple{typeof(Base.getindex), NetworkDynamics.FilteringProxy{NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, Net
+     72.7 ms   Tuple{typeof(Base.getindex), NetworkDynamics.FilteringProxy{NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, Net
+     66.2 ms   Tuple{typeof(SymbolicIndexingInterface.getsym), NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics
+     65.1 ms   Tuple{typeof(NetworkDynamics._run_batch!), Type{NetworkDynamics.EdgeModel}, NetworkDynamics.FunctionDynamics{Nothing, NetworkDynamics.AntiSymmetric{typeof(NDW.line!)}, NetworkDynamics.PureFeedForward, 2, 0}, Array{NetworkDynamics.ComponentBatch{NetworkDynamics
+     63.7 ms   Tuple{typeof(Core.kwcall), NamedTuple{(:ptype, :pfill, :default), Tuple{typeof(DataType), Float64, Bool}}, Type{NetworkDynamics.NWParameter{P, NW} where NW<:(NetworkDynamics.Network{EX, G, NL, VTup, MM, CT, GBT, LM, EM} where EM where LM where GBT where CT whe
+     53.5 ms   Tuple{typeof(Base.Broadcast.copyto_nonleaf!), Array{SymbolicIndexingInterface.GetStateIndex{Int64}, 1}, Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Tuple{Base.OneTo{Int64}}, typeof(SymbolicIndexingInterface.getsym), Tuple{Tuple{NetworkDynam
+     52.7 ms R Tuple{NetworkDynamics.var"##NWState#256", Type, Float64, Type, Float64, Bool, Bool, Bool, Bool, Type{NetworkDynamics.NWState{U, P, T, NW} where NW<:(NetworkDynamics.Network{EX, G, NL, VTup, MM, CT, GBT, LM, EM} where EM where LM where GBT where CT where MM whe
+
+== changed d: by function
+    318.8 ms    4  typeof(Base.Broadcast.materialize)
+    172.7 ms    1  NetworkDynamics.var"#to_callbacks##1#to_callbacks##2"{Int64, Array{Float64, 1}
+     59.4 ms    1  NDW.var"#19#20"{NamedTuple{(:s, :fix, :λmax), Tuple{NetworkDynamics.NWState{Array{Float64, 1}
+     40.7 ms    1  NetworkDynamics.var"##ODEProblem#964"
+     38.6 ms    1  typeof(Base.collect)
+     23.7 ms    1  typeof(Base.Broadcast.copyto_nonleaf!)
+     23.0 ms    4  typeof(Base._split_pointer)
+     17.1 ms    1  typeof(NetworkDynamics._run_batch!)
+     17.0 ms    2  typeof(Base.getproperty)
+     16.7 ms    4  typeof(Base.Broadcast.broadcasted)
+     16.0 ms    2  typeof(Base.indexed_iterate)
+     15.9 ms    1  Type{ODECore.ODESolution{Float64, Array{Float64, 1}
+     15.5 ms    2  typeof(Base._any)
+     15.1 ms    1  typeof(ODECore.param_integrator)
+     11.3 ms    1  typeof(ODECore.with_problem)
+     11.2 ms    1  Type{ODECore.ODEFunction{F, TJ, TMM}
+     10.5 ms    1  typeof(SymbolicIndexingInterface.parameter_index)
+     10.4 ms    1  Base._SplitTarget{typeof(TraitIndexing.variable_index), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}
+      9.9 ms    1  Type{ODECore.ODEProblem{T, P, F, J}
+      9.2 ms    1  Type{Base.Generator{I, F}
+== changed d: largest
+    172.7 ms   Tuple{NetworkDynamics.var"#to_callbacks##1#to_callbacks##2"{Int64, Array{Float64, 1}, NetworkDynamics.var"#_batch_condition##0#_batch_condition##1"{NetworkDynamics.ContinuousCallbackWrapper{NetworkDynamics.ContinuousComponentCallback{NetworkDynamics.ComponentC
+    151.3 ms   Tuple{typeof(Base.Broadcast.materialize), Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Nothing, typeof(SymbolicIndexingInterface.parameter_index), Tuple{Base.RefValue{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.
+     79.7 ms   Tuple{typeof(Base.Broadcast.materialize), Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Nothing, typeof(SymbolicIndexingInterface.parameter_index), Tuple{Base.RefValue{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.
+     77.0 ms   Tuple{typeof(Base.Broadcast.materialize), Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Nothing, typeof(SymbolicIndexingInterface.variable_index), Tuple{Base.RefValue{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.S
+     59.4 ms   Tuple{NDW.var"#19#20"{NamedTuple{(:s, :fix, :λmax), Tuple{NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, Netw
+     40.7 ms R Tuple{NetworkDynamics.var"##ODEProblem#964", Base.Pairs{Symbol, Union{}, Nothing, NamedTuple{(), Tuple{}}}, Type{ODECore.ODEProblem{T, P, F, J} where J<:Core.Callable{Tuple{Array{T, 2}, Array{T, 1}, Float64}, Nothing} where F<:Core.Callable{Tuple{Array{T, 1}, 
+     38.6 ms   Tuple{typeof(Base.collect), Base.Generator{Base.UnitRange{Int64}, NetworkDynamics.var"#to_callbacks##3#to_callbacks##4"{NetworkDynamics.var"#_batch_affect##0#_batch_affect##1"{NetworkDynamics.ContinuousCallbackWrapper{NetworkDynamics.ContinuousComponentCallbac
+     23.7 ms   Tuple{typeof(Base.Broadcast.copyto_nonleaf!), Array{Int64, 1}, Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Tuple{Base.OneTo{Int64}}, typeof(SymbolicIndexingInterface.parameter_index), Tuple{Base.RefValue{NetworkDynamics.Network{NetworkDynam
+     17.1 ms   Tuple{typeof(NetworkDynamics._run_batch!), Type{NetworkDynamics.VertexModel}, NetworkDynamics.FunctionDynamics{typeof(NDW.swing2!), NetworkDynamics.StateMask{1, StaticArraysCore.SArray{Tuple{1}, Int64, 1, 1}}, NetworkDynamics.PureStateMap, 4, 0}, Array{Network
+     15.9 ms   Tuple{Type{ODECore.ODESolution{Float64, Array{Float64, 1}}}, Array{Float64, 1}, Array{Array{Float64, 1}, 1}, Symbol, Int64, Int64, Int64, ODECore.ODEProblem{Float64, Array{Float64, 1}, Core.Dynamic{All{Core.Callable{Tuple{Array{Float64, 1}, Array{Float64, 1}, 
+     15.1 ms   Tuple{typeof(ODECore.param_integrator), Type{Array{Float64, 1}}, Array{Float64, 1}, Float64, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph
+     11.3 ms   Tuple{typeof(ODECore.with_problem), ODECore.CoreSolution{Float64}, ODECore.ODEProblemTrait{Float64, Array{Float64, 1}}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Grap
+     11.2 ms   Tuple{Type{ODECore.ODEFunction{F, TJ, TMM} where TMM where TJ where F}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{Networ
+     10.8 ms   Tuple{typeof(Base.Broadcast.materialize), Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Nothing, typeof(SymbolicIndexingInterface.variable_index), Tuple{Base.RefValue{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.S
+     10.5 ms   Tuple{typeof(SymbolicIndexingInterface.parameter_index), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{NetworkDynamics.Compo
+     10.4 ms   Tuple{Base._SplitTarget{typeof(TraitIndexing.variable_index), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{NetworkDynamics.
+      9.9 ms   Tuple{Type{ODECore.ODEProblem{T, P, F, J} where J<:Core.Callable{Tuple{Array{T, 2}, Array{T, 1}, Float64}, Nothing} where F<:Core.Callable{Tuple{Array{T, 1}, Array{T, 1}, Float64}, Nothing} where P where T}, Core.Dynamic{All{Core.Callable{Tuple{Array{Float64, 
+      9.2 ms   Tuple{Type{Base.Generator{I, F} where F where I}, NetworkDynamics.var"#to_callbacks##3#to_callbacks##4"{NetworkDynamics.var"#_batch_affect##0#_batch_affect##1"{NetworkDynamics.ContinuousCallbackWrapper{NetworkDynamics.ContinuousComponentCallback{NetworkDynamic
+      8.9 ms   Tuple{typeof(Base.collect_to_with_first!), Array{ODECore.ContinuousCallback, 1}, ODECore.ContinuousCallback, Base.Generator{Base.UnitRange{Int64}, NetworkDynamics.var"#to_callbacks##3#to_callbacks##4"{NetworkDynamics.var"#_batch_affect##0#_batch_affect##1"{Net
+      8.8 ms   Tuple{typeof(Base.getproperty), ODECore.ODEFunction{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{NetworkDynamics.ComponentB
+
+== changed e: by function
+    312.2 ms    4  typeof(Base.getindex)
+    309.7 ms    1  typeof(SymbolicIndexingInterface._getsym)
+    222.7 ms    2  typeof(Base.getproperty)
+    110.0 ms    1  typeof(SymbolicIndexingInterface.observed)
+     81.1 ms    2  typeof(SymbolicIndexingInterface.getp)
+     61.3 ms    2  NetworkDynamics.var"##generate_indices#286"
+     53.2 ms    2  Base._SplitTarget{typeof(TraitIndexing.observed), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}
+     53.0 ms    1  typeof(NDW.run_plot)
+     45.5 ms    6  typeof(Base._split_pointer)
+     37.0 ms    1  typeof(Base.Broadcast.copyto_nonleaf!)
+     29.4 ms    1  SymbolicIndexingInterface.MultipleParametersGetter{SymbolicIndexingInterface.IndexerBoth, Array{SymbolicIndexingInterface.GetParameterTimeseriesIndex{SymbolicIn
+     23.7 ms    1  NDW.var"#21#22"{NamedTuple{(:prob, :sol, :rsol, :ttrips, :rtrips), Tuple{ODECore.ODEProblem{Float64, Array{Float64, 1}
+     19.3 ms    2  typeof(Core.kwcall)
+     18.3 ms    1  typeof(Base._mapreduce_dim)
+     17.7 ms    1  typeof(TraitIndexing._series)
+     13.0 ms    2  Base._SplitTarget{typeof(TraitIndexing.variable_index), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}
+     13.0 ms    2  Base._SplitTarget{typeof(TraitIndexing.parameter_index), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}
+     10.3 ms    1  typeof(SymbolicIndexingInterface.variable_index)
+     10.3 ms    1  typeof(SymbolicIndexingInterface.is_observed)
+     10.0 ms    1  NetworkDynamics.var"#233#234"{NetworkDynamics.var"#235#236"{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}
+== changed e: largest
+    309.7 ms R Tuple{typeof(SymbolicIndexingInterface._getsym), NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamic
+    159.8 ms   Tuple{typeof(Base.getproperty), NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Gr
+    149.1 ms   Tuple{typeof(Base.getindex), NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graph
+    110.0 ms R Tuple{typeof(SymbolicIndexingInterface.observed), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{NetworkDynamics.ComponentBat
+    106.1 ms   Tuple{typeof(Base.getindex), NetworkDynamics.FilteringProxy{NetworkDynamics.NWState{Array{Float64, 1}, NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, Net
+     62.9 ms   Tuple{typeof(Base.getproperty), NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array
+     53.0 ms   Tuple{typeof(NDW.run_plot), typeof(Main.timed), NamedTuple{(:nw, :d, :model), Tuple{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, 
+     48.8 ms   Tuple{typeof(SymbolicIndexingInterface.getp), NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph
+     47.2 ms   Tuple{Base._SplitTarget{typeof(TraitIndexing.observed), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{NetworkDynamics.Compon
+     37.0 ms   Tuple{typeof(Base.Broadcast.copyto_nonleaf!), Array{SymbolicIndexingInterface.GetParameterTimeseriesIndex{SymbolicIndexingInterface.GetParameterIndex{Int64}, SymbolicIndexingInterface.GetParameterIndex{SymbolicIndexingInterface.ParameterTimeseriesIndex{Int64, 
+     35.4 ms   Tuple{typeof(Base.getindex), NetworkDynamics.FilteringProxy{NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGrap
+     32.3 ms   Tuple{typeof(SymbolicIndexingInterface.getp), NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph
+     30.7 ms R Tuple{NetworkDynamics.var"##generate_indices#286", Bool, Bool, Bool, Bool, Bool, Bool, Bool, typeof(NetworkDynamics.generate_indices), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.Ne
+     30.6 ms R Tuple{NetworkDynamics.var"##generate_indices#286", Bool, Bool, Bool, Bool, Bool, Bool, Bool, typeof(NetworkDynamics.generate_indices), NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.Ne
+     29.4 ms   Tuple{SymbolicIndexingInterface.MultipleParametersGetter{SymbolicIndexingInterface.IndexerBoth, Array{SymbolicIndexingInterface.GetParameterTimeseriesIndex{SymbolicIndexingInterface.GetParameterIndex{Int64}, SymbolicIndexingInterface.GetParameterIndex{Symbolic
+     23.7 ms   Tuple{NDW.var"#21#22"{NamedTuple{(:prob, :sol, :rsol, :ttrips, :rtrips), Tuple{ODECore.ODEProblem{Float64, Array{Float64, 1}, Core.Dynamic{All{Core.Callable{Tuple{Array{Float64, 1}, Array{Float64, 1}, Float64}, Nothing}, Core.Callable{Tuple{Array{ForwardDiff.D
+     21.6 ms   Tuple{typeof(Base.getindex), NetworkDynamics.NWParameter{Array{Float64, 1}, NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{Ne
+     18.3 ms R Tuple{typeof(Base._mapreduce_dim), NetworkDynamics.var"#_expand_and_collect##0#_expand_and_collect##1"{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.S
+     17.9 ms   Tuple{typeof(Base._split_pointer), Type{typeof(TraitIndexing.observed)}, Type{NetworkDynamics.Network{NetworkDynamics.SequentialExecution{true}, Graphs.SimpleGraphs.SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{Graphs.SimpleGraphs.SimpleGraph{Int64}, Array{
+     17.7 ms   Tuple{typeof(TraitIndexing._series), ODECore.ODESolution{Float64, Array{Float64, 1}}, NetworkDynamics.var"#239#240"{Array{NetworkDynamics.SymbolicIndex{C, S} where S where C, 1}, NetworkDynamics.var"#241#242"{NetworkDynamics.Network{NetworkDynamics.SequentialE

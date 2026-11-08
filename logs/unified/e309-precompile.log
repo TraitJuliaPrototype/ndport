@@ -1,0 +1,184 @@
+Precompiling packages...
+   0.5 s  ✓ CEnum
+   0.5 s  ✓ Observables
+   0.5 s  ✓ ConstructionBase
+   0.5 s  ✓ Inflate
+   0.4 s  ✓ IfElse
+   0.4 s  ✓ ArgCheck
+   0.4 s  ✓ ManualMemory
+   0.5 s  ✓ Adapt
+   0.4 s  ✓ InverseFunctions
+   1.2 s  ✓ ChainRulesCore
+   0.4 s  ✓ CompositionsBase
+   0.4 s  ✓ ExprTools
+   0.5 s  ✓ BFloat16s
+   1.0 s  ✓ FillArrays
+   0.4 s  ✓ HashArrayMappedTries
+   1.6 s  ✓ ExproniconLite
+   0.4 s  ✓ FastClosures
+   0.5 s  ✓ DocStringExtensions
+   0.4 s  ✓ Mixers
+   0.4 s  ✓ PolynomialRoots
+   0.4 s  ✓ SIMDTypes
+   0.5 s  ✓ SuiteSparse_jll
+   0.6 s  ✓ SimpleTraits
+   0.7 s  ✓ Requires
+   0.7 s  ✓ SciMLPublic
+   0.7 s  ✓ CommonWorldInvalidations
+   1.0 s  ✓ ADTypes
+   1.0 s  ✓ CpuId
+   0.9 s  ✓ LLVMExtra_jll
+   0.4 s  ✓ ConstructionBase → ConstructionBaseLinearAlgebraExt
+   0.8 s  ✓ EarCut_jll
+   0.5 s  ✓ ArrayInterface
+   0.8 s  ✓ ThreadingUtilities
+   0.5 s  ✓ InverseFunctions → InverseFunctionsDatesExt
+   0.5 s  ✓ GPUArraysCore
+   0.4 s  ✓ CompositionsBase → CompositionsBaseInverseFunctionsExt
+   3.1 s  ✓ Pkg → REPLExt
+   0.5 s  ✓ FillArrays → FillArraysStatisticsExt
+   0.4 s  ✓ ScopedValues
+   1.6 s  ✓ RuntimeGeneratedFunctions
+   5.9 s  ✓ StaticArrays
+   0.7 s  ✓ LogExpFunctions
+   1.3 s  ✓ Jieko
+   0.5 s  ✓ ADTypes → ADTypesConstructionBaseExt
+   0.5 s  ✓ ADTypes → ADTypesChainRulesCoreExt
+   4.3 s  ✓ TimerOutputs
+   0.4 s  ✓ ArrayInterface → ArrayInterfaceChainRulesCoreExt
+   1.1 s  ✓ DifferentiationInterface
+   0.4 s  ✓ ArrayInterface → ArrayInterfaceFillArraysExt
+   0.4 s  ✓ ArrayInterface → ArrayInterfaceStaticArraysCoreExt
+   3.4 s  ✓ SparseArrays
+   0.4 s  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+   1.3 s  ✓ PreallocationTools
+   1.6 s  ✓ Accessors
+   1.0 s  ✓ ArnoldiMethod
+   0.6 s  ✓ StaticArrays → StaticArraysStatisticsExt
+   0.6 s  ✓ StaticArrays → StaticArraysChainRulesCoreExt
+   0.6 s  ✓ ConstructionBase → ConstructionBaseStaticArraysExt
+   0.6 s  ✓ Adapt → AdaptStaticArraysExt
+   0.7 s  ✓ FillArrays → FillArraysStaticArraysExt
+   1.3 s  ✓ LogExpFunctions → LogExpFunctionsChainRulesCoreExt
+   0.4 s  ✓ LogExpFunctions → LogExpFunctionsInverseFunctionsExt
+   2.3 s  ✓ SpecialFunctions
+  12.0 s  ✓ Static
+   0.5 s  ✓ DifferentiationInterface → DifferentiationInterfaceGPUArraysCoreExt
+   0.6 s  ✓ DifferentiationInterface → DifferentiationInterfaceStaticArraysExt
+   0.6 s  ✓ DifferentiationInterface → DifferentiationInterfaceChainRulesCoreExt
+   8.4 s  ✓ GeometryBasics
+   0.6 s  ✓ Hungarian
+   0.6 s  ✓ Statistics → SparseArraysExt
+   0.6 s  ✓ Adapt → AdaptSparseArraysExt
+   0.6 s  ✓ ChainRulesCore → ChainRulesCoreSparseArraysExt
+   0.7 s  ✓ FillArrays → FillArraysSparseArraysExt
+   0.6 s  ✓ ArrayInterface → ArrayInterfaceSparseArraysExt
+   0.7 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseArraysExt
+   0.7 s  ✓ Accessors → StaticArraysExt
+   0.5 s  ✓ Accessors → LinearAlgebraExt
+   7.7 s  ✓ Moshi
+  16.5 s  ✓ LLVM
+   1.7 s  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt
+   0.5 s  ✓ BitTwiddlingConvenienceFunctions
+   1.1 s  ✓ CPUSummary
+   5.5 s  ✓ SparseMatrixColorings
+   2.9 s  ✓ ForwardDiff
+   1.1 s  ✓ NetworkLayout
+   3.6 s  ✓ StaticArrayInterface
+   1.4 s  ✓ SymbolicIndexingInterface
+   4.2 s  ✓ Graphs
+   4.0 s  ✓ SparseConnectivityTracer
+   0.9 s  ✓ LLVM → BFloat16sExt
+   0.7 s  ✓ PolyesterWeave
+   1.0 s  ✓ SparseMatrixColorings → SparseMatrixColoringsColorsExt
+   2.0 s  ✓ UnsafeAtomics
+   0.9 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseMatrixColoringsExt
+   0.8 s  ✓ ForwardDiff → ForwardDiffStaticArraysExt
+   0.7 s  ✓ DifferentiationInterface → DifferentiationInterfaceForwardDiffExt
+   7.6 s  ✓ MakieCompat
+   0.7 s  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+   1.1 s  ✓ PreallocationTools → PreallocationToolsForwardDiffExt
+   0.6 s  ✓ CloseOpenIntervals
+   0.7 s  ✓ LayoutPointers
+   0.8 s  ✓ SymbolicIndexingInterface → SymbolicIndexingInterfacePrettyTablesExt
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+   0.9 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerChainRulesCoreExt
+   1.1 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNaNMathExt
+   1.1 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerLogExpFunctionsExt
+   1.4 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerSpecialFunctionsExt
+   0.9 s  ✓ DifferentiationInterface → DifferentiationInterfaceSparseConnectivityTracerExt
+   0.9 s  ✓ Atomix
+   0.9 s  ✓ StrideArraysCore
+   0.8 s  ✓ Polyester
+   5.4 s  ✓ NetworkLayout → NetworkLayoutGraphsExt
+   8.0 s  ✓ ODECore
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+   2.8 s  ✓ KernelAbstractions
+   2.2 s  ✓ TraitRodas
+   1.2 s  ✓ KernelAbstractions → SparseArraysExt
+   0.9 s  ✓ KernelAbstractions → LinearAlgebraExt
+   4.3 s  ✓ GraphMakie
+   5.3 s  ✓ TraitNonlinearSolve
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+   4.7 s  ✓ NNlib
+   1.1 s  ✓ NNlib → NNlibForwardDiffExt
+   1.1 s  ✓ NNlib → NNlibSpecialFunctionsExt
+   2.0 s  ✓ SparseConnectivityTracer → SparseConnectivityTracerNNlibExt
+   5.5 s  ✓ TraitDifferentialEquations
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+  15.4 s  ✓ NetworkDynamics
+  124 dependencies successfully precompiled in 70 seconds. 94 already precompiled.
+
+  5 dependencies had output during precompilation:
+┌ TraitNonlinearSolve
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+└  
+┌ TraitRodas
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+└  
+┌ NetworkDynamics
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+└  
+┌ TraitDifferentialEquations
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+└  
+┌ ODECore
+│  WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+└  
+
+real	1m12.223s
+user	4m11.536s
+sys	0m30.285s
