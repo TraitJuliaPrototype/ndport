@@ -1,0 +1,105 @@
+# 2026-11-08T03:51:08+01:00 unified 350c5b1c59 TraitWorld d897223 TDE 41837ed ND dfc6663 load 2.04
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+# nd_tests threads=2 nd=/p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified
+# massmatrix_test.jl s=8.8
+# doctor_test.jl s=2.3
+--- Diffusion dynamics --- 
+
+diffusion_test.jl: Error During Test at /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:69
+  Got exception outside of a @test
+  LoadError: MethodError: no method matching is_directed(::Graphs.SimpleGraphs.SimpleGraph{Int64})
+  This error has been manually thrown, explicitly, so the method may exist but be intentionally marked as unimplemented.
+  Hint: `is_directed` is declared `is_directed(g::GraphInterface)::Bool` by GraphInterface
+  Closest candidates are:
+    is_directed(::Graphs.GraphInterface{V}) where V<:Integer
+     @ Graphs /p/projects/coen/julia-trait-bound/TraitWorld-unified/src/trait.jl:330
+    is_directed(::G) where G
+     @ Graphs /p/projects/coen/julia-trait-bound/ndport/pkgs/Graphs-unified/src/interface.jl:228
+    is_directed(!Matched::Type{<:Graphs.Test.GenericDiGraph})
+     @ Graphs /p/projects/coen/julia-trait-bound/ndport/pkgs/Graphs-unified/src/Test/Test.jl:64
+    ...
+  Stacktrace:
+    [1] is_directed(g::Graphs.SimpleGraphs.SimpleGraph{Int64})
+      @ Graphs /p/projects/coen/julia-trait-bound/TraitWorld-unified/src/trait.jl:332
+    [2] laplacian_matrix(g::Graphs.SimpleGraphs.SimpleGraph{Int64}, T::DataType; dir::Symbol)
+      @ Graphs.LinAlg /p/projects/coen/julia-trait-bound/ndport/pkgs/Graphs-unified/src/linalg/spectral.jl:90
+    [3] laplacian_matrix(g::Graphs.SimpleGraphs.SimpleGraph{Int64}, T::DataType)
+      @ Graphs.LinAlg /p/projects/coen/julia-trait-bound/ndport/pkgs/Graphs-unified/src/linalg/spectral.jl:86
+    [4] laplacian_matrix(g::Graphs.SimpleGraphs.SimpleGraph{Int64})
+      @ Graphs.LinAlg /p/projects/coen/julia-trait-bound/ndport/pkgs/Graphs-unified/src/linalg/spectral.jl:86
+    [5] top-level scope
+      @ /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/diffusion_test.jl:16
+    [6] include(mapexpr::Function, mod::Module, _path::String)
+      @ Base ./Base.jl:311
+    [7] top-level scope
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:62
+    [8] macro expansion
+      @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+    [9] macro expansion
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:70 [inlined]
+   [10] macro expansion
+      @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [11] macro expansion
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:70 [inlined]
+   [12] include(mod::Module, _path::String)
+      @ Base ./Base.jl:310
+   [13] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:344
+   [14] _start()
+      @ Base ./client.jl:577
+  in expression starting at /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/diffusion_test.jl:16
+# diffusion_test.jl s=4.3
+
+inhomogeneous_test.jl: Error During Test at /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:69
+  Got exception outside of a @test
+  LoadError: MethodError: no method matching is_directed(::Graphs.SimpleGraphs.SimpleGraph{Int64})
+  This error has been manually thrown, explicitly, so the method may exist but be intentionally marked as unimplemented.
+  Hint: `is_directed` is declared `is_directed(g::GraphInterface)::Bool` by GraphInterface
+  Closest candidates are:
+    is_directed(::Graphs.GraphInterface{V}) where V<:Integer
+     @ Graphs /p/projects/coen/julia-trait-bound/TraitWorld-unified/src/trait.jl:330
+    is_directed(::G) where G
+     @ Graphs /p/projects/coen/julia-trait-bound/ndport/pkgs/Graphs-unified/src/interface.jl:228
+    is_directed(!Matched::Type{<:Graphs.Test.GenericDiGraph})
+     @ Graphs /p/projects/coen/julia-trait-bound/ndport/pkgs/Graphs-unified/src/Test/Test.jl:64
+    ...
+  Stacktrace:
+    [1] is_directed(g::Graphs.SimpleGraphs.SimpleGraph{Int64})
+      @ Graphs /p/projects/coen/julia-trait-bound/TraitWorld-unified/src/trait.jl:332
+    [2] laplacian_matrix(g::Graphs.SimpleGraphs.SimpleGraph{Int64}, T::DataType; dir::Symbol)
+      @ Graphs.LinAlg /p/projects/coen/julia-trait-bound/ndport/pkgs/Graphs-unified/src/linalg/spectral.jl:90
+    [3] laplacian_matrix(g::Graphs.SimpleGraphs.SimpleGraph{Int64}, T::DataType)
+      @ Graphs.LinAlg /p/projects/coen/julia-trait-bound/ndport/pkgs/Graphs-unified/src/linalg/spectral.jl:86
+    [4] laplacian_matrix(g::Graphs.SimpleGraphs.SimpleGraph{Int64})
+      @ Graphs.LinAlg /p/projects/coen/julia-trait-bound/ndport/pkgs/Graphs-unified/src/linalg/spectral.jl:86
+    [5] top-level scope
+      @ /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/inhomogeneous_test.jl:13
+    [6] include(mapexpr::Function, mod::Module, _path::String)
+      @ Base ./Base.jl:311
+    [7] top-level scope
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:62
+    [8] macro expansion
+      @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+    [9] macro expansion
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:70 [inlined]
+   [10] macro expansion
+      @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [11] macro expansion
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:70 [inlined]
+   [12] include(mod::Module, _path::String)
+      @ Base ./Base.jl:310
+   [13] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:344
+   [14] _start()
+      @ Base ./client.jl:577
+  in expression starting at /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/inhomogeneous_test.jl:13
+# inhomogeneous_test.jl s=0.0
+TEST massmatrix_test.jl pass=6 fail=0 error=0 broken=0
+TEST doctor_test.jl pass=26 fail=0 error=0 broken=0
+TEST diffusion_test.jl pass=0 fail=0 error=1 broken=0
+TEST inhomogeneous_test.jl pass=0 fail=0 error=1 broken=0
+# rc=0

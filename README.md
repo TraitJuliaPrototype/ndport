@@ -2,6 +2,18 @@
 
 NetworkDynamics.jl, the SciML packages under it, GraphMakie with Makie, and Observables, moved into the trait world a function at a time, against the unmodified upstream packages. The meta plan, with the parts and their plans: [`../writeup/plans/2026-10-21-networkdynamics-port.md`](../writeup/plans/2026-10-21-networkdynamics-port.md). Current numbers belong in the design's [`../writeup/design/evidence.md`](../writeup/design/evidence.md); this file keeps dated tables of its own results.
 
+## On the unified build (W-104, slice 3)
+
+NetworkDynamics' port and Graphs' on Julia's unified build (`julia-unified`, branch `unified`) with TraitWorld's and TraitDifferentialEquations' branches `unified`: the worktrees `pkgs/NetworkDynamics-unified` and `pkgs/Graphs-unified` (branches `unified`, from `ports` and `port`), the environment `env_unified/` (setting PT without the plotting packages).
+
+- **How to run:** `JULIA_PKG_OFFLINE=true ../julia-unified/julia -t 2 --project=env_unified scripts/r3_nd_tests.jl` (the test subset).
+- **What changed:** `@trait_module` before the module's first method; a batch keeps its model as the value itself, and the cast `compiled_for` at the batch call decides; the threaded batch functions are `@open` (their task captures the model); Graphs' `GraphInterface{V}` joins `AbstractGraph{V}` as a family, with its own `directed` where Graphs' `is_directed` takes any receiver (open issue 150).
+- **Not yet:** the workload (`scripts/r5_workload.sh`) needs GraphMakie's port and MakieCompat on the unified build.
+
+| Date | Build | Test subset | Log |
+|---|---|---|---|
+| 2026-11-08 | `unified` 350c5b1c59, TraitWorld d897223, TDE 41837ed, NetworkDynamics fc25b89, Graphs dbcb7c70 | massmatrix 6 pass; doctor 26 pass; diffusion 108 pass, 1 fail (an allocation), 1 error (a mass matrix refused), 24 broken; inhomogeneous 39 pass, 1 error (a mass matrix refused), 12 broken: as on the earlier build (`logs/r7/ndtest-1.log`) | `logs/unified/ndtest-2.log` |
+
 ## Layout
 
 - `pkgs/`: the clones, each its own git repository (ignored here). Each is on branch `trait-port`, started at the resolved release and tagged `upstream`; `git -C pkgs/<repo> diff upstream` is the port. `scripts/clone.sh` makes them and writes `VERSIONS.tsv` (name, version, repository, subdirectory, commit, tree-hash check).

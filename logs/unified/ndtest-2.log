@@ -1,0 +1,124 @@
+# 2026-11-08T03:53:21+01:00 unified 350c5b1c59 TraitWorld d897223 TDE 41837ed ND dfc6663* Graphs 54632125* load 1.43
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+WARNING: method _read at TraitIndexing.ValueProvider{Array{T, 1}, P} and TraitIndexing.SeriesProvider{Array{T, 1}, P} is ambiguous for ODECore.ODESolution{T, P} where P where T, a member of both sets
+
+  1 dependency had output during precompilation:
+┌ NetworkDynamics
+│  [Output was shown above]
+└  
+# nd_tests threads=2 nd=/p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified
+# massmatrix_test.jl s=8.8
+# doctor_test.jl s=2.3
+--- Diffusion dynamics --- 
+Building Static Network Dynamics...
+Building Static Network Dynamics with artifical ODE Edges...
+
+diffusion_test.jl: Test Failed at /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/diffusion_test.jl:111
+  Expression: #= /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/diffusion_test.jl:111 =# @allocated(diff_network_ode(dx0_ode, x0_ode, nothing, 0.0)) == 0
+   Evaluated: 1728 == 0
+  Stacktrace:
+   [1] macro expansion
+     @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:758 [inlined]
+   [2] top-level scope
+     @ /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/diffusion_test.jl:539
+   [3] include(mapexpr::Function, mod::Module, _path::String)
+     @ Base ./Base.jl:311
+   [4] top-level scope
+     @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:62
+   [5] macro expansion
+     @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [6] macro expansion
+     @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:70 [inlined]
+   [7] macro expansion
+     @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [8] macro expansion
+     @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:70 [inlined]
+
+diffusion_test.jl: Error During Test at /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:69
+  Got exception outside of a @test
+  LoadError: ArgumentError: the algorithm takes no mass matrix, and this problem has one other than the identity (60×60 LinearAlgebra.Diagonal{Int64, Vector{Int64}}, from its function's or its own `HasMassMatrix`): a DAE, which solving as an ODE would get wrong. Use an algorithm that takes mass matrices (`takes_mass_matrix`).
+  Stacktrace:
+    [1] check_properties(prob::Any, alg::ODEAlgorithm)
+      @ ODECore /p/projects/coen/julia-trait-bound/TraitDifferentialEquations-unified/lib/ODECore/src/core.jl:1222
+    [2] solve_ode(prob::Any, alg::ODEAlgorithm, callbacks::Vector{Any}, opts::ODECore.SolverOptions)
+      @ ODECore /p/projects/coen/julia-trait-bound/TraitDifferentialEquations-unified/lib/ODECore/src/core.jl:1247
+    [3] _solve
+      @ /p/projects/coen/julia-trait-bound/TraitDifferentialEquations-unified/src/TraitDifferentialEquations.jl:70 [inlined]
+    [4] solve(prob::Any, alg::Any; callback::Any, kw::@Kwargs{})
+      @ TraitDifferentialEquations /p/projects/coen/julia-trait-bound/TraitDifferentialEquations-unified/src/TraitDifferentialEquations.jl:62
+    [5] solve(prob::Any, alg::Any)
+      @ TraitDifferentialEquations /p/projects/coen/julia-trait-bound/TraitDifferentialEquations-unified/src/TraitDifferentialEquations.jl:59
+    [6] top-level scope
+      @ /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/diffusion_test.jl:121
+    [7] include(mapexpr::Function, mod::Module, _path::String)
+      @ Base ./Base.jl:311
+    [8] top-level scope
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:62
+    [9] macro expansion
+      @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [10] macro expansion
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:70 [inlined]
+   [11] macro expansion
+      @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [12] macro expansion
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:70 [inlined]
+   [13] include(mod::Module, _path::String)
+      @ Base ./Base.jl:310
+   [14] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:344
+   [15] _start()
+      @ Base ./client.jl:577
+  in expression starting at /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/diffusion_test.jl:121
+# diffusion_test.jl s=57.6
+--- Network dynamics with a static vertex ---
+R1T STANDIN Rodas4() read as Rodas5() (TDE has Rodas5 only)
+
+inhomogeneous_test.jl: Error During Test at /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:69
+  Got exception outside of a @test
+  LoadError: ArgumentError: the algorithm takes no mass matrix, and this problem has one other than the identity (10×10 LinearAlgebra.Diagonal{Float64, Vector{Float64}}, from its function's or its own `HasMassMatrix`): a DAE, which solving as an ODE would get wrong. Use an algorithm that takes mass matrices (`takes_mass_matrix`).
+  Stacktrace:
+    [1] check_properties(prob::Any, alg::ODEAlgorithm)
+      @ ODECore /p/projects/coen/julia-trait-bound/TraitDifferentialEquations-unified/lib/ODECore/src/core.jl:1222
+    [2] solve_ode(prob::Any, alg::ODEAlgorithm, callbacks::Vector{Any}, opts::ODECore.SolverOptions)
+      @ ODECore /p/projects/coen/julia-trait-bound/TraitDifferentialEquations-unified/lib/ODECore/src/core.jl:1247
+    [3] _solve
+      @ /p/projects/coen/julia-trait-bound/TraitDifferentialEquations-unified/src/TraitDifferentialEquations.jl:70 [inlined]
+    [4] solve(prob::Any, alg::Any; callback::Any, kw::@Kwargs{})
+      @ TraitDifferentialEquations /p/projects/coen/julia-trait-bound/TraitDifferentialEquations-unified/src/TraitDifferentialEquations.jl:62
+    [5] solve(prob::Any, alg::Any)
+      @ TraitDifferentialEquations /p/projects/coen/julia-trait-bound/TraitDifferentialEquations-unified/src/TraitDifferentialEquations.jl:59
+    [6] top-level scope
+      @ /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/inhomogeneous_test.jl:51
+    [7] include(mapexpr::Function, mod::Module, _path::String)
+      @ Base ./Base.jl:311
+    [8] top-level scope
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:62
+    [9] macro expansion
+      @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [10] macro expansion
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:70 [inlined]
+   [11] macro expansion
+      @ /p/projects/coen/julia-trait-bound/julia-unified/usr/share/julia/stdlib/v1.13/Test/src/Test.jl:1967 [inlined]
+   [12] macro expansion
+      @ /p/projects/coen/julia-trait-bound/ndport/scripts/r3_nd_tests.jl:70 [inlined]
+   [13] include(mod::Module, _path::String)
+      @ Base ./Base.jl:310
+   [14] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:344
+   [15] _start()
+      @ Base ./client.jl:577
+  in expression starting at /p/projects/coen/julia-trait-bound/ndport/pkgs/NetworkDynamics-unified/test/inhomogeneous_test.jl:51
+# inhomogeneous_test.jl s=21.5
+TEST massmatrix_test.jl pass=6 fail=0 error=0 broken=0
+TEST doctor_test.jl pass=26 fail=0 error=0 broken=0
+TEST diffusion_test.jl pass=108 fail=1 error=1 broken=24
+TEST inhomogeneous_test.jl pass=39 fail=0 error=1 broken=12
+# rc=0
