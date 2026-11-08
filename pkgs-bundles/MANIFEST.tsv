@@ -15,6 +15,7 @@ branch	GraphMakie.jl	master	41bdf638c4cd1a8e009eb4116a5fad0a4f32269f
 branch	GraphMakie.jl	ports	498be7c265ea6038691b612d2658ee6079ce71a5
 branch	GraphMakie.jl	r1-scratch	6b7b4aff5c317a4e57ad5fcea71eb61ae5fc9935
 branch	GraphMakie.jl	trait-port	327f80b0870b863e426625720221ac0c89afce1b
+branch	GraphMakie.jl	unified	498be7c265ea6038691b612d2658ee6079ce71a5
 tag	GraphMakie.jl	upstream	327f80b0870b863e426625720221ac0c89afce1b
 clone	Graphs.jl	https://github.com/JuliaGraphs/Graphs.jl	trait-port
 branch	Graphs.jl	master	dffc7a640133850569647851b4533a56fc7d40c8
@@ -120,6 +121,7 @@ tag	SymbolicIndexingInterface.jl	upstream	13d7d07078b4863fe656da3b8b9b5fead9f804
 worktree	DiffEqCallbacks-p6	DiffEqCallbacks.jl	port
 worktree	GraphMakie-ports	GraphMakie.jl	ports
 worktree	GraphMakie-r1	GraphMakie.jl	r1-scratch
+worktree	GraphMakie-unified	GraphMakie.jl	unified
 worktree	Graphs-p4	Graphs.jl	port
 worktree	Graphs-unified	Graphs.jl	unified
 worktree	NetworkDynamics-p3wrap	NetworkDynamics.jl	p3-wrap

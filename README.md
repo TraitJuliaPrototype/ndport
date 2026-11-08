@@ -8,10 +8,11 @@ NetworkDynamics' port and Graphs' on Julia's unified build (`julia-unified`, bra
 
 - **How to run:** `JULIA_PKG_OFFLINE=true ../julia-unified/julia -t 2 --project=env_unified scripts/r3_nd_tests.jl` (the test subset).
 - **What changed:** `@trait_module` before the module's first method; a batch keeps its model as the value itself, and the cast `compiled_for` at the batch call decides; the threaded batch functions are `@open` (their task captures the model); Graphs' `GraphInterface{V}` joins `AbstractGraph{V}` as a family, with its own `directed` where Graphs' `is_directed` takes any receiver (open issue 150).
-- **Not yet:** the workload (`scripts/r5_workload.sh`) needs GraphMakie's port and MakieCompat on the unified build.
+- **The workload:** `env_unified_r5` adds GraphMakie's port (`pkgs/GraphMakie-unified`, branch `unified` from `ports`, unchanged) over MakieCompat and TraitMakie (`../TraitMakie-unified`). Run as `scripts/r5_workload.sh` does, with `../julia-unified/julia --threads=1 --project=env_unified_r5 scripts/workload.jl` and `NDW_API=ports NDW_STACK=ports NDW_PASSES=first,again,params,changed,graphtype`.
 
-| Date | Build | Test subset | Log |
+| Date | Build | Result | Log |
 |---|---|---|---|
+| 2026-11-08 | the same, TraitMakie 499af5d (MakieCompat), GraphMakie `unified` | **the workload** (passes first, again, params, changed, graphtype): its 32 digests equal the earlier build's PT run (`logs/r7/run-PT-1.log`: 0 differences), and differ from upstream's where that run's do (13 exact differences each); one run, 100.4 s in all (loads of Graphs and NetworkDynamics 13.0 s; step c of the first pass 13.1 s), against the earlier build's session of 31 s (E-250): not a registered measurement, a pointer for W-121 | `logs/unified/workload-PT-1.log` |
 | 2026-11-08 | `unified` 350c5b1c59, TraitWorld d897223, TDE 41837ed, NetworkDynamics fc25b89, Graphs dbcb7c70 | massmatrix 6 pass; doctor 26 pass; diffusion 108 pass, 1 fail (an allocation), 1 error (a mass matrix refused), 24 broken; inhomogeneous 39 pass, 1 error (a mass matrix refused), 12 broken: as on the earlier build (`logs/r7/ndtest-1.log`) | `logs/unified/ndtest-2.log` |
 
 ## Layout
