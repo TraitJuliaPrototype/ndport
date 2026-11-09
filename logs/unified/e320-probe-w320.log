@@ -1,0 +1,146 @@
+L Graphs,NetworkDynamics 4.36
+L solvers 0.05
+L steps 1.18
+L MakieCompat,GraphMakie,Observables 0.68
+L plot steps 0.02
+T again a 197.9 compile 193.9 recompile 0.0 gc 0.0
+D again a vdim=2 vpdim=3 edim=0 epdim=2
+T again b 1218.2 compile 1213.1 recompile 149.3 gc 43.0
+D again b nv=20 ne=40 connected=true edges=6499ccea4d513864 dim=40 pdim=140
+N again nwtype ca5bf8a278ec0a Network{9 parameters}
+T again c 8873.8 compile 8856.1 recompile 0.0 gc 269.0
+D again c u=7791143c24ef0fa6 p=7c8f234a0a2c253a δc=0.05716823398,-0.05954711471,0.07851025611,-0.04499437991,0.09582217016 Pmax=0.7391453874 fix=true λmax=-1.000306752e-14
+T again d 4138.9 compile 3892.6 recompile 0.0 gc 77.0
+D again d retcode=Success rretcode=Success trips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 rtrips=8,1,4,40,38,39,10,14,9,7,13,3,6,12,37,11 ttrips=1,1.809068077,2.224116476,2.49947167,2.756386211,2.817606877,2.82523073,3.112909382,3.140182284,3.260305762,3.355679976,3.441859359,3.486329481,3.649425468,3.792884718,4.047970649 trtrips=1,1.809068107,2.224116525,2.499471717,2.756386253,2.817606936,2.825230789,3.112909405,3.14018234,3.260305849,3.355679987,3.441859411,3.486329436,3.649425509,3.79288472,4.047970631 ω2=-1.725667758e-17,-2.604970095e-18,-0.04751034901,-0.1787344073,-0.09691743257,-0.7577319901,-2.034377459 ω2r=5.773758786e-18,-1.225221544e-16,-0.04751034678,-0.1787343868,-0.09691740635,-0.7577319525,-2.034377434 sol=a67498d205421621 rsol=7f69ebe993a2fca5 nsteps=38 rnsteps=38
+T again e 2452.9 compile 2449.6 recompile 0.0 gc 51.4
+D again e ωsum=3.996646809e-16,-1.385615611e-15,-1.208614372e-15,-1.301042607e-15,-1.221245327e-15,-8.881784197e-16,1.33226763e-15 P2=-0.1280424121,-0.1280424121,-0.4598860416,-0.3909288658,0.6156849031,-0.03886956268,-0.2563265397 P3=0,0.6156849031,0.2161448615,0,-0.04493879019,-0.3568720032 K3=0,6,6,0,6,6 Pend=0,-0.2563265397,-0,-0,-0.3413242554,-0
+T again f 6023.0 compile 5988.5 recompile 18.4 gc 227.3
+P again f pos (-2.9292,0.2925) (-1.9257,-0.7295) (-1.4527,0.9603) (-0.85,-0.5435) (-1.0989,2.0274) (-0.0278,0.6067) (0.7516,1.7691) (2.2561,1.0663) (0.8892,0.43) (1.4094,0.7175) (0.1548,1.3467) (0.2854,-0.7066) (1.1097,-2.2981) (2.0297,-1.9883) (0.7706,-1.4631) (1.6498,-0.5525) (-0.1091,-0.2521) (-2.2111,0.6964) (-3.873,0.6693) (-3.3726,-0.2442)
+P again f edgepoints 120 nan 40
+P again f edgepoints1-6 (-2.9292,0.2925) (-1.9257,-0.7295) (NaN,NaN) (-2.9292,0.2925) (-1.4527,0.9603) (NaN,NaN)
+P again f nodecolors (75,12,25,255) (13,91,190,255) (81,13,28,255) (41,65,161,255) (124,14,41,255) (232,230,230,255) (220,222,224,255) (220,223,224,255) (232,230,231,255) (207,214,218,255) (238,235,234,255) (240,236,235,255) (215,219,222,255) (221,223,225,255) (237,233,233,255) (231,230,230,255) (240,236,235,255) (40,67,165,255) (64,10,20,255) (29,36,84,255)
+P again f edgecolors (68,1,84,255) (46,109,142,255) (68,1,84,255) (68,1,84,255) (35,138,141,255) (68,1,84,255) (68,1,84,255) (68,1,84,255) (68,1,84,255) (68,1,84,255) (68,1,84,255) (68,1,84,255) (68,1,84,255) (68,1,84,255) (30,155,138,255) (178,221,45,255) (68,59,131,255) (156,217,59,255) (69,53,128,255) (51,98,141,255) (47,108,142,255) (65,189,114,255) (66,64,134,255) (31,151,139,255) (50,181,123,255) (47,107,142,255) (176,221,46,255) (68,58,131,255) (44,116,142,255) (65,190,114,255) (72,28,110,255) (104,204,92,255) (66,64,134,255) (32,164,134,255) (40,124,142,255) (253,231,37,255) (68,1,84,255) (68,1,84,255) (68,1,84,255) (68,1,84,255)
+D again f pos=-2.9292,0.2925,-1.9257,-0.7295,-1.4527,0.9603 colors=2.866861946,-2.034377459,2.810704236,-2.348777434,2.428858943 pixels=600x450 pngbytes=47712
+T again g 988.2 compile 805.2 recompile 0.0 gc 0.0
+P again g nodecolors-3 (239,232,231,255) (236,233,233,255) (240,234,233,255) (239,235,235,255) (237,228,225,255)
+P again g nodecolors-6 (214,157,138,255) (205,214,217,255) (208,140,117,255) (221,223,225,255) (227,200,192,255)
+P again g nodecolors-9 (136,15,41,255) (14,106,189,255) (118,14,40,255) (51,132,186,255) (169,39,36,255)
+P again g nodecolors-sel (75,12,25,255) (13,91,190,255) (81,13,28,255) (41,65,161,255) (124,14,41,255)
+P again g line 11 last (6.0,2.8107)
+D again g t=6 ωend=2.866861926,-2.034377443,2.810704225,-2.348777458,2.428858935 line=11 sel3=2.810704231 listeners=10 frames=4
+W total 45.2
+P step_d 273.0 ms
+P step_d 223.9 ms
+P step_d 243.4 ms
+P vertex batch NetworkDynamics.ComponentBatch{VertexModel, Any, Any, FeedForwardType, Int64, Int64, Int64, Int64, Int64, Vector{Int64}, Core.Dynamic{VertexDynamics}}
+P edge batch NetworkDynamics.ComponentBatch{EdgeModel, Any, Any, FeedForwardType, Int64, Int64, @NamedTuple{src::Int64, dst::Int64}, @NamedTuple{src::Int64, dst::Int64}, Int64, Vector{Int64}, Core.Dynamic{EdgeDynamics}}
+P vertex batch fields Tuple{Symbol, DataType}[(:indices, Vector{Int64}), (:compf, typeof(Main.NDW.swing!)), (:compg, StateMask{1, StaticArraysCore.SVector{1, Int64}}), (:ff, PureStateMap), (:statestride, NetworkDynamics.BatchStride{Int64}), (:pstride, NetworkDynamics.BatchStride{Int64}), (:inbufstride, NetworkDynamics.BatchStride{Int64}), (:outbufstride, NetworkDynamics.BatchStride{Int64}), (:extbufstride, NetworkDynamics.BatchStride{Int64}), (:model, Core.Dynamic{VertexDynamics})]
+P unused casts in NetworkDynamics: Tuple{Method, Int64, Any, Int64}[]
+ Count  Overhead File                                                                                                       Line Function
+ =====  ======== ====                                                                                                       ==== ========
+    61        14 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? jfptr_getproperty_4553
+    62         0 @ODECore/src/core.jl                                                                                       697 _sync_in!(pi::ODECore.ParamIntegrator{Vector{Float64}, Float64, Vector{Float64}}, sv::Core.Dynamic{ODECore.StepView{Vector{Float64}, Float64}})
+    62         0 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? j_declared_field_type_4609
+    62         0 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? tojlinvoke5443
+    63         0 @TraitWorld/src/trait.jl                                                                                   331 step_event_condition(cb::ODECore.StepEvent{Vector{Float64}, Float64}, u::Vector{Float64}, t::Float64, sv::Core.Dynamic{ODECore.StepView{Vector{Fl…
+    65         0 @juliasrc/gc-stock.c                                                                                       734 jl_gc_small_alloc_inner
+    66         4 /p/projects/coen/julia-trait-bound/ndport/scripts/workload_steps.jl                                         58 line!
+    67         0 @Base/boot.jl                                                                                              451 Dynamic
+    67         0 @juliasrc/subtype.c                                                                                       1367 callable_methods
+    67         0 @juliasrc/typemap.c                                                                                        829 jl_typemap_intersection_visitor
+    70         0 @Compiler/src/abstractinterpretation.jl                                                                    230 declared_field_in(c::Any, name::Symbol, depth::Int64)
+    70         0 @juliasrc/subtype.c                                                                                       1430 subtype_membership
+    75         0 @NetworkDynamics/src/component_functions.jl                                                                122 AntiSymmetric
+    77        11 @Base/boot.jl                                                                                              685 Array
+    78         0 @juliasrc/subtype.c                                                                                       1323 subtype_entry
+    79         0 @juliasrc/subtype.c                                                                                       1340 subtype_entry
+    82         0 @juliasrc/subtype.c                                                                                       1340 subtype_entry
+    83         0 @ODECore/src/core.jl                                                                                       391 (::ODECore.PartialFn{Network{SequentialExecution{true}, SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{SimpleGraph{Int64}, Vector{NetworkDynami…
+    83         0 @juliasrc/subtype.c                                                                                       1466 subtype_membership
+    89         0 @juliasrc/gc-stock.c                                                                                       783 ijl_gc_small_alloc
+    89         0 @ODECore/src/core.jl                                                                                      1419 event_time(cb::Core.Dynamic{ODECore.StepEvent{Vector{Float64}, Float64}}, iv::Core.Dynamic{ODECore.StepView{Vector{Float64}, Float64}}, out::Vect…
+    91        13 @Base/essentials.jl                                                                                        994 getindex
+    92         0 @ODECore/src/core.jl                                                                                      1449 locate_events!(events::Vector{ODECore.StepEvent{Vector{Float64}, Float64}}, evprev::Vector{Float64}, iv::Core.Dynamic{ODECore.StepView{Vector{Flo…
+    96         0 @juliasrc/gf.c                                                                                            7179 apply_generic_reach
+    96         0 @NetworkDynamics/src/coreloop.jl                                                                           324 _edge!
+    98         0 @TraitRodas/src/rodas5.jl                                                                                  352 rodas5_advance!(i::TraitRodas.Rodas5Integrator{Nothing, ODECore.CoreProblem{Float64, Core.Dynamic{All{Core.Callable{Tuple{Vector{Float64}, Vector…
+   100         0 @Compiler/src/abstractinterpretation.jl                                                                    235 declared_field_in(c::Any, name::Symbol, depth::Int64)
+   104        17 @NetworkDynamics/src/component_dynamics.jl                                                                  54 compg!(d::NetworkDynamics.FunctionDynamics{Nothing, AntiSymmetric{typeof(Main.NDW.line!)}, PureFeedForward, 2, 0}, outs::Tuple{SubArray{Float64, …
+   105         7 @Compiler/src/abstractinterpretation.jl                                                                    237 declared_field_in(c::Any, name::Symbol, depth::Int64)
+   105         0 @Base/array.jl                                                                                             453 getindex
+   108         2 @Compiler/src/abstractinterpretation.jl                                                                    211 declared_field_type(X::Any, name::Symbol)
+   110         6 @NetworkDynamics/src/component_dynamics.jl                                                                  61 edgeg!
+   111         0 @NetworkDynamics/src/coreloop.jl                                                                           277 run_edge_batch!(m::NetworkDynamics.FunctionDynamics{Nothing, AntiSymmetric{typeof(Main.NDW.line!)}, PureFeedForward, 2, 0}, batches::Vector{Netwo…
+   122         0 @ODECore/src/core.jl                                                                                       696 _sync_in!(pi::ODECore.ParamIntegrator{Vector{Float64}, Float64, Vector{Float64}}, sv::Core.Dynamic{ODECore.StepView{Vector{Float64}, Float64}})
+   122         0 @NetworkDynamics/src/coreloop.jl                                                                            80 (::Network{SequentialExecution{true}, SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{SimpleGraph{Int64}, Vector{NetworkDynamics.ComponentBatch{…
+   128         0 @NetworkDynamics/src/coreloop.jl                                                                           155 _run_batch!(::Type{EdgeModel}, m::NetworkDynamics.FunctionDynamics{Nothing, AntiSymmetric{typeof(Main.NDW.line!)}, PureFeedForward, 2, 0}, batche…
+   156         0 @juliasrc/builtins.c                                                                                      1153 attributed_call_reach
+   166        10 @TraitWorld/src/dynamic.jl                                                                                  43 getproperty(d::Core.Dynamic{IntegratorView{Vector{Float64}, Float64, Vector{Float64}}}, s::Symbol)
+   174         2 @juliasrc/subtype.c                                                                                       2794 exists_subtype
+   175         0 @juliasrc/subtype.c                                                                                       2823 forall_exists_subtype
+   180         0 @juliasrc/subtype.c                                                                                       3294 ijl_subtype_env
+   183         0 @NetworkDynamics/src/coreloop.jl                                                                           105 #get_buffers#197
+   184         0 @NetworkDynamics/src/symbolicindexing_base.jl                                                              685 (::NetworkDynamics.var"#239#240"{Vector{NetworkDynamics.SymbolicIndex}, NetworkDynamics.var"#241#242"{Network{SequentialExecution{true}, SimpleGr…
+   184         0 @NetworkDynamics/src/coreloop.jl                                                                           103 get_buffers
+   190         0 @NetworkDynamics/src/symbolicindexing_base.jl                                                              684 #239
+   200         0 @juliasrc/subtype.c                                                                                       3548 ijl_isa
+   210         0 @NetworkDynamics/src/callbacks.jl                                                                          472 (::NetworkDynamics.var"#_batch_condition##0#_batch_condition##1"{NetworkDynamics.ContinuousCallbackWrapper{ContinuousComponentCallback{ComponentC…
+   218         1 @ODECore/src/core.jl                                                                                       724 step_event_condition(c::ODECore.ParamEvent{Vector{Float64}, Float64, Vector{Float64}}, u::Vector{Float64}, t::Float64, sv::Core.Dynamic{ODECore.S…
+   229         0 @NetworkDynamics/src/coreloop.jl                                                                           147 _process_kept!(ex::SequentialExecution{true}, fg::Val{:g}, filt::ComposedFunction{typeof(!), typeof(NetworkDynamics.hasff)}, batches::Vector{Netw…
+   239         0 @NetworkDynamics/src/coreloop.jl                                                                           135 process_batches!
+   266         0 @NetworkDynamics/src/coreloop.jl                                                                             1 Network
+   394         3 @Compiler/src/abstractinterpretation.jl                                                                    213 declared_field_type(X::Any, name::Symbol)
+   512         2 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? tojlinvoke5446
+   513         1 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? j_declared_field_type_3990
+   533         0 @ODECore/src/core.jl                                                                                      1513 tsit5_advance!(i::ODECore.Tsit5Integrator{Float64, ODECore.CoreProblem{Float64, Core.Dynamic{All{Core.Callable{Tuple{Vector{Float64}, Vector{Floa…
+   556        10 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/PrettyTables/kRdcL_PAzLI.so                   ? jfptr_declared_field_type_27075
+   570         0 @TraitRodas/src/rodas5.jl                                                                                  364 rodas5_advance!(i::TraitRodas.Rodas5Integrator{Nothing, ODECore.CoreProblem{Float64, Core.Dynamic{All{Core.Callable{Tuple{Vector{Float64}, Vector…
+   579         0 @TraitWorld/src/dynamic.jl                                                                                  41 getproperty(d::Core.Dynamic{IntegratorView{Vector{Float64}, Float64, Vector{Float64}}}, s::Symbol)
+   579         4 @TraitWorld/src/dynamic.jl                                                                                  57 _dynamic_field_type
+   594         0 @ODECore/src/core.jl                                                                                      1098 advance!
+   601         0 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? jfptr_solve_core_4502
+   601         0 @ODECore/src/core.jl                                                                                      1330 solve_core(a::Tsit5, m::ODECore.CoreProblem{Float64, Core.Dynamic{All{Core.Callable{Tuple{Vector{Float64}, Vector{Float64}, Float64}, Nothing}, C…
+   626         0 /p/projects/coen/julia-trait-bound/ndport/scripts/workload_steps.jl                                        124 step_d(nw::Network{SequentialExecution{true}, SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{SimpleGraph{Int64}, Vector{NetworkDynamics.Compone…
+   641         0 @NetworkDynamics/src/callbacks.jl                                                                          481 (::NetworkDynamics.var"#_batch_condition##0#_batch_condition##1"{NetworkDynamics.ContinuousCallbackWrapper{ContinuousComponentCallback{ComponentC…
+   714         0 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? jfptr__rodas5_run_4963
+   714         0 @TraitRodas/src/rodas5.jl                                                                                  275 _rodas5_run(i::TraitRodas.Rodas5Integrator{Nothing, ODECore.CoreProblem{Float64, Core.Dynamic{All{Core.Callable{Tuple{Vector{Float64}, Vector{Flo…
+   714         0 @TraitRodas/src/rodas5.jl                                                                                  166 advance!
+   720         0 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? jfptr_solve_core_4908
+   720         0 @TraitRodas/src/rodas5.jl                                                                                  245 solve_core(a::Rodas5{DenseLU}, m::ODECore.CoreProblem{Float64, Core.Dynamic{All{Core.Callable{Tuple{Vector{Float64}, Vector{Float64}, Float64}, N…
+   720         0 @TraitRodas/src/rodas5.jl                                                                                  273 rodas5_solve(m::ODECore.CoreProblem{Float64, Core.Dynamic{All{Core.Callable{Tuple{Vector{Float64}, Vector{Float64}, Float64}, Nothing}, Core.Call…
+   745         0 /p/projects/coen/julia-trait-bound/ndport/scripts/workload_steps.jl                                        126 step_d(nw::Network{SequentialExecution{true}, SimpleGraph{Int64}, NetworkDynamics.NetworkLayer{SimpleGraph{Int64}, Vector{NetworkDynamics.Compone…
+   879         0 @NetworkDynamics/src/callbacks.jl                                                                          437 (::NetworkDynamics.var"#to_callbacks##1#to_callbacks##2"{Int64, Vector{Float64}, NetworkDynamics.var"#_batch_condition##0#_batch_condition##1"{Ne…
+   887         1 @ODECore/src/core.jl                                                                                       602 event_condition(cb::ODECore.FunctionEventCallback{Vector{Float64}, Float64, Vector{Float64}}, u::Vector{Float64}, t::Float64, integ::Core.Dynamic…
+   889         2 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? jfptr_event_condition_4761
+   895         0 @ODECore/src/core.jl                                                                                       725 step_event_condition(c::ODECore.ParamEvent{Vector{Float64}, Float64, Vector{Float64}}, u::Vector{Float64}, t::Float64, sv::Core.Dynamic{ODECore.S…
+  1005         1 @ODECore/src/core.jl                                                                                      1440 locate_events!(events::Vector{ODECore.StepEvent{Vector{Float64}, Float64}}, evprev::Vector{Float64}, iv::Core.Dynamic{ODECore.StepView{Vector{Flo…
+  1092         1 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? jfptr_step_event_condition_4754
+  1114         1 /p/projects/coen/julia-trait-bound/.julia-depot/compiled/v1.13/TraitDifferentialEquations/a1Gji_zfgVY.so     ? jfptr_step_event_condition_4757
+  1117         2 @TraitWorld/src/trait.jl                                                                                   335 step_event_condition(cb::ODECore.StepEvent{Vector{Float64}, Float64}, u::Vector{Float64}, t::Float64, sv::Core.Dynamic{ODECore.StepView{Vector{Fl…
+  1308         0 @ODECore/src/core.jl                                                                                       951 run_to_end!
+  1370         0 @TraitDifferentialEquations/src/TraitDifferentialEquations.jl                                               59 solve
+  1370         0 @TraitDifferentialEquations/src/TraitDifferentialEquations.jl                                               62 solve(prob::Any, alg::Any; callback::Any, kw::Base.Pairs{Symbol, Any, Nothing, @NamedTuple{abstol::Float64, reltol::Float64, saveat::Vector{Float…
+  1370         0 @TraitDifferentialEquations/src/TraitDifferentialEquations.jl                                               70 _solve
+  1370         0 @ODECore/src/core.jl                                                                                      1255 solve_ode(prob::Any, alg::ODEAlgorithm, callbacks::Vector{Any}, opts::ODECore.SolverOptions)
+  1407         5 [any unknown stackframes]
+  1408         0 /p/projects/coen/julia-trait-bound/julia-unified/julia                                                       ? _start
+  1408         0 /lib64/libc.so.6                                                                                             ? __libc_start_main
+  1408         0 /lib64/libc.so.6                                                                                             ? __libc_start_call_main
+  1408         0 /p/projects/coen/julia-trait-bound/julia-unified/cli/loader_exe.c                                           58 main
+  1408         0 @juliasrc/jlapi.c                                                                                         1152 jl_repl_entrypoint
+  1408         0 @juliasrc/jlapi.c                                                                                          985 true_main
+  1408         0 @juliasrc/julia.h                                                                                         2387 jl_apply
+  1408         0 @julialib/julia/sys.so                                                                                       ? jfptr__start_49255
+  1408         0 @Base/client.jl                                                                                            577 _start()
+  1408         0 @Base/client.jl                                                                                            344 exec_options(opts::Base.JLOptions)
+  1408         0 @Base/Base.jl                                                                                              310 include(mod::Module, _path::String)
+  1408         0 @Base/loading.jl                                                                                          3105 _include(mapexpr::Function, mod::Module, _path::String)
+  1408         0 @Base/loading.jl                                                                                          3045 include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+  1408         0 @Base/boot.jl                                                                                              521 eval(m::Module, e::Any)
+  1408         0 @juliasrc/toplevel.c                                                                                       801 ijl_toplevel_eval_in
+  1408         0 @juliasrc/toplevel.c                                                                                       756 ijl_toplevel_eval
+  1408         0 @juliasrc/toplevel.c                                                                                       685 jl_toplevel_eval_flex
+  1408         0 @juliasrc/toplevel.c                                                                                       587 jl_eval_toplevel_stmts
+  1408         0 @juliasrc/toplevel.c                                                                                       733 jl_toplevel_eval_flex
+  1408         0 /p/projects/coen/julia-trait-bound/ndport/scripts/e313_probe.jl                                             22 top-level scope
+Total snapshots: 1408. Utilization: 100% across all threads and tasks. Use the `groupby` kwarg to break down by thread and/or task.

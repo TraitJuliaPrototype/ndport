@@ -59,6 +59,10 @@ Test.record(c::Collector, r) = (push!(c.results, r); r)
 Test.finish(c::Collector) = c
 
 top = @testset Collector "nd subset" begin
+# runtests.jl's quality check: no cast without effect (open issue 162)
+@testset Test.DefaultTestSet "unused casts" begin
+    @test isempty(NetworkDynamics.TraitWorld.detect_unused_casts(NetworkDynamics))
+end
 for f in FILES
     # massmatrix runs without the component check, as in upstream's runtests.jl
     NetworkDynamics.CHECK_COMPONENT[] = f != "massmatrix_test.jl"
