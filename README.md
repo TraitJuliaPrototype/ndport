@@ -12,6 +12,7 @@ NetworkDynamics' port and Graphs' on Julia's unified build (`julia-unified`, bra
 
 | Date | Build | Result | Log |
 |---|---|---|---|
+| 2026-11-09 | `unified` 427760d9e9, TraitWorld c20f9f4, TDE 52a45b6, NetworkDynamics d8c9c49 (E-320: C-29, C-75) | the probe (`scripts/e313_probe.jl`): step d 224–273 ms, the first call 4.14 s; the test subset as before, and its check that no cast is without effect passes; the load prints no ambiguity warning (before: `_run_batch!`, `_kept_model`) | `logs/unified/e320-probe-w320.log`, `e320-ndtest-w320.log` |
 | 2026-11-09 | `unified` 523214899f, TraitWorld 6b342e9, TDE fcee973, NetworkDynamics 7e8997d (E-314): the kernel types the batch's model by the trait | the workload, a warm-up and 2 runs (`scripts/u_workload.sh e314-typed 2`): the session 60.4–60.9 s, new equations 0.59–0.66 s, the steady state 228–257 ms; step d alone 229–281 ms (`scripts/e313_probe.jl`, three solves after the `again` pass); the digests equal E-310 (a)'s | `logs/unified/e314-typed-*.log`, `e314-probe-typed.log` |
 | 2026-11-09 | `unified` b61e326170, TraitWorld 6b342e9, NetworkDynamics c0d115f (E-314) | the batch call's cast at an untyped parameter: step d 422–457 ms, the workload's steady state 436 ms, new equations 0.80 s | `logs/unified/e314-w314-*.log`, `e314-probe-w314.log` |
 | 2026-11-09 | `unified` 9a902e14ed (`bisect-noc74`), NetworkDynamics c0d115f (E-313) | the steady state 473 ms, new equations 0.88 s; step d profiled | `logs/unified/e313-*.log` |
