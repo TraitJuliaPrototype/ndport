@@ -35,7 +35,7 @@ branch	NetworkDynamics.jl	p3-wrap	e5425fd353977c74ad844d2ed62c27c835571ae0
 branch	NetworkDynamics.jl	port	4e5f5a2de01bcc219a5048fea05b99d473f957ed
 branch	NetworkDynamics.jl	ports	dfc66632d004c4a2a35af44ff96136f655cc5259
 branch	NetworkDynamics.jl	trait-port	324bcb7eb85fa67559e92dc1dbd66afdc09e5ddd
-branch	NetworkDynamics.jl	unified	fc25b8930046a9bdaa4d6445bdfad80e220efd9d
+branch	NetworkDynamics.jl	unified	7e8997d3318fd768fe35bdf980a1fd6c93e3d7f5
 tag	NetworkDynamics.jl	p4-s2	324bcb7eb85fa67559e92dc1dbd66afdc09e5ddd
 tag	NetworkDynamics.jl	upstream	ec6afc0973ae2e5e370994be60f9860b9c5764ab
 clone	NetworkLayout.jl	https://github.com/JuliaGraphs/NetworkLayout.jl	trait-port
