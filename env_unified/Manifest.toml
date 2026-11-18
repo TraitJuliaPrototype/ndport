@@ -664,7 +664,7 @@ version = "1.3.0"
 
 [[deps.ODECore]]
 deps = ["ForwardDiff", "LinearAlgebra", "TraitArrayTools", "TraitIndexing", "TraitWorld"]
-path = "../../TraitDifferentialEquations-unified/lib/ODECore"
+path = "../../TraitDifferentialEquations/lib/ODECore"
 uuid = "dde65c3d-a5a2-4c0b-ae11-c816328cb47b"
 version = "0.0.1"
 
@@ -1008,37 +1008,37 @@ version = "1.2.2"
 
 [[deps.TraitArrayTools]]
 deps = ["TraitWorld"]
-path = "../../TraitDifferentialEquations-unified/lib/TraitArrayTools"
+path = "../../TraitDifferentialEquations/lib/TraitArrayTools"
 uuid = "1b9b79cd-6bec-4e99-a18c-2677d046d2b7"
 version = "0.0.1"
 
 [[deps.TraitDifferentialEquations]]
 deps = ["ForwardDiff", "LinearAlgebra", "ODECore", "TraitArrayTools", "TraitIndexing", "TraitNonlinearSolve", "TraitRodas", "TraitWorld"]
-path = "../../TraitDifferentialEquations-unified"
+path = "../../TraitDifferentialEquations"
 uuid = "fc9886c1-0241-47c4-acfc-eaf7404dec9a"
 version = "0.0.1"
 
 [[deps.TraitIndexing]]
 deps = ["TraitWorld"]
-path = "../../TraitDifferentialEquations-unified/lib/TraitIndexing"
+path = "../../TraitDifferentialEquations/lib/TraitIndexing"
 uuid = "33517989-6c57-4017-8c1a-5a2ed17d5e8b"
 version = "0.0.1"
 
 [[deps.TraitNonlinearSolve]]
 deps = ["ForwardDiff", "LinearAlgebra", "ODECore", "TraitWorld"]
-path = "../../TraitDifferentialEquations-unified/lib/TraitNonlinearSolve"
+path = "../../TraitDifferentialEquations/lib/TraitNonlinearSolve"
 uuid = "86edfd3c-937f-4bf9-a2a0-6a6d82efd3fb"
 version = "0.0.1"
 
 [[deps.TraitRodas]]
 deps = ["ForwardDiff", "LinearAlgebra", "ODECore", "TraitWorld"]
-path = "../../TraitDifferentialEquations-unified/lib/TraitRodas"
+path = "../../TraitDifferentialEquations/lib/TraitRodas"
 uuid = "bf920f43-cef2-427b-965f-14169ab0c399"
 version = "0.0.1"
 
 [[deps.TraitWorld]]
 deps = ["Dates", "LinearAlgebra"]
-path = "../../TraitWorld-unified"
+path = "../../TraitWorld"
 uuid = "7a3c1e52-9b4d-4f6e-8a21-5d0c3b9e7f14"
 version = "0.2.0"
 

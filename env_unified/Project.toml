@@ -14,11 +14,11 @@ TraitWorld = "7a3c1e52-9b4d-4f6e-8a21-5d0c3b9e7f14"
 [sources]
 Graphs = {path = "../pkgs/Graphs-unified"}
 NetworkDynamics = {path = "../pkgs/NetworkDynamics-unified"}
-ODECore = {path = "../../TraitDifferentialEquations-unified/lib/ODECore"}
+ODECore = {path = "../../TraitDifferentialEquations/lib/ODECore"}
 Static = {path = "../pkgs/Static.jl"}
-TraitArrayTools = {path = "../../TraitDifferentialEquations-unified/lib/TraitArrayTools"}
-TraitDifferentialEquations = {path = "../../TraitDifferentialEquations-unified"}
-TraitIndexing = {path = "../../TraitDifferentialEquations-unified/lib/TraitIndexing"}
-TraitNonlinearSolve = {path = "../../TraitDifferentialEquations-unified/lib/TraitNonlinearSolve"}
-TraitRodas = {path = "../../TraitDifferentialEquations-unified/lib/TraitRodas"}
-TraitWorld = {path = "../../TraitWorld-unified"}
+TraitArrayTools = {path = "../../TraitDifferentialEquations/lib/TraitArrayTools"}
+TraitDifferentialEquations = {path = "../../TraitDifferentialEquations"}
+TraitIndexing = {path = "../../TraitDifferentialEquations/lib/TraitIndexing"}
+TraitNonlinearSolve = {path = "../../TraitDifferentialEquations/lib/TraitNonlinearSolve"}
+TraitRodas = {path = "../../TraitDifferentialEquations/lib/TraitRodas"}
+TraitWorld = {path = "../../TraitWorld"}

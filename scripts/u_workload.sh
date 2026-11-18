@@ -21,7 +21,7 @@ for i in $(seq 1 "$runs"); do
   f=$LOGDIR/$name-$i.log
   {
     echo "# setting=PT(unified) env=$ENVD depot=$JULIA_DEPOT_PATH strict=off passes=$NDW_PASSES trace=${NDW_TRACE:-none}"
-    echo "# unified $(rev $R/julia-unified) TraitWorld $(rev $R/TraitWorld-unified) TDE $(rev $R/TraitDifferentialEquations-unified) TraitMakie $(rev $R/TraitMakie-unified) ND $(rev pkgs/NetworkDynamics-unified) GraphMakie $(rev pkgs/GraphMakie-unified) Graphs $(rev pkgs/Graphs-unified) ndport $(rev .)"
+    echo "# unified $(rev $R/julia-unified) TraitWorld $(rev $R/TraitWorld) TDE $(rev $R/TraitDifferentialEquations) TraitMakie $(rev $R/TraitMakie) ND $(rev pkgs/NetworkDynamics-unified) GraphMakie $(rev pkgs/GraphMakie-unified) Graphs $(rev pkgs/Graphs-unified) ndport $(rev .)"
     echo "# date $(date -Is) load-before $(cut -d' ' -f1 /proc/loadavg)"
   } > "$f"
   t0=$(date +%s.%N)
