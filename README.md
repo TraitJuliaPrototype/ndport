@@ -17,8 +17,7 @@ The ported packages are clones under `pkgs/`, each its own git repository (ignor
 ## How it uses the design
 
 - `ComponentDynamics`, `VertexDynamics` and `EdgeDynamics` erase by default (`@default_dynamic`): a batch's model is boxed where it is passed plainly, so the network's code is compiled once for every component type.
-- The core loop calls each batch's kernel with the wrapper, `compiled_for(batch.model)` (`src/coreloop.jl`), so the kernel is compiled per model type. The name is bound from `TraitWorld.ByType` (`src/NetworkDynamics.jl`).
-- Not yet on the design's one way to erase: the trait module writes the module option `first_seen = false` (`src/NetworkDynamics.jl`). This is recorded as deviation T-127 of the traits reference.
+- The core loop calls each batch's kernel with the wrapper, `compiled_for(batch.model)` (`src/coreloop.jl`), so the kernel is compiled per model type.
 
 ## Running
 
