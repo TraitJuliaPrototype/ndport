@@ -40,7 +40,7 @@ const R1_SEEN = Set{String}()
 r1_note(what) = what in R1_SEEN || (push!(R1_SEEN, what); println("R1T STANDIN ", what))
 r1_rodas4() = (r1_note("Rodas4() read as Rodas5() (TDE has Rodas5 only)"); Rodas5())
 const TESTDIR = joinpath(pkgdir(NetworkDynamics), "test")
-const FILES = ["massmatrix_test.jl", "doctor_test.jl", "diffusion_test.jl", "inhomogeneous_test.jl"]
+const FILES = ["massmatrix_test.jl", "doctor_test.jl", "diffusion_test.jl", "inhomogeneous_test.jl", "ports_callbacks_test.jl", "ports_fixpoint_test.jl"]
 println("# nd_tests threads=", Threads.nthreads(), " nd=", pkgdir(NetworkDynamics))
 
 function counts(ts)
